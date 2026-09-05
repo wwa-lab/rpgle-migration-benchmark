@@ -1,0 +1,7 @@
+Third-party materials vendored for offline presentation:
+
+- reveal.js 5.2.1 — MIT License — https://revealjs.com
+- highlight.js 11.9.0 — BSD-3-Clause — https://highlightjs.org
+
+These copies are used only by the standalone deck under presentation/.
+They are not part of the RPGLE evaluation sample or benchmark input.

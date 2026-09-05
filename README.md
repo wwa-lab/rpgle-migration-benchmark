@@ -13,6 +13,7 @@
 - [统一评测包](benchmark/README.md)：RPGFLOW-1.0 文件版和分段文本版、统一提示词、运行模板及隔离的评分参考；输入已冻结，模型尚未运行。
 - [项目执行规则](AGENTS.md)：后续使用技能时的入口、优先级和阶段边界。
 - [技能来源与清单](.agent/UPSTREAM.md)：从上游固定版本复制的 16 个 IBM i 技能。
+- [HTML Presentation](presentation/README.md)：独立 16:9 汇报 Deck，入口为 `presentation/index.html`；不改变评测材料或源码。
 
 当前已生成需求、设计、规格以及源码草案，并完成结构、引用和契约静态检查。主程序为 10,114 个物理行。统一评测输入已清理注释提示并冻结，文件版与分段文本版通过材料一致性及隔离检查。下一阶段核实两端实际配置，在相同条件下分别运行模型；测试数据和模型运行结果尚未生成。
 
@@ -67,6 +68,17 @@
 6. **评测打包（已完成）与比较（未运行）**：已隔离输入／参考材料并冻结 RPGFLOW-1.0。两端先核实实际配置并选定同一种交付方式，再进行模型分析。
 
 `ibm-i-ut-plan-generator`、`ibm-i-test-scaffold` 已随上游复制，但在当前范围中不启用。`ibm-i-workflow-orchestrator` 后续可用于路由；当前不创建或执行它的批量 `task.md`。
+
+## 汇报用 Presentation
+
+[presentation/](presentation/README.md) 是附加的静态 Deck，用于把当前评测样本讲给听众。它读取 `presentation/content/rpgflow-demo.json`，不进入 `benchmark/input/`，也不参与模型评测。
+
+```bash
+cd presentation
+./serve.sh
+```
+
+浏览器打开 <http://127.0.0.1:4173/>。快捷键、新增 Slide 和后续用 Markdown 生成的方式见 Presentation 说明。
 
 ## 技能使用方式
 

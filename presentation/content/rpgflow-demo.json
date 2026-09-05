@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "id": "rpgflow-demo",
+    "title": "RPGFLOW-1.0 评测样本",
+    "subtitle": "固定格式 RPGLE 四类 Flow 静态分析",
+    "deck": "正式汇报 Demo Deck",
+    "version": "1.0",
+    "status": "Draft / 输入已冻结",
+    "aspect": "16:9",
+    "locale": "zh-CN"
+  },
+  "slides": [
+    {
+      "id": "cover",
+      "type": "title",
+      "eyebrow": "RPGFLOW-1.0  ·  合成样本",
+      "title": "大型固定格式 RPGLE\n如何被读成四类 Flow",
+      "kicker": "多仓订单履约与结算  ·  静态分析评测汇报",
+      "notes": "开场先交代这是合成评测样本，不是真实核心系统迁移结论。强调四类 Flow：Operation、System、Data、Transaction。主程序 10,114 行，输入已冻结，模型尚未运行。",
+      "data": {
+        "meta": [
+          { "label": "材料版本", "value": "RPGFLOW-1.0" },
+          { "label": "主程序", "value": "ORDMAIN  10,114 行" },
+          { "label": "状态", "value": "输入冻结  ·  模型未跑" }
+        ],
+        "footer": "虚构业务  ·  不代表真实系统验证结果"
+      }
+    },
+    {
+      "id": "problem",
+      "type": "problem",
+      "eyebrow": "01  /  Background",
+      "title": "万行固定格式程序，难在路径而不在语法",
+      "notes": "问题不是“会不会读 RPG”。难点是把操作时点、系统边界、数据变化和一次交易生命周期分开。Program Flow 只是 Transaction Flow 的证据，不能替代业务视图。",
+      "data": {
+        "lead": "模型容易把调用图当成业务，把作业结束当成结算成功。评测要看它能否还原谁在何时处理、数据如何变化、交易停在哪一步。",
+        "points": [
+          {
+            "index": "01",
+            "title": "操作与程序步骤被混为一谈",
+            "body": "客服提交、仓库确认、日终汇总是 Operation Flow。子程序顺序不是运营交接。"
+          },
+          {
+            "index": "02",
+            "title": "系统边界被画成内部调用",
+            "body": "接入、仓储、结算、报表是虚构对端。文件交接不等于 HTTP 或中间件已经连通。"
+          },
+          {
+            "index": "03",
+            "title": "状态被压成一个“失败”",
+            "body": "已发货、结算失败、回执已送达可以并存。Transaction Flow 必须保留这些维度。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "current",
+      "type": "cards",
+      "eyebrow": "02  /  Current State",
+      "title": "生成链已闭合到冻结评测包",
+      "notes": "当前交付是 Draft 静态材料。结构检查 PASS，不等于已编译或已跑业务。右边代码来自 ORDMAIN 的 MDISPATCH，用来说明事件分派而不是展示全部实现。",
+      "animation": "code-highlight",
+      "data": {
+        "items": [
+          { "label": "需求", "value": "16 FR  /  32 BR", "hint": "FS-20260905-01 Draft" },
+          { "label": "设计", "value": "8 程序  /  24 文件", "hint": "TD-20260905-01 Draft" },
+          { "label": "源码", "value": "35 文件  /  13,918 行", "hint": "主程序 10,114 行" },
+          { "label": "评测", "value": "RPGFLOW-1.0 冻结", "hint": "模型尚未运行" }
+        ],
+        "aside": "本阶段只做文档与源码静态检查。不编译、不连接 IBM i、不装载交易数据。",
+        "code": {
+          "caption": "ORDMAIN · MDISPATCH",
+          "language": "rpgle",
+          "file": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 625,
+          "highlights": [
+            { "lines": [1, 2, 3], "label": "按事件进入分派" },
+            { "lines": [4, 5, 6, 7], "label": "NEW：校验 → 计价 → 分配方案" },
+            { "lines": [8, 9, 10], "label": "任一步拒绝即离开，不继续写事实" }
+          ],
+          "source": "     C     MDISPATCH     BEGSR\n     C                   SELECT\n     C                   WHEN      CTXDS.CXEVENT = 'NEW'\n     C                   EXSR      MNEW\n     C                   IF        RESDS.RSRC >= RCREJECT\n     C                   LEAVESR\n     C                   ENDIF\n     C                   EXSR      MVALID\n     C                   EXSR      MQUOTE\n     C                   EXSR      MPLAN"
+        }
+      }
+    },
+    {
+      "id": "architecture",
+      "type": "architecture",
+      "eyebrow": "03  /  Target Architecture",
+      "title": "核心只处理事件，对端只交换文件",
+      "notes": "先让外部角色出现，再进入输入文件，然后进入 ORDRUN / ORDMAIN，最后从 outbox 回到对端。强调：写出待交接记录不等于对端已完成业务。点击模块可看职责，不影响翻页。",
+      "animation": "dataflow",
+      "data": {
+        "hint": "点击模块查看职责  ·  空格推进数据流",
+        "nodes": [
+          { "id": "entry", "label": "订单接入端", "role": "客服 / 渠道", "x": 90, "y": 70, "kind": "edge" },
+          { "id": "warehouse", "label": "仓储端", "role": "分配 / 发货 / 退货", "x": 430, "y": 70, "kind": "edge" },
+          { "id": "settlement", "label": "结算端", "role": "结果 / 核实", "x": 770, "y": 70, "kind": "edge" },
+          { "id": "operator", "label": "日终操作员", "role": "批次 / 处理日", "x": 1110, "y": 70, "kind": "edge" },
+          { "id": "inbox", "label": "INHDR / INDTL", "role": "原始输入信封", "x": 430, "y": 230, "kind": "file" },
+          { "id": "run", "label": "ORDRUN", "role": "CL 作业入口", "x": 90, "y": 390, "kind": "core" },
+          { "id": "main", "label": "ORDMAIN", "role": "分派 / 事实 / 提交", "x": 430, "y": 380, "kind": "core", "wide": true },
+          { "id": "helpers", "label": "六个配套程序", "role": "校验 · 计价 · 库存 · 结算 · 回执 · 日终", "x": 900, "y": 390, "kind": "core", "wide": true },
+          { "id": "outbox", "label": "OUTBOXPF", "role": "待交接输出", "x": 430, "y": 560, "kind": "file" },
+          { "id": "report", "label": "DAYRPTPF", "role": "日报快照", "x": 1110, "y": 560, "kind": "file" }
+        ],
+        "edges": [
+          { "id": "e-entry", "from": "entry", "to": "inbox", "label": "业务请求" },
+          { "id": "e-wh", "from": "warehouse", "to": "inbox", "label": "确认 / 退回" },
+          { "id": "e-set", "from": "settlement", "to": "inbox", "label": "结果反馈" },
+          { "id": "e-op", "from": "operator", "to": "run", "label": "批次意图" },
+          { "id": "e-in", "from": "inbox", "to": "main", "label": "读取原文" },
+          { "id": "e-run", "from": "run", "to": "main", "label": "调用" },
+          { "id": "e-help", "from": "main", "to": "helpers", "label": "同步 CALL" },
+          { "id": "e-out", "from": "main", "to": "outbox", "label": "授权写出" },
+          { "id": "e-reply", "from": "outbox", "to": "entry", "label": "回执", "arc": true },
+          { "id": "e-rpt", "from": "helpers", "to": "report", "label": "日终快照" }
+        ],
+        "details": {
+          "entry": "演示订单接入端只提交带来源和请求标识的业务事件，接收回执。不是真实渠道平台。",
+          "warehouse": "仓储端确认分配、发货和退货。数量必须能回到原订单行和仓库。",
+          "settlement": "结算端回传成功、明确失败或结果未知。失败不能抹去已发货事实。",
+          "operator": "日终操作员给出批次、处理日和运行意图。作业结束不等于全部结算成功。",
+          "inbox": "原始信封不可改写。缺字段也能定位拒绝来源。",
+          "run": "ORDRUN 管理作业级承诺定义和异常收尾，不判定业务规则。",
+          "main": "ORDMAIN 拥有事件分派、版本、本地提交和审计。COMMIT / ROLBK 只在这里正常发生。",
+          "helpers": "ORDCHECK / PRICE / STOCK / SETTL / REPLY / DAILY 各管一块对象，彼此不互调。",
+          "outbox": "写出待交接记录。送达进度独立于业务成功。",
+          "report": "日报是可重建快照，不是结算事实的替代来源。"
+        },
+        "flows": [
+          { "id": "inbound", "label": "1  外部事件进入输入文件", "edges": ["e-entry", "e-wh", "e-set"] },
+          { "id": "batch", "label": "2  作业入口接到批次", "edges": ["e-op", "e-run"] },
+          { "id": "core", "label": "3  主程序读取并分派配套程序", "edges": ["e-in", "e-help"] },
+          { "id": "outbound", "label": "4  结果写出，回执与日报分开走", "edges": ["e-out", "e-reply", "e-rpt"] }
+        ]
+      }
+    },
+    {
+      "id": "workflow",
+      "type": "workflow",
+      "eyebrow": "04  /  End-to-End Workflow",
+      "title": "从需求到评测包，每一步留下可追踪产物",
+      "notes": "这是本项目的生成与评测流水线，不是 IBM i 生产发布链。UT / SIT / Deploy 技能已复制但当前不启用。空格逐步点亮阶段。",
+      "animation": "pipeline",
+      "data": {
+        "caption": "当前范围止于冻结输入。两端模型配置仍待运行前核实。",
+        "steps": [
+          { "id": "req", "label": "Requirement", "detail": "16 FR · 32 BR · 24 AC", "status": "done" },
+          { "id": "design", "label": "Design", "detail": "8 程序 · 24 文件", "status": "done" },
+          { "id": "spec", "label": "Spec", "detail": "程序 / 文件 / 契约", "status": "done" },
+          { "id": "code", "label": "Code", "detail": "固定格式 RPGLE + DDS", "status": "done" },
+          { "id": "review", "label": "Review", "detail": "结构检查 PASS", "status": "done" },
+          { "id": "pack", "label": "Pack", "detail": "RPGFLOW-1.0 冻结", "status": "done" },
+          { "id": "compare", "label": "Compare", "detail": "双端尚未运行", "status": "next" }
+        ],
+        "aside": [
+          { "label": "刻意不做", "body": "不编译、不跑 IBM i、不装载交易、不启用 UT / SIT / Deploy。" },
+          { "label": "评分结构", "body": "Operation / System / Data / Transaction 各 25 分，合计 100。" }
+        ]
+      }
+    },
+    {
+      "id": "agents",
+      "type": "agents",
+      "eyebrow": "05  /  Agent Collaboration",
+      "title": "技能按阶段交接，不把整条链一次跑完",
+      "notes": "说明本项目用 .agent/<skill>/SKILL.md 显式读取。编排器存在但不自动批量执行。任务胶囊沿技能移动，表示产物而不是运行时 RPC。",
+      "animation": "agents",
+      "data": {
+        "task": {
+          "label": "当前任务",
+          "title": "合成订单履约样本",
+          "body": "FR/BR 编号连续下传，固定格式约束同时进入生成和审查。"
+        },
+        "agents": [
+          { "id": "fs", "name": "functional-spec", "role": "功能需求", "output": "FS Draft" },
+          { "id": "td", "name": "technical-design", "role": "技术设计", "output": "TD Draft" },
+          { "id": "spec", "name": "program / file-spec", "role": "规格与契约", "output": "32 份规格" },
+          { "id": "gen", "name": "code / dds-generator", "role": "固定格式生成", "output": "35 个源文件" },
+          { "id": "rev", "name": "code-reviewer", "role": "静态审查", "output": "结构 PASS" },
+          { "id": "orch", "name": "workflow-orchestrator", "role": "阶段路由", "output": "按需启用" }
+        ],
+        "handoffs": [
+          { "from": "fs", "to": "td", "label": "FR / BR" },
+          { "from": "td", "to": "spec", "label": "对象与边界" },
+          { "from": "spec", "to": "gen", "label": "步骤与字段" },
+          { "from": "gen", "to": "rev", "label": "源码草案" },
+          { "from": "rev", "to": "orch", "label": "检查记录" }
+        ]
+      }
+    },
+    {
+      "id": "comparison",
+      "type": "comparison",
+      "eyebrow": "06  /  Before vs After",
+      "title": "评测从“整库交给模型”改成可复现对照",
+      "notes": "左边是常见评测噪声，右边是本项目已落地的约束。重点讲 BC-07 / BC-08：输入与评分参考隔离，两边提示词和材料版本相同。",
+      "animation": "before-after",
+      "data": {
+        "before": {
+          "title": "常见做法",
+          "items": [
+            "把整个开发仓库交给模型",
+            "提示词、分批和工具权限不固定",
+            "需求全文和评分映射混在输入里",
+            "一边用检索、一边用长文本，却直接比分数",
+            "用调用图代替 Operation / Transaction"
+          ]
+        },
+        "after": {
+          "title": "RPGFLOW-1.0",
+          "items": [
+            "只交付冻结的 files 或 text 压缩包",
+            "统一提示词、材料校验值和追问规则",
+            "评分参考、完整需求与技能留在评审侧",
+            "两种交付方式分开比较，不交叉归因",
+            "四类 Flow 各 25 分，Program Flow 只作证据"
+          ]
+        }
+      }
+    },
+    {
+      "id": "kpi",
+      "type": "kpi",
+      "eyebrow": "07  /  KPI",
+      "title": "样本规模已经够支撑对照，结论还没有",
+      "notes": "数字都来自静态检查，不是业务 KPI，也不是模型得分。强调 10,114 行来自业务分支，不是复制堆砌。图表表示材料完整度，不是准确率。",
+      "animation": "countup",
+      "data": {
+        "metrics": [
+          { "id": "lines", "value": 10114, "suffix": "", "label": "ORDMAIN 物理行", "hint": "BC-02 达标" },
+          { "id": "files", "value": 35, "suffix": "", "label": "源码文件", "hint": "7 RPGLE + CL + DDS + COPY" },
+          { "id": "rules", "value": 32, "suffix": "", "label": "业务规则", "hint": "均可定位到规格步骤" },
+          { "id": "score", "value": 100, "suffix": "", "label": "评分总分", "hint": "四类 Flow × 25；尚未打分" }
+        ],
+        "bars": [
+          { "label": "需求 / 规则 / 验收", "value": 100, "note": "16 / 32 / 24 已编号" },
+          { "label": "程序与文件规格", "value": 100, "note": "8 + 24 + 共享契约" },
+          { "label": "源码结构检查", "value": 100, "note": "PASS；未编译" },
+          { "label": "评测输入冻结", "value": 100, "note": "RPGFLOW-1.0" },
+          { "label": "双端模型运行", "value": 0, "note": "配置待核实" }
+        ]
+      }
+    },
+    {
+      "id": "roadmap",
+      "type": "roadmap",
+      "eyebrow": "08  /  Roadmap",
+      "title": "下一阶段只做同一条件下的对照运行",
+      "notes": "路线按评测约束推进：先核实两端配置，再选同一种交付方式，然后保存原始输出并人工评分。不把静态检查改写成已经验证迁移效果。",
+      "data": {
+        "phases": [
+          {
+            "when": "已完成",
+            "title": "样本与评测包",
+            "items": ["功能需求与技术设计草案", "规格、固定格式源码、结构检查", "RPGFLOW-1.0 输入冻结"]
+          },
+          {
+            "when": "下一步",
+            "title": "双端对照",
+            "items": ["核实模型、上下文和工具权限", "只送同一种压缩包", "保留原始输出与使用记录"]
+          },
+          {
+            "when": "其后",
+            "title": "评分与解释",
+            "items": ["按四类 Flow 人工评分", "记录未知事项，不补真实业务", "需要时再启用编排器路由"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "closing",
+      "type": "closing",
+      "eyebrow": "09  /  Close",
+      "title": "先把路径说清楚，再谈模型谁更强",
+      "notes": "收束三句话：合成样本、四类 Flow、输入已冻结但模型未跑。问答可指向 benchmark/README.md 与四类 Flow 定义。",
+      "data": {
+        "lines": [
+          "业务、规则和系统边界都是合成设定。",
+          "评测看 Operation / System / Data / Transaction，而不是会不会认 RPG 语法。",
+          "材料已经可以开跑；分数还没有，也不应提前写。"
+        ],
+        "footer": "Q & A",
+        "refs": [
+          { "label": "评测入口", "value": "benchmark/README.md" },
+          { "label": "需求", "value": "docs/requirements/functional-requirements.md" },
+          { "label": "源码检查", "value": "docs/source/validation-report.md" }
+        ]
+      }
+    }
+  ]
+}

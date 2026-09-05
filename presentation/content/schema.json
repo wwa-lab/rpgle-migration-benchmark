@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rpgflow.local/presentation/slide-schema.json",
+  "title": "RPGFLOW Presentation Slide Schema",
+  "description": "Content contract for HTML presentations. A future Agent can compile Markdown / YAML into this shape, then the renderer maps types to reusable components and animation hooks.",
+  "type": "object",
+  "required": ["meta", "slides"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["id", "title"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "deck": { "type": "string" },
+        "version": { "type": "string" },
+        "status": { "type": "string" },
+        "aspect": { "type": "string", "enum": ["16:9"] },
+        "locale": { "type": "string" }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/slide" }
+    }
+  },
+  "$defs": {
+    "slide": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": [
+            "title",
+            "section",
+            "problem",
+            "cards",
+            "architecture",
+            "workflow",
+            "agents",
+            "comparison",
+            "kpi",
+            "code",
+            "roadmap",
+            "closing"
+          ]
+        },
+        "eyebrow": { "type": "string" },
+        "title": { "type": "string" },
+        "kicker": { "type": "string" },
+        "notes": { "type": "string" },
+        "animation": { "type": "string" },
+        "data": { "type": "object" }
+      }
+    }
+  }
+}

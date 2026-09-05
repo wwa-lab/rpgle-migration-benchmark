@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RPGFLOW Presentation</title>
+    <link rel="stylesheet" href="vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+  </head>
+  <body>
+    <div class="hud">
+      <div data-deck-title>RPGFLOW-1.0</div>
+      <div data-slide-index>01  /  10</div>
+    </div>
+    <div class="kbd-hint">← → 翻页  ·  F 全屏  ·  S 演讲者视图  ·  N 备注  ·  ? 快捷键</div>
+    <aside class="notes-rail" data-notes-rail>
+      <span>Speaker notes</span>
+      <div data-speaker-notes></div>
+    </aside>
+    <div class="help-layer" data-help>
+      <div class="help-card">
+        <h2>演示快捷键</h2>
+        <dl>
+          <dt>→ / Space</dt><dd>下一页或下一个片段</dd>
+          <dt>←</dt><dd>上一页或上一个片段</dd>
+          <dt>F</dt><dd>进入 / 退出全屏</dd>
+          <dt>S</dt><dd>打开 reveal.js 演讲者视图</dd>
+          <dt>N</dt><dd>打开本页备注条</dd>
+          <dt>Esc</dt><dd>总览模式 / 关闭帮助</dd>
+          <dt>?</dt><dd>显示或关闭本说明</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="slides"></div>
+    </div>
+    <script src="vendor/reveal/reveal.js"></script>
+    <script src="vendor/reveal/plugin/notes/notes.js"></script>
+    <script type="module" src="js/boot.js"></script>
+  </body>
+</html>
