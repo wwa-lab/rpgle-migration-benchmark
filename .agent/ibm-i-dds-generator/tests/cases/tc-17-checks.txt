@@ -1,0 +1,9 @@
+source_type=LF
+type=happy
+# LF with field rename — CUSTID renamed to CUSKEY
+must_contain=PFILE(CUSTMAST)
+must_contain=R CUSTRNMR
+must_contain=RENAME(CUSTID)
+must_contain=CUSKEY
+must_contain=K CUSKEY
+must_not_contain=UNIQUE

@@ -1,0 +1,1997 @@
+{
+  "specId": "SPECSET-20260905-01",
+  "status": "Draft",
+  "sharedContract": "shared-contract.json",
+  "files": [
+    {
+      "object": "BATCHPF",
+      "specId": "BATCHPF-20260905-01",
+      "markdown": "files/BATCHPF.md",
+      "json": "files/BATCHPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "INHDRPF",
+      "specId": "INHDRPF-20260905-01",
+      "markdown": "files/INHDRPF.md",
+      "json": "files/INHDRPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "INDTLPF",
+      "specId": "INDTLPF-20260905-01",
+      "markdown": "files/INDTLPF.md",
+      "json": "files/INDTLPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "REQPF",
+      "specId": "REQPF-20260905-01",
+      "markdown": "files/REQPF.md",
+      "json": "files/REQPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "CUSTPF",
+      "specId": "CUSTPF-20260905-01",
+      "markdown": "files/CUSTPF.md",
+      "json": "files/CUSTPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "ITEMPF",
+      "specId": "ITEMPF-20260905-01",
+      "markdown": "files/ITEMPF.md",
+      "json": "files/ITEMPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "PRICEPF",
+      "specId": "PRICEPF-20260905-01",
+      "markdown": "files/PRICEPF.md",
+      "json": "files/PRICEPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "WHSEPF",
+      "specId": "WHSEPF-20260905-01",
+      "markdown": "files/WHSEPF.md",
+      "json": "files/WHSEPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "STOCKPF",
+      "specId": "STOCKPF-20260905-01",
+      "markdown": "files/STOCKPF.md",
+      "json": "files/STOCKPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "ORDHDRPF",
+      "specId": "ORDHDRPF-20260905-01",
+      "markdown": "files/ORDHDRPF.md",
+      "json": "files/ORDHDRPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "ORDDTLPF",
+      "specId": "ORDDTLPF-20260905-01",
+      "markdown": "files/ORDDTLPF.md",
+      "json": "files/ORDDTLPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "ALLOCPF",
+      "specId": "ALLOCPF-20260905-01",
+      "markdown": "files/ALLOCPF.md",
+      "json": "files/ALLOCPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "SHIPHDPF",
+      "specId": "SHIPHDPF-20260905-01",
+      "markdown": "files/SHIPHDPF.md",
+      "json": "files/SHIPHDPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "SHIPDTPF",
+      "specId": "SHIPDTPF-20260905-01",
+      "markdown": "files/SHIPDTPF.md",
+      "json": "files/SHIPDTPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "RTNHDRPF",
+      "specId": "RTNHDRPF-20260905-01",
+      "markdown": "files/RTNHDRPF.md",
+      "json": "files/RTNHDRPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "RTNDTLPF",
+      "specId": "RTNDTLPF-20260905-01",
+      "markdown": "files/RTNDTLPF.md",
+      "json": "files/RTNDTLPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "SETLHDPF",
+      "specId": "SETLHDPF-20260905-01",
+      "markdown": "files/SETLHDPF.md",
+      "json": "files/SETLHDPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "SETLDTPF",
+      "specId": "SETLDTPF-20260905-01",
+      "markdown": "files/SETLDTPF.md",
+      "json": "files/SETLDTPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "OUTBOXPF",
+      "specId": "OUTBOXPF-20260905-01",
+      "markdown": "files/OUTBOXPF.md",
+      "json": "files/OUTBOXPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "AUDITPF",
+      "specId": "AUDITPF-20260905-01",
+      "markdown": "files/AUDITPF.md",
+      "json": "files/AUDITPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "DAYRPTPF",
+      "specId": "DAYRPTPF-20260905-01",
+      "markdown": "files/DAYRPTPF.md",
+      "json": "files/DAYRPTPF.json",
+      "kind": "PF"
+    },
+    {
+      "object": "SETLBYDAY",
+      "specId": "SETLBYDAY-20260905-01",
+      "markdown": "files/SETLBYDAY.md",
+      "json": "files/SETLBYDAY.json",
+      "kind": "LF"
+    },
+    {
+      "object": "SETLBYREF",
+      "specId": "SETLBYREF-20260905-01",
+      "markdown": "files/SETLBYREF.md",
+      "json": "files/SETLBYREF.json",
+      "kind": "LF"
+    },
+    {
+      "object": "OUTBYST",
+      "specId": "OUTBYST-20260905-01",
+      "markdown": "files/OUTBYST.md",
+      "json": "files/OUTBYST.json",
+      "kind": "LF"
+    }
+  ],
+  "programs": [
+    {
+      "object": "ORDRUN",
+      "specId": "ORDRUN-20260905-01",
+      "markdown": "programs/ORDRUN.md",
+      "rules": [
+        "BR-28"
+      ],
+      "files": [],
+      "calls": [
+        "ORDMAIN"
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "RINIT",
+          "text": "接收 BATCH、DAY、MODE、ACTOR 五参数契约中的四个输入并初始化 RESULT=9000。IF 日期格式、批次身份或 MODE 非 PROCESS/RESUME → 返回 1000，不调用主程序。",
+          "br": [
+            "BR-28"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 2,
+          "routine": "RCTX",
+          "text": "确认本次为独立演示作业且没有外来未结束承诺定义。IF 环境前提不成立 → 9000 退出；不得提交或回滚其他调用者的工作。",
+          "br": [
+            "BR-28"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 3,
+          "routine": "RSTART",
+          "text": "启动作业级共享承诺定义并登记本调用所有权；不建日志、不补主数据。IF 启动失败 → 9000 退出。",
+          "br": [
+            "BR-28"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 4,
+          "routine": "RCALL",
+          "text": "按完全相同顺序和字符长度 CALL ORDMAIN(BATCH,DAY,MODE,ACTOR,RESULT)。正常返回保留主程序结果码，主程序应已确认无悬挂业务事务。",
+          "br": [
+            "BR-28"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDMAIN"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "RCLEAN",
+          "text": "正常结束本调用拥有的承诺定义。IF 主程序异常逃逸 → 先对本定义尝试回滚并记录作业异常摘要，再关闭；回滚不可靠仍返回 9000，不能报告业务已撤销。",
+          "br": [
+            "BR-28"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 6,
+          "routine": "RRETURN",
+          "text": "返回 RESULT。批次输入完成不代表外部结算完成；不自行重跑 ORDMAIN，不在收尾创建新业务请求。",
+          "br": [
+            "BR-28"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        }
+      ],
+      "actionRoutes": [
+        [
+          "PROCESS / RESUME",
+          "Step 1–6；任何错误仅走本调用适用的收尾，不继续主处理"
+        ]
+      ]
+    },
+    {
+      "object": "ORDMAIN",
+      "specId": "ORDMAIN-20260905-01",
+      "markdown": "programs/ORDMAIN.md",
+      "rules": [
+        "BR-01",
+        "BR-02",
+        "BR-03",
+        "BR-04",
+        "BR-05",
+        "BR-06",
+        "BR-07",
+        "BR-08",
+        "BR-09",
+        "BR-10",
+        "BR-11",
+        "BR-12",
+        "BR-13",
+        "BR-14",
+        "BR-15",
+        "BR-16",
+        "BR-17",
+        "BR-18",
+        "BR-19",
+        "BR-20",
+        "BR-21",
+        "BR-22",
+        "BR-23",
+        "BR-24",
+        "BR-25",
+        "BR-26",
+        "BR-27",
+        "BR-28",
+        "BR-29",
+        "BR-30",
+        "BR-31",
+        "BR-32"
+      ],
+      "files": [
+        "AUDITPF",
+        "BATCHPF",
+        "INDTLPF",
+        "INHDRPF",
+        "ORDDTLPF",
+        "ORDHDRPF",
+        "REQPF",
+        "RTNDTLPF",
+        "RTNHDRPF",
+        "SETLDTPF",
+        "SETLHDPF",
+        "SHIPDTPF",
+        "SHIPHDPF"
+      ],
+      "calls": [
+        "ORDCHECK",
+        "ORDDAILY",
+        "ORDPRICE",
+        "ORDREPLY",
+        "ORDSETTL",
+        "ORDSTOCK"
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "MINIT",
+          "text": "初始化作业参数、CTXDS、所有候选／结果缓冲及局部指示器；保留运行 DAY 为 CXPROCDAY。IF ABI、日期或 MODE 不支持 → RESULT=9000 返回。",
+          "br": [
+            "BR-28",
+            "BR-29",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 2,
+          "routine": "MBATCH",
+          "text": "按 BATCHPF 完整键读取；新 PROCESS 可创建 OPEN、LAST=0 的批次头，RESUME 要求批次已存在；校验 BTDAY 与当前作业日一致。IF DONE → 返回已有批次结果；IF 提交位置无法确认 → 停止。",
+          "br": [
+            "BR-27",
+            "BR-28",
+            "BR-29"
+          ],
+          "reads": [
+            "BATCHPF"
+          ],
+          "writes": [
+            "BATCHPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 3,
+          "routine": "MINPUT",
+          "text": "FOR EACH INHDRPF 以 IHBATCH=BATCH 且 IHSEQ>BTLAST 的键范围升序读取；逐笔建立输入身份。FOR EACH INDTLPF 以批次、输入序号读取完整明细；读第 101 条即可记容量拒绝，不截断成合法 100 行请求。原始文件保持不变。",
+          "br": [
+            "BR-01",
+            "BR-05",
+            "BR-27",
+            "BR-28"
+          ],
+          "reads": [
+            "INHDRPF",
+            "INDTLPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 4,
+          "routine": "MCANON",
+          "text": "CALL ORDCHECK CANON，取得完整比较内容和解析状态；此时不检查当前客户、商品、库存或版本。IF 来源／请求标识缺失 → 以输入身份进入拒绝路径，不构造 REQPF 假键。",
+          "br": [
+            "BR-01",
+            "BR-06",
+            "BR-07"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDCHECK"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "MDEDUP",
+          "text": "按来源+请求号读 REQPF。IF 已存在且 RQCANLEN／完整内容不同 → 1100，原账本不变；IF 相同 → 保留原业务日并转最近投影，原 RQSTATE=RETRY 也不能自动恢复。只有新请求进入业务处理；同一输入信封已闭合由批次检查点跳过。",
+          "br": [
+            "BR-06",
+            "BR-07",
+            "BR-28"
+          ],
+          "reads": [
+            "REQPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 6,
+          "routine": "MENVELOPE",
+          "text": "对新请求 CALL ORDCHECK VALIDATE，再校验事件、业务身份字符集、有效日和事件载荷；IHDAY 必须等于 CXPROCDAY。以新候选账本保留规范内容，尚不单独提交。IF 事件未知、必填缺失或不适用字段非空 → 1000；传输字段不参与业务规则。",
+          "br": [
+            "BR-01",
+            "BR-04",
+            "BR-05",
+            "BR-17",
+            "BR-18",
+            "BR-20",
+            "BR-29",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDCHECK"
+          ]
+        },
+        {
+          "number": 7,
+          "routine": "MORDER",
+          "text": "QUERY 先按原请求引用解析订单；其他需要现有订单的 MOD/ALLOC/SHIP/CANCEL/RETURN 以及已解析的 QUERY 读取 ORDHDRPF 及 FOR EACH 当前版本 ODACTIVE=Y 的 ORDDTLPF；校验实际行数、ODVERSION 与头一致。IF MOD/ALLOC/SHIP/CANCEL 的输入版本不等于 OHVERSION → 1100。",
+          "br": [
+            "BR-09",
+            "BR-10",
+            "BR-19",
+            "BR-32"
+          ],
+          "reads": [
+            "ORDHDRPF",
+            "ORDDTLPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 8,
+          "routine": "MNEW",
+          "text": "IF NEW 的订单已存在 → 1100；否则建立版本 1 候选，OHSHIPANY=N。不能靠换请求标识重新创建同一订单。",
+          "br": [
+            "BR-08"
+          ],
+          "reads": [
+            "ORDHDRPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 9,
+          "routine": "MVALID",
+          "text": "NEW/MOD 接收 MENVELOPE 中 ORDCHECK VALIDATE 返回的客户等级、规范明细及全部拒绝原因。IF 任一客户、商品、数量或明细结构无效 → 整笔拒绝，不先保存部分订单。",
+          "br": [
+            "BR-02",
+            "BR-03",
+            "BR-04",
+            "BR-05",
+            "BR-10"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 10,
+          "routine": "MMOD",
+          "text": "MOD 必须无历史发货且未全部取消；对原头、所有当前有效行与旧分配规划结果准备逐记录审计快照。输入是完整替换，未列旧行将在接受后设 ODACTIVE=N；任何失败保留旧版本及旧占用。",
+          "br": [
+            "BR-10",
+            "BR-19",
+            "BR-32"
+          ],
+          "reads": [
+            "ORDHDRPF",
+            "ORDDTLPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 11,
+          "routine": "MQUOTE",
+          "text": "NEW/MOD 把 1–100 个新行组成 PRIN，CTXDS 使用当前受理日和客户等级，CALL ORDPRICE QUOTE。IF 无有效正价或金额越界 → 拒绝／数据异常；行金额与合计来自同一份候选。",
+          "br": [
+            "BR-03",
+            "BR-11",
+            "BR-12"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDPRICE"
+          ]
+        },
+        {
+          "number": 12,
+          "routine": "MPLAN",
+          "text": "NEW/MOD 把新行完整数量交 ORDSTOCK；MOD 在 STKOLD 形成释放、在 STKNEW 形成新占用。IF 不允许部分且不能全满足 → 候选新占用为零但订单可接受为等待；不要把库存等待等同修改校验失败。",
+          "br": [
+            "BR-10",
+            "BR-13",
+            "BR-14",
+            "BR-15"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDSTOCK"
+          ]
+        },
+        {
+          "number": 13,
+          "routine": "MVERSION",
+          "text": "全部校验完成后 CALL ORDSTOCK APPLY；写新头／行，MOD 先停用旧行并将其当前计数字段归零，再按新行更新／新增；新行 CANCEL/SHIPPED/SHPAMT=0、ODACTIVE=Y、ODVERSION=新版本。头金额等于候选行和，版本只推进一次；审计保留旧版本完整快照。所有写入尚在同一未提交单元。",
+          "br": [
+            "BR-10",
+            "BR-11",
+            "BR-12",
+            "BR-14",
+            "BR-15",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [
+            "ORDHDRPF",
+            "ORDDTLPF",
+            "AUDITPF"
+          ],
+          "calls": [
+            "ORDSTOCK"
+          ]
+        },
+        {
+          "number": 14,
+          "routine": "MALLOC",
+          "text": "ALLOC 检查订单仍有有效未取消需求；每行目标=ODQTY−ODCANCEL−ODSHIPPED，调用 ORDSTOCK ALLOC 后 APPLY，辅助程序再扣现有占用求新增缺口。IF 无库存仍可闭合为等待；接受的 ALLOC 仅推进一次订单版本及当前有效行版本，不重算价格。",
+          "br": [
+            "BR-09",
+            "BR-13",
+            "BR-14",
+            "BR-15",
+            "BR-16",
+            "BR-19"
+          ],
+          "reads": [
+            "ORDDTLPF"
+          ],
+          "writes": [
+            "ORDHDRPF",
+            "ORDDTLPF"
+          ],
+          "calls": [
+            "ORDSTOCK"
+          ]
+        },
+        {
+          "number": 15,
+          "routine": "MCANCEL",
+          "text": "CANCEL 按订单行整理输入，拒绝重复业务行或非正整数；每行取消量不得大于 ODQTY−ODCANCEL−ODSHIPPED。CALL ORDSTOCK CANCEL 先抵消未分配需求，再以 C/B/A 释放；全部行可接受后 APPLY，并增加 ODCANCEL、推进版本。",
+          "br": [
+            "BR-09",
+            "BR-18",
+            "BR-19"
+          ],
+          "reads": [
+            "ORDDTLPF"
+          ],
+          "writes": [
+            "ORDHDRPF",
+            "ORDDTLPF"
+          ],
+          "calls": [
+            "ORDSTOCK"
+          ]
+        },
+        {
+          "number": 16,
+          "routine": "MSHIPID",
+          "text": "SHIP 检查 SHIPHDPF 中发货身份不存在；已有相同身份的新请求返回冲突，不能再建正向结算。保留原请求去重已在前面执行。检查本次业务行 1–100、同订单行/仓库组合唯一。",
+          "br": [
+            "BR-06",
+            "BR-09",
+            "BR-17",
+            "BR-23"
+          ],
+          "reads": [
+            "SHIPHDPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 17,
+          "routine": "MSHIPPLAN",
+          "text": "FOR EACH 发货行加载原订单行与原冻结金额；原数量、累计已发量及累计分配金额组成 PRIN。同订单行多仓按 A/B/C 排序累计。CALL ORDSTOCK SHIP 验证各仓占用及同商品聚合数量；任一不满足整次不生效。",
+          "br": [
+            "BR-14",
+            "BR-17",
+            "BR-23"
+          ],
+          "reads": [
+            "ORDDTLPF"
+          ],
+          "writes": [],
+          "calls": [
+            "ORDSTOCK"
+          ]
+        },
+        {
+          "number": 18,
+          "routine": "MSHIPAMT",
+          "text": "CALL ORDPRICE SHIP，用固定原行数量作分母、ODSHPAMT 作此前金额，得到各发货明细分摊；取消不改变原计价分母。IF 舍入或累积范围异常 → 停止本笔应用。",
+          "br": [
+            "BR-12",
+            "BR-23"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDPRICE"
+          ]
+        },
+        {
+          "number": 19,
+          "routine": "MSHIPAP",
+          "text": "CALL ORDSTOCK APPLY；写不可变 SHIPHDPF/SHIPDTPF，增加 ODSHIPPED/ODSHPAMT 并推进订单版本、OHSHIPANY=Y。构造 SETHEAD=NEW 和 SETROWS，CALL ORDSETTL CREATE 产生唯一 S:SHIP 正向结算及待交接消息；本次所有本地对象一起提交。",
+          "br": [
+            "BR-14",
+            "BR-17",
+            "BR-23",
+            "BR-24"
+          ],
+          "reads": [],
+          "writes": [
+            "SHIPHDPF",
+            "SHIPDTPF",
+            "ORDHDRPF",
+            "ORDDTLPF"
+          ],
+          "calls": [
+            "ORDSTOCK",
+            "ORDSETTL"
+          ]
+        },
+        {
+          "number": 20,
+          "routine": "MRETURN",
+          "text": "RETURN 检查 RTNHDRPF 中退货身份不存在，行数量为正且同一事件不重复引用原发货明细。FOR EACH 原 SHIPHDPF/SHIPDTPF 读取校验，必须属于同一订单，当前业务日与 SHDAY 相差 0–30 个自然日。",
+          "br": [
+            "BR-20",
+            "BR-22",
+            "BR-32"
+          ],
+          "reads": [
+            "RTNHDRPF",
+            "SHIPHDPF",
+            "SHIPDTPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 21,
+          "routine": "MRETBASE",
+          "text": "逐个原发货 CALL ORDSETTL FETCH/LOOKUP，正向结算必须成功；FOR EACH RTNDTLPF 显式历史扫描累计该原发货明细已接受退货量，与 SETVIEW 的已成功调整及待调整量核对。IF 新累计超过原发货量 → 拒绝；IF 任一原明细调整未完 → 本次不入库，RQSTATE=RETRY、RC=0010，须显式 LOCAL 恢复。",
+          "br": [
+            "BR-20",
+            "BR-22",
+            "BR-24"
+          ],
+          "reads": [
+            "RTNDTLPF"
+          ],
+          "writes": [],
+          "calls": [
+            "ORDSETTL"
+          ]
+        },
+        {
+          "number": 22,
+          "routine": "MRETAMT",
+          "text": "构造按原发货明细分组的 PRIN，BASEAMT=原发货明细金额，BASEQTY=原发货量，PRIORQ=历史已接受退回量，PRIORA=已成功调整额；CALL ORDPRICE RETURN。所有原明细均无未完调整时这些基数必须一致。",
+          "br": [
+            "BR-20",
+            "BR-22"
+          ],
+          "reads": [
+            "SHIPDTPF"
+          ],
+          "writes": [],
+          "calls": [
+            "ORDPRICE"
+          ]
+        },
+        {
+          "number": 23,
+          "routine": "MRETAP",
+          "text": "CALL ORDSTOCK RETURN 再 APPLY，将数量归还原商品原仓；不更新订单需求／版本。写 RTNHDRPF/RTNDTLPF；按原发货分别 CALL ORDSETTL CREATE 生成 A:RETURN:SHIP 反向调整，原正向结算不改金额。本次库存、退货和全部调整一起提交。",
+          "br": [
+            "BR-21",
+            "BR-22",
+            "BR-24"
+          ],
+          "reads": [],
+          "writes": [
+            "RTNHDRPF",
+            "RTNDTLPF"
+          ],
+          "calls": [
+            "ORDSTOCK",
+            "ORDSETTL"
+          ]
+        },
+        {
+          "number": 24,
+          "routine": "MSETGET",
+          "text": "SETRES 先 CALL ORDSETTL FETCH，核对结算存在、消息指向同一结算、消息类型为 SETTLE/ADJUST/VERIFY，以及原发货关联。IF 无关联或消息身份冲突 → 1100，仅记审计，不改业务事实。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDSETTL"
+          ]
+        },
+        {
+          "number": 25,
+          "routine": "MSETSTATE",
+          "text": "按共享迁移表判断：已 OK 的后到非成功只审计；重复 OK 不变首次成功日；有效首次 OK 写 CXPROCDAY；非当前尝试 FAIL 忽略其状态效果；UNKNOWN 只接受当前 VERIFY 的明确核实解除；当前明确失败可记 FAIL，可重试性须有 FAIL 的无业务效果语义或 RETRYOK 核实依据。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-30"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 26,
+          "routine": "MSETAP",
+          "text": "将允许的目标 SETHEAD 和原消息 OUTREC 交 ORDSETTL APPLY；仅结算状态及相关消息结果变化，SH/SD/RH/RD 不删不改。未知、失败返回等待或待恢复业务投影，不能让它们触发第二次实物流转。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDSETTL"
+          ]
+        },
+        {
+          "number": 27,
+          "routine": "MDELIV",
+          "text": "DELIVER 先 ORDREPLY FETCH 按消息身份读取载体；根据 OBKIND 分别调用 ORDSETTL DELIVERY 或 ORDREPLY DELIVERY。送达 OK 只能确认消息送达；结算至多由 NEW 进入 SENT，不进入业务 OK。",
+          "br": [
+            "BR-24",
+            "BR-26",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDREPLY",
+            "ORDSETTL"
+          ]
+        },
+        {
+          "number": 28,
+          "routine": "MRECCHK",
+          "text": "RECOVER 必须有非空操作者和原因，且原关联完整。IF 请求要覆盖已成功业务、无核实直接重发未知结算或跳过数量资格 → 拒绝并审计；恢复自身使用新来源／请求身份，可独立去重。",
+          "br": [
+            "BR-06",
+            "BR-24",
+            "BR-25",
+            "BR-26",
+            "BR-31",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 29,
+          "routine": "MLOCAL",
+          "text": "RECOVER/LOCAL 查原 REQPF，仅允许 RETRY（含未受理的退货调整等待）；保留恢复上下文副本，重读 RQBATCH/RQINPUT 的原始头与明细并从原内容重新校验当前版本／资料。原业务日保持不变；成功后原账本转 DONE，恢复请求也闭合，均在同一提交。IF 原请求不再满足业务资格 → 记录拒绝，不伪造成功。",
+          "br": [
+            "BR-06",
+            "BR-09",
+            "BR-22",
+            "BR-28",
+            "BR-31"
+          ],
+          "reads": [
+            "REQPF",
+            "INHDRPF",
+            "INDTLPF"
+          ],
+          "writes": [
+            "REQPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 30,
+          "routine": "MRETRY",
+          "text": "RECOVER/RETRY 通过 ORDSETTL FETCH 取得原业务。仅 SESTATE=FAIL 且 SERETRY=Y 可 CALL RETRY：原结算身份不变、发送尝试加一、新消息身份从本恢复事件派生；不再写发货、退货、库存。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-31"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDSETTL"
+          ]
+        },
+        {
+          "number": 31,
+          "routine": "MVERIFY",
+          "text": "RECOVER/VERIFY 仅核实 UNKNOWN，CALL ORDSETTL VERIFY 登记查询。已存在当前未终结核实消息时返回等待；不得把查询转换为再次 SETTLE/ADJUST。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-28",
+            "BR-31"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDSETTL"
+          ]
+        },
+        {
+          "number": 32,
+          "routine": "MREPLY",
+          "text": "RECOVER/REPLY 仅 CALL ORDREPLY RESEND，原 OBPAYLOAD、业务身份和消息身份保持不变，尝试号推进；不访问库存或创建结算。",
+          "br": [
+            "BR-26",
+            "BR-31"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDREPLY"
+          ]
+        },
+        {
+          "number": 33,
+          "routine": "MQUERY",
+          "text": "QUERY 或相同请求重复投影：若原 RQEVENT=DAYEND，取 RQDAY/RQSRC/RQREQ 调 ORDDAILY FETCH 返回原快照；其他请求按 RQORDER/RQSHIP/RQRETURN/RQSETTL 及当前订单读取最新事实，结算／回执经所属辅助程序 FETCH，库存占用经 ORDSTOCK VIEW。FOR EACH AUDITPF 显式按关联筛选并分消息输出；拒绝、等待及历史版本不能被当前摘要掩盖。",
+          "br": [
+            "BR-06",
+            "BR-26",
+            "BR-32"
+          ],
+          "reads": [
+            "REQPF",
+            "ORDHDRPF",
+            "ORDDTLPF",
+            "SHIPHDPF",
+            "SHIPDTPF",
+            "RTNHDRPF",
+            "RTNDTLPF",
+            "SETLHDPF",
+            "SETLDTPF",
+            "AUDITPF"
+          ],
+          "writes": [],
+          "calls": [
+            "ORDSETTL",
+            "ORDREPLY",
+            "ORDSTOCK",
+            "ORDDAILY"
+          ]
+        },
+        {
+          "number": 34,
+          "routine": "MDAY",
+          "text": "DAYEND 先校验请求日=当前运行日，建立稳定的未提交本地单元，再 CALL ORDDAILY SNAPSHOT；同一来源／请求快照重复返回已有结果，不积加原金额；不在日报发布中推进任何结算。",
+          "br": [
+            "BR-29",
+            "BR-30",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDDAILY"
+          ]
+        },
+        {
+          "number": 35,
+          "routine": "MPROJECT",
+          "text": "建立结果投影并 CALL ORDREPLY CREATE：包含业务结果、订单版本、履约／结算状态及上一回执送达状态；原业务重复请求的新投影允许新消息，原消息显式重送仍仅 RESEND。仓储结果由同程序另建 WHRESULT 消息。IF 输出登记失败 → 本笔整体回滚，不能先提交业务。",
+          "br": [
+            "BR-06",
+            "BR-26",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": [
+            "ORDREPLY"
+          ]
+        },
+        {
+          "number": 36,
+          "routine": "MAUDIT",
+          "text": "逐事件追加 AUDITPF，必要时按对象记录旧／新版本快照片段；每条含输入身份、业务关联、操作者、原因及前后状态。缺业务来源的拒绝也必须通过输入身份定位；不能因规范键缺失丢掉拒绝。",
+          "br": [
+            "BR-01",
+            "BR-27",
+            "BR-31",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [
+            "AUDITPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 37,
+          "routine": "MLEDGER",
+          "text": "新请求写规范账本；仅恢复可修改原请求处理状态，最新回执关联更新 RQMSG。身份冲突不覆盖旧账本；重复投影只可更新 RQMSG，不改原规范内容及受理事实。记录原请求状态 DONE/REJECT/RETRY，推进 BTLAST 及输入闭合计数。",
+          "br": [
+            "BR-06",
+            "BR-07",
+            "BR-27",
+            "BR-28",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [
+            "REQPF",
+            "BATCHPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 38,
+          "routine": "MCOMMIT",
+          "text": "对包含业务、消息、审计、账本和检查点的本地单元 COMMIT；已确认成功才处理下一输入。IF 提交返回状态不可靠 → 9000 停止，恢复时重查已提交账本；不能继续写拒绝记录并假定前次未发生。",
+          "br": [
+            "BR-24",
+            "BR-27",
+            "BR-28",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 39,
+          "routine": "MROLL",
+          "text": "任何可确认的本地失败先 ROLBK；IF 回滚失败或状态不明 → 9000 停止。确认回滚后清空全部候选和记录缓冲；为已知拒绝／可恢复失败开启无业务副作用结果单元，写 REQPF（有键时）、AUDITPF、必要回执及 BATCHPF；结果单元失败则不推进检查点并停止。",
+          "br": [
+            "BR-07",
+            "BR-10",
+            "BR-17",
+            "BR-22",
+            "BR-27",
+            "BR-28",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [
+            "REQPF",
+            "AUDITPF",
+            "BATCHPF"
+          ],
+          "calls": [
+            "ORDREPLY"
+          ]
+        },
+        {
+          "number": 40,
+          "routine": "MFINISH",
+          "text": "读取完该批次范围后将 BTSTATE=DONE 并提交批次结束记录；RESULT 表示批次输入完成。仍等待结算的业务保留原状态，下一批反馈继续推进；异常退出交 ORDRUN 清理。",
+          "br": [
+            "BR-27",
+            "BR-28"
+          ],
+          "reads": [],
+          "writes": [
+            "BATCHPF"
+          ],
+          "calls": []
+        }
+      ],
+      "actionRoutes": [
+        [
+          "共同入口",
+          "Step 1–6；每个新请求完成去重后适用校验"
+        ],
+        [
+          "NEW",
+          "Step 8–9、11–13"
+        ],
+        [
+          "MOD",
+          "Step 7、9–13"
+        ],
+        [
+          "ALLOC",
+          "Step 7、14"
+        ],
+        [
+          "CANCEL",
+          "Step 7、15"
+        ],
+        [
+          "SHIP",
+          "Step 7、16–19"
+        ],
+        [
+          "RETURN",
+          "Step 7、20–23"
+        ],
+        [
+          "SETRES",
+          "Step 24–26"
+        ],
+        [
+          "DELIVER",
+          "Step 27"
+        ],
+        [
+          "RECOVER",
+          "Step 28，再按类别进入 Step 29 / 30 / 31 / 32"
+        ],
+        [
+          "QUERY",
+          "Step 33；需要订单时先解析关联并执行 Step 7"
+        ],
+        [
+          "DAYEND",
+          "Step 34"
+        ],
+        [
+          "同内容重复",
+          "Step 5 识别后到 Step 33，跳过业务变更"
+        ],
+        [
+          "正常闭合",
+          "Step 35–38，再回 Step 3；无剩余输入时 Step 40"
+        ],
+        [
+          "拒绝／可回滚失败",
+          "Step 39；确认结果单元提交后回 Step 3；9000 停止"
+        ]
+      ]
+    },
+    {
+      "object": "ORDCHECK",
+      "specId": "ORDCHECK-20260905-01",
+      "markdown": "programs/ORDCHECK.md",
+      "rules": [
+        "BR-01",
+        "BR-02",
+        "BR-03",
+        "BR-04",
+        "BR-05",
+        "BR-06",
+        "BR-07",
+        "BR-17",
+        "BR-18",
+        "BR-20",
+        "BR-29",
+        "BR-32"
+      ],
+      "files": [
+        "CUSTPF",
+        "ITEMPF"
+      ],
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "CINIT",
+          "text": "初始化 CHKHEAD/NORMROWS/RESDS；确认 CXABI=0001、CXCOUNT 在 0–100 且动作 CANON/VALIDATE。IF 载体超限 → 1000，保留原输入，不访问资料。",
+          "br": [
+            "BR-01",
+            "BR-04",
+            "BR-05",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 2,
+          "routine": "CCANON",
+          "text": "按共享契约生成规范头及完整行序列：仅剔除传输包装，数字规范化，保留无效原文，原处理日和恢复关联均纳入；长度前缀避免不同字段组合串接冲突。IF 长度超过 24000 → 1000，不裁剪。",
+          "br": [
+            "BR-06",
+            "BR-07"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 3,
+          "routine": "CMODE",
+          "text": "IF CANON → 返回 CHLEN/CHCANON，业务资格尚未检查；主程序用其比较账本。VALIDATE 继续结构、日期和事件字段校验。",
+          "br": [
+            "BR-01",
+            "BR-06",
+            "BR-07",
+            "BR-29"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 4,
+          "routine": "CROWS",
+          "text": "FOR EACH 原始行构造规范 NORMROWS。NEW/MOD 必须 1–100 行、业务行号为正且唯一、数量严格整数 1–9999；SHIP/CANCEL/RETURN 数量为正整数且事件组合不重复。IF 失败 → 1000 并返回问题行，输出候选无效。",
+          "br": [
+            "BR-04",
+            "BR-05",
+            "BR-17",
+            "BR-18",
+            "BR-20"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 5,
+          "routine": "CCUST",
+          "text": "NEW/MOD 按 CUID 完整键读取 CUSTPF。IF 缺失或 CUACTIVE≠Y → 1000；IF CUTIER 非 S/P → 2000；只输出等级，不更新客户。",
+          "br": [
+            "BR-02"
+          ],
+          "reads": [
+            "CUSTPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 6,
+          "routine": "CITEM",
+          "text": "FOR EACH NEW/MOD 规范行按 ITID 读取 ITEMPF。IF 缺失或 ITACTIVE≠Y → 1000。价格资格由 ORDMAIN 后续调用 ORDPRICE 完成，本程序不跨职责读取 PRICEPF 或调用金额程序。",
+          "br": [
+            "BR-03"
+          ],
+          "reads": [
+            "ITEMPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 7,
+          "routine": "CRET",
+          "text": "全部适用校验成功返回 0000；读文件失败返回 9000，语义无效返回 1000，资料内部矛盾返回 2000。错误只经 RESDS 交主程序统一审计，本程序没有业务写入。",
+          "br": [
+            "BR-01",
+            "BR-02",
+            "BR-03",
+            "BR-04",
+            "BR-05",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        }
+      ],
+      "actionRoutes": [
+        [
+          "CANON",
+          "Step 1–3，返回；不读当前资格资料"
+        ],
+        [
+          "VALIDATE",
+          "Step 1–4；NEW/MOD 再执行 Step 5–6；Step 7 返回"
+        ]
+      ]
+    },
+    {
+      "object": "ORDPRICE",
+      "specId": "ORDPRICE-20260905-01",
+      "markdown": "programs/ORDPRICE.md",
+      "rules": [
+        "BR-03",
+        "BR-11",
+        "BR-12",
+        "BR-20",
+        "BR-22",
+        "BR-23",
+        "BR-32"
+      ],
+      "files": [
+        "PRICEPF"
+      ],
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "PINIT",
+          "text": "清空 PROUT/RESDS，确认模式 QUOTE/SHIP/RETURN、行数≤100、金额与数量输入可表示。IF 不满足 → 1000／2000，无金额输出有效。",
+          "br": [
+            "BR-03",
+            "BR-11",
+            "BR-12",
+            "BR-22",
+            "BR-23",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 2,
+          "routine": "PLOOK",
+          "text": "QUOTE：FOR EACH PRIN 商品，用 PRITEM 键前缀读完 PRICEPF 有效期候选，判断 PRFROM≤CXDAY≤PRTHRU；必须恰好一个匹配且 PRUNIT>0。IF 零个 → 1000；IF 重叠、无效日期或非正价 → 2000，不取第一条冒充有效价。",
+          "br": [
+            "BR-03",
+            "BR-11"
+          ],
+          "reads": [
+            "PRICEPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 3,
+          "routine": "PQUOTE",
+          "text": "QUOTE：CXTIER=S 用 1.0000，P 用 0.9500；宽临时值=数量×单价×系数，half-up 两位得每行金额，整单合计求已舍入行之和。IF 中间值或 P(15,2) 结果越界 → 2000，全部报价候选无效。",
+          "br": [
+            "BR-11",
+            "BR-12"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 4,
+          "routine": "PGROUP",
+          "text": "SHIP/RETURN：按 PIGROUP 稳定顺序处理，同组首行加载 BASEQTY/BASEAMT/PRIORQ/PRIORA，后续行必须同基数并沿前行累计推进；BASEQTY>0，PRIORQ≥0，新增量>0，新累计不能超过分母。不同组不能共享舍入余量。",
+          "br": [
+            "BR-20",
+            "BR-22",
+            "BR-23"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 5,
+          "routine": "PSPLIT",
+          "text": "FOR EACH 比例行计算新累计金额=round(BASEAMT×新累计量/BASEQTY,2)，当前额=新累计额−前累计额；全部数量完成时直接取 BASEAMT 作为累计额。IF 当前额<0 或越界 → 2000；允许因舍入产生 0 金额。RETURN 的 PRIORA 来自成功调整，SHIP 来自已分配发货额，不以外部成功状态过滤发货分母。",
+          "br": [
+            "BR-12",
+            "BR-22",
+            "BR-23"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 6,
+          "routine": "PSUM",
+          "text": "写对应 PROUT 行、合计 RSAMOUNT 和 RSCOUNT；任何一行失败令全组候选无效。正常 0000 返回，数据库异常 9000；不提交、不改冻结历史或业务文件。",
+          "br": [
+            "BR-12",
+            "BR-22",
+            "BR-23",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        }
+      ],
+      "actionRoutes": [
+        [
+          "QUOTE",
+          "Step 1–3、6"
+        ],
+        [
+          "SHIP / RETURN",
+          "Step 1、4–6"
+        ]
+      ]
+    },
+    {
+      "object": "ORDSTOCK",
+      "specId": "ORDSTOCK-20260905-01",
+      "markdown": "programs/ORDSTOCK.md",
+      "rules": [
+        "BR-10",
+        "BR-13",
+        "BR-14",
+        "BR-15",
+        "BR-16",
+        "BR-17",
+        "BR-18",
+        "BR-19",
+        "BR-21",
+        "BR-32"
+      ],
+      "files": [
+        "ALLOCPF",
+        "STOCKPF",
+        "WHSEPF"
+      ],
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "SINIT",
+          "text": "初始化本次结果；规划动作清空 STKOLD/STKNEW，APPLY 必须保留主程序传回的方案。校验动作、行数、字段类型和数量。IF ABI 不支持或方案不完整 → 9000／2000。",
+          "br": [
+            "BR-14",
+            "BR-17",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 2,
+          "routine": "SLOAD",
+          "text": "FOR EACH ALLOCPF 按订单键前缀读取现有分配，WHSEPF 按仓库键读取，STOCKPF 按商品+仓库完整键读取；同商品多订单行共享一个虚拟库存池。IF 缺库存记录、现有量<占用或关系商品不一致 → 2000，不补造。",
+          "br": [
+            "BR-13",
+            "BR-14",
+            "BR-16"
+          ],
+          "reads": [
+            "ALLOCPF",
+            "WHSEPF",
+            "STOCKPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 3,
+          "routine": "SMOD",
+          "text": "MOD：将原当前分配的尚未发货占用写入 STKOLD 释放候选，在虚拟池增加可用量；只有未发货版本允许此动作。旧分配的商品、数量及统计保留计划前快照；不在规划阶段写库。",
+          "br": [
+            "BR-10",
+            "BR-14"
+          ],
+          "reads": [
+            "ALLOCPF",
+            "STOCKPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 4,
+          "routine": "SALLOC",
+          "text": "NEW/MOD/ALLOC：按订单行升序、仓库 A/B/C，只在启用仓中分配。目标未占用量=传入有效剩余量−现有有效占用；MOD 使用释放后的新版本零占用。IF 不允许部分且全部行合计不能满足 → 清除本次新占用方案，返回 0010；允许部分则保留可得部分及缺口。",
+          "br": [
+            "BR-13",
+            "BR-14",
+            "BR-15",
+            "BR-16"
+          ],
+          "reads": [
+            "WHSEPF",
+            "STOCKPF",
+            "ALLOCPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 5,
+          "routine": "SCANCEL",
+          "text": "CANCEL：每行未分配量=目标原有效剩余量−当前占用总量；先消耗未分配量，仍需释放的量按 C/B/A 从 ALRESVD 扣除，累加 ALRELEASE。库存现有量不变，总占用减少。IF 取消量或关系不一致 → 整体 1000／2000。STKIN 的 QTY 为本次取消量，原有效剩余量由调用者通过 SIREMAIN 传入。",
+          "br": [
+            "BR-18",
+            "BR-19"
+          ],
+          "reads": [
+            "ALLOCPF",
+            "STOCKPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 6,
+          "routine": "SSHIP",
+          "text": "SHIP：按订单行+仓库汇总本次发货量，验证每个分配足额；候选同时减少 STONHAND/STRESVD/ALRESVD、增加 ALSHIPPED。IF 任一行不满足或出现负量 → 全部拒绝。仓库当前停用不禁止履行已有占用。",
+          "br": [
+            "BR-14",
+            "BR-17"
+          ],
+          "reads": [
+            "ALLOCPF",
+            "STOCKPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 7,
+          "routine": "SRETURN",
+          "text": "RETURN：根据传入已核验原发货商品仓库增加 STONHAND；不增加 ALRESVD/STRESVD、不重开需求，WHACTIVE=N 仍允许归还。不存在原库存记录属于资料异常。",
+          "br": [
+            "BR-21"
+          ],
+          "reads": [
+            "STOCKPF",
+            "WHSEPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 8,
+          "routine": "SVIEW",
+          "text": "VIEW：只返回指定订单当前分配、商品仓库数量快照；不生成待应用增减、不改变任何数据，供主程序组装 QUERY。",
+          "br": [
+            "BR-32"
+          ],
+          "reads": [
+            "ALLOCPF",
+            "STOCKPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 9,
+          "routine": "SAPCHECK",
+          "text": "APPLY：重读全部计划相关 STOCKPF/ALLOCPF，逐项核对计划前快照与当前值，合并同商品仓库的所有旧／新增 delta；IF 任一不同或最终数量非法 → 2000 且不写。原版本清理与新版本同键变更先合并成最终分配行，不能连写两次覆盖累计。",
+          "br": [
+            "BR-10",
+            "BR-14",
+            "BR-17"
+          ],
+          "reads": [
+            "STOCKPF",
+            "ALLOCPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 10,
+          "routine": "SAPWRITE",
+          "text": "验证完成后每个库存键只 UPDATE 一次；每个最终分配键 WRITE/UPDATE 一次，RETURN 只写库存。IF 任一 I/O 失败 → 3000 或 9000，立即返回主程序整体回滚，自己不补偿、不提交。",
+          "br": [
+            "BR-10",
+            "BR-14",
+            "BR-17",
+            "BR-21"
+          ],
+          "reads": [],
+          "writes": [
+            "STOCKPF",
+            "ALLOCPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 11,
+          "routine": "SRET",
+          "text": "返回 0000 或已规划等待 0010，并给有效候选行标志和缺口；所有计划只在当前调用事件中有效，回滚后必须丢弃重建。",
+          "br": [
+            "BR-15",
+            "BR-16",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        }
+      ],
+      "actionRoutes": [
+        [
+          "NEW / ALLOC",
+          "Step 1–2、4、11；只规划"
+        ],
+        [
+          "MOD",
+          "Step 1–4、11；只规划"
+        ],
+        [
+          "CANCEL / SHIP / RETURN",
+          "Step 1–2，再分别 Step 5 / 6 / 7，Step 11 返回；只规划"
+        ],
+        [
+          "VIEW",
+          "Step 1–2、8、11；只读"
+        ],
+        [
+          "APPLY",
+          "Step 1、9–11；保留传入方案，CXEVENT 区分原动作"
+        ]
+      ]
+    },
+    {
+      "object": "ORDSETTL",
+      "specId": "ORDSETTL-20260905-01",
+      "markdown": "programs/ORDSETTL.md",
+      "rules": [
+        "BR-20",
+        "BR-22",
+        "BR-23",
+        "BR-24",
+        "BR-25",
+        "BR-30",
+        "BR-31",
+        "BR-32"
+      ],
+      "files": [
+        "OUTBOXPF",
+        "SETLBYREF",
+        "SETLDTPF",
+        "SETLHDPF"
+      ],
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "TINIT",
+          "text": "初始化输出工作区，按动作保留必要输入；检查 CXABI、结算类别、身份格式和数组容量。IF 无完整来源关联 → 1000。",
+          "br": [
+            "BR-23",
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 2,
+          "routine": "TFETCH",
+          "text": "FETCH：按结算身份读 SETLHDPF，FOR EACH SETLDTPF 按结算键前缀读完整明细；按消息身份读 OUTBOXPF。核对数量和头金额等于明细和。IF 缺关联 → 2000；不以空缓冲当作新对象。",
+          "br": [
+            "BR-20",
+            "BR-23",
+            "BR-24",
+            "BR-25"
+          ],
+          "reads": [
+            "SETLHDPF",
+            "SETLDTPF",
+            "OUTBOXPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 3,
+          "routine": "TLOOK",
+          "text": "LOOKUP：FOR EACH SETLBYREF 以原发货前缀读取正反向头；正向必须唯一，输出其状态。对每个反向头 FOR EACH SETLDTPF 累加对应原发货明细的成功数量／金额；非 OK 的关联明细设置 SETVIEW.SVPENDING=Y。历史头流式扫描，不把 100 个请求行容量当作历史上限。",
+          "br": [
+            "BR-20",
+            "BR-22"
+          ],
+          "reads": [
+            "SETLBYREF",
+            "SETLDTPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 4,
+          "routine": "TCREATE",
+          "text": "CREATE：主程序已允许的 SETHEAD/SETROWS 必须满足稳定业务身份、头明细数量／金额相符、原发货关联完整。IF SEID 已存在 → 完整比较事实，相同返回 0020，不同 1100；主程序不能在新发货／退货路径把此返回当作重复实物流转许可。",
+          "br": [
+            "BR-22",
+            "BR-23",
+            "BR-25"
+          ],
+          "reads": [
+            "SETLHDPF",
+            "SETLDTPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 5,
+          "routine": "TWRITE",
+          "text": "新 CREATE 写结算头 NEW、SEFIRSTDAY 空、SEATTEMPT=1、SERETRY=N，逐行 WRITE 明细；登记唯一 SETTLE 或 ADJUST 待交接消息，载荷金额形成后不重算。任何失败返回主程序回滚整个业务单元。",
+          "br": [
+            "BR-22",
+            "BR-23",
+            "BR-24"
+          ],
+          "reads": [],
+          "writes": [
+            "SETLHDPF",
+            "SETLDTPF",
+            "OUTBOXPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 6,
+          "routine": "TAPPLY",
+          "text": "APPLY：重读当前头及消息，确认 SESTATE/SEATTEMPT 仍等于 CXEXPECT/CXATTEMPT；仅应用主程序已允许的 STATE/FIRSTDAY/RETRY/REASON；把 CXFEED 与当前处理日写 OBRESULT/OBRESDAY，OBSTATE 仍只描述送达，保持身份、金额、原关联与明细不变。重复 OK 不覆盖 FIRSTDAY；不合法迁移返回 1100。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-30"
+          ],
+          "reads": [
+            "SETLHDPF",
+            "OUTBOXPF"
+          ],
+          "writes": [
+            "SETLHDPF",
+            "OUTBOXPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 7,
+          "routine": "TRETRY",
+          "text": "RETRY：重读须 FAIL 且 RETRY=Y；原 SEID/金额/明细不变，SEATTEMPT 加一，登记新的业务尝试消息，状态 NEW，RETRY=N。若当前已成功则返回最近结果，不登记第二笔业务。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-31"
+          ],
+          "reads": [
+            "SETLHDPF"
+          ],
+          "writes": [
+            "SETLHDPF",
+            "OUTBOXPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 8,
+          "routine": "TVERIFY",
+          "text": "VERIFY：只针对 UNKNOWN 登记核实消息；若 SELASTMSG 已指向 OBRESULT=NONE/UNKNOWN 的 VERIFY，返回等待，不重复登记。保持业务状态 UNKNOWN 和原业务金额；新查询载荷不能包含再次结算指令。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-31"
+          ],
+          "reads": [
+            "SETLHDPF",
+            "OUTBOXPF"
+          ],
+          "writes": [
+            "SETLHDPF",
+            "OUTBOXPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 9,
+          "routine": "TDELIV",
+          "text": "DELIVERY：只处理 SETTLE/ADJUST/VERIFY 类消息的送达字段。IF 对应当前业务消息且结算 NEW → 可按主程序允许改 SENT；送达不建立 SEFIRSTDAY。旧消息送达不回退新尝试，已成功业务保持成功。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ],
+          "reads": [
+            "SETLHDPF",
+            "OUTBOXPF"
+          ],
+          "writes": [
+            "SETLHDPF",
+            "OUTBOXPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 10,
+          "routine": "TRET",
+          "text": "返回规范结果及出站关联，失败不修改库存／订单／发货／退货；文件更新异常经 RESDS 返回，主程序统一审计及回滚。",
+          "br": [
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        }
+      ],
+      "actionRoutes": [
+        [
+          "FETCH",
+          "Step 1–2、10"
+        ],
+        [
+          "LOOKUP",
+          "Step 1、3、10"
+        ],
+        [
+          "CREATE",
+          "Step 1、4–5、10"
+        ],
+        [
+          "APPLY / RETRY / VERIFY / DELIVERY",
+          "Step 1，再分别 Step 6 / 7 / 8 / 9，Step 10 返回"
+        ]
+      ]
+    },
+    {
+      "object": "ORDREPLY",
+      "specId": "ORDREPLY-20260905-01",
+      "markdown": "programs/ORDREPLY.md",
+      "rules": [
+        "BR-06",
+        "BR-26",
+        "BR-31",
+        "BR-32"
+      ],
+      "files": [
+        "OUTBOXPF",
+        "OUTBYST"
+      ],
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "YINIT",
+          "text": "初始化 RESDS，按动作保留输入 OUTREC；检查 ABI、消息容量和允许动作。IF 负载长度越界 → 1000，不截断成可发送内容。",
+          "br": [
+            "BR-26",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 2,
+          "routine": "YFETCH",
+          "text": "FETCH 按 OBID 读取完整 OUTBOXPF 作为只读载体，可读取所有种类供主程序分派。IF 不存在 → 2000；返回送达状态与不可变负载，不猜测业务成功。",
+          "br": [
+            "BR-26",
+            "BR-32"
+          ],
+          "reads": [
+            "OUTBOXPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 3,
+          "routine": "YCREATE",
+          "text": "CREATE 只允许 RECEIPT/WHRESULT；用输入身份和输出序号构造消息身份。IF 消息已存在且负载及身份完全相同 → 0020；不同则 1100，不能覆盖旧消息。新消息 STATE=NEW、ATTEMPT=1；保存完整负载及业务关联。",
+          "br": [
+            "BR-06",
+            "BR-26",
+            "BR-32"
+          ],
+          "reads": [
+            "OUTBOXPF"
+          ],
+          "writes": [
+            "OUTBOXPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 4,
+          "routine": "YDELIV",
+          "text": "DELIVERY 只允许本程序拥有的种类；核对反馈与原消息关联，按 NEW/SENT/FAIL→SENT/OK/FAIL 更新送达。已 OK 的后到失败保留 OK 并返回冲突供主程序审计。业务状态不变。",
+          "br": [
+            "BR-26",
+            "BR-32"
+          ],
+          "reads": [
+            "OUTBOXPF"
+          ],
+          "writes": [
+            "OUTBOXPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 5,
+          "routine": "YRESEND",
+          "text": "RESEND：对未 OK 的原回执增加尝试号并置 NEW，原消息 ID、PAYLOAD、LEN 和业务关联不变；已 OK 返回 0020。这一步不调用任何库存或结算程序。",
+          "br": [
+            "BR-26",
+            "BR-31"
+          ],
+          "reads": [
+            "OUTBOXPF"
+          ],
+          "writes": [
+            "OUTBOXPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 6,
+          "routine": "YLIST",
+          "text": "LIST：FOR EACH OUTBYST 按消息种类及送达状态前缀读取，逐条返回给主程序形成列表；采用调用者游标 OBID 和固定一次一条，RESDS.RSCOUNT=0 表示结束。不在列表中自动重送。",
+          "br": [
+            "BR-26",
+            "BR-32"
+          ],
+          "reads": [
+            "OUTBYST"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 7,
+          "routine": "YRET",
+          "text": "返回结果；更新失败交主程序撤销本次未提交变化，业务已在先前事件提交时不能重做。通过 RESDS 提供审计事实，本程序不写 AUDITPF、不提交。",
+          "br": [
+            "BR-26",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        }
+      ],
+      "actionRoutes": [
+        [
+          "CREATE / FETCH / DELIVERY / RESEND / LIST",
+          "Step 1，再分别 Step 3 / 2 / 4 / 5 / 6，Step 7 返回"
+        ]
+      ]
+    },
+    {
+      "object": "ORDDAILY",
+      "specId": "ORDDAILY-20260905-01",
+      "markdown": "programs/ORDDAILY.md",
+      "rules": [
+        "BR-24",
+        "BR-27",
+        "BR-28",
+        "BR-30",
+        "BR-32"
+      ],
+      "files": [
+        "DAYRPTPF",
+        "REQPF",
+        "SETLBYDAY",
+        "SETLDTPF"
+      ],
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "DINIT",
+          "text": "接收 SNAPSHOT/FETCH；生成时 DYDAY=CXPROCDAY，查询时 DYDAY=CXDAY，DYSNAP=CXSRC:CXREQ、DYLINE=0。按完整键读 DAYRPTPF；IF READY 头存在 → 返回已发布快照 0020；IF FETCH 未找到或只见残缺 DRAFT／明细 → 2000，禁止创建或覆盖；只有新 SNAPSHOT 可继续生成。",
+          "br": [
+            "BR-30",
+            "BR-32"
+          ],
+          "reads": [
+            "DAYRPTPF"
+          ],
+          "writes": [],
+          "calls": []
+        },
+        {
+          "number": 2,
+          "routine": "DSTART",
+          "text": "初始化 P(19,2) 正向、反向、净额及逐行计数，写本地未发布 HEADER 草稿；所有后续输出仍在主程序同一提交单元。IF 任一累计或序号容量越界 → 2000。",
+          "br": [
+            "BR-30",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [
+            "DAYRPTPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 3,
+          "routine": "DSUCCESS",
+          "text": "FOR EACH SETLBYDAY 以 SESTATE=OK、SEFIRSTDAY=指定日键前缀读取。对每个头 FOR EACH SETLDTPF 读明细核对合计，再按 P/R 累加正向或反向；写含 SEID 的 POS/NEG 组成行，NEG 用负值。旧日成功不重复计入，也不因后来的反向成功删除。",
+          "br": [
+            "BR-30"
+          ],
+          "reads": [
+            "SETLBYDAY",
+            "SETLDTPF"
+          ],
+          "writes": [
+            "DAYRPTPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 4,
+          "routine": "DPENDING",
+          "text": "对 NEW/SENT/FAIL/UNKNOWN 各状态前缀 FOR EACH SETLBYDAY 读取，写 PENDING 行保存其观察状态及金额但不加净额。这些项可跨创建日，不能只查 FIRSTDAY=当天；未成功记录的 FIRSTDAY 必须为空。",
+          "br": [
+            "BR-24",
+            "BR-30"
+          ],
+          "reads": [
+            "SETLBYDAY"
+          ],
+          "writes": [
+            "DAYRPTPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 5,
+          "routine": "DLOCAL",
+          "text": "FOR EACH REQPF 显式全表扫描，仅 RQSTATE=RETRY 写 LOCAL 待恢复行，保留来源／请求／RC，金额不计净额；DONE 上旧等待结果不当作尚未结算依据。",
+          "br": [
+            "BR-27",
+            "BR-30",
+            "BR-32"
+          ],
+          "reads": [
+            "REQPF"
+          ],
+          "writes": [
+            "DAYRPTPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 6,
+          "routine": "DPUBLISH",
+          "text": "净额=正向−反向绝对值合计，更新 HEADER 的 AMOUNT/POS/NEG/COUNT、STATE=READY，返回头。主程序再统一提交；本程序不 COMMIT、不改变任何结算状态或 FIRSTDAY。",
+          "br": [
+            "BR-30",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [
+            "DAYRPTPF"
+          ],
+          "calls": []
+        },
+        {
+          "number": 7,
+          "routine": "DFAIL",
+          "text": "IF 读取、写入或总额核对失败 → 返回 2000/3000/9000，主程序回滚本快照所有行。无成功返回不能宣称日报已发布；同快照失败后仅在确认无提交事实时重做。",
+          "br": [
+            "BR-28",
+            "BR-30",
+            "BR-32"
+          ],
+          "reads": [],
+          "writes": [],
+          "calls": []
+        }
+      ],
+      "actionRoutes": [
+        [
+          "SNAPSHOT",
+          "Step 1–6；已发布在 Step 1 返回；异常进入 Step 7"
+        ],
+        [
+          "FETCH",
+          "仅 Step 1 查询既有快照；缺失返回 2000，禁止写入"
+        ]
+      ]
+    }
+  ]
+}

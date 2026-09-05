@@ -1,0 +1,124 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CUSTRPTF-20260404-01",
+    "specLevel": "L2",
+    "fileType": "PRTF",
+    "fileName": "CUSTRPTF",
+    "description": "Customer listing report"
+  },
+  "pageLayout": {
+    "lines": 66,
+    "columns": 132,
+    "overflowLine": 60,
+    "overflowIndicator": 99
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "PRTHDR",
+      "purpose": "Report header",
+      "fieldCount": 2,
+      "spacingBefore": 1
+    },
+    {
+      "formatId": "FMT-02",
+      "formatName": "PRTDTL",
+      "purpose": "Detail line",
+      "fieldCount": 3,
+      "spacingBefore": 1
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": null,
+        "type": null,
+        "length": null,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Report title constant",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 1,
+        "col": 2,
+        "constant": "CUSTOMER LISTING"
+      },
+      {
+        "fieldId": "FLD-02",
+        "fieldName": "RPTDTE",
+        "type": "L",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Report date",
+        "editCode": "Y",
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 1,
+        "col": 55,
+        "usage": "O"
+      }
+    ],
+    "FMT-02": [
+      {
+        "fieldId": "FLD-03",
+        "fieldName": "PCUSTID",
+        "type": "A",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Customer ID",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 6,
+        "col": 2,
+        "usage": "O"
+      },
+      {
+        "fieldId": "FLD-04",
+        "fieldName": "PCUSTNM",
+        "type": "A",
+        "length": 40,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Customer name",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 6,
+        "col": 15,
+        "usage": "O"
+      },
+      {
+        "fieldId": "FLD-05",
+        "fieldName": "PCITY",
+        "type": "A",
+        "length": 30,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "City",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 6,
+        "col": 58,
+        "usage": "O"
+      }
+    ]
+  }
+}

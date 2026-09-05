@@ -1,0 +1,25 @@
+     A* Synthetic static benchmark. Object BATCHPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R BATCHR
+     A            BTID          20A         CCSID(37)
+     A                                      TEXT('BTID')
+     A            BTDAY          8A         CCSID(37)
+     A                                      TEXT('BTDAY')
+     A            BTSTATE        8A         CCSID(37)
+     A                                      TEXT('BTSTATE')
+     A            BTLAST         9P 0
+     A                                      TEXT('BTLAST')
+     A            BTCOUNT        9P 0
+     A                                      TEXT('BTCOUNT')
+     A            BTACCEPT       9P 0
+     A                                      TEXT('BTACCEPT')
+     A            BTREJECT       9P 0
+     A                                      TEXT('BTREJECT')
+     A            BTWAIT         9P 0
+     A                                      TEXT('BTWAIT')
+     A            BTACTOR       20A         CCSID(37)
+     A                                      TEXT('BTACTOR')
+     A            BTRC           4A         CCSID(37)
+     A                                      TEXT('BTRC')
+     A          K BTID

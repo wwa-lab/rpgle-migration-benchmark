@@ -1,0 +1,35 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "ORDDTL-20260404-01",
+    "specLevel": "L2",
+    "fileType": "PF",
+    "fileName": "ORDDTL",
+    "description": "Order detail file"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "ORDDTLR",
+      "purpose": "Order detail record",
+      "fieldCount": 4
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      { "fieldId": "FLD-01", "fieldName": "ORDNBR", "type": "P", "length": 7, "decimals": 0, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Order number", "editCode": null, "columnHeading": "ORD / NBR", "ddsKeywords": [] },
+      { "fieldId": "FLD-02", "fieldName": "LINSEQ", "type": "P", "length": 3, "decimals": 0, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Line sequence", "editCode": null, "columnHeading": "LINE / SEQ", "ddsKeywords": [] },
+      { "fieldId": "FLD-03", "fieldName": "ITMNBR", "type": "A", "length": 15, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Item number", "editCode": null, "columnHeading": "ITEM / NBR", "ddsKeywords": [] },
+      { "fieldId": "FLD-04", "fieldName": "QTYORD", "type": "P", "length": 7, "decimals": 2, "nullable": false, "defaultValue": "0", "ccsid": null, "text": "Quantity ordered", "editCode": null, "columnHeading": "QTY / ORD", "ddsKeywords": [] }
+    ]
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "ORDNBR", "fieldRef": "FLD-01", "sortDirection": "ASCEND" },
+      { "sequence": 2, "fieldName": "LINSEQ", "fieldRef": "FLD-02", "sortDirection": "ASCEND" }
+    ]
+  }
+}

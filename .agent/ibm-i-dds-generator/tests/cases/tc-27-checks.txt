@@ -1,0 +1,9 @@
+source_type=DSPF
+type=happy
+# DSPF with CHECK(ME) mandatory entry and ERRMSG
+must_contain=CHECK(ME)
+must_contain=ERRMSG
+must_contain=Customer ID is required
+must_contain=R CHKSCR
+must_contain=CUSTID
+must_contain=DSPSIZ(24 80)

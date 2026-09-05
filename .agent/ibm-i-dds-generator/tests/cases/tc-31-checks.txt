@@ -1,0 +1,5 @@
+source_type=DSPF
+type=rejection
+# Must reject DSPF with non-hidden field missing row/col position
+must_contain=row
+must_not_contain=R NOPOSR

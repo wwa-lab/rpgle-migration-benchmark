@@ -1,0 +1,11 @@
+     A* Synthetic static benchmark. Object CUSTPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R CUSTR
+     A            CUID          12A         CCSID(37)
+     A                                      TEXT('CUID')
+     A            CUACTIVE       1A         CCSID(37)
+     A                                      TEXT('CUACTIVE')
+     A            CUTIER         1A         CCSID(37)
+     A                                      TEXT('CUTIER')
+     A          K CUID

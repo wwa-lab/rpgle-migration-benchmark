@@ -1,0 +1,2 @@
+FAIL
+  UNEXPECTED: 'UNIQUE' found in output

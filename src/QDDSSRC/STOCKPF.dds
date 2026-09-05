@@ -1,0 +1,14 @@
+     A* Synthetic static benchmark. Object STOCKPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R STOCKR
+     A            STITEM        12A         CCSID(37)
+     A                                      TEXT('STITEM')
+     A            STWH           1A         CCSID(37)
+     A                                      TEXT('STWH')
+     A            STONHAND       9P 0
+     A                                      TEXT('STONHAND')
+     A            STRESVD        9P 0
+     A                                      TEXT('STRESVD')
+     A          K STITEM
+     A          K STWH

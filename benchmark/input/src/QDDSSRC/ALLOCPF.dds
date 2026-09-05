@@ -1,0 +1,21 @@
+
+
+     A                                      UNIQUE
+     A          R ALLOCR
+     A            ALORDER       20A         CCSID(37)
+     A                                      TEXT('ALORDER')
+     A            ALLINE         5P 0
+     A                                      TEXT('ALLINE')
+     A            ALWH           1A         CCSID(37)
+     A                                      TEXT('ALWH')
+     A            ALITEM        12A         CCSID(37)
+     A                                      TEXT('ALITEM')
+     A            ALRESVD        9P 0
+     A                                      TEXT('ALRESVD')
+     A            ALSHIPPED      9P 0
+     A                                      TEXT('ALSHIPPED')
+     A            ALRELEASE      9P 0
+     A                                      TEXT('ALRELEASE')
+     A          K ALORDER
+     A          K ALLINE
+     A          K ALWH

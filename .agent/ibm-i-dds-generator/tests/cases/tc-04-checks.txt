@@ -1,0 +1,13 @@
+source_type=PF
+type=happy
+must_contain=TEXT('Order detail file')
+must_contain=R ORDDTLR
+must_contain=ORDNBR
+must_contain=LINSEQ
+must_contain=ITMNBR
+must_contain=QTYORD
+must_contain=K ORDNBR
+must_contain=K LINSEQ
+must_contain=DFT(0)
+must_not_contain=UNIQUE
+field_count=4

@@ -1,0 +1,15 @@
+source_type=DSPF
+type=happy
+# DSPF with subfile — SFL record + SFLCTL control
+must_contain=SFL
+must_contain=SFLCTL(ORDSFL)
+must_contain=SFLSIZ(11)
+must_contain=SFLPAG(10)
+must_contain=SFLDSP
+must_contain=SFLDSPCTL
+must_contain=SFLCLR
+must_contain=R ORDSFL
+must_contain=R ORDCTL
+must_contain=DSPSIZ(24 80)
+must_contain=CA03
+must_contain=ORDNO

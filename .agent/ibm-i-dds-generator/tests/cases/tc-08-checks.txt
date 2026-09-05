@@ -1,0 +1,9 @@
+source_type=PF
+type=happy
+# Long TEXT — must produce valid DDS (truncation or continuation)
+must_contain=R LNGR
+must_contain=LNGFLD
+must_contain=10A
+# File-level TEXT must exist (truncated or continued)
+must_contain=TEXT(
+field_count=1

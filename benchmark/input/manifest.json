@@ -1,0 +1,259 @@
+{
+  "materialVersion": "RPGFLOW-1.0",
+  "status": "FROZEN_STATIC_CANDIDATE",
+  "compiled": false,
+  "executed": false,
+  "sourceFiles": 35,
+  "businessMaterialFiles": 38,
+  "materialSetSha256": "62e1a2766af23585954a4f4249da3751c91198485f7550e4b327178c0e1e9317",
+  "taskSha256": "6c453a63c82e547b1f4f70ec63a5cf5f365d9e533a4f55b757304fbbfda9599d",
+  "lineNumberConvention": "physical lines including blank lines; no COPY expansion",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1171,
+      "sha256": "b409c3a0eb95686919a47d4fe525316b1c7a6a376384fde029c6c05b40752fa7",
+      "physicalLines": 18
+    },
+    {
+      "path": "context/interfaces.md",
+      "bytes": 2496,
+      "sha256": "46de94ee481d423eb20eb1eab466be90a37ec868ac35febc4aab44f462caaa5c",
+      "physicalLines": 38
+    },
+    {
+      "path": "context/operations-and-systems.md",
+      "bytes": 2045,
+      "sha256": "6a6a3ee8d48fd9ed90d655001a277e59eedf0e06a1aae98116a7213bd680e053",
+      "physicalLines": 32
+    },
+    {
+      "path": "prompts/continuation.md",
+      "bytes": 208,
+      "sha256": "028f449b90b4750c9e62ac6defede93faebb787078ca912651024e9bed992567",
+      "physicalLines": 1
+    },
+    {
+      "path": "prompts/run.md",
+      "bytes": 2977,
+      "sha256": "5439422991e855fc6dc786add52915bfb38ee3f7b9bc35c01b9a321a4bd89a9e",
+      "physicalLines": 28
+    },
+    {
+      "path": "prompts/task.md",
+      "bytes": 2081,
+      "sha256": "6c453a63c82e547b1f4f70ec63a5cf5f365d9e533a4f55b757304fbbfda9599d",
+      "physicalLines": 18
+    },
+    {
+      "path": "src/QCLLESRC/ORDRUN.clle",
+      "bytes": 1753,
+      "sha256": "d1f203643176fb9af74e490ac89e75f34da3795d86b546420ea1837858255920",
+      "physicalLines": 63
+    },
+    {
+      "path": "src/QDDSSRC/ALLOCPF.dds",
+      "bytes": 885,
+      "sha256": "5003bcf1ef223284965e5099c6d8a475f01fe3ae27565d3cf13dba75d527b541",
+      "physicalLines": 21
+    },
+    {
+      "path": "src/QDDSSRC/AUDITPF.dds",
+      "bytes": 2126,
+      "sha256": "e8edc47ea26b9fe4ede68fb9223f4f5f0bfcf6ea4f6b8f7ca89cbb3ef1029886",
+      "physicalLines": 41
+    },
+    {
+      "path": "src/QDDSSRC/BATCHPF.dds",
+      "bytes": 1153,
+      "sha256": "aeff1ecc169104c7726ad447adf3aaa98840128c9c26f8d17b08b23ac86f3ea3",
+      "physicalLines": 25
+    },
+    {
+      "path": "src/QDDSSRC/CUSTPF.dds",
+      "bytes": 439,
+      "sha256": "b57c77ad5ad833a615bba10468fa7c983de66055670f515dfbeb858cb351e361",
+      "physicalLines": 11
+    },
+    {
+      "path": "src/QDDSSRC/DAYRPTPF.dds",
+      "bytes": 1540,
+      "sha256": "9b8f3b6c9236d06024247f4836f0d4fc75ad5a6a62f133107b1a46df07909b54",
+      "physicalLines": 33
+    },
+    {
+      "path": "src/QDDSSRC/INDTLPF.dds",
+      "bytes": 1139,
+      "sha256": "bd339b27dc1ae50b76ec98108450e0be13abee877e2e51a929ee77147cdd4ad4",
+      "physicalLines": 25
+    },
+    {
+      "path": "src/QDDSSRC/INHDRPF.dds",
+      "bytes": 2732,
+      "sha256": "9c089841d167ffdbff9f3fe67bd29f1cc7316f0ae9016fcd1064f8c976028ba9",
+      "physicalLines": 52
+    },
+    {
+      "path": "src/QDDSSRC/ITEMPF.dds",
+      "bytes": 326,
+      "sha256": "65050894534c6530aaa3b4a04ddff8eb08c39a0d7fcd0963eb3a2d874def3ddb",
+      "physicalLines": 9
+    },
+    {
+      "path": "src/QDDSSRC/ORDDTLPF.dds",
+      "bytes": 1356,
+      "sha256": "0b70758ce3c8dfe9fa97236c2cb3ef6a9cc972f8c35c675e02ef8b146c8447c3",
+      "physicalLines": 30
+    },
+    {
+      "path": "src/QDDSSRC/ORDHDRPF.dds",
+      "bytes": 1536,
+      "sha256": "058f9e7cfebf70346c9b426508cd666ea532145a11c200165ab4519fb9e933c1",
+      "physicalLines": 31
+    },
+    {
+      "path": "src/QDDSSRC/OUTBOXPF.dds",
+      "bytes": 1873,
+      "sha256": "704a55acab60055cd2fb5de16e5c54ebfe1ee1436121a31e7fec2f2fa013a8b4",
+      "physicalLines": 37
+    },
+    {
+      "path": "src/QDDSSRC/OUTBYST.dds",
+      "bytes": 187,
+      "sha256": "1ef39017b40f6f8620d2ddfdc3c8df687c48669598bf7cd49e9d19a23ad722ae",
+      "physicalLines": 7
+    },
+    {
+      "path": "src/QDDSSRC/PRICEPF.dds",
+      "bytes": 564,
+      "sha256": "d8a5b7c4e23e662c0a58a296e70e7574951999ea879e9e78785250b0ff1ae786",
+      "physicalLines": 14
+    },
+    {
+      "path": "src/QDDSSRC/REQPF.dds",
+      "bytes": 2007,
+      "sha256": "0eb134c3d44fe0b40210be60967e49bedf7834474638d5d295e068d0e3cfcb1d",
+      "physicalLines": 40
+    },
+    {
+      "path": "src/QDDSSRC/RTNDTLPF.dds",
+      "bytes": 1202,
+      "sha256": "ea8a6db2c6422925977c7d2f422bfbd50e517908c9d01c8a177379ae948a00d1",
+      "physicalLines": 26
+    },
+    {
+      "path": "src/QDDSSRC/RTNHDRPF.dds",
+      "bytes": 868,
+      "sha256": "79edb9111be0375ebb8da827da5b1112400514cc74bcecc9b3887a1ce7deaa5a",
+      "physicalLines": 19
+    },
+    {
+      "path": "src/QDDSSRC/SETLBYDAY.dds",
+      "bytes": 191,
+      "sha256": "dd23f0c8f33d8ddfd5cd402e7ede563d99a1762fef0847fc07072aa9561f4149",
+      "physicalLines": 7
+    },
+    {
+      "path": "src/QDDSSRC/SETLBYREF.dds",
+      "bytes": 186,
+      "sha256": "80975de7ae0aff9a32dedf17ec75af4ef1e73b1cb9993f2d352cf79a06827b17",
+      "physicalLines": 7
+    },
+    {
+      "path": "src/QDDSSRC/SETLDTPF.dds",
+      "bytes": 1176,
+      "sha256": "6d7e3c3c864b244a887432314cc3bf3e1eede25be8b81183843d041be4bb8e71",
+      "physicalLines": 26
+    },
+    {
+      "path": "src/QDDSSRC/SETLHDPF.dds",
+      "bytes": 1770,
+      "sha256": "b86dd05d5df2d5f923d7dce49203a1ed339c63022a0fec3979abf1771eb606bc",
+      "physicalLines": 35
+    },
+    {
+      "path": "src/QDDSSRC/SHIPDTPF.dds",
+      "bytes": 972,
+      "sha256": "e822ba64477b9779de0d099808d661720123b02155bc7b9139727cb68628cca1",
+      "physicalLines": 22
+    },
+    {
+      "path": "src/QDDSSRC/SHIPHDPF.dds",
+      "bytes": 1078,
+      "sha256": "531d7fec7407d2cbe5c7d8b9b704091e2c2023433cc689f75a581aea4bf61a15",
+      "physicalLines": 23
+    },
+    {
+      "path": "src/QDDSSRC/STOCKPF.dds",
+      "bytes": 547,
+      "sha256": "bc8328741fee543876ecec98a421ca710e738d3f9557211ecf1f0eabc7722c9e",
+      "physicalLines": 14
+    },
+    {
+      "path": "src/QDDSSRC/WHSEPF.dds",
+      "bytes": 423,
+      "sha256": "855c4657d0accb520ee0a6ecfc568df698eaaf2f9561c724d323c55a60ac64a0",
+      "physicalLines": 11
+    },
+    {
+      "path": "src/QRPGLESRC/ORDCHECK.rpgle",
+      "bytes": 21942,
+      "sha256": "895ebb34881bcaf3162738fa6b84c7a3621fab172bb64c67b54178b1e706fc06",
+      "physicalLines": 493
+    },
+    {
+      "path": "src/QRPGLESRC/ORDCTX.rpgleinc",
+      "bytes": 4778,
+      "sha256": "63f0058cac94f3d5b82e542970795086efe5b3d942f5394f92dc57b09ce8e406",
+      "physicalLines": 127
+    },
+    {
+      "path": "src/QRPGLESRC/ORDDAILY.rpgle",
+      "bytes": 15474,
+      "sha256": "59b0d0fae4846885308a208e95a9b6db16ef00482841893aa4844a7e7edc0b65",
+      "physicalLines": 348
+    },
+    {
+      "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+      "bytes": 466408,
+      "sha256": "2e41fbec9efa01e8a0b2c03c283960ee45de6a899d5e75b02374a2f7240ff278",
+      "physicalLines": 10114
+    },
+    {
+      "path": "src/QRPGLESRC/ORDPRICE.rpgle",
+      "bytes": 11219,
+      "sha256": "f6084f4171b5efc351258853a079cc2603b669f0b28619ab84be57c5c6e14f35",
+      "physicalLines": 251
+    },
+    {
+      "path": "src/QRPGLESRC/ORDREPLY.rpgle",
+      "bytes": 13398,
+      "sha256": "a3eb83e93efc02902ae2168560eaef140dce175278fcdc6f46142f57507ad7cf",
+      "physicalLines": 291
+    },
+    {
+      "path": "src/QRPGLESRC/ORDRES.rpgleinc",
+      "bytes": 4784,
+      "sha256": "da86cb603d5c2838244f216c3eaac8593d663e31d6b2ffa12faf182be7d29b98",
+      "physicalLines": 129
+    },
+    {
+      "path": "src/QRPGLESRC/ORDSETTL.rpgle",
+      "bytes": 36339,
+      "sha256": "a861d2d5374ec74050cc4ab963c95be9c7d0c39f84b61ca329e27f355bc98450",
+      "physicalLines": 769
+    },
+    {
+      "path": "src/QRPGLESRC/ORDSTOCK.rpgle",
+      "bytes": 35513,
+      "sha256": "4e8f5367dfb605fff704a964a6f939abb1de0c6f926a5306c7f314dc044f9210",
+      "physicalLines": 757
+    },
+    {
+      "path": "src/QRPGLESRC/ORDSTS.rpgleinc",
+      "bytes": 514,
+      "sha256": "38b92c40862f3eab4dab3c14c196c751a9cd91381c90196c5345ed98c33c0db4",
+      "physicalLines": 10
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+source_type=DSPF
+type=happy
+# Simple DSPF — no subfile, input and output fields, function keys
+must_contain=DSPSIZ(24 80)
+must_contain=CA03
+must_contain=CF05
+must_contain=R CUSTSCR
+must_contain=CUSTID
+must_contain=CUSTNM
+must_contain=ACTSTS
+must_contain=CUSTOMER MAINTENANCE
+must_not_contain=SFL
+must_not_contain=SFLCTL

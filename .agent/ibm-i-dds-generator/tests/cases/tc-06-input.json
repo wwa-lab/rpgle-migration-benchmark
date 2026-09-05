@@ -1,0 +1,25 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CCSID-20260404-01",
+    "specLevel": "L1",
+    "fileType": "PF",
+    "fileName": "CCSPF",
+    "description": "CCSID test file"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CCSR",
+      "purpose": "CCSID test record",
+      "fieldCount": 2
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      { "fieldId": "FLD-01", "fieldName": "JPNAME", "type": "A", "length": 30, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": 5035, "text": "Japanese name", "editCode": null, "columnHeading": "JP / NAME", "ddsKeywords": [] },
+      { "fieldId": "FLD-02", "fieldName": "USNAME", "type": "A", "length": 30, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": 37, "text": "US English name", "editCode": null, "columnHeading": "US / NAME", "ddsKeywords": [] }
+    ]
+  }
+}

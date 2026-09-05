@@ -1,0 +1,40 @@
+     A* Synthetic static benchmark. Object REQPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R REQR
+     A            RQSRC         12A         CCSID(37)
+     A                                      TEXT('RQSRC')
+     A            RQREQ         20A         CCSID(37)
+     A                                      TEXT('RQREQ')
+     A            RQBATCH       20A         CCSID(37)
+     A                                      TEXT('RQBATCH')
+     A            RQINPUT        9P 0
+     A                                      TEXT('RQINPUT')
+     A            RQEVENT        8A         CCSID(37)
+     A                                      TEXT('RQEVENT')
+     A            RQDAY          8A         CCSID(37)
+     A                                      TEXT('RQDAY')
+     A            RQCANLEN       9P 0
+     A                                      TEXT('RQCANLEN')
+     A            RQCANON    24000A         CCSID(37)
+     A                                      TEXT('RQCANON')
+     A            RQORDER       20A         CCSID(37)
+     A                                      TEXT('RQORDER')
+     A            RQSHIP        20A         CCSID(37)
+     A                                      TEXT('RQSHIP')
+     A            RQRETURN      20A         CCSID(37)
+     A                                      TEXT('RQRETURN')
+     A            RQSETTL       48A         CCSID(37)
+     A                                      TEXT('RQSETTL')
+     A            RQSTATE        8A         CCSID(37)
+     A                                      TEXT('RQSTATE')
+     A            RQRC           4A         CCSID(37)
+     A                                      TEXT('RQRC')
+     A            RQREASON     120A         CCSID(37)
+     A                                      TEXT('RQREASON')
+     A            RQVERSION      9P 0
+     A                                      TEXT('RQVERSION')
+     A            RQMSG         80A         CCSID(37)
+     A                                      TEXT('RQMSG')
+     A          K RQSRC
+     A          K RQREQ

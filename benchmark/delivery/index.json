@@ -1,0 +1,863 @@
+{
+  "materialVersion": "RPGFLOW-1.0",
+  "profile": "TEXT-PARTS",
+  "tools": "disabled",
+  "materialSetSha256": "62e1a2766af23585954a4f4249da3751c91198485f7550e4b327178c0e1e9317",
+  "taskSha256": "6c453a63c82e547b1f4f70ec63a5cf5f365d9e533a4f55b757304fbbfda9599d",
+  "partCount": 32,
+  "partUtf8ByteLimit": 24000,
+  "materialFiles": [
+    {
+      "path": "README.md",
+      "bytes": 1171,
+      "sha256": "b409c3a0eb95686919a47d4fe525316b1c7a6a376384fde029c6c05b40752fa7",
+      "physicalLines": 18
+    },
+    {
+      "path": "context/interfaces.md",
+      "bytes": 2496,
+      "sha256": "46de94ee481d423eb20eb1eab466be90a37ec868ac35febc4aab44f462caaa5c",
+      "physicalLines": 38
+    },
+    {
+      "path": "context/operations-and-systems.md",
+      "bytes": 2045,
+      "sha256": "6a6a3ee8d48fd9ed90d655001a277e59eedf0e06a1aae98116a7213bd680e053",
+      "physicalLines": 32
+    },
+    {
+      "path": "src/QCLLESRC/ORDRUN.clle",
+      "bytes": 1753,
+      "sha256": "d1f203643176fb9af74e490ac89e75f34da3795d86b546420ea1837858255920",
+      "physicalLines": 63
+    },
+    {
+      "path": "src/QDDSSRC/ALLOCPF.dds",
+      "bytes": 885,
+      "sha256": "5003bcf1ef223284965e5099c6d8a475f01fe3ae27565d3cf13dba75d527b541",
+      "physicalLines": 21
+    },
+    {
+      "path": "src/QDDSSRC/AUDITPF.dds",
+      "bytes": 2126,
+      "sha256": "e8edc47ea26b9fe4ede68fb9223f4f5f0bfcf6ea4f6b8f7ca89cbb3ef1029886",
+      "physicalLines": 41
+    },
+    {
+      "path": "src/QDDSSRC/BATCHPF.dds",
+      "bytes": 1153,
+      "sha256": "aeff1ecc169104c7726ad447adf3aaa98840128c9c26f8d17b08b23ac86f3ea3",
+      "physicalLines": 25
+    },
+    {
+      "path": "src/QDDSSRC/CUSTPF.dds",
+      "bytes": 439,
+      "sha256": "b57c77ad5ad833a615bba10468fa7c983de66055670f515dfbeb858cb351e361",
+      "physicalLines": 11
+    },
+    {
+      "path": "src/QDDSSRC/DAYRPTPF.dds",
+      "bytes": 1540,
+      "sha256": "9b8f3b6c9236d06024247f4836f0d4fc75ad5a6a62f133107b1a46df07909b54",
+      "physicalLines": 33
+    },
+    {
+      "path": "src/QDDSSRC/INDTLPF.dds",
+      "bytes": 1139,
+      "sha256": "bd339b27dc1ae50b76ec98108450e0be13abee877e2e51a929ee77147cdd4ad4",
+      "physicalLines": 25
+    },
+    {
+      "path": "src/QDDSSRC/INHDRPF.dds",
+      "bytes": 2732,
+      "sha256": "9c089841d167ffdbff9f3fe67bd29f1cc7316f0ae9016fcd1064f8c976028ba9",
+      "physicalLines": 52
+    },
+    {
+      "path": "src/QDDSSRC/ITEMPF.dds",
+      "bytes": 326,
+      "sha256": "65050894534c6530aaa3b4a04ddff8eb08c39a0d7fcd0963eb3a2d874def3ddb",
+      "physicalLines": 9
+    },
+    {
+      "path": "src/QDDSSRC/ORDDTLPF.dds",
+      "bytes": 1356,
+      "sha256": "0b70758ce3c8dfe9fa97236c2cb3ef6a9cc972f8c35c675e02ef8b146c8447c3",
+      "physicalLines": 30
+    },
+    {
+      "path": "src/QDDSSRC/ORDHDRPF.dds",
+      "bytes": 1536,
+      "sha256": "058f9e7cfebf70346c9b426508cd666ea532145a11c200165ab4519fb9e933c1",
+      "physicalLines": 31
+    },
+    {
+      "path": "src/QDDSSRC/OUTBOXPF.dds",
+      "bytes": 1873,
+      "sha256": "704a55acab60055cd2fb5de16e5c54ebfe1ee1436121a31e7fec2f2fa013a8b4",
+      "physicalLines": 37
+    },
+    {
+      "path": "src/QDDSSRC/OUTBYST.dds",
+      "bytes": 187,
+      "sha256": "1ef39017b40f6f8620d2ddfdc3c8df687c48669598bf7cd49e9d19a23ad722ae",
+      "physicalLines": 7
+    },
+    {
+      "path": "src/QDDSSRC/PRICEPF.dds",
+      "bytes": 564,
+      "sha256": "d8a5b7c4e23e662c0a58a296e70e7574951999ea879e9e78785250b0ff1ae786",
+      "physicalLines": 14
+    },
+    {
+      "path": "src/QDDSSRC/REQPF.dds",
+      "bytes": 2007,
+      "sha256": "0eb134c3d44fe0b40210be60967e49bedf7834474638d5d295e068d0e3cfcb1d",
+      "physicalLines": 40
+    },
+    {
+      "path": "src/QDDSSRC/RTNDTLPF.dds",
+      "bytes": 1202,
+      "sha256": "ea8a6db2c6422925977c7d2f422bfbd50e517908c9d01c8a177379ae948a00d1",
+      "physicalLines": 26
+    },
+    {
+      "path": "src/QDDSSRC/RTNHDRPF.dds",
+      "bytes": 868,
+      "sha256": "79edb9111be0375ebb8da827da5b1112400514cc74bcecc9b3887a1ce7deaa5a",
+      "physicalLines": 19
+    },
+    {
+      "path": "src/QDDSSRC/SETLBYDAY.dds",
+      "bytes": 191,
+      "sha256": "dd23f0c8f33d8ddfd5cd402e7ede563d99a1762fef0847fc07072aa9561f4149",
+      "physicalLines": 7
+    },
+    {
+      "path": "src/QDDSSRC/SETLBYREF.dds",
+      "bytes": 186,
+      "sha256": "80975de7ae0aff9a32dedf17ec75af4ef1e73b1cb9993f2d352cf79a06827b17",
+      "physicalLines": 7
+    },
+    {
+      "path": "src/QDDSSRC/SETLDTPF.dds",
+      "bytes": 1176,
+      "sha256": "6d7e3c3c864b244a887432314cc3bf3e1eede25be8b81183843d041be4bb8e71",
+      "physicalLines": 26
+    },
+    {
+      "path": "src/QDDSSRC/SETLHDPF.dds",
+      "bytes": 1770,
+      "sha256": "b86dd05d5df2d5f923d7dce49203a1ed339c63022a0fec3979abf1771eb606bc",
+      "physicalLines": 35
+    },
+    {
+      "path": "src/QDDSSRC/SHIPDTPF.dds",
+      "bytes": 972,
+      "sha256": "e822ba64477b9779de0d099808d661720123b02155bc7b9139727cb68628cca1",
+      "physicalLines": 22
+    },
+    {
+      "path": "src/QDDSSRC/SHIPHDPF.dds",
+      "bytes": 1078,
+      "sha256": "531d7fec7407d2cbe5c7d8b9b704091e2c2023433cc689f75a581aea4bf61a15",
+      "physicalLines": 23
+    },
+    {
+      "path": "src/QDDSSRC/STOCKPF.dds",
+      "bytes": 547,
+      "sha256": "bc8328741fee543876ecec98a421ca710e738d3f9557211ecf1f0eabc7722c9e",
+      "physicalLines": 14
+    },
+    {
+      "path": "src/QDDSSRC/WHSEPF.dds",
+      "bytes": 423,
+      "sha256": "855c4657d0accb520ee0a6ecfc568df698eaaf2f9561c724d323c55a60ac64a0",
+      "physicalLines": 11
+    },
+    {
+      "path": "src/QRPGLESRC/ORDCHECK.rpgle",
+      "bytes": 21942,
+      "sha256": "895ebb34881bcaf3162738fa6b84c7a3621fab172bb64c67b54178b1e706fc06",
+      "physicalLines": 493
+    },
+    {
+      "path": "src/QRPGLESRC/ORDCTX.rpgleinc",
+      "bytes": 4778,
+      "sha256": "63f0058cac94f3d5b82e542970795086efe5b3d942f5394f92dc57b09ce8e406",
+      "physicalLines": 127
+    },
+    {
+      "path": "src/QRPGLESRC/ORDDAILY.rpgle",
+      "bytes": 15474,
+      "sha256": "59b0d0fae4846885308a208e95a9b6db16ef00482841893aa4844a7e7edc0b65",
+      "physicalLines": 348
+    },
+    {
+      "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+      "bytes": 466408,
+      "sha256": "2e41fbec9efa01e8a0b2c03c283960ee45de6a899d5e75b02374a2f7240ff278",
+      "physicalLines": 10114
+    },
+    {
+      "path": "src/QRPGLESRC/ORDPRICE.rpgle",
+      "bytes": 11219,
+      "sha256": "f6084f4171b5efc351258853a079cc2603b669f0b28619ab84be57c5c6e14f35",
+      "physicalLines": 251
+    },
+    {
+      "path": "src/QRPGLESRC/ORDREPLY.rpgle",
+      "bytes": 13398,
+      "sha256": "a3eb83e93efc02902ae2168560eaef140dce175278fcdc6f46142f57507ad7cf",
+      "physicalLines": 291
+    },
+    {
+      "path": "src/QRPGLESRC/ORDRES.rpgleinc",
+      "bytes": 4784,
+      "sha256": "da86cb603d5c2838244f216c3eaac8593d663e31d6b2ffa12faf182be7d29b98",
+      "physicalLines": 129
+    },
+    {
+      "path": "src/QRPGLESRC/ORDSETTL.rpgle",
+      "bytes": 36339,
+      "sha256": "a861d2d5374ec74050cc4ab963c95be9c7d0c39f84b61ca329e27f355bc98450",
+      "physicalLines": 769
+    },
+    {
+      "path": "src/QRPGLESRC/ORDSTOCK.rpgle",
+      "bytes": 35513,
+      "sha256": "4e8f5367dfb605fff704a964a6f939abb1de0c6f926a5306c7f314dc044f9210",
+      "physicalLines": 757
+    },
+    {
+      "path": "src/QRPGLESRC/ORDSTS.rpgleinc",
+      "bytes": 514,
+      "sha256": "38b92c40862f3eab4dab3c14c196c751a9cd91381c90196c5345ed98c33c0db4",
+      "physicalLines": 10
+    }
+  ],
+  "parts": [
+    {
+      "id": 1,
+      "path": "parts/part-001.txt",
+      "utf8Bytes": 23832,
+      "sha256": "38d0d4d620da709ed68607b3d81d4dc6d8a00e03b082cdbe972386036a7171fa",
+      "sections": [
+        {
+          "path": "README.md",
+          "startLine": 1,
+          "endLine": 18,
+          "contentSha256": "b409c3a0eb95686919a47d4fe525316b1c7a6a376384fde029c6c05b40752fa7"
+        },
+        {
+          "path": "context/operations-and-systems.md",
+          "startLine": 1,
+          "endLine": 32,
+          "contentSha256": "6a6a3ee8d48fd9ed90d655001a277e59eedf0e06a1aae98116a7213bd680e053"
+        },
+        {
+          "path": "context/interfaces.md",
+          "startLine": 1,
+          "endLine": 38,
+          "contentSha256": "46de94ee481d423eb20eb1eab466be90a37ec868ac35febc4aab44f462caaa5c"
+        },
+        {
+          "path": "src/QRPGLESRC/ORDCTX.rpgleinc",
+          "startLine": 1,
+          "endLine": 127,
+          "contentSha256": "63f0058cac94f3d5b82e542970795086efe5b3d942f5394f92dc57b09ce8e406"
+        },
+        {
+          "path": "src/QRPGLESRC/ORDRES.rpgleinc",
+          "startLine": 1,
+          "endLine": 129,
+          "contentSha256": "da86cb603d5c2838244f216c3eaac8593d663e31d6b2ffa12faf182be7d29b98"
+        },
+        {
+          "path": "src/QRPGLESRC/ORDSTS.rpgleinc",
+          "startLine": 1,
+          "endLine": 10,
+          "contentSha256": "38b92c40862f3eab4dab3c14c196c751a9cd91381c90196c5345ed98c33c0db4"
+        },
+        {
+          "path": "src/QDDSSRC/ALLOCPF.dds",
+          "startLine": 1,
+          "endLine": 21,
+          "contentSha256": "5003bcf1ef223284965e5099c6d8a475f01fe3ae27565d3cf13dba75d527b541"
+        },
+        {
+          "path": "src/QDDSSRC/AUDITPF.dds",
+          "startLine": 1,
+          "endLine": 41,
+          "contentSha256": "e8edc47ea26b9fe4ede68fb9223f4f5f0bfcf6ea4f6b8f7ca89cbb3ef1029886"
+        },
+        {
+          "path": "src/QDDSSRC/BATCHPF.dds",
+          "startLine": 1,
+          "endLine": 25,
+          "contentSha256": "aeff1ecc169104c7726ad447adf3aaa98840128c9c26f8d17b08b23ac86f3ea3"
+        },
+        {
+          "path": "src/QDDSSRC/CUSTPF.dds",
+          "startLine": 1,
+          "endLine": 11,
+          "contentSha256": "b57c77ad5ad833a615bba10468fa7c983de66055670f515dfbeb858cb351e361"
+        },
+        {
+          "path": "src/QDDSSRC/DAYRPTPF.dds",
+          "startLine": 1,
+          "endLine": 33,
+          "contentSha256": "9b8f3b6c9236d06024247f4836f0d4fc75ad5a6a62f133107b1a46df07909b54"
+        },
+        {
+          "path": "src/QDDSSRC/INDTLPF.dds",
+          "startLine": 1,
+          "endLine": 25,
+          "contentSha256": "bd339b27dc1ae50b76ec98108450e0be13abee877e2e51a929ee77147cdd4ad4"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "path": "parts/part-002.txt",
+      "utf8Bytes": 21928,
+      "sha256": "961613f19ef1d8f274e1c6434052c49d6f9a17112ee89a316b6f196f4fb1be93",
+      "sections": [
+        {
+          "path": "src/QDDSSRC/INHDRPF.dds",
+          "startLine": 1,
+          "endLine": 52,
+          "contentSha256": "9c089841d167ffdbff9f3fe67bd29f1cc7316f0ae9016fcd1064f8c976028ba9"
+        },
+        {
+          "path": "src/QDDSSRC/ITEMPF.dds",
+          "startLine": 1,
+          "endLine": 9,
+          "contentSha256": "65050894534c6530aaa3b4a04ddff8eb08c39a0d7fcd0963eb3a2d874def3ddb"
+        },
+        {
+          "path": "src/QDDSSRC/ORDDTLPF.dds",
+          "startLine": 1,
+          "endLine": 30,
+          "contentSha256": "0b70758ce3c8dfe9fa97236c2cb3ef6a9cc972f8c35c675e02ef8b146c8447c3"
+        },
+        {
+          "path": "src/QDDSSRC/ORDHDRPF.dds",
+          "startLine": 1,
+          "endLine": 31,
+          "contentSha256": "058f9e7cfebf70346c9b426508cd666ea532145a11c200165ab4519fb9e933c1"
+        },
+        {
+          "path": "src/QDDSSRC/OUTBOXPF.dds",
+          "startLine": 1,
+          "endLine": 37,
+          "contentSha256": "704a55acab60055cd2fb5de16e5c54ebfe1ee1436121a31e7fec2f2fa013a8b4"
+        },
+        {
+          "path": "src/QDDSSRC/OUTBYST.dds",
+          "startLine": 1,
+          "endLine": 7,
+          "contentSha256": "1ef39017b40f6f8620d2ddfdc3c8df687c48669598bf7cd49e9d19a23ad722ae"
+        },
+        {
+          "path": "src/QDDSSRC/PRICEPF.dds",
+          "startLine": 1,
+          "endLine": 14,
+          "contentSha256": "d8a5b7c4e23e662c0a58a296e70e7574951999ea879e9e78785250b0ff1ae786"
+        },
+        {
+          "path": "src/QDDSSRC/REQPF.dds",
+          "startLine": 1,
+          "endLine": 40,
+          "contentSha256": "0eb134c3d44fe0b40210be60967e49bedf7834474638d5d295e068d0e3cfcb1d"
+        },
+        {
+          "path": "src/QDDSSRC/RTNDTLPF.dds",
+          "startLine": 1,
+          "endLine": 26,
+          "contentSha256": "ea8a6db2c6422925977c7d2f422bfbd50e517908c9d01c8a177379ae948a00d1"
+        },
+        {
+          "path": "src/QDDSSRC/RTNHDRPF.dds",
+          "startLine": 1,
+          "endLine": 19,
+          "contentSha256": "79edb9111be0375ebb8da827da5b1112400514cc74bcecc9b3887a1ce7deaa5a"
+        },
+        {
+          "path": "src/QDDSSRC/SETLBYDAY.dds",
+          "startLine": 1,
+          "endLine": 7,
+          "contentSha256": "dd23f0c8f33d8ddfd5cd402e7ede563d99a1762fef0847fc07072aa9561f4149"
+        },
+        {
+          "path": "src/QDDSSRC/SETLBYREF.dds",
+          "startLine": 1,
+          "endLine": 7,
+          "contentSha256": "80975de7ae0aff9a32dedf17ec75af4ef1e73b1cb9993f2d352cf79a06827b17"
+        },
+        {
+          "path": "src/QDDSSRC/SETLDTPF.dds",
+          "startLine": 1,
+          "endLine": 26,
+          "contentSha256": "6d7e3c3c864b244a887432314cc3bf3e1eede25be8b81183843d041be4bb8e71"
+        },
+        {
+          "path": "src/QDDSSRC/SETLHDPF.dds",
+          "startLine": 1,
+          "endLine": 35,
+          "contentSha256": "b86dd05d5df2d5f923d7dce49203a1ed339c63022a0fec3979abf1771eb606bc"
+        },
+        {
+          "path": "src/QDDSSRC/SHIPDTPF.dds",
+          "startLine": 1,
+          "endLine": 22,
+          "contentSha256": "e822ba64477b9779de0d099808d661720123b02155bc7b9139727cb68628cca1"
+        },
+        {
+          "path": "src/QDDSSRC/SHIPHDPF.dds",
+          "startLine": 1,
+          "endLine": 23,
+          "contentSha256": "531d7fec7407d2cbe5c7d8b9b704091e2c2023433cc689f75a581aea4bf61a15"
+        },
+        {
+          "path": "src/QDDSSRC/STOCKPF.dds",
+          "startLine": 1,
+          "endLine": 14,
+          "contentSha256": "bc8328741fee543876ecec98a421ca710e738d3f9557211ecf1f0eabc7722c9e"
+        },
+        {
+          "path": "src/QDDSSRC/WHSEPF.dds",
+          "startLine": 1,
+          "endLine": 11,
+          "contentSha256": "855c4657d0accb520ee0a6ecfc568df698eaaf2f9561c724d323c55a60ac64a0"
+        },
+        {
+          "path": "src/QCLLESRC/ORDRUN.clle",
+          "startLine": 1,
+          "endLine": 63,
+          "contentSha256": "d1f203643176fb9af74e490ac89e75f34da3795d86b546420ea1837858255920"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "path": "parts/part-003.txt",
+      "utf8Bytes": 22065,
+      "sha256": "a6f22b84c0ab2c490fb85aac5f89506ee61d3a67b10b4c11ca36dd10937ca1af",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 1,
+          "endLine": 497,
+          "contentSha256": "ced8d46dde8c1af6232b7aee3979341329d1a671c68076f29bb0337be1208d2d"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "path": "parts/part-004.txt",
+      "utf8Bytes": 22070,
+      "sha256": "2630541a3df74bfcb7f2e9aed311baaebebb943cdd42f7798e7bf90ec78ad24d",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 498,
+          "endLine": 990,
+          "contentSha256": "f7f559b62aa5a9c38f72f256862735f907c54ef5a3ccd72295673b287b5e8a85"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "path": "parts/part-005.txt",
+      "utf8Bytes": 22077,
+      "sha256": "f3346b1b2b54208c3738e73feffefe6b098c3cff36b7812682aaacbf31dbfc83",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 991,
+          "endLine": 1437,
+          "contentSha256": "beff96258b9d8b894aa8fec2428c022ef5675fabbcc5a23dcf7e48aa6f826f1f"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "path": "parts/part-006.txt",
+      "utf8Bytes": 22073,
+      "sha256": "aefeb1e2879e99cd3cc48421d5e1a7252b41c754f2c96a792ea6aaf84a5a00f8",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 1438,
+          "endLine": 1879,
+          "contentSha256": "c3d63a2dfd01eb529b559f1ced86f8c34911f3f6d49574f0e2cf4ad824c0db09"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "path": "parts/part-007.txt",
+      "utf8Bytes": 22028,
+      "sha256": "dbde94741205f8e2974d1bfdb848d6d0fc1775168fd8e5cb94fe60dbe7a34d66",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 1880,
+          "endLine": 2357,
+          "contentSha256": "8ccdb5f7f291c39edcd568aabe27f804402b8d12d42bcdb7dd7222b2cbf057e1"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "path": "parts/part-008.txt",
+      "utf8Bytes": 22065,
+      "sha256": "5d5943b44e537e4d4616157e40bb158d547fdc71c6c7886cd8350d33f0103aab",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 2358,
+          "endLine": 2852,
+          "contentSha256": "40af57571c7dbb41ed9ce2e9e7582b91bd83d389dd6842b1d65bd4a49fbf56ab"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "path": "parts/part-009.txt",
+      "utf8Bytes": 22036,
+      "sha256": "9b3c53ba6da4c7774e98b5bdca81a80513dd062f102b18266c23470f7b2092cd",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 2853,
+          "endLine": 3322,
+          "contentSha256": "c9a0c808b9b626969ff85b8e22272eead3d560cb1a991ec7c4aa5e5fb3d799e6"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "path": "parts/part-010.txt",
+      "utf8Bytes": 22028,
+      "sha256": "a806437a133d29e787b71ea95daa2752b1773f301d55333a6b460f08cc7b908e",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 3323,
+          "endLine": 3737,
+          "contentSha256": "403a4bddfa1051b11540f7904332d1ed209e9f0479236b27ed2740660a987a37"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "path": "parts/part-011.txt",
+      "utf8Bytes": 22071,
+      "sha256": "96d29ed78062bee161965552eb782c0b81d2fd96a37d0c67659a754154ab6acb",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 3738,
+          "endLine": 4160,
+          "contentSha256": "7d2eae9bc48cf890abf612322182362dfce6df49013a4c8a7d456700e0143e6b"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "path": "parts/part-012.txt",
+      "utf8Bytes": 22083,
+      "sha256": "c04c11453d0f4ffc6dbc5d8d25b1b6d7496d6ee2a1f2cd335deb8a2a34315805",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 4161,
+          "endLine": 4656,
+          "contentSha256": "7d24a38b3687de918323ba9a029134a474afc045c0829475812c3657063e3063"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "path": "parts/part-013.txt",
+      "utf8Bytes": 22046,
+      "sha256": "6167522d75c65a4a4c35404403494df1b4071b653ac6a0bf00ab784f68c53c96",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 4657,
+          "endLine": 5193,
+          "contentSha256": "d2e3672c38c395e0a0fe62811b635b07ca17087106e4392fbef6eed3e83d1f55"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "path": "parts/part-014.txt",
+      "utf8Bytes": 22063,
+      "sha256": "eb30bcbaee0c3a14058673a5162efd2c325e990e8878ffbf674d118cdfd2bf9e",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 5194,
+          "endLine": 5712,
+          "contentSha256": "5de7811ad8c101710f53acc14e73e0795c0ebdf31ffffcc9708fae254ed04798"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "path": "parts/part-015.txt",
+      "utf8Bytes": 22082,
+      "sha256": "7fac87d93b2f39f018fa466c6c70892a15ff1a00889add383be85da38978031d",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 5713,
+          "endLine": 6229,
+          "contentSha256": "5cf6daefc99630e36a2ae984d10499a8b4d02aa93b710cc856165c2ac78719b5"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "path": "parts/part-016.txt",
+      "utf8Bytes": 22066,
+      "sha256": "a649095afe18dc9055ac4040841862cabe93448ed3adbfc695da909f7a32f3f6",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 6230,
+          "endLine": 6680,
+          "contentSha256": "8bf749b8c224d40704d3fd7e8a6613f9ed1b006bfc16197f61da236cd09bc949"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "path": "parts/part-017.txt",
+      "utf8Bytes": 22086,
+      "sha256": "709eaa38ca25797554dc8d5c5dd88ab353d8b51d8e61e5b21221bbd5bd3da367",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 6681,
+          "endLine": 7135,
+          "contentSha256": "e48becbfb62358c7c8eddb5bffcd7672a93376d6fd768d8f9d3209f505b80c9e"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "path": "parts/part-018.txt",
+      "utf8Bytes": 22065,
+      "sha256": "83b2637134a91abd7d7cf8f8e5fe364809e5a100815bb3bddde15067b47c0ce0",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 7136,
+          "endLine": 7600,
+          "contentSha256": "48eecba9b13e24f644b340d6c01b3a9a7f6ebbbebb9780601ef4d60c3c631bff"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "path": "parts/part-019.txt",
+      "utf8Bytes": 22065,
+      "sha256": "2ff6d65b42f1da7f076b04329ac2b4d3fd6583c317e2ccde397a6a596870710e",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 7601,
+          "endLine": 8020,
+          "contentSha256": "92fd22e25e49379ab0e63858725664e9317532c280f2dcce7a6a26ff2587f9c4"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "path": "parts/part-020.txt",
+      "utf8Bytes": 22056,
+      "sha256": "4e74c043d7bfe2467431a98cf496cc400446bc051f88ceae6b2222d49daa3331",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 8021,
+          "endLine": 8467,
+          "contentSha256": "14f94674b8158c0aeb23b41b521e965496106deddd72a0a6613fa0ce107c487e"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "path": "parts/part-021.txt",
+      "utf8Bytes": 22076,
+      "sha256": "45da3665d4730fb02f34068c32c8b97d0496d1115355e5a50e556fd9d0f951c1",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 8468,
+          "endLine": 8981,
+          "contentSha256": "4eeb524acca97530377ed8f731e1193ea3136d16131b1f5351a01187393c93df"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "path": "parts/part-022.txt",
+      "utf8Bytes": 22070,
+      "sha256": "5933cca695cd426d9dae0fa1877487f1d33d477c0edd36303559d4bd250f83a2",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 8982,
+          "endLine": 9493,
+          "contentSha256": "c14e75b9dccf7163123b64d556ab937e34e25265536a12d4ad9e5c4b6db5dcb7"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "path": "parts/part-023.txt",
+      "utf8Bytes": 22064,
+      "sha256": "85a9d533e1ceefe42fbb955c162f929e640e6876bb10e1d5d12539516b735b96",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 9494,
+          "endLine": 10005,
+          "contentSha256": "33a7e2d20cae80d91f5c8de3c84cc849d567c0a09e2a8f2bb2eb869aee9c3399"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "path": "parts/part-024.txt",
+      "utf8Bytes": 4961,
+      "sha256": "b945621ddf4826bb1c74b4a71fa533a2b16ea13ba0dd52031e992070a39488ae",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+          "startLine": 10006,
+          "endLine": 10114,
+          "contentSha256": "55454839d3e3e752bf4b61ccf960b72d4aec826c0edd86a2e0b7403d3d1c4078"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "path": "parts/part-025.txt",
+      "utf8Bytes": 22025,
+      "sha256": "42bfb232ab946d84fce7c69689c259a96ddbbb12f495f270356e25f8bbad913a",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDCHECK.rpgle",
+          "startLine": 1,
+          "endLine": 493,
+          "contentSha256": "895ebb34881bcaf3162738fa6b84c7a3621fab172bb64c67b54178b1e706fc06"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "path": "parts/part-026.txt",
+      "utf8Bytes": 11302,
+      "sha256": "3e9dd686b5a8e704b03e3250ccfcc7f1b588158c7d5c77954a387b3bece7b729",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDPRICE.rpgle",
+          "startLine": 1,
+          "endLine": 251,
+          "contentSha256": "f6084f4171b5efc351258853a079cc2603b669f0b28619ab84be57c5c6e14f35"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "path": "parts/part-027.txt",
+      "utf8Bytes": 22034,
+      "sha256": "89bcedeb9e089c92a88b5f0575182840dadb143ce06befb2f39af474b8ff8c43",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDSTOCK.rpgle",
+          "startLine": 1,
+          "endLine": 478,
+          "contentSha256": "bbf702abac4413cc799a9f135cd80e8c8004fd402458b495b0eec6b78965a6a4"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "path": "parts/part-028.txt",
+      "utf8Bytes": 13647,
+      "sha256": "bb670c4bd0db8040e835f569c657b25116e7c005da872600db69344c8f686c30",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDSTOCK.rpgle",
+          "startLine": 479,
+          "endLine": 757,
+          "contentSha256": "38a2f061ece7ee2884bf3f95e2b66c81e6ea2e11317943571b1735f515968759"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "path": "parts/part-029.txt",
+      "utf8Bytes": 22072,
+      "sha256": "01e6cd7a218fe169272dc637414e0833c260caaec08b51b9c0694b195156c8dd",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDSETTL.rpgle",
+          "startLine": 1,
+          "endLine": 481,
+          "contentSha256": "876c188ffb544a3c91d14f405a5fbc942a87769bfd6103cc36b2b3b2201bf17f"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "path": "parts/part-030.txt",
+      "utf8Bytes": 14435,
+      "sha256": "735864d9bf3034e47169fda965df7832879fd00825f90562cb650219fbea1a1b",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDSETTL.rpgle",
+          "startLine": 482,
+          "endLine": 769,
+          "contentSha256": "6fd57130333c46a8ee1d2171e5a0bf90f65a7bfd3edc3b27e4a8d576fc4ca8c3"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "path": "parts/part-031.txt",
+      "utf8Bytes": 13481,
+      "sha256": "d60fcb5f64e4368b7d5ddc7131819962bf85b10f2e232b5eb0d26a6897304604",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDREPLY.rpgle",
+          "startLine": 1,
+          "endLine": 291,
+          "contentSha256": "a3eb83e93efc02902ae2168560eaef140dce175278fcdc6f46142f57507ad7cf"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "path": "parts/part-032.txt",
+      "utf8Bytes": 15557,
+      "sha256": "1f5039a1ff8ec6748a8beb89eb9aa5c2aa4fadc6cf55b03d40b8f2f403c6a579",
+      "sections": [
+        {
+          "path": "src/QRPGLESRC/ORDDAILY.rpgle",
+          "startLine": 1,
+          "endLine": 348,
+          "contentSha256": "59b0d0fae4846885308a208e95a9b6db16ef00482841893aa4844a7e7edc0b65"
+        }
+      ]
+    }
+  ]
+}

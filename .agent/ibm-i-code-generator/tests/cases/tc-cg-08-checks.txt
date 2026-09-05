@@ -1,0 +1,14 @@
+layer=3
+lang=RPGLE
+change_type=enhancement
+type=edge
+# CRITICAL: Must NOT claim to be a drop-in replacement or production-safe
+must_not_contain=Production-safe
+must_not_contain=drop-in replacement
+# Must state that current source was not provided or output is a draft
+must_contain_regex=(not provided|not available|without.*current|no current source|controlled|draft|Draft|change block|Change Block|scaffold|Scaffold)
+# Must still implement the new logic
+must_contain=BR-04
+must_contain=CUSTMAST
+must_contain_regex=(CRDSTS|crdsts)
+must_contain='4'

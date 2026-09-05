@@ -1,0 +1,112 @@
+PART 024 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 10006-10114>>>
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RQKEEP.RQSTATE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'originalResult'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RQKEEP.RQRC
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'originalReason'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RQKEEP.RQREASON
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'originalVersion'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(RQKEEP.RQVERSION)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'currentOrderVersion'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ORDERKEEP.OHVERSION)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'previousReceipt'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RQKEEP.RQMSG
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'currentInputBatch'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RUNBATCH
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'currentInputSequence'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(INPUTNO)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MSENDREC
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     FRAME         BEGSR
+     C                   EVAL      TOKLEN = %len(%trimr(TOKEN))
+     C                   IF        not ( TOKLEN <= 9999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'FRAME_FIELD_TOO_LONG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( PAYLEN + 4 + TOKLEN <= 30000 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PAYLOAD_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      LEN4 = TOKLEN
+     C                   EVAL      POSN = PAYLEN + 1
+     C                   EVAL      %subst(PAYLOAD:POSN:4) = %editc(LEN4:'X')
+     C                   EVAL      PAYLEN = PAYLEN + 4
+     C                   IF        TOKLEN > 0
+     C                   EVAL      POSN = PAYLEN + 1
+     C                   EVAL      %subst(PAYLOAD:POSN:TOKLEN) =
+     C                             %subst(TOKEN:1:TOKLEN)
+     C                   EVAL      PAYLEN = PAYLEN + TOKLEN
+     C                   ENDIF
+     C                   ENDSR
+<<<END_FILE>>>

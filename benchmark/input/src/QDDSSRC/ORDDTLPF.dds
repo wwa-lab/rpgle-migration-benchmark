@@ -1,0 +1,30 @@
+
+
+     A                                      UNIQUE
+     A          R ORDDTLR
+     A            ODORDER       20A         CCSID(37)
+     A                                      TEXT('ODORDER')
+     A            ODLINE         5P 0
+     A                                      TEXT('ODLINE')
+     A            ODITEM        12A         CCSID(37)
+     A                                      TEXT('ODITEM')
+     A            ODQTY          9P 0
+     A                                      TEXT('ODQTY')
+     A            ODCANCEL       9P 0
+     A                                      TEXT('ODCANCEL')
+     A            ODSHIPPED      9P 0
+     A                                      TEXT('ODSHIPPED')
+     A            ODUNIT        11P 4
+     A                                      TEXT('ODUNIT')
+     A            ODRATE         5P 4
+     A                                      TEXT('ODRATE')
+     A            ODAMOUNT      15P 2
+     A                                      TEXT('ODAMOUNT')
+     A            ODSHPAMT      15P 2
+     A                                      TEXT('ODSHPAMT')
+     A            ODVERSION      9P 0
+     A                                      TEXT('ODVERSION')
+     A            ODACTIVE       1A         CCSID(37)
+     A                                      TEXT('ODACTIVE')
+     A          K ODORDER
+     A          K ODLINE

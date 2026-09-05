@@ -1,0 +1,25 @@
+
+
+     A                                      UNIQUE
+     A          R INDTLR
+     A            IDBATCH       20A         CCSID(37)
+     A                                      TEXT('IDBATCH')
+     A            IDINPUT        9P 0
+     A                                      TEXT('IDINPUT')
+     A            IDPOS          5P 0
+     A                                      TEXT('IDPOS')
+     A            IDLINE         5A         CCSID(37)
+     A                                      TEXT('IDLINE')
+     A            IDITEM        12A         CCSID(37)
+     A                                      TEXT('IDITEM')
+     A            IDQTY         12A         CCSID(37)
+     A                                      TEXT('IDQTY')
+     A            IDWH           1A         CCSID(37)
+     A                                      TEXT('IDWH')
+     A            IDSHIP        20A         CCSID(37)
+     A                                      TEXT('IDSHIP')
+     A            IDSHLINE       5A         CCSID(37)
+     A                                      TEXT('IDSHLINE')
+     A          K IDBATCH
+     A          K IDINPUT
+     A          K IDPOS

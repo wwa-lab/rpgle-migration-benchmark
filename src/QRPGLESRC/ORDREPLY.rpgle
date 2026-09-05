@@ -1,0 +1,291 @@
+     * ORDREPLY - synthetic order processing. Static candidate.
+     * ABI 0001; all transaction boundaries belong to ORDMAIN.
+     H DFTACTGRP(*NO) ACTGRP('ORDBENCH')
+     H OPTION(*SRCSTMT:*NODEBUGIO) DECEDIT('0.')
+     FOUTBOXPF  UF A E           K DISK    COMMIT
+     FOUTBYST   IF   E           K DISK    COMMIT
+     F                                     RENAME(OUTBOXR:OUTBYSR)
+      /DEFINE U_CTXDS
+      /DEFINE U_OUTREC
+      /DEFINE U_RESDS
+      /COPY QRPGLESRC,ORDCTX
+      /COPY QRPGLESRC,ORDRES
+      /COPY QRPGLESRC,ORDSTS
+     DOBREC            DS                  LIKEREC(OUTBOXR)
+     DKOBID            S             80A
+     DOSREC            DS                  LIKEREC(OUTBYSR)
+     DKOBKIND          S              8A
+     DKOBSTATE         S              8A
+     DCURSOR           S             80A
+     DKINDKEY          S              8A
+     DSTATEKEY         S              8A
+     DK                S              9P 0
+     DN                S              9P 0
+     DX                S              9P 0
+     * ENTRY - positional ABI; exceptions return to transaction owner.
+     C     *ENTRY        PLIST
+     C                   PARM                    CTXDS
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C     KOUT          KLIST
+     C                   KFLD                    KOBID
+     C     KOUTST1       KLIST
+     C                   KFLD                    KOBKIND
+     C     KOUTST2       KLIST
+     C                   KFLD                    KOBKIND
+     C                   KFLD                    KOBSTATE
+     C     KOUTST        KLIST
+     C                   KFLD                    KOBKIND
+     C                   KFLD                    KOBSTATE
+     C                   KFLD                    KOBID
+     C                   MONITOR
+     C                   EXSR      YINIT
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = '3000'
+     C                   EVAL      RESDS.RSREASON = 'LOCAL_IO_OR_CONVERSION'
+     C                   ENDMON
+     C                   EVAL      *inlr = *on
+     C                   RETURN
+
+     * YINIT - Dispatch only receipt-owned mutations
+     * Step 1; BR-26, BR-32
+     C     YINIT         BEGSR
+     C                   CLEAR     RESDS
+     C                   EVAL      RESDS.RSRC = RCOK
+     C                   IF        not ( CTXDS.CXABI = ABI )
+     C                   EVAL      RESDS.RSRC = '9000'
+     C                   EVAL      RESDS.RSREASON = 'ABI_MISMATCH'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   SELECT
+     C                   WHEN      CTXDS.CXACTION = 'FETCH'
+     C                   EXSR      YFETCH
+     C                   WHEN      CTXDS.CXACTION = 'CREATE'
+     C                   EXSR      YCREATE
+     C                   WHEN      CTXDS.CXACTION = 'DELIVERY'
+     C                   EXSR      YDELIV
+     C                   WHEN      CTXDS.CXACTION = 'RESEND'
+     C                   EXSR      YRESEND
+     C                   WHEN      CTXDS.CXACTION = 'LIST'
+     C                   EXSR      YLIST
+     C                   OTHER
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'REPLY_ACTION'
+     C                   LEAVESR
+     C                   ENDSL
+     C                   EXSR      YRET
+     C                   ENDSR
+
+     * YFETCH - Fetch any outbox kind for owner routing
+     * Step 2; BR-26, BR-32
+     C     YFETCH        BEGSR
+     C                   EVAL      KOBID = CTXDS.CXMSG
+     C     KOUT          CHAIN(N)  OUTBOXPF      OBREC
+     C                   IF        not ( %found(OUTBOXPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OUTREC = OBREC
+     C                   ENDSR
+
+     * YCREATE - Register immutable receipt or warehouse result
+     * Step 3; BR-06, BR-26, BR-32
+     C     YCREATE       BEGSR
+     C                   IF        not ( OUTREC.OBKIND = 'RECEIPT' or
+     C                             OUTREC.OBKIND = 'WHRESULT' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'REPLY_KIND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBLEN >= 4 and OUTREC.OBLEN <=
+     C                             30000 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'REPLY_LENGTH'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( CTXDS.CXOUTSEQ > 0 and CTXDS.CXOUTSEQ
+     C                             <= 99999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTPUT_SEQUENCE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OUTREC.OBID = 'M:' + %trim(CTXDS.CXBATCH) +
+     C                             ':' + %editc(CTXDS.CXINPUT:'X') + ':' +
+     C                             %trim(OUTREC.OBKIND) + ':' +
+     C                             %editc(CTXDS.CXOUTSEQ:'X')
+     C                   EVAL      OUTREC.OBSRC = CTXDS.CXSRC
+     C                   EVAL      OUTREC.OBREQ = CTXDS.CXREQ
+     C                   EVAL      OUTREC.OBBATCH = CTXDS.CXBATCH
+     C                   EVAL      OUTREC.OBINPUT = CTXDS.CXINPUT
+     C                   EVAL      OUTREC.OBORDER = CTXDS.CXORDER
+     C                   EVAL      OUTREC.OBSTATE = 'NEW'
+     C                   EVAL      OUTREC.OBRESULT = 'NONE'
+     C                   EVAL      OUTREC.OBRESDAY = *blanks
+     C                   EVAL      OUTREC.OBATTEMPT = 1
+     C                   EVAL      OUTREC.OBDAY = CTXDS.CXPROCDAY
+     C                   EVAL      OUTREC.OBREASON = CTXDS.CXREASON
+     C                   EVAL      KOBID = OUTREC.OBID
+     C     KOUT          CHAIN     OUTBOXPF      OBREC
+     C                   IF        %found(OUTBOXPF)
+     C                   IF        not ( OBREC.OBID = OUTREC.OBID )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBKIND = OUTREC.OBKIND )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBKIND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBBIZID = OUTREC.OBBIZID )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBBIZID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBSRC = OUTREC.OBSRC )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBSRC'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBREQ = OUTREC.OBREQ )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBREQ'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBBATCH = OUTREC.OBBATCH )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBBATCH'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBINPUT = OUTREC.OBINPUT )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBINPUT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBORDER = OUTREC.OBORDER )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBORDER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBDAY = OUTREC.OBDAY )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBDAY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBLEN = OUTREC.OBLEN )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBLEN'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBPAYLOAD = OUTREC.OBPAYLOAD )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_CONFLICT_OBPAYLOAD'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OUTREC = OBREC
+     C                   EVAL      RESDS.RSRC = RCDUP
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OBREC = OUTREC
+     C                   WRITE     OUTBOXR       OBREC
+     C                   ENDSR
+
+     * YDELIV - Delivery acknowledgement cannot change a business result
+     * Step 4; BR-26, BR-32
+     C     YDELIV        BEGSR
+     C                   EVAL      KOBID = CTXDS.CXMSG
+     C     KOUT          CHAIN     OUTBOXPF      OBREC
+     C                   IF        not ( %found(OUTBOXPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBKIND = 'RECEIPT' or
+     C                             OBREC.OBKIND = 'WHRESULT' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_OWNER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( CTXDS.CXFEED = 'SENT' or CTXDS.CXFEED =
+     C                             'OK' or CTXDS.CXFEED = 'FAIL' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DELIVERY_RESULT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        OBREC.OBSTATE = 'OK'
+     C                   EVAL      OUTREC = OBREC
+     C                   IF        CTXDS.CXFEED = 'OK'
+     C                   EVAL      RESDS.RSRC = RCDUP
+     C                   ELSE
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'LATE_DELIVERY_FAILURE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OBREC.OBSTATE = CTXDS.CXFEED
+     C                   EVAL      OBREC.OBREASON = CTXDS.CXREASON
+     C                   UPDATE    OUTBOXR       OBREC
+     C                   EVAL      OUTREC = OBREC
+     C                   ENDSR
+
+     * YRESEND - Retry the original receipt only; retain identity and payload
+     * Step 5; BR-26, BR-31
+     C     YRESEND       BEGSR
+     C                   EVAL      KOBID = CTXDS.CXMSG
+     C     KOUT          CHAIN     OUTBOXPF      OBREC
+     C                   IF        not ( %found(OUTBOXPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBKIND = 'RECEIPT' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RESEND_REQUIRES_RECEIPT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        OBREC.OBSTATE = 'OK'
+     C                   EVAL      OUTREC = OBREC
+     C                   EVAL      RESDS.RSRC = RCDUP
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBATTEMPT < 999999999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_ATTEMPT_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OBREC.OBATTEMPT = OBREC.OBATTEMPT + 1
+     C                   EVAL      OBREC.OBSTATE = 'NEW'
+     C                   EVAL      OBREC.OBREASON = CTXDS.CXREASON
+     C                   UPDATE    OUTBOXR       OBREC
+     C                   EVAL      OUTREC = OBREC
+     C                   ENDSR
+
+     * YLIST - Read one item after the explicit kind/state/id cursor
+     * Step 6; BR-26, BR-32
+     C     YLIST         BEGSR
+     C                   EVAL      KINDKEY = OUTREC.OBKIND
+     C                   EVAL      STATEKEY = OUTREC.OBSTATE
+     C                   EVAL      CURSOR = OUTREC.OBID
+     C                   EVAL      KOBKIND = KINDKEY
+     C                   EVAL      KOBSTATE = STATEKEY
+     C                   EVAL      KOBID = CURSOR
+     C     KOUTST        SETGT     OUTBYST
+     C                   EVAL      KOBKIND = KINDKEY
+     C                   EVAL      KOBSTATE = STATEKEY
+     C     KOUTST2       READE     OUTBYST       OSREC
+     C                   CLEAR     OUTREC
+     C                   IF        not %eof(OUTBYST)
+     C                   EVAL      OUTREC = OSREC
+     C                   EVAL      RESDS.RSCOUNT = 1
+     C                   ENDIF
+     C                   ENDSR
+
+     * YRET - Expose message delivery state independently
+     * Step 7; BR-26, BR-32
+     C     YRET          BEGSR
+     C                   IF        RESDS.RSRC < RCREJECT
+     C                   EVAL      RESDS.RSSTATE = OUTREC.OBSTATE
+     C                   ENDIF
+     C                   ENDSR

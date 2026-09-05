@@ -1,0 +1,37 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "LNGTXT-20260404-01",
+    "specLevel": "L1",
+    "fileType": "PF",
+    "fileName": "LNGTXT",
+    "description": "This is a very long description that exceeds fifty characters and should be handled"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "LNGR",
+      "purpose": "Record with long text values that also exceeds the limit",
+      "fieldCount": 1
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "LNGFLD",
+        "type": "A",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "This field text is also very long and exceeds the fifty character maximum allowed by DDS",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": []
+      }
+    ]
+  }
+}

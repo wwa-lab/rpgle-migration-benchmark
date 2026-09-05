@@ -1,0 +1,23 @@
+
+
+     A                                      UNIQUE
+     A          R SHIPHDR
+     A            SHSHIP        20A         CCSID(37)
+     A                                      TEXT('SHSHIP')
+     A            SHORDER       20A         CCSID(37)
+     A                                      TEXT('SHORDER')
+     A            SHVERSION      9P 0
+     A                                      TEXT('SHVERSION')
+     A            SHDAY          8A         CCSID(37)
+     A                                      TEXT('SHDAY')
+     A            SHSRC         12A         CCSID(37)
+     A                                      TEXT('SHSRC')
+     A            SHREQ         20A         CCSID(37)
+     A                                      TEXT('SHREQ')
+     A            SHNLINE        5P 0
+     A                                      TEXT('SHNLINE')
+     A            SHSETTL       48A         CCSID(37)
+     A                                      TEXT('SHSETTL')
+     A            SHAMOUNT      15P 2
+     A                                      TEXT('SHAMOUNT')
+     A          K SHSHIP

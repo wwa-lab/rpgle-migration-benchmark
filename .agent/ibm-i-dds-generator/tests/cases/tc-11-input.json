@@ -1,0 +1,25 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "BADFLD-20260404-01",
+    "specLevel": "L1",
+    "fileType": "PF",
+    "fileName": "BADPF",
+    "description": "Missing fieldName test"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "BADR",
+      "purpose": "Bad record",
+      "fieldCount": 2
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      { "fieldId": "FLD-01", "fieldName": "OKFLD", "type": "A", "length": 10, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "OK field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-02", "type": "A", "length": 20, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Missing name", "editCode": null, "columnHeading": null, "ddsKeywords": [] }
+    ]
+  }
+}

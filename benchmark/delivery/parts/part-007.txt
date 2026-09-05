@@ -1,0 +1,481 @@
+PART 007 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 1880-2357>>>
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      AFTERSTATE = SETHEAD.SESTATE
+     C                   EVAL      HASCHANGE = not SKIPAPPLY
+     C                   ENDSR
+
+
+
+     C     MDELIV        BEGSR
+     C                   EVAL      CTXDS.CXACTION = 'FETCH'
+     C                   CALL      'ORDREPLY'
+     C                   PARM                    CTXDS
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MREPLYABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHORDER = *blanks or
+     C                             HDRDS.IHORDER = OUTREC.OBORDER )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'DELIVERY_ORDER_CONFLICT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXORDER = OUTREC.OBORDER
+     C                   IF        OUTREC.OBKIND = 'SETTLE' or OUTREC.OBKIND =
+     C                             'ADJUST' or OUTREC.OBKIND = 'VERIFY'
+     C                   EVAL      CTXDS.CXSETTL = OUTREC.OBBIZID
+     C                   EVAL      CTXDS.CXACTION = 'DELIVERY'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   EVAL      CTXDS.CXACTION = 'DELIVERY'
+     C                   CALL      'ORDREPLY'
+     C                   PARM                    CTXDS
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MREPLYABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      HASCHANGE = *on
+     C                   ENDSR
+
+
+
+     C     MRECCHK       BEGSR
+     C                   IF        not ( HDRDS.IHACTOR <> *blanks and
+     C                             HDRDS.IHREASON <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVERY_ACTOR_REASON'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( not RECOVERING )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NESTED_RECOVERY_FORBIDDEN'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MRECROUTE     BEGSR
+     C                   SELECT
+     C                   WHEN      HDRDS.IHACTION = 'LOCAL'
+     C                   EXSR      MLOCAL
+     C                   WHEN      HDRDS.IHACTION = 'RETRY'
+     C                   EXSR      MRETRY
+     C                   WHEN      HDRDS.IHACTION = 'VERIFY'
+     C                   EXSR      MVERIFY
+     C                   WHEN      HDRDS.IHACTION = 'REPLY'
+     C                   EXSR      MREPLY
+     C                   OTHER
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVERY_ACTION'
+     C                   LEAVESR
+     C                   ENDSL
+     C                   ENDSR
+
+
+
+
+     C     MLOCAL        BEGSR
+     C                   EVAL      KRQSRC = HDRDS.IHREFSRC
+     C                   EVAL      KRQREQ = HDRDS.IHREFREQ
+     C     KREQ          CHAIN     REQPF         RQREC
+     C                   IF        not ( %found(REQPF) )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'ORIGINAL_REQUEST_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RQREC.RQSTATE = 'RETRY' and
+     C                             RQREC.RQEVENT <> 'RECOVER' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'LOCAL_RECOVERY_NOT_ELIGIBLE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ORIGRQ = RQREC
+     C                   EVAL      RECFOUND = *on
+     C                   EVAL      RECCTX = CTXDS
+     C                   EVAL      RECHDR = HDRDS
+     C                   EVAL      RECRAW = RAWROWS
+     C                   EVAL      RECCHK = CHKHEAD
+     C                   EVAL      RESTCOUNT = ROWCOUNT
+     C                   EVAL      RECOVERING = *on
+     C                   MONITOR
+     C                   EVAL      KIHBATCH = ORIGRQ.RQBATCH
+     C                   EVAL      KIHSEQ = ORIGRQ.RQINPUT
+     C     KINHDR        CHAIN     INHDRPF       IHREC
+     C                   IF        not %found(INHDRPF)
+     C                   EVAL      RESDS.RSRC = RCDATA
+     C                   EVAL      RESDS.RSREASON = 'ORIGINAL_INPUT_MISSING'
+     C                   ELSE
+     C                   EVAL      HDRDS = IHREC
+     C                   EVAL      INPUTBATCH = ORIGRQ.RQBATCH
+     C                   EXSR      MREADROWS
+     C                   IF        RESDS.RSRC < RCREJECT
+     C                   EXSR      MCONTEXT
+     C                   EVAL      CTXDS.CXACTOR = RECCTX.CXACTOR
+     C                   EVAL      CTXDS.CXREASON = RECCTX.CXREASON
+     C                   EVAL      CTXDS.CXPROCDAY = RUNDAY
+     C                   EXSR      MRECANON
+     C                   IF        RESDS.RSRC < RCREJECT
+     C                   EXSR      MENVELOPE
+     C                   ENDIF
+     C                   IF        RESDS.RSRC < RCREJECT
+     C                   EXSR      MDISPATCH
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDIF
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = RCLOCAL
+     C                   EVAL      RESDS.RSREASON = 'RECOVERY_IO_OR_CONVERSION'
+     C                   ENDMON
+     C                   EVAL      BUSCTX = CTXDS
+     C                   EVAL      RECOVERYRC = RESDS.RSRC
+     C                   EVAL      RECOVERYREASON = RESDS.RSREASON
+     C                   EVAL      CTXDS = RECCTX
+     C                   EVAL      HDRDS = RECHDR
+     C                   EVAL      RAWROWS = RECRAW
+     C                   EVAL      CHKHEAD = RECCHK
+     C                   EVAL      ROWCOUNT = RESTCOUNT
+     C                   EVAL      INPUTBATCH = RUNBATCH
+     C                   EVAL      RECOVERING = *off
+     C                   EVAL      CTXDS.CXORDER = BUSCTX.CXORDER
+     C                   EVAL      CTXDS.CXSHIP = BUSCTX.CXSHIP
+     C                   EVAL      CTXDS.CXRETURN = BUSCTX.CXRETURN
+     C                   EVAL      CTXDS.CXSETTL = BUSCTX.CXSETTL
+     C                   EVAL      RESDS.RSRC = RECOVERYRC
+     C                   EVAL      RESDS.RSREASON = RECOVERYREASON
+     C                   ENDSR
+
+
+     C     MRECANON      BEGSR
+     C                   EVAL      CTXDS.CXACTION = 'CANON'
+     C                   CALL      'ORDCHECK'
+     C                   PARM                    CTXDS
+     C                   PARM                    HDRDS
+     C                   PARM                    RAWROWS
+     C                   PARM                    CHKHEAD
+     C                   PARM                    NORMROWS
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MCHECKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( CHKHEAD.CHLEN = ORIGRQ.RQCANLEN and
+     C                             CHKHEAD.CHCANON = ORIGRQ.RQCANON )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ORIGINAL_INPUT_CONTENT_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MRETRY        BEGSR
+     C                   EVAL      CTXDS.CXMSG = *blanks
+     C                   EVAL      CTXDS.CXACTION = 'FETCH'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SESTATE = 'FAIL' and
+     C                             SETHEAD.SERETRY = 'Y' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RETRY_NOT_PERMITTED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXORDER = SETHEAD.SEORDER
+     C                   EVAL      CTXDS.CXSHIP = SETHEAD.SESHIP
+     C                   EVAL      CTXDS.CXRETURN = SETHEAD.SERETURN
+     C                   EXSR      MNEXTMSG
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXACTION = 'RETRY'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      BUSRC = RCWAIT
+     C                   EVAL      BUSREASON = 'SETTLEMENT_RETRY_PENDING'
+     C                   ENDSR
+
+
+
+     C     MVERIFY       BEGSR
+     C                   EVAL      CTXDS.CXMSG = *blanks
+     C                   EVAL      CTXDS.CXACTION = 'FETCH'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SESTATE = 'UNKNOWN' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'VERIFY_NOT_PERMITTED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXORDER = SETHEAD.SEORDER
+     C                   EVAL      CTXDS.CXSHIP = SETHEAD.SESHIP
+     C                   EVAL      CTXDS.CXRETURN = SETHEAD.SERETURN
+     C                   EXSR      MNEXTMSG
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXACTION = 'VERIFY'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      BUSRC = RCWAIT
+     C                   EVAL      BUSREASON = 'VERIFICATION_PENDING'
+     C                   ENDSR
+
+
+
+     C     MREPLY        BEGSR
+     C                   EVAL      CTXDS.CXACTION = 'RESEND'
+     C                   CALL      'ORDREPLY'
+     C                   PARM                    CTXDS
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MREPLYABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXORDER = OUTREC.OBORDER
+     C                   EVAL      BUSRC = RESDS.RSRC
+     C                   EVAL      BUSREASON = 'RECEIPT_RESEND_REGISTERED'
+     C                   ENDSR
+
+
+
+
+     C     MQUERY        BEGSR
+     C                   EVAL      BUSCTX = CTXDS
+     C                   EVAL      ORIGEVENT = CTXDS.CXEVENT
+     C                   IF        DUPLICATE
+     C                   EVAL      ORIGEVENT = RQKEEP.RQEVENT
+     C                   ELSE
+     C                   IF        HDRDS.IHREFSRC <> *blanks and HDRDS.IHREFREQ
+     C                             <> *blanks
+     C                   EVAL      KRQSRC = HDRDS.IHREFSRC
+     C                   EVAL      KRQREQ = HDRDS.IHREFREQ
+     C     KREQ          CHAIN(N)  REQPF         RQREC
+     C                   IF        not ( %found(REQPF) )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_REQUEST_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      RQKEEP = RQREC
+     C                   EVAL      CTXDS.CXORDER = RQREC.RQORDER
+     C                   EVAL      CTXDS.CXSHIP = RQREC.RQSHIP
+     C                   EVAL      CTXDS.CXRETURN = RQREC.RQRETURN
+     C                   EVAL      CTXDS.CXSETTL = RQREC.RQSETTL
+     C                   EVAL      ORIGEVENT = RQREC.RQEVENT
+     C                   EVAL      OLDMSG = RQREC.RQMSG
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        ORIGEVENT = 'DAYEND'
+     C                   EVAL      CTXDS.CXSRC = RQKEEP.RQSRC
+     C                   EVAL      CTXDS.CXREQ = RQKEEP.RQREQ
+     C                   EVAL      CTXDS.CXDAY = RQKEEP.RQDAY
+     C                   EVAL      CTXDS.CXACTION = 'FETCH'
+     C                   CALL      'ORDDAILY'
+     C                   PARM                    CTXDS
+     C                   PARM                    DAYHEAD
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MDAILYABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS = BUSCTX
+     C                   EXSR      PDAYHEAD
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        CTXDS.CXORDER <> *blanks
+     C                   EVAL      KOHORDER = CTXDS.CXORDER
+     C     KORDH         CHAIN(N)  ORDHDRPF      OHREC
+     C                   IF        not %found(ORDHDRPF)
+     C                   IF        not ( RQKEEP.RQSTATE = 'REJECT' or
+     C                             RQKEEP.RQSTATE = 'RETRY' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_ORDER_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   EVAL      CTXDS.CXEVENT = 'QUERY'
+     C                   EXSR      MORDER
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   EVAL      CTXDS = BUSCTX
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXEVENT = ORIGEVENT
+     C                   EVAL      OHREC = ORDERKEEP
+     C                   EXSR      PORDHDR
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   FOR       I = 1 to ORDCNT
+     C                   EVAL      ODREC = ORDLINES(I)
+     C                   EXSR      PORDDTL
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   EVAL      CTXDS.CXCOUNT = 0
+     C                   EVAL      CTXDS.CXACTION = 'VIEW'
+     C                   CALL      'ORDSTOCK'
+     C                   PARM                    CTXDS
+     C                   PARM                    STKIN
+     C                   PARM                    STKOLD
+     C                   PARM                    STKNEW
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSTOCKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      PSTOCKVIEW
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MQUERYSHIP
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MQUERYRETURN
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MQUERYSETTL
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDIF
+     C                   EXSR      MQUERYAUDIT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXEVENT = BUSCTX.CXEVENT
+     C                   EVAL      CTXDS.CXDAY = BUSCTX.CXDAY
+     C                   EVAL      CTXDS.CXSRC = BUSCTX.CXSRC
+     C                   EVAL      CTXDS.CXREQ = BUSCTX.CXREQ
+     C                   EVAL      CTXDS.CXMSG = BUSCTX.CXMSG
+     C                   ENDSR
+
+
+
+     C     MQUERYSHIP    BEGSR
+     C     *LOVAL        SETLL     SHIPHDPF
+     C                   READ      SHIPHDPF      SHREC
+     C                   DOW       not %eof(SHIPHDPF)
+     C                   IF        SHREC.SHORDER = CTXDS.CXORDER
+     C                   EVAL      SHIPKEY = SHREC.SHSHIP
+     C                   EXSR      PSHIPH
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KSDSHIP = SHIPKEY
+     C     KSHIPD1       SETLL     SHIPDTPF
+     C                   EVAL      KSDSHIP = SHIPKEY
+     C     KSHIPD1       READE     SHIPDTPF      SDREC
+     C                   DOW       not %eof(SHIPDTPF)
+     C                   EXSR      PSHIPD
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KSDSHIP = SHIPKEY
+     C     KSHIPD1       READE     SHIPDTPF      SDREC
+     C                   ENDDO
+     C                   ENDIF
+     C                   READ      SHIPHDPF      SHREC
+     C                   ENDDO
+     C                   ENDSR
+
+
+
+     C     MQUERYRETURN  BEGSR
+     C     *LOVAL        SETLL     RTNHDRPF
+     C                   READ      RTNHDRPF      RHREC
+     C                   DOW       not %eof(RTNHDRPF)
+<<<END_FILE>>>

@@ -1,0 +1,535 @@
+PART 001 OF 032
+<<<FILE README.md LINES 1-18>>>
+# 多仓订单处理静态分析样本
+
+材料版本：RPGFLOW-1.0。
+
+这是完全虚构的订单处理样本，提供 RPGLE、CLLE、DDS、COPY 以及两份必要的外部背景。只进行静态阅读；没有编译或运行记录，也没有实际交易数据。
+
+## 材料
+
+- [操作及系统背景](context/operations-and-systems.md)：代码之外的角色、处理时点及系统边界。
+- [接口阅读说明](context/interfaces.md)：输入／输出载体、源码成员引用及日期／字符表示。
+- `src/QRPGLESRC/`：RPGLE 程序和共享 COPY。
+- `src/QCLLESRC/`：CL 驱动。
+- `src/QDDSSRC/`：物理文件和逻辑文件 DDS。
+- `manifest.json`：文件集合、校验值及源码行数。
+
+请按统一任务提示词输出四类 Flow。源码结论需要文件名和物理行号；外部背景需要注明文档小节。没有证据的事项标为未知；背景中的角色或时点不能说成是从代码推导出来的。
+
+文件中的空行也计入物理行号。RPGLE 保留固定列；不要因展示换行、去空格或 COPY 展开而重新编号。COPY 的引用使用源码容器／成员名，扩展名用于磁盘文件识别。
+<<<END_FILE>>>
+<<<FILE context/operations-and-systems.md LINES 1-32>>>
+# 操作及系统背景
+
+以下均为题目提供的虚构外部背景，只补充源码没有实现的现实交互。
+
+## 1. 角色
+
+| 角色 | 外部职责 |
+| --- | --- |
+| 客服 | 通过接入端提出订单办理、变更、取消、退货或查询请求，查看回复。 |
+| 仓库人员 | 通过仓储端提出分配和实际发货／实物退回相关请求，查看仓储处理结果。 |
+| 结算人员 | 通过结算对端提供处理结果，参与异常核实和人工恢复。 |
+| 日终操作员 | 通过调度端指定批次及处理日，发起日终工作，查看报表及待处理事项。 |
+
+角色名称只代表业务参与方。没有提供实际登录、权限校验、交互界面或人员组织的实现。
+
+## 2. 时点
+
+日间请求按事件交给接入端。虚构运营约定采用连续自然日，18:00 是接单截点：首次在 18:00 及之后到达的请求由接入端归入下一处理日；重送保留原请求处理日。日终操作员在截点后组织日终工作。
+
+分日及角色安排是外部背景，接入端实现未提供。核心收到显式处理日及批次参数；它如何校验、保留或使用这些值，应从源码判断。没有提供节假日、时区转换或定时调度配置。
+
+## 3. 系统边界
+
+| 外部参与端 | 已知边界 |
+| --- | --- |
+| 订单接入端 | 把外部请求组织成输入头／明细载体，接收业务回复。 |
+| 核心处理端 | 提供本题所含 CL、RPGLE、DDS 和 COPY。 |
+| 仓储端 | 提供仓储业务请求及基础资料，接收仓储相关输出。 |
+| 结算端 | 接收结算相关请求，提供业务结果或核实结果。 |
+| 报表／调度端 | 组织批次及日终工作，消费报表载体。 |
+
+外部端没有随题提供程序。对接使用哪一种网络协议、消息代理、数据库同步机制或产品，均未知。文件中的出站记录不应直接解释成已经真实发送的网络请求。请从代码定位实际入口、出口、载体及内部调用，再与这些外部角色连接。
+<<<END_FILE>>>
+<<<FILE context/interfaces.md LINES 1-38>>>
+# 接口阅读说明
+
+## 1. 输入与输出载体
+
+接入端的原始输入保存为 INHDRPF（头）与 INDTLPF（明细）。批次参数通过 ORDRUN 的入口传入；参数位置和字段类型请直接读取 CL、RPGLE 和 DDS。
+
+出站信息保存在 OUTBOXPF，报表载体为 DAYRPTPF。如何形成、更新、读取这些载体，以及消息和业务状态的关系，需要根据源码分析。未提供外部发送器、反馈接收器或报表展示程序。
+
+## 2. 外部字段含义
+
+| 输入字段 | 传入语义 |
+| --- | --- |
+| IHBATCH / IHSEQ | 输入信封的批次及序号 |
+| IHSRC / IHREQ | 业务请求的来源及标识 |
+| IHEVENT | 请求的事件名称；具体允许值从源码读取 |
+| IHDAY | 请求显式指定的处理日 |
+| IHARRDAY / IHARRTIME | 接入端记录的到达日期／时刻 |
+| IHORDER / IHVERSION | 请求关联的订单及期望版本 |
+| IHSHIP / IHRETURN / IHSETTL / IHMSG | 请求关联的发货、退货、结算或消息身份 |
+| IHACTION / IHREFSRC / IHREFREQ | 请求动作及其原请求关联 |
+| IHACTOR / IHREASON | 传入的操作人及原因 |
+| IHNLINE | 传入的明细行数 |
+| IDLINE / IDITEM / IDQTY / IDWH | 业务行号、商品、数量和仓库载体字段 |
+| IDSHIP / IDSHLINE | 明细中的原发货及原发货行关联 |
+
+这些说明不规定每个事件的必填组合、校验顺序或状态迁移。应以实际代码为依据，不把字段名称当成行为保证。
+
+## 3. 日期、反馈及编码
+
+日期以 YYYYMMDD 字符传入；数量、行号等输入字符的解析行为见代码。字段宽度、小数位、键、记录格式及共享参数布局由 DDS 与 COPY 给出。
+
+外部 SETRES 类反馈里的普通 FAIL 表示对端明确报告该次业务未生效；UNKNOWN 表示尚不能确认，RETRYOK 表示核实后报告可以再次尝试。这是提供方的语义约定，核心对不同已有状态、消息身份及尝试号如何处理仍需读源码。DELIVER 是另一类送达反馈；不能仅凭相同的 OK/FAIL 文字假定两类事件有相同行为。
+
+字符样本使用所给 DDS 的单字节字符设置；本题没有真实币种、汇率或对外支付协议。金额用于合成场景的计量。
+
+## 4. 阅读边界
+
+本题只有静态文本，没有实际 PF/LF 对象、日志配置、库列表、作业状态或交易记录。可以解释代码所表达的条件和写入路径；不能据此声称已验证编译、实际发送、持久化、锁或恢复效果。
+<<<END_FILE>>>
+<<<FILE src/QRPGLESRC/ORDCTX.rpgleinc LINES 1-127>>>
+
+      /IF DEFINED(U_CTXDS)
+     DCTXDS            DS                  QUALIFIED
+     DCXABI                           4A
+     DCXBATCH                        20A
+     DCXINPUT                         9P 0
+     DCXDAY                           8A
+     DCXPROCDAY                       8A
+     DCXSRC                          12A
+     DCXREQ                          20A
+     DCXEVENT                         8A
+     DCXACTION                        8A
+     DCXORDER                        20A
+     DCXVERSION                       9P 0
+     DCXACTOR                        20A
+     DCXREASON                      120A
+     DCXSHIP                         20A
+     DCXRETURN                       20A
+     DCXSETTL                        48A
+     DCXMSG                          80A
+     DCXPART                          1A
+     DCXTIER                          1A
+     DCXCOUNT                         5P 0
+     DCXOUTSEQ                        5P 0
+     DCXEXPECT                        8A
+     DCXATTEMPT                       9P 0
+     DCXFEED                          8A
+      /ENDIF
+
+      /IF DEFINED(U_HDRDS)
+     DHDRDS            DS                  QUALIFIED
+     DIHBATCH                        20A
+     DIHSEQ                           9P 0
+     DIHSRC                          12A
+     DIHREQ                          20A
+     DIHEVENT                         8A
+     DIHDAY                           8A
+     DIHARRDAY                        8A
+     DIHARRTIME                       6A
+     DIHORDER                        20A
+     DIHVERSION                       9A
+     DIHCUST                         12A
+     DIHPART                          1A
+     DIHSHIP                         20A
+     DIHRETURN                       20A
+     DIHSETTL                        48A
+     DIHMSG                          80A
+     DIHRESULT                        8A
+     DIHACTION                        8A
+     DIHREFSRC                       12A
+     DIHREFREQ                       20A
+     DIHACTOR                        20A
+     DIHREASON                      120A
+     DIHNLINE                         5A
+      /ENDIF
+
+      /IF DEFINED(U_RAWROWS)
+     DRAWROWS          DS                  QUALIFIED
+     D                                     DIM(100)
+     DIDBATCH                        20A
+     DIDINPUT                         9P 0
+     DIDPOS                           5P 0
+     DIDLINE                          5A
+     DIDITEM                         12A
+     DIDQTY                          12A
+     DIDWH                            1A
+     DIDSHIP                         20A
+     DIDSHLINE                        5A
+      /ENDIF
+
+      /IF DEFINED(U_PRIN)
+     DPRIN             DS                  QUALIFIED
+     D                                     DIM(100)
+     DPIGROUP                        48A
+     DPILINE                          5P 0
+     DPIITEM                         12A
+     DPIQTY                           9P 0
+     DPIBASEQTY                       9P 0
+     DPIPRIORQ                        9P 0
+     DPIBASEAMT                      15P 2
+     DPIPRIORA                       15P 2
+      /ENDIF
+
+      /IF DEFINED(U_STKIN)
+     DSTKIN            DS                  QUALIFIED
+     D                                     DIM(100)
+     DSILINE                          5P 0
+     DSIITEM                         12A
+     DSIWH                            1A
+     DSIQTY                           9P 0
+     DSIREMAIN                        9P 0
+      /ENDIF
+
+      /IF DEFINED(U_SETHEAD)
+     DSETHEAD          DS                  QUALIFIED
+     DSEID                           48A
+     DSEKIND                          1A
+     DSESHIP                         20A
+     DSERETURN                       20A
+     DSEORIG                         48A
+     DSEORDER                        20A
+     DSECREATED                       8A
+     DSESTATE                         8A
+     DSEAMOUNT                       15P 2
+     DSEFIRSTDAY                      8A
+     DSEATTEMPT                       9P 0
+     DSELASTMSG                      80A
+     DSENLINE                         5P 0
+     DSERETRY                         1A
+     DSEREASON                      120A
+      /ENDIF
+
+      /IF DEFINED(U_SETROWS)
+     DSETROWS          DS                  QUALIFIED
+     D                                     DIM(100)
+     DSLSETTL                        48A
+     DSLLINE                          5P 0
+     DSLSHIP                         20A
+     DSLSHLINE                        5P 0
+     DSLRETURN                       20A
+     DSLRTLINE                        5P 0
+     DSLORDER                        20A
+     DSLORDLINE                       5P 0
+     DSLQTY                           9P 0
+     DSLAMOUNT                       15P 2
+      /ENDIF
+
+<<<END_FILE>>>
+<<<FILE src/QRPGLESRC/ORDRES.rpgleinc LINES 1-129>>>
+
+      /IF DEFINED(U_RESDS)
+     DRESDS            DS                  QUALIFIED
+     DRSRC                            4A
+     DRSREASON                      120A
+     DRSINDEX                         5P 0
+     DRSCOUNT                         5P 0
+     DRSAMOUNT                       19P 2
+     DRSSTATE                         8A
+     DRSVERSION                       9P 0
+      /ENDIF
+
+      /IF DEFINED(U_CHKHEAD)
+     DCHKHEAD          DS                  QUALIFIED
+     DCHVERSION                       9P 0
+     DCHTIER                          1A
+     DCHCOUNT                         5P 0
+     DCHLEN                           9P 0
+     DCHCANON                     24000A
+      /ENDIF
+
+      /IF DEFINED(U_NORMROWS)
+     DNORMROWS         DS                  QUALIFIED
+     D                                     DIM(100)
+     DNRLINE                          5P 0
+     DNRITEM                         12A
+     DNRQTY                           9P 0
+     DNRWH                            1A
+     DNRSHIP                         20A
+     DNRSHLINE                        5P 0
+      /ENDIF
+
+      /IF DEFINED(U_PROUT)
+     DPROUT            DS                  QUALIFIED
+     D                                     DIM(100)
+     DPOLINE                          5P 0
+     DPOUNIT                         11P 4
+     DPORATE                          5P 4
+     DPOAMOUNT                       15P 2
+     DPOCUMQTY                        9P 0
+     DPOCUMAMT                       15P 2
+      /ENDIF
+
+      /IF DEFINED(U_STKOLD)
+     DSTKOLD           DS                  QUALIFIED
+     D                                     DIM(300)
+     DSPLINE                          5P 0
+     DSPITEM                         12A
+     DSPWH                            1A
+     DSPONHAND                        9P 0
+     DSPRESVD                         9P 0
+     DSPONDELTA                       9P 0
+     DSPRSDELTA                       9P 0
+     DSPOLDITEM                      12A
+     DSPOLDRES                        9P 0
+     DSPOLDSHIP                       9P 0
+     DSPOLDREL                        9P 0
+     DSPNEWRES                        9P 0
+     DSPNEWSHIP                       9P 0
+     DSPNEWREL                        9P 0
+     DSPUSE                           1A
+      /ENDIF
+
+      /IF DEFINED(U_STKNEW)
+     DSTKNEW           DS                  QUALIFIED
+     D                                     DIM(300)
+     DSPLINE                          5P 0
+     DSPITEM                         12A
+     DSPWH                            1A
+     DSPONHAND                        9P 0
+     DSPRESVD                         9P 0
+     DSPONDELTA                       9P 0
+     DSPRSDELTA                       9P 0
+     DSPOLDITEM                      12A
+     DSPOLDRES                        9P 0
+     DSPOLDSHIP                       9P 0
+     DSPOLDREL                        9P 0
+     DSPNEWRES                        9P 0
+     DSPNEWSHIP                       9P 0
+     DSPNEWREL                        9P 0
+     DSPUSE                           1A
+      /ENDIF
+
+      /IF DEFINED(U_SETVIEW)
+     DSETVIEW          DS                  QUALIFIED
+     D                                     DIM(100)
+     DSVSHLINE                        5P 0
+     DSVSUCCQTY                       9P 0
+     DSVSUCCAMT                      15P 2
+     DSVPENDING                       1A
+      /ENDIF
+
+      /IF DEFINED(U_OUTREC)
+     DOUTREC           DS                  QUALIFIED
+     DOBID                           80A
+     DOBKIND                          8A
+     DOBBIZID                        48A
+     DOBSRC                          12A
+     DOBREQ                          20A
+     DOBBATCH                        20A
+     DOBINPUT                         9P 0
+     DOBORDER                        20A
+     DOBSTATE                         8A
+     DOBRESULT                        8A
+     DOBRESDAY                        8A
+     DOBATTEMPT                       9P 0
+     DOBDAY                           8A
+     DOBLEN                           9P 0
+     DOBPAYLOAD                   30000A
+     DOBREASON                      120A
+      /ENDIF
+
+      /IF DEFINED(U_DAYHEAD)
+     DDAYHEAD          DS                  QUALIFIED
+     DDYDAY                           8A
+     DDYSNAP                         40A
+     DDYLINE                          9P 0
+     DDYKIND                          8A
+     DDYSTATE                         8A
+     DDYSETTL                        48A
+     DDYSRC                          12A
+     DDYREQ                          20A
+     DDYAMOUNT                       19P 2
+     DDYPOS                          19P 2
+     DDYNEG                          19P 2
+     DDYCOUNT                         9P 0
+     DDYRC                            4A
+      /ENDIF
+
+<<<END_FILE>>>
+<<<FILE src/QRPGLESRC/ORDSTS.rpgleinc LINES 1-10>>>
+
+     DRCOK             C                   CONST('0000')
+     DRCWAIT           C                   CONST('0010')
+     DRCDUP            C                   CONST('0020')
+     DRCREJECT         C                   CONST('1000')
+     DRCCONFLICT       C                   CONST('1100')
+     DRCDATA           C                   CONST('2000')
+     DRCLOCAL          C                   CONST('3000')
+     DRCSTOP           C                   CONST('9000')
+     DABI              C                   CONST('0001')
+<<<END_FILE>>>
+<<<FILE src/QDDSSRC/ALLOCPF.dds LINES 1-21>>>
+
+
+     A                                      UNIQUE
+     A          R ALLOCR
+     A            ALORDER       20A         CCSID(37)
+     A                                      TEXT('ALORDER')
+     A            ALLINE         5P 0
+     A                                      TEXT('ALLINE')
+     A            ALWH           1A         CCSID(37)
+     A                                      TEXT('ALWH')
+     A            ALITEM        12A         CCSID(37)
+     A                                      TEXT('ALITEM')
+     A            ALRESVD        9P 0
+     A                                      TEXT('ALRESVD')
+     A            ALSHIPPED      9P 0
+     A                                      TEXT('ALSHIPPED')
+     A            ALRELEASE      9P 0
+     A                                      TEXT('ALRELEASE')
+     A          K ALORDER
+     A          K ALLINE
+     A          K ALWH
+<<<END_FILE>>>
+<<<FILE src/QDDSSRC/AUDITPF.dds LINES 1-41>>>
+
+
+     A                                      UNIQUE
+     A          R AUDITR
+     A            AUID          64A         CCSID(37)
+     A                                      TEXT('AUID')
+     A            AUBATCH       20A         CCSID(37)
+     A                                      TEXT('AUBATCH')
+     A            AUINPUT        9P 0
+     A                                      TEXT('AUINPUT')
+     A            AUSRC         12A         CCSID(37)
+     A                                      TEXT('AUSRC')
+     A            AUREQ         20A         CCSID(37)
+     A                                      TEXT('AUREQ')
+     A            AUDAY          8A         CCSID(37)
+     A                                      TEXT('AUDAY')
+     A            AUEVENT        8A         CCSID(37)
+     A                                      TEXT('AUEVENT')
+     A            AUORDER       20A         CCSID(37)
+     A                                      TEXT('AUORDER')
+     A            AUSHIP        20A         CCSID(37)
+     A                                      TEXT('AUSHIP')
+     A            AURETURN      20A         CCSID(37)
+     A                                      TEXT('AURETURN')
+     A            AUSETTL       48A         CCSID(37)
+     A                                      TEXT('AUSETTL')
+     A            AUMSG         80A         CCSID(37)
+     A                                      TEXT('AUMSG')
+     A            AUACTOR       20A         CCSID(37)
+     A                                      TEXT('AUACTOR')
+     A            AUREASON     120A         CCSID(37)
+     A                                      TEXT('AUREASON')
+     A            AURC           4A         CCSID(37)
+     A                                      TEXT('AURC')
+     A            AUBEFORE       8A         CCSID(37)
+     A                                      TEXT('AUBEFORE')
+     A            AUAFTER        8A         CCSID(37)
+     A                                      TEXT('AUAFTER')
+     A            AUDETAIL   24000A         CCSID(37)
+     A                                      TEXT('AUDETAIL')
+     A          K AUID
+<<<END_FILE>>>
+<<<FILE src/QDDSSRC/BATCHPF.dds LINES 1-25>>>
+
+
+     A                                      UNIQUE
+     A          R BATCHR
+     A            BTID          20A         CCSID(37)
+     A                                      TEXT('BTID')
+     A            BTDAY          8A         CCSID(37)
+     A                                      TEXT('BTDAY')
+     A            BTSTATE        8A         CCSID(37)
+     A                                      TEXT('BTSTATE')
+     A            BTLAST         9P 0
+     A                                      TEXT('BTLAST')
+     A            BTCOUNT        9P 0
+     A                                      TEXT('BTCOUNT')
+     A            BTACCEPT       9P 0
+     A                                      TEXT('BTACCEPT')
+     A            BTREJECT       9P 0
+     A                                      TEXT('BTREJECT')
+     A            BTWAIT         9P 0
+     A                                      TEXT('BTWAIT')
+     A            BTACTOR       20A         CCSID(37)
+     A                                      TEXT('BTACTOR')
+     A            BTRC           4A         CCSID(37)
+     A                                      TEXT('BTRC')
+     A          K BTID
+<<<END_FILE>>>
+<<<FILE src/QDDSSRC/CUSTPF.dds LINES 1-11>>>
+
+
+     A                                      UNIQUE
+     A          R CUSTR
+     A            CUID          12A         CCSID(37)
+     A                                      TEXT('CUID')
+     A            CUACTIVE       1A         CCSID(37)
+     A                                      TEXT('CUACTIVE')
+     A            CUTIER         1A         CCSID(37)
+     A                                      TEXT('CUTIER')
+     A          K CUID
+<<<END_FILE>>>
+<<<FILE src/QDDSSRC/DAYRPTPF.dds LINES 1-33>>>
+
+
+     A                                      UNIQUE
+     A          R DAYRPTR
+     A            DYDAY          8A         CCSID(37)
+     A                                      TEXT('DYDAY')
+     A            DYSNAP        40A         CCSID(37)
+     A                                      TEXT('DYSNAP')
+     A            DYLINE         9P 0
+     A                                      TEXT('DYLINE')
+     A            DYKIND         8A         CCSID(37)
+     A                                      TEXT('DYKIND')
+     A            DYSTATE        8A         CCSID(37)
+     A                                      TEXT('DYSTATE')
+     A            DYSETTL       48A         CCSID(37)
+     A                                      TEXT('DYSETTL')
+     A            DYSRC         12A         CCSID(37)
+     A                                      TEXT('DYSRC')
+     A            DYREQ         20A         CCSID(37)
+     A                                      TEXT('DYREQ')
+     A            DYAMOUNT      19P 2
+     A                                      TEXT('DYAMOUNT')
+     A            DYPOS         19P 2
+     A                                      TEXT('DYPOS')
+     A            DYNEG         19P 2
+     A                                      TEXT('DYNEG')
+     A            DYCOUNT        9P 0
+     A                                      TEXT('DYCOUNT')
+     A            DYRC           4A         CCSID(37)
+     A                                      TEXT('DYRC')
+     A          K DYDAY
+     A          K DYSNAP
+     A          K DYLINE
+<<<END_FILE>>>
+<<<FILE src/QDDSSRC/INDTLPF.dds LINES 1-25>>>
+
+
+     A                                      UNIQUE
+     A          R INDTLR
+     A            IDBATCH       20A         CCSID(37)
+     A                                      TEXT('IDBATCH')
+     A            IDINPUT        9P 0
+     A                                      TEXT('IDINPUT')
+     A            IDPOS          5P 0
+     A                                      TEXT('IDPOS')
+     A            IDLINE         5A         CCSID(37)
+     A                                      TEXT('IDLINE')
+     A            IDITEM        12A         CCSID(37)
+     A                                      TEXT('IDITEM')
+     A            IDQTY         12A         CCSID(37)
+     A                                      TEXT('IDQTY')
+     A            IDWH           1A         CCSID(37)
+     A                                      TEXT('IDWH')
+     A            IDSHIP        20A         CCSID(37)
+     A                                      TEXT('IDSHIP')
+     A            IDSHLINE       5A         CCSID(37)
+     A                                      TEXT('IDSHLINE')
+     A          K IDBATCH
+     A          K IDINPUT
+     A          K IDPOS
+<<<END_FILE>>>

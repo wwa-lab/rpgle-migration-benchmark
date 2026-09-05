@@ -1,0 +1,9 @@
+source_type=PRTF
+type=happy
+# PRTF with edit codes — EDTCDE(1) for packed, EDTCDE(Y) for date
+must_contain=EDTCDE(1)
+must_contain=EDTCDE(Y)
+must_contain=AMOUNT
+must_contain=RPTDTE
+must_contain=R EDTDTL
+must_contain=PAGESIZE(66 132)

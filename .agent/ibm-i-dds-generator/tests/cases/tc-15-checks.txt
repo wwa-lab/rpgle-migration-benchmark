@@ -1,0 +1,9 @@
+source_type=LF
+type=happy
+# LF with select/omit — active customers only
+must_contain=PFILE(CUSTMAST)
+must_contain=R CUSTR
+must_contain=K CUSTNM
+must_contain=COMP(EQ 'A')
+must_contain=S ACTSTS
+must_not_contain=UNIQUE

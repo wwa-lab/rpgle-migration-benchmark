@@ -1,0 +1,11 @@
+source_type=PF
+type=happy
+must_contain=TEXT('CCSID test file')
+must_contain=R CCSR
+must_contain=JPNAME
+must_contain=USNAME
+must_contain=CCSID(5035)
+must_contain=CCSID(37)
+must_contain=COLHDG('JP' 'NAME')
+must_contain=COLHDG('US' 'NAME')
+field_count=2

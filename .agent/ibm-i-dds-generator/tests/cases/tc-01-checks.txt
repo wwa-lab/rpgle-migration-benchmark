@@ -1,0 +1,28 @@
+source_type=PF
+type=happy
+# Structural checks — each line is a grep pattern that MUST match in output
+# File description: may appear as TEXT() or A* comment — check for the text content
+must_contain=Customer master
+must_contain=R CUSTR
+must_contain=CUSTID
+must_contain=CUSTNM
+must_contain=ADDR1
+must_contain=ADDR2
+must_contain=CITY
+must_contain=STATE
+must_contain=ZIPCD
+must_contain=CRLMT
+must_contain=ACTSTS
+must_contain=LSTUPD
+must_contain=ALWNULL
+must_contain=EDTCDE(1)
+must_contain=DFT(0)
+must_contain=DFT('A')
+must_contain=K CUSTID
+must_contain=UNIQUE
+must_contain=COLHDG('CUS' 'ID')
+must_contain=COLHDG('LAST' 'UPDATE')
+# Date field L must not have a length number directly before the L
+must_not_contain=10L
+# Exactly 10 field definition lines
+field_count=10

@@ -1,0 +1,17 @@
+source_type=PF
+type=happy
+must_contain=TEXT('Keyword stacking test')
+must_contain=R KWDR
+must_contain=NOTES
+must_contain=50A
+must_contain=AMT
+# Whitespace-tolerant: check type and decimals separately
+must_contain=9P
+must_contain=ALWNULL
+must_contain=DFT('N/A')
+must_contain=CCSID(37)
+must_contain=EDTCDE(1)
+must_contain=DFT(0)
+must_contain=COLHDG('GEN' 'NOTES')
+must_contain=COLHDG('AMT')
+field_count=2

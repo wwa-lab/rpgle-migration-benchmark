@@ -1,0 +1,423 @@
+PART 019 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 7601-8020>>>
+     C                   IF        not ( STKOLD(X).SPITEM <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_ITEM'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPWH = 'A' or STKOLD(X).SPWH
+     C                             = 'B' or STKOLD(X).SPWH = 'C' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_WAREHOUSE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPONHAND >= STKOLD(X).SPRESVD
+     C                             and STKOLD(X).SPRESVD >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_STOCK_SNAPSHOT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPOLDRES >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_SPOLDRES'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPOLDSHIP >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_SPOLDSHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPOLDREL >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_SPOLDREL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPNEWRES >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_SPNEWRES'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPNEWSHIP >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_SPNEWSHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPNEWREL >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_SPNEWREL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        CTXDS.CXEVENT <> 'MOD' and CTXDS.CXEVENT <>
+     C                             'RETURN'
+     C                   IF        not ( STKOLD(X).SPOLDITEM = *blanks or
+     C                             STKOLD(X).SPOLDITEM = STKOLD(X).SPITEM )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_ITEM_SNAPSHOT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        CTXDS.CXACTION = 'VIEW'
+     C                   IF        not ( STKOLD(X).SPONDELTA = 0 and
+     C                             STKOLD(X).SPRSDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_READONLY_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPNEWRES = STKOLD(X).SPOLDRES
+     C                             and STKOLD(X).SPNEWSHIP = STKOLD(X).SPOLDSHIP
+     C                             and STKOLD(X).SPNEWREL = STKOLD(X).SPOLDREL )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_READONLY_ALLOCATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   SELECT
+     C                   WHEN      CTXDS.CXEVENT = 'NEW'
+     C                   IF        not ( STKOLD(X).SPONDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_NEW_ONHAND_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPRSDELTA >= 0 and
+     C                             STKOLD(X).SPNEWSHIP = STKOLD(X).SPOLDSHIP )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKOLD_NEW_RESERVATION_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'MOD'
+     C                   IF        not ( STKOLD(X).SPONDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_MOD_ONHAND_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'ALLOC'
+     C                   IF        not ( STKOLD(X).SPONDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_ALLOC_ONHAND_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPRSDELTA >= 0 and
+     C                             STKOLD(X).SPNEWSHIP = STKOLD(X).SPOLDSHIP )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKOLD_ALLOC_RESERVATION_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'CANCEL'
+     C                   IF        not ( STKOLD(X).SPONDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_CANCEL_ONHAND_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPRSDELTA <= 0 and
+     C                             STKOLD(X).SPNEWSHIP = STKOLD(X).SPOLDSHIP )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_CANCEL_NO_SHIPMENT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPNEWREL - STKOLD(X).SPOLDREL
+     C                             = - STKOLD(X).SPRSDELTA )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKOLD_CANCEL_RELEASE_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'SHIP'
+     C                   IF        not ( STKOLD(X).SPONDELTA =
+     C                             STKOLD(X).SPRSDELTA and STKOLD(X).SPONDELTA
+     C                             <= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKOLD_SHIP_DOUBLE_DECREMENT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKOLD(X).SPNEWSHIP -
+     C                             STKOLD(X).SPOLDSHIP = - STKOLD(X).SPONDELTA )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKOLD_SHIP_ALLOCATION_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'RETURN'
+     C                   IF        not ( STKOLD(X).SPONDELTA > 0 and
+     C                             STKOLD(X).SPRSDELTA = 0 and
+     C                             STKOLD(X).SPNEWRES = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKOLD_RETURN_NO_ALLOCATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSL
+     C                   ENDIF
+     C                   FOR       Y = 1 to X - 1
+     C                   IF        STKOLD(Y).SPUSE = 'Y'
+     C                   IF        not ( STKOLD(Y).SPLINE <> STKOLD(X).SPLINE or
+     C                             STKOLD(Y).SPWH <> STKOLD(X).SPWH )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKOLD_DUPLICATE_ALLOCATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   FOR       X = 1 to 300
+     C                   IF        not ( STKNEW(X).SPUSE = 'N' or
+     C                             STKNEW(X).SPUSE = 'Y' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_USE_FLAG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        STKNEW(X).SPUSE = 'Y'
+     C                   IF        not ( STKNEW(X).SPLINE > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_LINE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPITEM <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_ITEM'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPWH = 'A' or STKNEW(X).SPWH
+     C                             = 'B' or STKNEW(X).SPWH = 'C' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_WAREHOUSE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPONHAND >= STKNEW(X).SPRESVD
+     C                             and STKNEW(X).SPRESVD >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_STOCK_SNAPSHOT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPOLDRES >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_SPOLDRES'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPOLDSHIP >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_SPOLDSHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPOLDREL >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_SPOLDREL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPNEWRES >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_SPNEWRES'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPNEWSHIP >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_SPNEWSHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPNEWREL >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_SPNEWREL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        CTXDS.CXEVENT <> 'MOD' and CTXDS.CXEVENT <>
+     C                             'RETURN'
+     C                   IF        not ( STKNEW(X).SPOLDITEM = *blanks or
+     C                             STKNEW(X).SPOLDITEM = STKNEW(X).SPITEM )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_ITEM_SNAPSHOT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        CTXDS.CXACTION = 'VIEW'
+     C                   IF        not ( STKNEW(X).SPONDELTA = 0 and
+     C                             STKNEW(X).SPRSDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_READONLY_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPNEWRES = STKNEW(X).SPOLDRES
+     C                             and STKNEW(X).SPNEWSHIP = STKNEW(X).SPOLDSHIP
+     C                             and STKNEW(X).SPNEWREL = STKNEW(X).SPOLDREL )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_READONLY_ALLOCATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   SELECT
+     C                   WHEN      CTXDS.CXEVENT = 'NEW'
+     C                   IF        not ( STKNEW(X).SPONDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_NEW_ONHAND_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPRSDELTA >= 0 and
+     C                             STKNEW(X).SPNEWSHIP = STKNEW(X).SPOLDSHIP )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKNEW_NEW_RESERVATION_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'MOD'
+     C                   IF        not ( STKNEW(X).SPONDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_MOD_ONHAND_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'ALLOC'
+     C                   IF        not ( STKNEW(X).SPONDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_ALLOC_ONHAND_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPRSDELTA >= 0 and
+     C                             STKNEW(X).SPNEWSHIP = STKNEW(X).SPOLDSHIP )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKNEW_ALLOC_RESERVATION_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'CANCEL'
+     C                   IF        not ( STKNEW(X).SPONDELTA = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_CANCEL_ONHAND_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPRSDELTA <= 0 and
+     C                             STKNEW(X).SPNEWSHIP = STKNEW(X).SPOLDSHIP )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKNEW_CANCEL_NO_SHIPMENT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPNEWREL - STKNEW(X).SPOLDREL
+     C                             = - STKNEW(X).SPRSDELTA )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKNEW_CANCEL_RELEASE_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'SHIP'
+     C                   IF        not ( STKNEW(X).SPONDELTA =
+     C                             STKNEW(X).SPRSDELTA and STKNEW(X).SPONDELTA
+     C                             <= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKNEW_SHIP_DOUBLE_DECREMENT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( STKNEW(X).SPNEWSHIP -
+     C                             STKNEW(X).SPOLDSHIP = - STKNEW(X).SPONDELTA )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKNEW_SHIP_ALLOCATION_DELTA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      CTXDS.CXEVENT = 'RETURN'
+     C                   IF        not ( STKNEW(X).SPONDELTA > 0 and
+     C                             STKNEW(X).SPRSDELTA = 0 and
+     C                             STKNEW(X).SPNEWRES = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKNEW_RETURN_NO_ALLOCATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSL
+     C                   ENDIF
+     C                   FOR       Y = 1 to X - 1
+     C                   IF        STKNEW(Y).SPUSE = 'Y'
+     C                   IF        not ( STKNEW(Y).SPLINE <> STKNEW(X).SPLINE or
+     C                             STKNEW(Y).SPWH <> STKNEW(X).SPWH )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'STKNEW_DUPLICATE_ALLOCATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+     C     MSETTLEABI    BEGSR
+     C                   IF        CTXDS.CXACTION = 'LOOKUP'
+     C                   EXSR      MSETVIEWABI
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SEID <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_ID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SEKIND = 'P' or SETHEAD.SEKIND
+     C                             = 'R' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_KIND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SESHIP <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_SHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SEORDER <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_ORDER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SENLINE >= 1 and
+     C                             SETHEAD.SENLINE <= 100 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_COUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SEAMOUNT >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_AMOUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SEATTEMPT >= 1 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_ATTEMPT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SELASTMSG <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_LAST_MESSAGE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SERETRY = 'Y' or
+     C                             SETHEAD.SERETRY = 'N' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_RETRY_FLAG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKDAY = SETHEAD.SECREATED
+     C                   EXSR      MCHECKDATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        SETHEAD.SESTATE = 'OK'
+     C                   EVAL      CHECKDAY = SETHEAD.SEFIRSTDAY
+     C                   EXSR      MCHECKDATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SEFIRSTDAY >= SETHEAD.SECREATED
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_SUCCESS_DATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SERETRY = 'N' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_SUCCESS_RETRY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( SETHEAD.SEFIRSTDAY = *blanks )
+<<<END_FILE>>>

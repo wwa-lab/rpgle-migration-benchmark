@@ -1,0 +1,129 @@
+
+      /IF DEFINED(U_RESDS)
+     DRESDS            DS                  QUALIFIED
+     DRSRC                            4A
+     DRSREASON                      120A
+     DRSINDEX                         5P 0
+     DRSCOUNT                         5P 0
+     DRSAMOUNT                       19P 2
+     DRSSTATE                         8A
+     DRSVERSION                       9P 0
+      /ENDIF
+
+      /IF DEFINED(U_CHKHEAD)
+     DCHKHEAD          DS                  QUALIFIED
+     DCHVERSION                       9P 0
+     DCHTIER                          1A
+     DCHCOUNT                         5P 0
+     DCHLEN                           9P 0
+     DCHCANON                     24000A
+      /ENDIF
+
+      /IF DEFINED(U_NORMROWS)
+     DNORMROWS         DS                  QUALIFIED
+     D                                     DIM(100)
+     DNRLINE                          5P 0
+     DNRITEM                         12A
+     DNRQTY                           9P 0
+     DNRWH                            1A
+     DNRSHIP                         20A
+     DNRSHLINE                        5P 0
+      /ENDIF
+
+      /IF DEFINED(U_PROUT)
+     DPROUT            DS                  QUALIFIED
+     D                                     DIM(100)
+     DPOLINE                          5P 0
+     DPOUNIT                         11P 4
+     DPORATE                          5P 4
+     DPOAMOUNT                       15P 2
+     DPOCUMQTY                        9P 0
+     DPOCUMAMT                       15P 2
+      /ENDIF
+
+      /IF DEFINED(U_STKOLD)
+     DSTKOLD           DS                  QUALIFIED
+     D                                     DIM(300)
+     DSPLINE                          5P 0
+     DSPITEM                         12A
+     DSPWH                            1A
+     DSPONHAND                        9P 0
+     DSPRESVD                         9P 0
+     DSPONDELTA                       9P 0
+     DSPRSDELTA                       9P 0
+     DSPOLDITEM                      12A
+     DSPOLDRES                        9P 0
+     DSPOLDSHIP                       9P 0
+     DSPOLDREL                        9P 0
+     DSPNEWRES                        9P 0
+     DSPNEWSHIP                       9P 0
+     DSPNEWREL                        9P 0
+     DSPUSE                           1A
+      /ENDIF
+
+      /IF DEFINED(U_STKNEW)
+     DSTKNEW           DS                  QUALIFIED
+     D                                     DIM(300)
+     DSPLINE                          5P 0
+     DSPITEM                         12A
+     DSPWH                            1A
+     DSPONHAND                        9P 0
+     DSPRESVD                         9P 0
+     DSPONDELTA                       9P 0
+     DSPRSDELTA                       9P 0
+     DSPOLDITEM                      12A
+     DSPOLDRES                        9P 0
+     DSPOLDSHIP                       9P 0
+     DSPOLDREL                        9P 0
+     DSPNEWRES                        9P 0
+     DSPNEWSHIP                       9P 0
+     DSPNEWREL                        9P 0
+     DSPUSE                           1A
+      /ENDIF
+
+      /IF DEFINED(U_SETVIEW)
+     DSETVIEW          DS                  QUALIFIED
+     D                                     DIM(100)
+     DSVSHLINE                        5P 0
+     DSVSUCCQTY                       9P 0
+     DSVSUCCAMT                      15P 2
+     DSVPENDING                       1A
+      /ENDIF
+
+      /IF DEFINED(U_OUTREC)
+     DOUTREC           DS                  QUALIFIED
+     DOBID                           80A
+     DOBKIND                          8A
+     DOBBIZID                        48A
+     DOBSRC                          12A
+     DOBREQ                          20A
+     DOBBATCH                        20A
+     DOBINPUT                         9P 0
+     DOBORDER                        20A
+     DOBSTATE                         8A
+     DOBRESULT                        8A
+     DOBRESDAY                        8A
+     DOBATTEMPT                       9P 0
+     DOBDAY                           8A
+     DOBLEN                           9P 0
+     DOBPAYLOAD                   30000A
+     DOBREASON                      120A
+      /ENDIF
+
+      /IF DEFINED(U_DAYHEAD)
+     DDAYHEAD          DS                  QUALIFIED
+     DDYDAY                           8A
+     DDYSNAP                         40A
+     DDYLINE                          9P 0
+     DDYKIND                          8A
+     DDYSTATE                         8A
+     DDYSETTL                        48A
+     DDYSRC                          12A
+     DDYREQ                          20A
+     DDYAMOUNT                       19P 2
+     DDYPOS                          19P 2
+     DDYNEG                          19P 2
+     DDYCOUNT                         9P 0
+     DDYRC                            4A
+      /ENDIF
+

@@ -1,0 +1,37 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CUSTVRL-20260404-01",
+    "specLevel": "L2",
+    "fileType": "LF",
+    "fileName": "CUSTVRL",
+    "description": "Version of LF CUSTACTV for migration"
+  },
+  "basedOnPhysicalFiles": ["CUSTMASV"],
+  "versionFileInfo": {
+    "versionOf": "CUSTACTV",
+    "versionType": "LF"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CUSTVR",
+      "purpose": "Version LF record",
+      "fieldCount": 0
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": []
+  },
+  "fieldSelectionMapping": {
+    "mode": "allIncluded"
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "CUSTNM", "fieldRef": "FLD-02", "sortDirection": "ASCEND" }
+    ]
+  }
+}

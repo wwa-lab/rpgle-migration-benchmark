@@ -1,0 +1,10 @@
+source_type=PF
+type=happy
+must_contain=R TBDR
+must_contain=GOODFLD
+must_contain=10A
+must_contain=ANOTHGD
+# Whitespace-tolerant: check type separately from decimals
+must_contain=7P
+# TBD field must produce a TODO comment
+must_contain=TODO

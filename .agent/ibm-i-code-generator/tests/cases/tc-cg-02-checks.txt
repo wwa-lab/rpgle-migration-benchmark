@@ -1,0 +1,22 @@
+layer=1
+lang=RPGLE
+change_type=new
+type=happy
+# CRITICAL: 1:N access pattern for ORDDTL must use SETLL/READE loop
+must_contain_regex=(setll|SETLL)
+must_contain_regex=(reade|READE)
+must_contain_regex=(%eof|%EOF)
+must_contain_regex=(dow|DOW)
+# CRITICAL: must NOT use CHAIN on the 1:N file ORDDTL
+must_not_contain_regex=(chain.*ORDDTL|CHAIN.*ORDDTL)
+# Free-format for new program
+must_contain=ctl-opt
+# Both files declared
+must_contain=ORDHDR
+must_contain=ORDDTL
+# Accumulation
+must_contain=LNAMT
+must_contain=P_TOTAL
+# BR traceability
+must_contain=BR-01
+must_contain=BR-03

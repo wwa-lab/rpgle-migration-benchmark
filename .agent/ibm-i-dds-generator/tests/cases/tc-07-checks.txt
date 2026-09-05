@@ -1,0 +1,12 @@
+source_type=PF
+type=happy
+must_contain=TEXT('Audit log file')
+must_contain=R LOGR
+must_contain=LOGTS
+must_contain=LOGUSR
+must_contain=LOGMSG
+must_contain= Z
+must_contain=200A
+must_not_contain=K
+must_not_contain=UNIQUE
+field_count=3

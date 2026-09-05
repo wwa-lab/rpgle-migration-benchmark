@@ -1,0 +1,101 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "ORDDSPF-20260404-01",
+    "specLevel": "L2",
+    "fileType": "DSPF",
+    "fileName": "ORDDSPF",
+    "description": "Order inquiry with subfile"
+  },
+  "screenLayout": {
+    "rows": 24,
+    "columns": 80
+  },
+  "functionKeys": [
+    { "key": "CA03", "indicator": 3, "description": "Exit" },
+    { "key": "CA12", "indicator": 12, "description": "Cancel" }
+  ],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "ORDSFL",
+      "purpose": "Order detail subfile record",
+      "fieldCount": 2,
+      "subfile": {
+        "controlFormat": "FMT-02",
+        "size": 11,
+        "page": 10,
+        "indicators": {
+          "sflClr": 40,
+          "sflDsp": 41,
+          "sflDspCtl": 42
+        },
+        "keywords": []
+      }
+    },
+    {
+      "formatId": "FMT-02",
+      "formatName": "ORDCTL",
+      "purpose": "Subfile control format",
+      "fieldCount": 1
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "ORDNO",
+        "type": "A",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Order number",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 10,
+        "col": 3,
+        "usage": "O"
+      },
+      {
+        "fieldId": "FLD-02",
+        "fieldName": "ORDDTE",
+        "type": "L",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Order date",
+        "editCode": "Y",
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 10,
+        "col": 18,
+        "usage": "O"
+      }
+    ],
+    "FMT-02": [
+      {
+        "fieldId": "FLD-03",
+        "fieldName": "SRCHKEY",
+        "type": "A",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Search key",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 3,
+        "col": 18,
+        "usage": "B"
+      }
+    ]
+  }
+}

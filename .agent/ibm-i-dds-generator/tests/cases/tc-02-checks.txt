@@ -1,0 +1,12 @@
+source_type=PF
+type=happy
+must_contain=TEXT('Minimal test file')
+must_contain=R MINIR
+must_contain=FLD1
+must_contain=10A
+must_contain=TEXT('Test field')
+must_not_contain=COLHDG
+must_not_contain=ALWNULL
+must_not_contain=DFT
+must_not_contain=K
+field_count=1

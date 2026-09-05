@@ -1,0 +1,13 @@
+source_type=LF
+type=happy
+# Join LF — ORDHDR + ORDDTL inner join on ORDNO
+must_contain=JFILE(ORDHDR ORDDTL)
+must_contain=JOIN(1 2)
+must_contain=JFLD(ORDNO ORDNO)
+must_contain=JREF(1)
+must_contain=JREF(2)
+must_contain=R ORDINVR
+must_contain=K ORDNO
+must_contain=K LNSEQ
+must_not_contain=JDFTVAL
+must_not_contain=PFILE

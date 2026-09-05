@@ -1,0 +1,32 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "LF-20260404-01",
+    "specLevel": "L2",
+    "fileType": "LF",
+    "fileName": "CUSTL1",
+    "description": "Customer name lookup"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CUSTL1R",
+      "purpose": "Customer by name",
+      "fieldCount": 2
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      { "fieldId": "FLD-01", "fieldName": "CUSTNM", "type": "A", "length": 40, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Customer name", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-02", "fieldName": "CUSTID", "type": "A", "length": 10, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Customer ID", "editCode": null, "columnHeading": null, "ddsKeywords": [] }
+    ]
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "CUSTNM", "fieldRef": "FLD-01", "sortDirection": "ASCEND" }
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+
+      /IF DEFINED(U_CTXDS)
+     DCTXDS            DS                  QUALIFIED
+     DCXABI                           4A
+     DCXBATCH                        20A
+     DCXINPUT                         9P 0
+     DCXDAY                           8A
+     DCXPROCDAY                       8A
+     DCXSRC                          12A
+     DCXREQ                          20A
+     DCXEVENT                         8A
+     DCXACTION                        8A
+     DCXORDER                        20A
+     DCXVERSION                       9P 0
+     DCXACTOR                        20A
+     DCXREASON                      120A
+     DCXSHIP                         20A
+     DCXRETURN                       20A
+     DCXSETTL                        48A
+     DCXMSG                          80A
+     DCXPART                          1A
+     DCXTIER                          1A
+     DCXCOUNT                         5P 0
+     DCXOUTSEQ                        5P 0
+     DCXEXPECT                        8A
+     DCXATTEMPT                       9P 0
+     DCXFEED                          8A
+      /ENDIF
+
+      /IF DEFINED(U_HDRDS)
+     DHDRDS            DS                  QUALIFIED
+     DIHBATCH                        20A
+     DIHSEQ                           9P 0
+     DIHSRC                          12A
+     DIHREQ                          20A
+     DIHEVENT                         8A
+     DIHDAY                           8A
+     DIHARRDAY                        8A
+     DIHARRTIME                       6A
+     DIHORDER                        20A
+     DIHVERSION                       9A
+     DIHCUST                         12A
+     DIHPART                          1A
+     DIHSHIP                         20A
+     DIHRETURN                       20A
+     DIHSETTL                        48A
+     DIHMSG                          80A
+     DIHRESULT                        8A
+     DIHACTION                        8A
+     DIHREFSRC                       12A
+     DIHREFREQ                       20A
+     DIHACTOR                        20A
+     DIHREASON                      120A
+     DIHNLINE                         5A
+      /ENDIF
+
+      /IF DEFINED(U_RAWROWS)
+     DRAWROWS          DS                  QUALIFIED
+     D                                     DIM(100)
+     DIDBATCH                        20A
+     DIDINPUT                         9P 0
+     DIDPOS                           5P 0
+     DIDLINE                          5A
+     DIDITEM                         12A
+     DIDQTY                          12A
+     DIDWH                            1A
+     DIDSHIP                         20A
+     DIDSHLINE                        5A
+      /ENDIF
+
+      /IF DEFINED(U_PRIN)
+     DPRIN             DS                  QUALIFIED
+     D                                     DIM(100)
+     DPIGROUP                        48A
+     DPILINE                          5P 0
+     DPIITEM                         12A
+     DPIQTY                           9P 0
+     DPIBASEQTY                       9P 0
+     DPIPRIORQ                        9P 0
+     DPIBASEAMT                      15P 2
+     DPIPRIORA                       15P 2
+      /ENDIF
+
+      /IF DEFINED(U_STKIN)
+     DSTKIN            DS                  QUALIFIED
+     D                                     DIM(100)
+     DSILINE                          5P 0
+     DSIITEM                         12A
+     DSIWH                            1A
+     DSIQTY                           9P 0
+     DSIREMAIN                        9P 0
+      /ENDIF
+
+      /IF DEFINED(U_SETHEAD)
+     DSETHEAD          DS                  QUALIFIED
+     DSEID                           48A
+     DSEKIND                          1A
+     DSESHIP                         20A
+     DSERETURN                       20A
+     DSEORIG                         48A
+     DSEORDER                        20A
+     DSECREATED                       8A
+     DSESTATE                         8A
+     DSEAMOUNT                       15P 2
+     DSEFIRSTDAY                      8A
+     DSEATTEMPT                       9P 0
+     DSELASTMSG                      80A
+     DSENLINE                         5P 0
+     DSERETRY                         1A
+     DSEREASON                      120A
+      /ENDIF
+
+      /IF DEFINED(U_SETROWS)
+     DSETROWS          DS                  QUALIFIED
+     D                                     DIM(100)
+     DSLSETTL                        48A
+     DSLLINE                          5P 0
+     DSLSHIP                         20A
+     DSLSHLINE                        5P 0
+     DSLRETURN                       20A
+     DSLRTLINE                        5P 0
+     DSLORDER                        20A
+     DSLORDLINE                       5P 0
+     DSLQTY                           9P 0
+     DSLAMOUNT                       15P 2
+      /ENDIF
+

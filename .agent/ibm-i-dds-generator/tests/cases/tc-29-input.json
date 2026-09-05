@@ -1,0 +1,38 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CUSTMASV-20260404-01",
+    "specLevel": "L2",
+    "fileType": "PF",
+    "fileName": "CUSTMASV",
+    "description": "Customer master version for migration"
+  },
+  "versionFileInfo": {
+    "versionOf": "CUSTMAST",
+    "versionType": "PF"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CUSTR",
+      "purpose": "Customer master record",
+      "fieldCount": 4
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      { "fieldId": "FLD-01", "fieldName": "CUSTID", "type": "A", "length": 10, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Customer ID", "editCode": null, "columnHeading": "CUS / ID", "ddsKeywords": [] },
+      { "fieldId": "FLD-02", "fieldName": "CUSTNM", "type": "A", "length": 40, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Customer name", "editCode": null, "columnHeading": "CUST / NAME", "ddsKeywords": [] },
+      { "fieldId": "FLD-03", "fieldName": "ACTSTS", "type": "A", "length": 1, "decimals": null, "nullable": false, "defaultValue": "A", "ccsid": null, "text": "Active status", "editCode": null, "columnHeading": "ACT / STS", "ddsKeywords": [] },
+      { "fieldId": "FLD-04", "fieldName": "LSTUPD", "type": "L", "length": 10, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Last update date", "editCode": null, "columnHeading": "LAST / UPDATE", "ddsKeywords": [] }
+    ]
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "LSTUPD", "fieldRef": "FLD-04", "sortDirection": "DESCEND" }
+    ]
+  }
+}

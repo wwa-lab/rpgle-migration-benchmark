@@ -1,0 +1,37 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "MINI-20260404-01",
+    "specLevel": "L1",
+    "fileType": "PF",
+    "fileName": "MINIPF",
+    "description": "Minimal test file"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "MINIR",
+      "purpose": "Minimal record",
+      "fieldCount": 1
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "FLD1",
+        "type": "A",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Test field",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": []
+      }
+    ]
+  }
+}

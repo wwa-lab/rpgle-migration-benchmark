@@ -1,0 +1,7 @@
+category=service
+artifact_count=6
+must_contain=CRTRPGMOD
+must_contain=CRTSRVPGM
+must_contain=caller stub
+must_contain=INSERT INTO TSTLIB/PRCAUD
+must_contain=CASE WHEN CALCSTS = 'C' THEN 'PASS'

@@ -1,0 +1,26 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "NOKEY-20260404-01",
+    "specLevel": "L1",
+    "fileType": "PF",
+    "fileName": "LOGPF",
+    "description": "Audit log file"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "LOGR",
+      "purpose": "Log entry record",
+      "fieldCount": 3
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      { "fieldId": "FLD-01", "fieldName": "LOGTS", "type": "Z", "length": 26, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Log timestamp", "editCode": null, "columnHeading": "LOG / TS", "ddsKeywords": [] },
+      { "fieldId": "FLD-02", "fieldName": "LOGUSR", "type": "A", "length": 10, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "User profile", "editCode": null, "columnHeading": "LOG / USER", "ddsKeywords": [] },
+      { "fieldId": "FLD-03", "fieldName": "LOGMSG", "type": "A", "length": 200, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Log message", "editCode": null, "columnHeading": "LOG / MSG", "ddsKeywords": [] }
+    ]
+  }
+}

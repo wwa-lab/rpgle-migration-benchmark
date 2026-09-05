@@ -1,0 +1,2137 @@
+{
+  "status": "PASS",
+  "scope": "Static structure, contract and traceability; no IBM i compilation or execution",
+  "issues": [],
+  "programs": [
+    {
+      "program": "ORDCHECK",
+      "path": "src/QRPGLESRC/ORDCHECK.rpgle",
+      "physicalLines": 493,
+      "blankLines": 9,
+      "commentLines": 19,
+      "nonblankNoncommentLines": 465,
+      "routines": 9,
+      "sha256": "1a7a2676774916a70fc9d6d008b15d4c8a5cf1882a62c86e66cb83229422db22"
+    },
+    {
+      "program": "ORDDAILY",
+      "path": "src/QRPGLESRC/ORDDAILY.rpgle",
+      "physicalLines": 348,
+      "blankLines": 8,
+      "commentLines": 19,
+      "nonblankNoncommentLines": 321,
+      "routines": 8,
+      "sha256": "8d96cc00698b79015a964095dde95217f96440ef646749c7c90474a164ceafc2"
+    },
+    {
+      "program": "ORDMAIN",
+      "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+      "physicalLines": 10114,
+      "blankLines": 119,
+      "commentLines": 204,
+      "nonblankNoncommentLines": 9791,
+      "routines": 119,
+      "sha256": "66f15cb3101eb7213bd9aac060564e4617ae6d3e1565805dc52970f003095703"
+    },
+    {
+      "program": "ORDPRICE",
+      "path": "src/QRPGLESRC/ORDPRICE.rpgle",
+      "physicalLines": 251,
+      "blankLines": 6,
+      "commentLines": 15,
+      "nonblankNoncommentLines": 230,
+      "routines": 6,
+      "sha256": "b8c554be47eae2e3d2312ae5f9e71a89ae34acc8f7f3d7b92d37047f0b149eb6"
+    },
+    {
+      "program": "ORDREPLY",
+      "path": "src/QRPGLESRC/ORDREPLY.rpgle",
+      "physicalLines": 291,
+      "blankLines": 7,
+      "commentLines": 17,
+      "nonblankNoncommentLines": 267,
+      "routines": 7,
+      "sha256": "3685ea52d6567611bea45bca327913a793f9fab9b8e5d37c9fbaeed8bac64e77"
+    },
+    {
+      "program": "ORDSETTL",
+      "path": "src/QRPGLESRC/ORDSETTL.rpgle",
+      "physicalLines": 769,
+      "blankLines": 12,
+      "commentLines": 26,
+      "nonblankNoncommentLines": 731,
+      "routines": 12,
+      "sha256": "18d14ce8b5a96a7ea3822bc90ceaacabec2a0c507b14fdb7a4cd37fa1d0c6521"
+    },
+    {
+      "program": "ORDSTOCK",
+      "path": "src/QRPGLESRC/ORDSTOCK.rpgle",
+      "physicalLines": 757,
+      "blankLines": 13,
+      "commentLines": 28,
+      "nonblankNoncommentLines": 716,
+      "routines": 13,
+      "sha256": "80d12ea4908427eec38c46b19b8b24bb1340ac4929a65003dca1b2fdb06edd60"
+    }
+  ],
+  "traceability": {
+    "ORDCHECK": {
+      "routines": {
+        "CINIT": 60,
+        "CCANON": 91,
+        "CNUMBER": 270,
+        "CMODE": 288,
+        "CROWS": 309,
+        "CCUST": 421,
+        "CITEM": 445,
+        "CRET": 464,
+        "FRAME": 471
+      },
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "CINIT",
+          "line": 60,
+          "rules": [
+            "BR-01",
+            "BR-04",
+            "BR-05",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 2,
+          "routine": "CCANON",
+          "line": 91,
+          "rules": [
+            "BR-06",
+            "BR-07"
+          ]
+        },
+        {
+          "number": 3,
+          "routine": "CMODE",
+          "line": 288,
+          "rules": [
+            "BR-01",
+            "BR-06",
+            "BR-07",
+            "BR-29"
+          ]
+        },
+        {
+          "number": 4,
+          "routine": "CROWS",
+          "line": 309,
+          "rules": [
+            "BR-04",
+            "BR-05",
+            "BR-17",
+            "BR-18",
+            "BR-20"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "CCUST",
+          "line": 421,
+          "rules": [
+            "BR-02"
+          ]
+        },
+        {
+          "number": 6,
+          "routine": "CITEM",
+          "line": 445,
+          "rules": [
+            "BR-03"
+          ]
+        },
+        {
+          "number": 7,
+          "routine": "CRET",
+          "line": 464,
+          "rules": [
+            "BR-01",
+            "BR-02",
+            "BR-03",
+            "BR-04",
+            "BR-05",
+            "BR-32"
+          ]
+        }
+      ],
+      "opcodeCounts": {
+        "PLIST": 1,
+        "PARM": 6,
+        "KLIST": 2,
+        "KFLD": 2,
+        "MONITOR": 2,
+        "EXSR": 43,
+        "ON-ERROR": 2,
+        "EVAL": 129,
+        "ENDMON": 2,
+        "RETURN": 1,
+        "BEGSR": 9,
+        "CLEAR": 5,
+        "IF": 64,
+        "LEAVESR": 52,
+        "ENDIF": 64,
+        "ENDSR": 9,
+        "FOR": 6,
+        "ENDFOR": 6,
+        "DOW": 1,
+        "LEAVE": 1,
+        "ENDDO": 1,
+        "ELSE": 2,
+        "CHAIN": 2
+      },
+      "actualReads": [
+        "CUSTPF",
+        "ITEMPF"
+      ],
+      "actualWrites": []
+    },
+    "ORDDAILY": {
+      "routines": {
+        "DINIT": 89,
+        "DSTART": 161,
+        "DSUCCESS": 179,
+        "DPENDING": 249,
+        "DLOCAL": 283,
+        "DROW": 304,
+        "DPUBLISH": 319,
+        "DFAIL": 343
+      },
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "DINIT",
+          "line": 89,
+          "rules": [
+            "BR-30",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 2,
+          "routine": "DSTART",
+          "line": 161,
+          "rules": [
+            "BR-30",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 3,
+          "routine": "DSUCCESS",
+          "line": 179,
+          "rules": [
+            "BR-30"
+          ]
+        },
+        {
+          "number": 4,
+          "routine": "DPENDING",
+          "line": 249,
+          "rules": [
+            "BR-24",
+            "BR-30"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "DLOCAL",
+          "line": 283,
+          "rules": [
+            "BR-27",
+            "BR-30",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 6,
+          "routine": "DPUBLISH",
+          "line": 319,
+          "rules": [
+            "BR-30",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 7,
+          "routine": "DFAIL",
+          "line": 343,
+          "rules": [
+            "BR-28",
+            "BR-30",
+            "BR-32"
+          ]
+        }
+      ],
+      "opcodeCounts": {
+        "PLIST": 1,
+        "PARM": 3,
+        "KLIST": 10,
+        "KFLD": 18,
+        "MONITOR": 1,
+        "EXSR": 14,
+        "ON-ERROR": 1,
+        "EVAL": 105,
+        "ENDMON": 1,
+        "RETURN": 1,
+        "BEGSR": 8,
+        "CLEAR": 7,
+        "IF": 24,
+        "LEAVESR": 20,
+        "ENDIF": 24,
+        "CHAIN(N)": 1,
+        "ENDSR": 8,
+        "WRITE": 2,
+        "SETLL": 4,
+        "READE": 6,
+        "DOW": 4,
+        "ENDDO": 4,
+        "ELSE": 1,
+        "FOR": 1,
+        "ENDFOR": 1,
+        "READ": 2,
+        "CHAIN": 1,
+        "UPDATE": 1
+      },
+      "actualReads": [
+        "DAYRPTPF",
+        "REQPF",
+        "SETLBYDAY",
+        "SETLDTPF"
+      ],
+      "actualWrites": [
+        "DAYRPTPF"
+      ]
+    },
+    "ORDMAIN": {
+      "routines": {
+        "MINIT": 266,
+        "MBATCH": 348,
+        "MRESET": 381,
+        "MINPUT": 446,
+        "MREADROWS": 465,
+        "MCONTEXT": 491,
+        "MUNIT": 510,
+        "MCANON": 532,
+        "MDEDUP": 559,
+        "MENVELOPE": 589,
+        "MDISPATCH": 625,
+        "MORDER": 782,
+        "MNEW": 847,
+        "MVALID": 865,
+        "MMOD": 885,
+        "MQUOTE": 916,
+        "MPLAN": 940,
+        "MVERSION": 968,
+        "MFINDLINE": 1062,
+        "MALLOC": 1079,
+        "MCANCEL": 1132,
+        "MADVANCE": 1190,
+        "MSHIPID": 1251,
+        "MSHIPPLAN": 1269,
+        "MSHIPAMT": 1321,
+        "MSHIPAP": 1340,
+        "MRETURN": 1446,
+        "MRETBASE": 1505,
+        "MRETAMT": 1592,
+        "MRETAP": 1623,
+        "MSETGET": 1776,
+        "MSETSTATE": 1816,
+        "MSETAP": 1874,
+        "MDELIV": 1898,
+        "MRECCHK": 1952,
+        "MRECROUTE": 1968,
+        "MLOCAL": 1988,
+        "MRECANON": 2060,
+        "MRETRY": 2086,
+        "MVERIFY": 2135,
+        "MREPLY": 2183,
+        "MQUERY": 2203,
+        "MQUERYSHIP": 2325,
+        "MQUERYRETURN": 2354,
+        "MQUERYSETTL": 2383,
+        "MQUERYAUDIT": 2427,
+        "MDAY": 2446,
+        "MCLOSE": 2469,
+        "MPROJECT": 2492,
+        "MNEXTMSG": 2637,
+        "MSENDREC": 2648,
+        "MWHRESULT": 2672,
+        "MAUDIT": 2894,
+        "MAPPENDAUD": 2966,
+        "MLEDGER": 3015,
+        "MCOMMIT": 3113,
+        "MROLL": 3126,
+        "MFINISH": 3190,
+        "MEVENTFIELDS": 3207,
+        "MIDENT": 4131,
+        "MORDERFACTS": 4146,
+        "SORDHDR": 4303,
+        "AORDHDR": 4444,
+        "PORDHDR": 4454,
+        "SORDDTL": 4466,
+        "AORDDTL": 4597,
+        "PORDDTL": 4607,
+        "SSHIPH": 4619,
+        "ASHIPH": 4720,
+        "PSHIPH": 4730,
+        "SSHIPD": 4742,
+        "ASHIPD": 4833,
+        "PSHIPD": 4843,
+        "SRTNH": 4855,
+        "ARTNH": 4936,
+        "PRTNH": 4946,
+        "SRTND": 4958,
+        "ARTND": 5069,
+        "PRTND": 5079,
+        "SSETHEAD": 5091,
+        "PSETHEAD": 5253,
+        "SSETDTL": 5265,
+        "PSETDTL": 5376,
+        "SOUTREC": 5388,
+        "POUTREC": 5549,
+        "SDAYHEAD": 5608,
+        "PDAYHEAD": 5750,
+        "SAUDIT": 5762,
+        "PAUDIT": 5943,
+        "AOLDALLOC": 6001,
+        "PSTOCKVIEW": 6169,
+        "MRECONCILE": 6339,
+        "MRECSHIPS": 6369,
+        "MRECRETQ": 6547,
+        "MRECRETURNS": 6597,
+        "MRECSETTLES": 6742,
+        "MRECSESTATE": 6861,
+        "MCHECKDATE": 6996,
+        "AINPUT": 7008,
+        "MCHECKABI": 7351,
+        "MPRICEABI": 7467,
+        "MSTOCKABI": 7581,
+        "MSETTLEABI": 7944,
+        "MSETVIEWABI": 8133,
+        "MREPLYABI": 8174,
+        "MDAILYABI": 8282,
+        "MOPDETAIL": 8342,
+        "MOPORDER": 8379,
+        "MOPFULFIL": 8535,
+        "MOPSHIP": 8670,
+        "MOPRETURN": 8816,
+        "MOPSETRES": 8962,
+        "MOPDELIVER": 9158,
+        "MOPRECOVER": 9294,
+        "MOPQUERY": 9490,
+        "MOPDAY": 9645,
+        "MOPREJECT": 9771,
+        "MOPDUP": 9937,
+        "FRAME": 10092
+      },
+      "calls": [
+        {
+          "program": "ORDCHECK",
+          "parameters": [
+            "CTXDS",
+            "HDRDS",
+            "RAWROWS",
+            "CHKHEAD",
+            "NORMROWS",
+            "RESDS"
+          ],
+          "line": 534
+        },
+        {
+          "program": "ORDCHECK",
+          "parameters": [
+            "CTXDS",
+            "HDRDS",
+            "RAWROWS",
+            "CHKHEAD",
+            "NORMROWS",
+            "RESDS"
+          ],
+          "line": 591
+        },
+        {
+          "program": "ORDPRICE",
+          "parameters": [
+            "CTXDS",
+            "PRIN",
+            "PROUT",
+            "RESDS"
+          ],
+          "line": 924
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 948
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 970
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 1094
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 1108
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 1153
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 1166
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 1304
+        },
+        {
+          "program": "ORDPRICE",
+          "parameters": [
+            "CTXDS",
+            "PRIN",
+            "PROUT",
+            "RESDS"
+          ],
+          "line": 1323
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 1342
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 1426
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 1513
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 1534
+        },
+        {
+          "program": "ORDPRICE",
+          "parameters": [
+            "CTXDS",
+            "PRIN",
+            "PROUT",
+            "RESDS"
+          ],
+          "line": 1606
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 1632
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 1645
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 1755
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 1778
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 1878
+        },
+        {
+          "program": "ORDREPLY",
+          "parameters": [
+            "CTXDS",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 1900
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 1921
+        },
+        {
+          "program": "ORDREPLY",
+          "parameters": [
+            "CTXDS",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 1936
+        },
+        {
+          "program": "ORDCHECK",
+          "parameters": [
+            "CTXDS",
+            "HDRDS",
+            "RAWROWS",
+            "CHKHEAD",
+            "NORMROWS",
+            "RESDS"
+          ],
+          "line": 2062
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2089
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2116
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2138
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2164
+        },
+        {
+          "program": "ORDREPLY",
+          "parameters": [
+            "CTXDS",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2185
+        },
+        {
+          "program": "ORDDAILY",
+          "parameters": [
+            "CTXDS",
+            "DAYHEAD",
+            "RESDS"
+          ],
+          "line": 2233
+        },
+        {
+          "program": "ORDSTOCK",
+          "parameters": [
+            "CTXDS",
+            "STKIN",
+            "STKOLD",
+            "STKNEW",
+            "RESDS"
+          ],
+          "line": 2282
+        },
+        {
+          "program": "ORDSETTL",
+          "parameters": [
+            "CTXDS",
+            "SETHEAD",
+            "SETROWS",
+            "SETVIEW",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2391
+        },
+        {
+          "program": "ORDDAILY",
+          "parameters": [
+            "CTXDS",
+            "DAYHEAD",
+            "RESDS"
+          ],
+          "line": 2453
+        },
+        {
+          "program": "ORDREPLY",
+          "parameters": [
+            "CTXDS",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2504
+        },
+        {
+          "program": "ORDREPLY",
+          "parameters": [
+            "CTXDS",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2659
+        },
+        {
+          "program": "ORDREPLY",
+          "parameters": [
+            "CTXDS",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2769
+        },
+        {
+          "program": "ORDREPLY",
+          "parameters": [
+            "CTXDS",
+            "OUTREC",
+            "RESDS"
+          ],
+          "line": 2877
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "MINIT",
+          "line": 266,
+          "rules": [
+            "BR-28",
+            "BR-29",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 2,
+          "routine": "MBATCH",
+          "line": 348,
+          "rules": [
+            "BR-27",
+            "BR-28",
+            "BR-29"
+          ]
+        },
+        {
+          "number": 3,
+          "routine": "MINPUT",
+          "line": 446,
+          "rules": [
+            "BR-01",
+            "BR-05",
+            "BR-27",
+            "BR-28"
+          ]
+        },
+        {
+          "number": 4,
+          "routine": "MCANON",
+          "line": 532,
+          "rules": [
+            "BR-01",
+            "BR-06",
+            "BR-07"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "MDEDUP",
+          "line": 559,
+          "rules": [
+            "BR-06",
+            "BR-07",
+            "BR-28"
+          ]
+        },
+        {
+          "number": 6,
+          "routine": "MENVELOPE",
+          "line": 589,
+          "rules": [
+            "BR-01",
+            "BR-04",
+            "BR-05",
+            "BR-17",
+            "BR-18",
+            "BR-20",
+            "BR-29",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 7,
+          "routine": "MORDER",
+          "line": 782,
+          "rules": [
+            "BR-09",
+            "BR-10",
+            "BR-19",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 8,
+          "routine": "MNEW",
+          "line": 847,
+          "rules": [
+            "BR-08"
+          ]
+        },
+        {
+          "number": 9,
+          "routine": "MVALID",
+          "line": 865,
+          "rules": [
+            "BR-02",
+            "BR-03",
+            "BR-04",
+            "BR-05",
+            "BR-10"
+          ]
+        },
+        {
+          "number": 10,
+          "routine": "MMOD",
+          "line": 885,
+          "rules": [
+            "BR-10",
+            "BR-19",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 11,
+          "routine": "MQUOTE",
+          "line": 916,
+          "rules": [
+            "BR-03",
+            "BR-11",
+            "BR-12"
+          ]
+        },
+        {
+          "number": 12,
+          "routine": "MPLAN",
+          "line": 940,
+          "rules": [
+            "BR-10",
+            "BR-13",
+            "BR-14",
+            "BR-15"
+          ]
+        },
+        {
+          "number": 13,
+          "routine": "MVERSION",
+          "line": 968,
+          "rules": [
+            "BR-10",
+            "BR-11",
+            "BR-12",
+            "BR-14",
+            "BR-15",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 14,
+          "routine": "MALLOC",
+          "line": 1079,
+          "rules": [
+            "BR-09",
+            "BR-13",
+            "BR-14",
+            "BR-15",
+            "BR-16",
+            "BR-19"
+          ]
+        },
+        {
+          "number": 15,
+          "routine": "MCANCEL",
+          "line": 1132,
+          "rules": [
+            "BR-09",
+            "BR-18",
+            "BR-19"
+          ]
+        },
+        {
+          "number": 16,
+          "routine": "MSHIPID",
+          "line": 1251,
+          "rules": [
+            "BR-06",
+            "BR-09",
+            "BR-17",
+            "BR-23"
+          ]
+        },
+        {
+          "number": 17,
+          "routine": "MSHIPPLAN",
+          "line": 1269,
+          "rules": [
+            "BR-14",
+            "BR-17",
+            "BR-23"
+          ]
+        },
+        {
+          "number": 18,
+          "routine": "MSHIPAMT",
+          "line": 1321,
+          "rules": [
+            "BR-12",
+            "BR-23"
+          ]
+        },
+        {
+          "number": 19,
+          "routine": "MSHIPAP",
+          "line": 1340,
+          "rules": [
+            "BR-14",
+            "BR-17",
+            "BR-23",
+            "BR-24"
+          ]
+        },
+        {
+          "number": 20,
+          "routine": "MRETURN",
+          "line": 1446,
+          "rules": [
+            "BR-20",
+            "BR-22",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 21,
+          "routine": "MRETBASE",
+          "line": 1505,
+          "rules": [
+            "BR-20",
+            "BR-22",
+            "BR-24"
+          ]
+        },
+        {
+          "number": 22,
+          "routine": "MRETAMT",
+          "line": 1592,
+          "rules": [
+            "BR-20",
+            "BR-22"
+          ]
+        },
+        {
+          "number": 23,
+          "routine": "MRETAP",
+          "line": 1623,
+          "rules": [
+            "BR-21",
+            "BR-22",
+            "BR-24"
+          ]
+        },
+        {
+          "number": 24,
+          "routine": "MSETGET",
+          "line": 1776,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 25,
+          "routine": "MSETSTATE",
+          "line": 1816,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-30"
+          ]
+        },
+        {
+          "number": 26,
+          "routine": "MSETAP",
+          "line": 1874,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 27,
+          "routine": "MDELIV",
+          "line": 1898,
+          "rules": [
+            "BR-24",
+            "BR-26",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 28,
+          "routine": "MRECCHK",
+          "line": 1952,
+          "rules": [
+            "BR-06",
+            "BR-24",
+            "BR-25",
+            "BR-26",
+            "BR-31",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 29,
+          "routine": "MLOCAL",
+          "line": 1988,
+          "rules": [
+            "BR-06",
+            "BR-09",
+            "BR-22",
+            "BR-28",
+            "BR-31"
+          ]
+        },
+        {
+          "number": 30,
+          "routine": "MRETRY",
+          "line": 2086,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-31"
+          ]
+        },
+        {
+          "number": 31,
+          "routine": "MVERIFY",
+          "line": 2135,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-28",
+            "BR-31"
+          ]
+        },
+        {
+          "number": 32,
+          "routine": "MREPLY",
+          "line": 2183,
+          "rules": [
+            "BR-26",
+            "BR-31"
+          ]
+        },
+        {
+          "number": 33,
+          "routine": "MQUERY",
+          "line": 2203,
+          "rules": [
+            "BR-06",
+            "BR-26",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 34,
+          "routine": "MDAY",
+          "line": 2446,
+          "rules": [
+            "BR-29",
+            "BR-30",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 35,
+          "routine": "MPROJECT",
+          "line": 2492,
+          "rules": [
+            "BR-06",
+            "BR-26",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 36,
+          "routine": "MAUDIT",
+          "line": 2894,
+          "rules": [
+            "BR-01",
+            "BR-27",
+            "BR-31",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 37,
+          "routine": "MLEDGER",
+          "line": 3015,
+          "rules": [
+            "BR-06",
+            "BR-07",
+            "BR-27",
+            "BR-28",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 38,
+          "routine": "MCOMMIT",
+          "line": 3113,
+          "rules": [
+            "BR-24",
+            "BR-27",
+            "BR-28",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 39,
+          "routine": "MROLL",
+          "line": 3126,
+          "rules": [
+            "BR-07",
+            "BR-10",
+            "BR-17",
+            "BR-22",
+            "BR-27",
+            "BR-28",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 40,
+          "routine": "MFINISH",
+          "line": 3190,
+          "rules": [
+            "BR-27",
+            "BR-28"
+          ]
+        }
+      ],
+      "opcodeCounts": {
+        "PLIST": 1,
+        "PARM": 189,
+        "KLIST": 21,
+        "KFLD": 30,
+        "MONITOR": 11,
+        "EXSR": 1035,
+        "ON-ERROR": 11,
+        "EVAL": 2583,
+        "ENDMON": 11,
+        "RETURN": 1,
+        "BEGSR": 119,
+        "CLEAR": 88,
+        "IF": 1596,
+        "LEAVESR": 1471,
+        "ENDIF": 1596,
+        "DOW": 21,
+        "LEAVE": 4,
+        "ELSE": 31,
+        "ENDDO": 21,
+        "ENDSR": 119,
+        "CHAIN": 17,
+        "WRITE": 9,
+        "COMMIT": 2,
+        "SETGT": 1,
+        "READE": 15,
+        "SETLL": 16,
+        "CALL": 38,
+        "SELECT": 9,
+        "WHEN": 63,
+        "OTHER": 5,
+        "ENDSL": 9,
+        "FOR": 45,
+        "ENDFOR": 45,
+        "UPDATE": 9,
+        "CHAIN(N)": 10,
+        "READ": 18,
+        "ROLBK": 1
+      },
+      "actualReads": [
+        "AUDITPF",
+        "BATCHPF",
+        "INDTLPF",
+        "INHDRPF",
+        "ORDDTLPF",
+        "ORDHDRPF",
+        "REQPF",
+        "RTNDTLPF",
+        "RTNHDRPF",
+        "SETLDTPF",
+        "SETLHDPF",
+        "SHIPDTPF",
+        "SHIPHDPF"
+      ],
+      "actualWrites": [
+        "AUDITPF",
+        "BATCHPF",
+        "ORDDTLPF",
+        "ORDHDRPF",
+        "REQPF",
+        "RTNDTLPF",
+        "RTNHDRPF",
+        "SHIPDTPF",
+        "SHIPHDPF"
+      ]
+    },
+    "ORDPRICE": {
+      "routines": {
+        "PINIT": 51,
+        "PLOOK": 109,
+        "PQUOTE": 157,
+        "PGROUP": 184,
+        "PSPLIT": 222,
+        "PSUM": 242
+      },
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "PINIT",
+          "line": 51,
+          "rules": [
+            "BR-03",
+            "BR-11",
+            "BR-12",
+            "BR-22",
+            "BR-23",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 2,
+          "routine": "PLOOK",
+          "line": 109,
+          "rules": [
+            "BR-03",
+            "BR-11"
+          ]
+        },
+        {
+          "number": 3,
+          "routine": "PQUOTE",
+          "line": 157,
+          "rules": [
+            "BR-11",
+            "BR-12"
+          ]
+        },
+        {
+          "number": 4,
+          "routine": "PGROUP",
+          "line": 184,
+          "rules": [
+            "BR-20",
+            "BR-22",
+            "BR-23"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "PSPLIT",
+          "line": 222,
+          "rules": [
+            "BR-12",
+            "BR-22",
+            "BR-23"
+          ]
+        },
+        {
+          "number": 6,
+          "routine": "PSUM",
+          "line": 242,
+          "rules": [
+            "BR-12",
+            "BR-22",
+            "BR-23",
+            "BR-32"
+          ]
+        }
+      ],
+      "opcodeCounts": {
+        "PLIST": 1,
+        "PARM": 4,
+        "KLIST": 2,
+        "KFLD": 3,
+        "MONITOR": 2,
+        "EXSR": 6,
+        "ON-ERROR": 2,
+        "EVAL": 72,
+        "ENDMON": 2,
+        "RETURN": 1,
+        "BEGSR": 6,
+        "CLEAR": 3,
+        "IF": 25,
+        "LEAVESR": 20,
+        "ENDIF": 25,
+        "FOR": 2,
+        "ELSE": 1,
+        "ENDFOR": 2,
+        "ENDSR": 6,
+        "SETLL": 1,
+        "READE": 2,
+        "DOW": 1,
+        "ENDDO": 1
+      },
+      "actualReads": [
+        "PRICEPF"
+      ],
+      "actualWrites": []
+    },
+    "ORDREPLY": {
+      "routines": {
+        "YINIT": 52,
+        "YFETCH": 81,
+        "YCREATE": 94,
+        "YDELIV": 196,
+        "YRESEND": 235,
+        "YLIST": 267,
+        "YRET": 287
+      },
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "YINIT",
+          "line": 52,
+          "rules": [
+            "BR-26",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 2,
+          "routine": "YFETCH",
+          "line": 81,
+          "rules": [
+            "BR-26",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 3,
+          "routine": "YCREATE",
+          "line": 94,
+          "rules": [
+            "BR-06",
+            "BR-26",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 4,
+          "routine": "YDELIV",
+          "line": 196,
+          "rules": [
+            "BR-26",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "YRESEND",
+          "line": 235,
+          "rules": [
+            "BR-26",
+            "BR-31"
+          ]
+        },
+        {
+          "number": 6,
+          "routine": "YLIST",
+          "line": 267,
+          "rules": [
+            "BR-26",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 7,
+          "routine": "YRET",
+          "line": 287,
+          "rules": [
+            "BR-26",
+            "BR-32"
+          ]
+        }
+      ],
+      "opcodeCounts": {
+        "PLIST": 1,
+        "PARM": 3,
+        "KLIST": 4,
+        "KFLD": 7,
+        "MONITOR": 1,
+        "EXSR": 7,
+        "ON-ERROR": 1,
+        "EVAL": 94,
+        "ENDMON": 1,
+        "RETURN": 1,
+        "BEGSR": 7,
+        "CLEAR": 2,
+        "IF": 28,
+        "LEAVESR": 27,
+        "ENDIF": 28,
+        "SELECT": 1,
+        "WHEN": 5,
+        "OTHER": 1,
+        "ENDSL": 1,
+        "ENDSR": 7,
+        "CHAIN(N)": 1,
+        "CHAIN": 3,
+        "WRITE": 1,
+        "ELSE": 1,
+        "UPDATE": 2,
+        "SETGT": 1,
+        "READE": 1
+      },
+      "actualReads": [
+        "OUTBOXPF",
+        "OUTBYST"
+      ],
+      "actualWrites": [
+        "OUTBOXPF"
+      ]
+    },
+    "ORDSETTL": {
+      "routines": {
+        "TINIT": 88,
+        "TFETCH": 122,
+        "TLOOK": 180,
+        "TCREATE": 231,
+        "TWRITE": 302,
+        "TOUT": 313,
+        "TAPPLY": 505,
+        "TRETRY": 618,
+        "TVERIFY": 660,
+        "TDELIV": 696,
+        "TRET": 739,
+        "FRAME": 747
+      },
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "TINIT",
+          "line": 88,
+          "rules": [
+            "BR-23",
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 2,
+          "routine": "TFETCH",
+          "line": 122,
+          "rules": [
+            "BR-20",
+            "BR-23",
+            "BR-24",
+            "BR-25"
+          ]
+        },
+        {
+          "number": 3,
+          "routine": "TLOOK",
+          "line": 180,
+          "rules": [
+            "BR-20",
+            "BR-22"
+          ]
+        },
+        {
+          "number": 4,
+          "routine": "TCREATE",
+          "line": 231,
+          "rules": [
+            "BR-22",
+            "BR-23",
+            "BR-25"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "TWRITE",
+          "line": 302,
+          "rules": [
+            "BR-22",
+            "BR-23",
+            "BR-24"
+          ]
+        },
+        {
+          "number": 6,
+          "routine": "TAPPLY",
+          "line": 505,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-30"
+          ]
+        },
+        {
+          "number": 7,
+          "routine": "TRETRY",
+          "line": 618,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-31"
+          ]
+        },
+        {
+          "number": 8,
+          "routine": "TVERIFY",
+          "line": 660,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-31"
+          ]
+        },
+        {
+          "number": 9,
+          "routine": "TDELIV",
+          "line": 696,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 10,
+          "routine": "TRET",
+          "line": 739,
+          "rules": [
+            "BR-24",
+            "BR-25",
+            "BR-32"
+          ]
+        }
+      ],
+      "opcodeCounts": {
+        "PLIST": 1,
+        "PARM": 6,
+        "KLIST": 7,
+        "KFLD": 11,
+        "MONITOR": 1,
+        "EXSR": 44,
+        "ON-ERROR": 1,
+        "EVAL": 225,
+        "ENDMON": 1,
+        "RETURN": 1,
+        "BEGSR": 12,
+        "CLEAR": 6,
+        "IF": 92,
+        "LEAVESR": 79,
+        "ENDIF": 92,
+        "SELECT": 1,
+        "WHEN": 7,
+        "OTHER": 1,
+        "ENDSL": 1,
+        "ENDSR": 12,
+        "CHAIN(N)": 2,
+        "SETLL": 3,
+        "READE": 6,
+        "DOW": 3,
+        "ENDDO": 3,
+        "FOR": 5,
+        "LEAVE": 2,
+        "ENDFOR": 5,
+        "ELSE": 2,
+        "CHAIN": 8,
+        "WRITE": 3,
+        "UPDATE": 6
+      },
+      "actualReads": [
+        "OUTBOXPF",
+        "SETLBYREF",
+        "SETLDTPF",
+        "SETLHDPF"
+      ],
+      "actualWrites": [
+        "OUTBOXPF",
+        "SETLDTPF",
+        "SETLHDPF"
+      ]
+    },
+    "ORDSTOCK": {
+      "routines": {
+        "SINIT": 105,
+        "SLOAD": 172,
+        "SPOOL": 184,
+        "SPLANROW": 225,
+        "SMOD": 292,
+        "SALLOC": 336,
+        "SCANCEL": 412,
+        "SSHIP": 470,
+        "SRETURN": 501,
+        "SVIEW": 529,
+        "SAPCHECK": 553,
+        "SAPWRITE": 709,
+        "SRET": 749
+      },
+      "calls": [],
+      "steps": [
+        {
+          "number": 1,
+          "routine": "SINIT",
+          "line": 105,
+          "rules": [
+            "BR-14",
+            "BR-17",
+            "BR-32"
+          ]
+        },
+        {
+          "number": 2,
+          "routine": "SLOAD",
+          "line": 172,
+          "rules": [
+            "BR-13",
+            "BR-14",
+            "BR-16"
+          ]
+        },
+        {
+          "number": 3,
+          "routine": "SMOD",
+          "line": 292,
+          "rules": [
+            "BR-10",
+            "BR-14"
+          ]
+        },
+        {
+          "number": 4,
+          "routine": "SALLOC",
+          "line": 336,
+          "rules": [
+            "BR-13",
+            "BR-14",
+            "BR-15",
+            "BR-16"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "SCANCEL",
+          "line": 412,
+          "rules": [
+            "BR-18",
+            "BR-19"
+          ]
+        },
+        {
+          "number": 6,
+          "routine": "SSHIP",
+          "line": 470,
+          "rules": [
+            "BR-14",
+            "BR-17"
+          ]
+        },
+        {
+          "number": 7,
+          "routine": "SRETURN",
+          "line": 501,
+          "rules": [
+            "BR-21"
+          ]
+        },
+        {
+          "number": 8,
+          "routine": "SVIEW",
+          "line": 529,
+          "rules": [
+            "BR-32"
+          ]
+        },
+        {
+          "number": 9,
+          "routine": "SAPCHECK",
+          "line": 553,
+          "rules": [
+            "BR-10",
+            "BR-14",
+            "BR-17"
+          ]
+        },
+        {
+          "number": 10,
+          "routine": "SAPWRITE",
+          "line": 709,
+          "rules": [
+            "BR-10",
+            "BR-14",
+            "BR-17",
+            "BR-21"
+          ]
+        },
+        {
+          "number": 11,
+          "routine": "SRET",
+          "line": 749,
+          "rules": [
+            "BR-15",
+            "BR-16",
+            "BR-32"
+          ]
+        }
+      ],
+      "opcodeCounts": {
+        "PLIST": 1,
+        "PARM": 5,
+        "KLIST": 6,
+        "KFLD": 10,
+        "MONITOR": 1,
+        "EXSR": 23,
+        "ON-ERROR": 1,
+        "EVAL": 231,
+        "ENDMON": 1,
+        "RETURN": 1,
+        "BEGSR": 13,
+        "CLEAR": 6,
+        "IF": 79,
+        "LEAVESR": 55,
+        "ENDIF": 79,
+        "FOR": 21,
+        "ENDFOR": 21,
+        "SELECT": 1,
+        "WHEN": 5,
+        "OTHER": 1,
+        "ENDSL": 1,
+        "ENDSR": 13,
+        "LEAVE": 4,
+        "CHAIN(N)": 2,
+        "ELSE": 3,
+        "SETLL": 2,
+        "READE": 4,
+        "DOW": 2,
+        "ENDDO": 2,
+        "CHAIN": 5,
+        "UPDATE": 2,
+        "WRITE": 1
+      },
+      "actualReads": [
+        "ALLOCPF",
+        "STOCKPF",
+        "WHSEPF"
+      ],
+      "actualWrites": [
+        "ALLOCPF",
+        "STOCKPF"
+      ]
+    },
+    "ORDRUN": {
+      "steps": [
+        {
+          "number": 1,
+          "routine": "RINIT",
+          "line": 14,
+          "rules": [
+            "BR-28"
+          ]
+        },
+        {
+          "number": 2,
+          "routine": "RCTX",
+          "line": 29,
+          "rules": [
+            "BR-28"
+          ]
+        },
+        {
+          "number": 3,
+          "routine": "RSTART",
+          "line": 32,
+          "rules": [
+            "BR-28"
+          ]
+        },
+        {
+          "number": 4,
+          "routine": "RCALL",
+          "line": 37,
+          "rules": [
+            "BR-28"
+          ]
+        },
+        {
+          "number": 5,
+          "routine": "RCLEAN",
+          "line": 40,
+          "rules": [
+            "BR-28"
+          ]
+        },
+        {
+          "number": 6,
+          "routine": "RRETURN",
+          "line": 48,
+          "rules": [
+            "BR-28"
+          ]
+        }
+      ],
+      "calls": [
+        {
+          "program": "ORDMAIN",
+          "parameters": [
+            "BATCH",
+            "DAY",
+            "MODE",
+            "ACTOR",
+            "RESULT"
+          ]
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "path": "src/QCLLESRC/ORDRUN.clle",
+      "sha256": "2dc375a9beb9f3ce6437e181603a620bad850cd7c4d469f4bfa286f9e327f0f8",
+      "physicalLines": 63
+    },
+    {
+      "path": "src/QDDSSRC/ALLOCPF.dds",
+      "sha256": "be82a261ca4b31c98290fc42750175e15b6e66169aba8599ad3656f618b202c7",
+      "physicalLines": 21
+    },
+    {
+      "path": "src/QDDSSRC/AUDITPF.dds",
+      "sha256": "246dbd1623a98dd340608ffe0fd5e696fc968d93c89d88d00b63c38b881ebdf6",
+      "physicalLines": 41
+    },
+    {
+      "path": "src/QDDSSRC/BATCHPF.dds",
+      "sha256": "9965cd1ee80ed58885d66ba9409cda5a679d2e87034ee3ecad8238aa9a21f3b8",
+      "physicalLines": 25
+    },
+    {
+      "path": "src/QDDSSRC/CUSTPF.dds",
+      "sha256": "30808e1b51cb0e4bbd9af0a2e8c848d85d3fd46a661ef9689548de471561007e",
+      "physicalLines": 11
+    },
+    {
+      "path": "src/QDDSSRC/DAYRPTPF.dds",
+      "sha256": "0175ec0231353f99a81477e5443c6d7ba62a0cc2c3852a927acbe5516fa0aa7c",
+      "physicalLines": 33
+    },
+    {
+      "path": "src/QDDSSRC/INDTLPF.dds",
+      "sha256": "387bfdb47b48eec5373faced0e91a276b28ed526486bd984600be05dff3348d0",
+      "physicalLines": 25
+    },
+    {
+      "path": "src/QDDSSRC/INHDRPF.dds",
+      "sha256": "a20c053b2281568c0789ed1560b9b4547944165e18f63027824b0b8930c96399",
+      "physicalLines": 52
+    },
+    {
+      "path": "src/QDDSSRC/ITEMPF.dds",
+      "sha256": "2a94a7fa6b6ea813747e6fe9923c44ab20681f52cb80c912fdbc73b708a80294",
+      "physicalLines": 9
+    },
+    {
+      "path": "src/QDDSSRC/ORDDTLPF.dds",
+      "sha256": "15e783d889468731cf6bacabcf0f5ef27b4dbf5793eb7d345f3a35b1138248ea",
+      "physicalLines": 30
+    },
+    {
+      "path": "src/QDDSSRC/ORDHDRPF.dds",
+      "sha256": "1fc5bf285b7508c7f277ce83e4f1eabebce26754ae228c508891e17e9ef2abc5",
+      "physicalLines": 31
+    },
+    {
+      "path": "src/QDDSSRC/OUTBOXPF.dds",
+      "sha256": "44e50f182ac13f44b25431d9aac1569dc87b1e62faab0df2f410d7839ce99888",
+      "physicalLines": 37
+    },
+    {
+      "path": "src/QDDSSRC/OUTBYST.dds",
+      "sha256": "830a5a452a0992f4b99a7aa7d5fd86a2b582c36b74b8932cfda6ebf42e6159fd",
+      "physicalLines": 7
+    },
+    {
+      "path": "src/QDDSSRC/PRICEPF.dds",
+      "sha256": "1292a194876c86df8dfdd6c0be2a22c298cbe5be1dbff4be0e3753e7839838a7",
+      "physicalLines": 14
+    },
+    {
+      "path": "src/QDDSSRC/REQPF.dds",
+      "sha256": "bd4dbaaf778255e23b2e317703239d21d58ff8475131ceff20ee0014b07afae0",
+      "physicalLines": 40
+    },
+    {
+      "path": "src/QDDSSRC/RTNDTLPF.dds",
+      "sha256": "5543eccc1fca25541db2757110281bba78c5b2d4809ecff697f816e70144f0e3",
+      "physicalLines": 26
+    },
+    {
+      "path": "src/QDDSSRC/RTNHDRPF.dds",
+      "sha256": "d4f7cd89da3886d1a004332e6f8401af9c75b904b5973f96c527b741ab4bd411",
+      "physicalLines": 19
+    },
+    {
+      "path": "src/QDDSSRC/SETLBYDAY.dds",
+      "sha256": "fc21f8697be4883a83a7569823a2d8cc739cb7bdd02a44d3630cf3a16e75d60e",
+      "physicalLines": 7
+    },
+    {
+      "path": "src/QDDSSRC/SETLBYREF.dds",
+      "sha256": "fc4a8da9269eb641d6ae9ede1dc55856a8774345b29192bf566637d27da1f909",
+      "physicalLines": 7
+    },
+    {
+      "path": "src/QDDSSRC/SETLDTPF.dds",
+      "sha256": "094b1674c8cf31410d4c44aa1185671c5d4f92dd3117335aa6bba0bf0d316d16",
+      "physicalLines": 26
+    },
+    {
+      "path": "src/QDDSSRC/SETLHDPF.dds",
+      "sha256": "3e3827069a9474b88448d0f46b1ee5fa9028ff825834155d85faf2b90de17c2b",
+      "physicalLines": 35
+    },
+    {
+      "path": "src/QDDSSRC/SHIPDTPF.dds",
+      "sha256": "5c218e97d8b6df09219b4b8ef6e7fa9428c42685c1a5d2abc2e07c62eb49ac91",
+      "physicalLines": 22
+    },
+    {
+      "path": "src/QDDSSRC/SHIPHDPF.dds",
+      "sha256": "8fecfbafbb31f568cd0849a71f96956fafbc1385f657245a4b94ab571f35acef",
+      "physicalLines": 23
+    },
+    {
+      "path": "src/QDDSSRC/STOCKPF.dds",
+      "sha256": "60d190e2008df06e45a835f4506b26bf5ffe62748b4e89efa99456a118ffe96d",
+      "physicalLines": 14
+    },
+    {
+      "path": "src/QDDSSRC/WHSEPF.dds",
+      "sha256": "41a0e134be692475d169c9175216acd5a667b20acc69aca83f1e1695eb34fd44",
+      "physicalLines": 11
+    },
+    {
+      "path": "src/QRPGLESRC/ORDCHECK.rpgle",
+      "sha256": "1a7a2676774916a70fc9d6d008b15d4c8a5cf1882a62c86e66cb83229422db22",
+      "physicalLines": 493
+    },
+    {
+      "path": "src/QRPGLESRC/ORDCTX.rpgleinc",
+      "sha256": "9771100e20e640adb701a33f612235f78c042db85d7d7bfc7e026208e743028e",
+      "physicalLines": 127
+    },
+    {
+      "path": "src/QRPGLESRC/ORDDAILY.rpgle",
+      "sha256": "8d96cc00698b79015a964095dde95217f96440ef646749c7c90474a164ceafc2",
+      "physicalLines": 348
+    },
+    {
+      "path": "src/QRPGLESRC/ORDMAIN.rpgle",
+      "sha256": "66f15cb3101eb7213bd9aac060564e4617ae6d3e1565805dc52970f003095703",
+      "physicalLines": 10114
+    },
+    {
+      "path": "src/QRPGLESRC/ORDPRICE.rpgle",
+      "sha256": "b8c554be47eae2e3d2312ae5f9e71a89ae34acc8f7f3d7b92d37047f0b149eb6",
+      "physicalLines": 251
+    },
+    {
+      "path": "src/QRPGLESRC/ORDREPLY.rpgle",
+      "sha256": "3685ea52d6567611bea45bca327913a793f9fab9b8e5d37c9fbaeed8bac64e77",
+      "physicalLines": 291
+    },
+    {
+      "path": "src/QRPGLESRC/ORDRES.rpgleinc",
+      "sha256": "d8bda433a014676f49f7b5b5bfd7cef66bbd17736eb13c55d2df941320ebdd7f",
+      "physicalLines": 129
+    },
+    {
+      "path": "src/QRPGLESRC/ORDSETTL.rpgle",
+      "sha256": "18d14ce8b5a96a7ea3822bc90ceaacabec2a0c507b14fdb7a4cd37fa1d0c6521",
+      "physicalLines": 769
+    },
+    {
+      "path": "src/QRPGLESRC/ORDSTOCK.rpgle",
+      "sha256": "80d12ea4908427eec38c46b19b8b24bb1340ac4929a65003dca1b2fdb06edd60",
+      "physicalLines": 757
+    },
+    {
+      "path": "src/QRPGLESRC/ORDSTS.rpgleinc",
+      "sha256": "bd3848c2c1f9c61e6fe288bc28a496dd72c04de205936f5a85d086910e6a69ac",
+      "physicalLines": 10
+    }
+  ]
+}

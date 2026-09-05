@@ -1,0 +1,426 @@
+PART 011 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 3738-4160>>>
+     C                   IF        not ( HDRDS.IHSETTL = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DELIVER_UNEXPECTED_IHSETTL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHMSG <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DELIVER_REQUIRED_IHMSG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHRESULT <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DELIVER_REQUIRED_IHRESULT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHACTION = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'DELIVER_UNEXPECTED_IHACTION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFSRC = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'DELIVER_UNEXPECTED_IHREFSRC'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFREQ = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'DELIVER_UNEXPECTED_IHREFREQ'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHEVENT = 'RECOVER'
+     C                   IF        not ( HDRDS.IHORDER = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_UNEXPECTED_IHORDER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHVERSION = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RECOVER_UNEXPECTED_IHVERSION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHCUST = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_UNEXPECTED_IHCUST'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHPART = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_UNEXPECTED_IHPART'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSHIP = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_UNEXPECTED_IHSHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHRETURN = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RECOVER_UNEXPECTED_IHRETURN'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHRESULT = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RECOVER_UNEXPECTED_IHRESULT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHACTION <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_REQUIRED_IHACTION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   SELECT
+     C                   WHEN      HDRDS.IHACTION = 'LOCAL'
+     C                   IF        not ( HDRDS.IHREFSRC <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_LOCAL_IHREFSRC'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFREQ <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_LOCAL_IHREFREQ'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSETTL = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_LOCAL_IHSETTL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHMSG = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_LOCAL_IHMSG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHACTION = 'RETRY'
+     C                   IF        not ( HDRDS.IHREFSRC = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_RETRY_IHREFSRC'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFREQ = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_RETRY_IHREFREQ'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSETTL <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_RETRY_IHSETTL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHMSG = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_RETRY_IHMSG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHACTION = 'VERIFY'
+     C                   IF        not ( HDRDS.IHREFSRC = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_VERIFY_IHREFSRC'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFREQ = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_VERIFY_IHREFREQ'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSETTL <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_VERIFY_IHSETTL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHMSG = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_VERIFY_IHMSG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHACTION = 'REPLY'
+     C                   IF        not ( HDRDS.IHREFSRC = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_REPLY_IHREFSRC'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFREQ = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_REPLY_IHREFREQ'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSETTL = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_REPLY_IHSETTL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHMSG <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVER_REPLY_IHMSG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   OTHER
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVERY_ACTION'
+     C                   LEAVESR
+     C                   ENDSL
+     C                   WHEN      HDRDS.IHEVENT = 'QUERY'
+     C                   IF        not ( HDRDS.IHVERSION = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_UNEXPECTED_IHVERSION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHCUST = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_UNEXPECTED_IHCUST'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHPART = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_UNEXPECTED_IHPART'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSHIP = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_UNEXPECTED_IHSHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHRETURN = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_UNEXPECTED_IHRETURN'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSETTL = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_UNEXPECTED_IHSETTL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHMSG = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_UNEXPECTED_IHMSG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHRESULT = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_UNEXPECTED_IHRESULT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHACTION = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_UNEXPECTED_IHACTION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( (HDRDS.IHORDER <> *blanks and
+     C                             HDRDS.IHREFSRC = *blanks and HDRDS.IHREFREQ =
+     C                             *blanks) or (HDRDS.IHORDER = *blanks and
+     C                             HDRDS.IHREFSRC <> *blanks and HDRDS.IHREFREQ
+     C                             <> *blanks) )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'QUERY_ONE_TARGET'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHEVENT = 'DAYEND'
+     C                   IF        not ( HDRDS.IHORDER = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHORDER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHVERSION = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'DAYEND_UNEXPECTED_IHVERSION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHCUST = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHCUST'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHPART = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHPART'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSHIP = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHSHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHRETURN = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHRETURN'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSETTL = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHSETTL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHMSG = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHMSG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHRESULT = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHRESULT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHACTION = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHACTION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFSRC = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHREFSRC'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFREQ = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_UNEXPECTED_IHREFREQ'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   OTHER
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'UNKNOWN_EVENT'
+     C                   LEAVESR
+     C                   ENDSL
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EVAL      IDENT = NORMROWS(I).NRITEM
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = NORMROWS(I).NRSHIP
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   SELECT
+     C                   WHEN      HDRDS.IHEVENT = 'NEW'
+     C                   IF        not ( NORMROWS(I).NRITEM <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_ITEM_REQUIRED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRWH = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_WAREHOUSE_FROM_RULE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRSHIP = *blanks and
+     C                             NORMROWS(I).NRSHLINE = 0 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_NO_ORIGINAL_SHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHEVENT = 'MOD'
+     C                   IF        not ( NORMROWS(I).NRITEM <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'MOD_ITEM_REQUIRED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRWH = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'MOD_WAREHOUSE_FROM_RULE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRSHIP = *blanks and
+     C                             NORMROWS(I).NRSHLINE = 0 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'MOD_NO_ORIGINAL_SHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHEVENT = 'SHIP'
+     C                   IF        not ( NORMROWS(I).NRITEM = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_ITEM_FROM_ORIGINAL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRWH = 'A' or
+     C                             NORMROWS(I).NRWH = 'B' or NORMROWS(I).NRWH =
+     C                             'C' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_WAREHOUSE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRSHIP = *blanks and
+     C                             NORMROWS(I).NRSHLINE = 0 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_NO_ORIGINAL_SHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHEVENT = 'CANCEL'
+     C                   IF        not ( NORMROWS(I).NRITEM = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'CANCEL_ITEM_FROM_ORIGINAL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRWH = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'CANCEL_WAREHOUSE_FROM_RULE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRSHIP = *blanks and
+     C                             NORMROWS(I).NRSHLINE = 0 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'CANCEL_NO_ORIGINAL_SHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHEVENT = 'RETURN'
+     C                   IF        not ( NORMROWS(I).NRITEM = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_ITEM_FROM_ORIGINAL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRWH = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_WAREHOUSE_FROM_RULE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(I).NRSHIP <> *blanks and
+     C                             NORMROWS(I).NRSHLINE > 0 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_ORIGINAL_REFERENCE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSL
+     C                   ENDFOR
+     C                   ENDSR
+
+
+     C     MIDENT        BEGSR
+     C                   IF        IDENT = *blanks
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( %check('ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+     C                             'abcdefghijklmnopqrstuvwxyz0123456789_-'
+     C                             :%trimr(IDENT)) = 0 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'IDENTITY_CHARACTER_SET'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MORDERFACTS   BEGSR
+     C                   IF        not ( ORDERKEEP.OHORDER = CTXDS.CXORDER )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ORDER_KEY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDERKEEP.OHVERSION >= 1 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ORDER_VERSION_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDERKEEP.OHTIER = 'S' or
+     C                             ORDERKEEP.OHTIER = 'P' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ORDER_TIER_DATA'
+<<<END_FILE>>>

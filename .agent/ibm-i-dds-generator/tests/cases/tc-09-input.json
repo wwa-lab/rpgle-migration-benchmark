@@ -1,0 +1,26 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "TBD-20260404-01",
+    "specLevel": "L1",
+    "fileType": "PF",
+    "fileName": "TBDPF",
+    "description": "TBD test file"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "TBDR",
+      "purpose": "TBD test record",
+      "fieldCount": 3
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      { "fieldId": "FLD-01", "fieldName": "GOODFLD", "type": "A", "length": 10, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Good field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-02", "fieldName": "TBD", "type": "A", "length": 20, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "TBD field name", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-03", "fieldName": "ANOTHGD", "type": "P", "length": 7, "decimals": 2, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Another good field", "editCode": null, "columnHeading": null, "ddsKeywords": [] }
+    ]
+  }
+}

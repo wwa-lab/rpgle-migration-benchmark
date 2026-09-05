@@ -1,0 +1,468 @@
+PART 018 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 7136-7600>>>
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHSHIP
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHRETURN'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHRETURN
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHSETTL'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHSETTL
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHMSG'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHMSG
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHRESULT'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHRESULT
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHACTION'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHACTION
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHREFSRC'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHREFSRC
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHREFREQ'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHREFREQ
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHACTOR'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHACTOR
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHREASON'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHREASON
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHNLINE'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHNLINE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      AUDKEY = 'INHDRPF'
+     C                   EXSR      MAPPENDAUD
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   FOR       I = 1 to ROWCOUNT
+     C                   EVAL      AUDKIND = 'INPUT_DETAIL'
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = 'IDBATCH'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RAWROWS(I).IDBATCH
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IDINPUT'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(RAWROWS(I).IDINPUT)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IDPOS'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(RAWROWS(I).IDPOS)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IDLINE'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RAWROWS(I).IDLINE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IDITEM'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RAWROWS(I).IDITEM
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IDQTY'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RAWROWS(I).IDQTY
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IDWH'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RAWROWS(I).IDWH
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IDSHIP'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RAWROWS(I).IDSHIP
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IDSHLINE'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = RAWROWS(I).IDSHLINE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      AUDKEY = 'INDTLPF'
+     C                   EXSR      MAPPENDAUD
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+     C     MCHECKABI     BEGSR
+     C                   IF        not ( CHKHEAD.CHLEN >= 4 and CHKHEAD.CHLEN <=
+     C                             24000 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_CANON_LENGTH'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( %subst(CHKHEAD.CHCANON:1:4) = '0001' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_CANON_VERSION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      POSN = 5
+     C                   EVAL      N = 0
+     C                   DOW       POSN <= CHKHEAD.CHLEN
+     C                   IF        not ( POSN + 3 <= CHKHEAD.CHLEN )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CANON_PARTIAL_LENGTH'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   MONITOR
+     C                   EVAL      FLEN =
+     C                             %dec(%subst(CHKHEAD.CHCANON:POSN:4):4:0)
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CANON_NONNUMERIC_LENGTH'
+     C                   LEAVESR
+     C                   ENDMON
+     C                   IF        not ( FLEN >= 0 and POSN + 3 + FLEN <=
+     C                             CHKHEAD.CHLEN )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CANON_FIELD_RANGE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      POSN = POSN + 4 + FLEN
+     C                   EVAL      N = N + 1
+     C                   ENDDO
+     C                   IF        not ( POSN = CHKHEAD.CHLEN + 1 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'CANON_TRAILING_PARTIAL_FIELD'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( N = 19 + CTXDS.CXCOUNT * 6 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CANON_FIELD_COUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        CTXDS.CXACTION = 'CANON'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( CHKHEAD.CHCOUNT = CTXDS.CXCOUNT and
+     C                             RESDS.RSCOUNT = CTXDS.CXCOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_COUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( CHKHEAD.CHVERSION >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_VERSION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   FOR       X = 1 to CHKHEAD.CHCOUNT
+     C                   IF        not ( NORMROWS(X).NRLINE > 0 and
+     C                             NORMROWS(X).NRLINE <= 99999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_LINE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(X).NRQTY > 0 and
+     C                             NORMROWS(X).NRQTY <= 9999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_QUANTITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( NORMROWS(X).NRSHLINE >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_ORIGINAL_LINE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        HDRDS.IHEVENT = 'NEW' or HDRDS.IHEVENT =
+     C                             'MOD'
+     C                   IF        not ( NORMROWS(X).NRITEM <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_ITEM'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( CHKHEAD.CHTIER = 'S' or CHKHEAD.CHTIER
+     C                             = 'P' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_TIER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   FOR       Y = 1 to X - 1
+     C                   IF        HDRDS.IHEVENT = 'SHIP'
+     C                   IF        not ( NORMROWS(Y).NRLINE <>
+     C                             NORMROWS(X).NRLINE or NORMROWS(Y).NRWH <>
+     C                             NORMROWS(X).NRWH )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_DUPLICATE_SHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( NORMROWS(Y).NRLINE <>
+     C                             NORMROWS(X).NRLINE )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CHECK_ABI_DUPLICATE_LINE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDFOR
+     C                   ENDSR
+
+
+     C     MPRICEABI     BEGSR
+     C                   IF        not ( RESDS.RSCOUNT = CTXDS.CXCOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_COUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RESDS.RSAMOUNT >= 0 and RESDS.RSAMOUNT
+     C                             <= 9999999999999.99 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_TOTAL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      REFAMT = 0
+     C                   FOR       X = 1 to CTXDS.CXCOUNT
+     C                   IF        not ( PROUT(X).POLINE = PRIN(X).PILINE )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_LINE_ID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( PROUT(X).POAMOUNT >= 0 and
+     C                             PROUT(X).POCUMAMT >= PROUT(X).POAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_AMOUNT_RANGE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( PROUT(X).POCUMQTY >= PRIN(X).PIQTY )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'PRICE_ABI_CUMULATIVE_QUANTITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        CTXDS.CXACTION = 'QUOTE'
+     C                   IF        not ( PROUT(X).POUNIT > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_UNIT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        CTXDS.CXTIER = 'S'
+     C                   IF        not ( PROUT(X).PORATE = 1.0000 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_STANDARD_RATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( PROUT(X).PORATE = 0.9500 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_PREFERRED_RATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      WIDE = PRIN(X).PIQTY * PROUT(X).POUNIT *
+     C                             PROUT(X).PORATE
+     C                   IF        not ( %dech(WIDE:15:2) = PROUT(X).POAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_ROUNDED_LINE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( PROUT(X).POCUMAMT = PROUT(X).POAMOUNT
+     C                             and PROUT(X).POCUMQTY = PRIN(X).PIQTY )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_QUOTE_CUMULATIVE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   EVAL      REFQTY = PRIN(X).PIPRIORQ
+     C                   EVAL      PREVAMT = PRIN(X).PIPRIORA
+     C                   FOR       Y = 1 to X - 1
+     C                   IF        PRIN(Y).PIGROUP = PRIN(X).PIGROUP
+     C                   EVAL      REFQTY = PROUT(Y).POCUMQTY
+     C                   EVAL      PREVAMT = PROUT(Y).POCUMAMT
+     C                   ENDIF
+     C                   ENDFOR
+     C                   IF        not ( PROUT(X).POCUMQTY = REFQTY +
+     C                             PRIN(X).PIQTY )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_GROUP_QUANTITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( PROUT(X).POCUMQTY <= PRIN(X).PIBASEQTY
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_ORIGINAL_LIMIT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( PROUT(X).POCUMAMT <= PRIN(X).PIBASEAMT
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_ORIGINAL_AMOUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( PROUT(X).POAMOUNT = PROUT(X).POCUMAMT -
+     C                             PREVAMT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_DELTA_AMOUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      WIDE = PRIN(X).PIBASEAMT * PROUT(X).POCUMQTY
+     C                             / PRIN(X).PIBASEQTY
+     C                   IF        not ( %dech(WIDE:15:2) = PROUT(X).POCUMAMT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_PROPORTION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      REFAMT = REFAMT + PROUT(X).POAMOUNT
+     C                   ENDFOR
+     C                   IF        not ( REFAMT = RESDS.RSAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PRICE_ABI_DOCUMENT_TOTAL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     MSTOCKABI     BEGSR
+     C                   IF        not ( RESDS.RSCOUNT >= 0 and RESDS.RSCOUNT <=
+     C                             300 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STOCK_ABI_COUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   FOR       X = 1 to 300
+     C                   IF        not ( STKOLD(X).SPUSE = 'N' or
+     C                             STKOLD(X).SPUSE = 'Y' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_USE_FLAG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        STKOLD(X).SPUSE = 'Y'
+     C                   IF        not ( STKOLD(X).SPLINE > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STKOLD_LINE'
+     C                   LEAVESR
+     C                   ENDIF
+<<<END_FILE>>>

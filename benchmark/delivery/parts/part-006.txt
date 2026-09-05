@@ -1,0 +1,445 @@
+PART 006 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 1438-1879>>>
+     C                   ENDIF
+     C                   EVAL      HASCHANGE = *on
+     C                   EVAL      BUSRC = RCWAIT
+     C                   EVAL      BUSREASON = 'SHIPMENT_SETTLEMENT_PENDING'
+     C                   ENDSR
+
+
+
+     C     MRETURN       BEGSR
+     C                   EVAL      KRHRETURN = CTXDS.CXRETURN
+     C     KRTNH         CHAIN(N)  RTNHDRPF      RHREC
+     C                   IF        not ( not %found(RTNHDRPF) )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_ALREADY_EXISTS'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     SHIPBASE
+     C                   CLEAR     SHIPHEADS
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EVAL      KSHSHIP = NORMROWS(I).NRSHIP
+     C     KSHIPH        CHAIN(N)  SHIPHDPF      SHREC
+     C                   IF        not ( %found(SHIPHDPF) )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ORIGINAL_SHIPMENT_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SHREC.SHORDER = CTXDS.CXORDER )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_ORDER_MISMATCH'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   MONITOR
+     C                   EVAL      WORKDAY = %date(SHREC.SHDAY:*ISO0)
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIPMENT_DAY_DATA'
+     C                   LEAVESR
+     C                   ENDMON
+     C                   EVAL      N =
+     C                             %diff(%date(CTXDS.CXDAY:*ISO0):WORKDAY:*D)
+     C                   IF        not ( N >= 0 and N <= 30 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_WINDOW'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SHIPHEADS(I) = SHREC
+     C                   EVAL      KSDSHIP = NORMROWS(I).NRSHIP
+     C                   EVAL      KSDLINE = NORMROWS(I).NRSHLINE
+     C     KSHIPD        CHAIN(N)  SHIPDTPF      SDREC
+     C                   IF        not ( %found(SHIPDTPF) )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'ORIGINAL_SHIPMENT_DETAIL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SDREC.SDORDER = CTXDS.CXORDER )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_DETAIL_ORDER_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SHIPBASE(I) = SDREC
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+
+     C     MRETBASE      BEGSR
+     C                   CLEAR     RETPRIOR
+     C                   CLEAR     RETSUCC
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EVAL      CTXDS.CXSETTL = SHIPHEADS(I).SHSETTL
+     C                   EVAL      CTXDS.CXSHIP = SHIPHEADS(I).SHSHIP
+     C                   EVAL      CTXDS.CXMSG = *blanks
+     C                   EVAL      CTXDS.CXACTION = 'FETCH'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SEKIND = 'P' and
+     C                             SETHEAD.SESTATE = 'OK' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_REQUIRES_SETTLED_SHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXACTION = 'LOOKUP'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      PREVQ = 0
+     C                   EVAL      SUCCAMT = 0
+     C                   EVAL      RETURNQ = 0
+     C                   FOR       J = 1 to 100
+     C                   IF        SETVIEW(J).SVSHLINE = SHIPBASE(I).SDLINE
+     C                   IF        SETVIEW(J).SVPENDING = 'Y'
+     C                   EVAL      RETRYABLE = *on
+     C                   EVAL      BUSRC = RCWAIT
+     C                   EVAL      BUSREASON =
+     C                             'ORIGINAL_DETAIL_ADJUSTMENT_PENDING'
+     C                   EVAL      RESDS.RSRC = RCWAIT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      PREVQ = SETVIEW(J).SVSUCCQTY
+     C                   EVAL      SUCCAMT = SETVIEW(J).SVSUCCAMT
+     C                   ENDIF
+     C                   ENDFOR
+     C     *LOVAL        SETLL     RTNDTLPF
+     C                   READ      RTNDTLPF      RDREC
+     C                   DOW       not %eof(RTNDTLPF)
+     C                   IF        RDREC.RDSHIP = SHIPBASE(I).SDSHIP and
+     C                             RDREC.RDSHLINE = SHIPBASE(I).SDLINE
+     C                   EVAL      RETURNQ = RETURNQ + RDREC.RDQTY
+     C                   ENDIF
+     C                   READ      RTNDTLPF      RDREC
+     C                   ENDDO
+     C                   IF        not ( RETURNQ = PREVQ )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_HISTORY_ADJUSTMENT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RETURNQ + NORMROWS(I).NRQTY <=
+     C                             SHIPBASE(I).SDQTY )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_EXCEEDS_SHIPPED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      RETPRIOR(I) = RETURNQ
+     C                   EVAL      RETSUCC(I) = SUCCAMT
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+     C     MRETAMT       BEGSR
+     C                   CLEAR     PRIN
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EVAL      PRIN(I).PIGROUP = %trim(SHIPBASE(I).SDSHIP) +
+     C                             ':' + %char(SHIPBASE(I).SDLINE)
+     C                   EVAL      PRIN(I).PILINE = NORMROWS(I).NRLINE
+     C                   EVAL      PRIN(I).PIITEM = SHIPBASE(I).SDITEM
+     C                   EVAL      PRIN(I).PIQTY = NORMROWS(I).NRQTY
+     C                   EVAL      PRIN(I).PIBASEQTY = SHIPBASE(I).SDQTY
+     C                   EVAL      PRIN(I).PIPRIORQ = RETPRIOR(I)
+     C                   EVAL      PRIN(I).PIBASEAMT = SHIPBASE(I).SDAMOUNT
+     C                   EVAL      PRIN(I).PIPRIORA = RETSUCC(I)
+     C                   ENDFOR
+     C                   EVAL      CTXDS.CXACTION = 'RETURN'
+     C                   CALL      'ORDPRICE'
+     C                   PARM                    CTXDS
+     C                   PARM                    PRIN
+     C                   PARM                    PROUT
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MPRICEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      RETURNAMT = RESDS.RSAMOUNT
+     C                   ENDSR
+
+
+
+
+     C     MRETAP        BEGSR
+     C                   CLEAR     STKIN
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EVAL      STKIN(I).SILINE = NORMROWS(I).NRLINE
+     C                   EVAL      STKIN(I).SIITEM = SHIPBASE(I).SDITEM
+     C                   EVAL      STKIN(I).SIWH = SHIPBASE(I).SDWH
+     C                   EVAL      STKIN(I).SIQTY = NORMROWS(I).NRQTY
+     C                   ENDFOR
+     C                   EVAL      CTXDS.CXACTION = 'RETURN'
+     C                   CALL      'ORDSTOCK'
+     C                   PARM                    CTXDS
+     C                   PARM                    STKIN
+     C                   PARM                    STKOLD
+     C                   PARM                    STKNEW
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSTOCKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXACTION = 'APPLY'
+     C                   CALL      'ORDSTOCK'
+     C                   PARM                    CTXDS
+     C                   PARM                    STKIN
+     C                   PARM                    STKOLD
+     C                   PARM                    STKNEW
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSTOCKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     RHREC
+     C                   EVAL      RHREC.RHRETURN = CTXDS.CXRETURN
+     C                   EVAL      RHREC.RHORDER = CTXDS.CXORDER
+     C                   EVAL      RHREC.RHDAY = CTXDS.CXDAY
+     C                   EVAL      RHREC.RHSRC = CTXDS.CXSRC
+     C                   EVAL      RHREC.RHREQ = CTXDS.CXREQ
+     C                   EVAL      RHREC.RHNLINE = CHKHEAD.CHCOUNT
+     C                   EVAL      RHREC.RHAMOUNT = RETURNAMT
+     C                   WRITE     RTNHDRR       RHREC
+     C                   EVAL      AUDKIND = 'RETURN_CREATED'
+     C                   EXSR      ARTNH
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      GROUPN = 0
+     C                   CLEAR     GROUPSHIP
+     C                   CLEAR     GROUPIDX
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EVAL      GI = 0
+     C                   FOR       J = 1 to GROUPN
+     C                   IF        GROUPSHIP(J) = SHIPBASE(I).SDSHIP
+     C                   EVAL      GI = J
+     C                   LEAVE
+     C                   ENDIF
+     C                   ENDFOR
+     C                   IF        GI = 0
+     C                   IF        not ( GROUPN < 100 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_SHIP_GROUP_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      GROUPN = GROUPN + 1
+     C                   EVAL      GI = GROUPN
+     C                   EVAL      GROUPSHIP(GI) = SHIPBASE(I).SDSHIP
+     C                   ENDIF
+     C                   EVAL      GROUPIDX(I) = GI
+     C                   CLEAR     RDREC
+     C                   EVAL      SETTLEKEY = 'A:' + %trim(CTXDS.CXRETURN) +
+     C                             ':' + %trim(SHIPBASE(I).SDSHIP)
+     C                   EVAL      RDREC.RDRETURN = CTXDS.CXRETURN
+     C                   EVAL      RDREC.RDLINE = NORMROWS(I).NRLINE
+     C                   EVAL      RDREC.RDSHIP = SHIPBASE(I).SDSHIP
+     C                   EVAL      RDREC.RDSHLINE = SHIPBASE(I).SDLINE
+     C                   EVAL      RDREC.RDORDER = CTXDS.CXORDER
+     C                   EVAL      RDREC.RDITEM = SHIPBASE(I).SDITEM
+     C                   EVAL      RDREC.RDWH = SHIPBASE(I).SDWH
+     C                   EVAL      RDREC.RDQTY = NORMROWS(I).NRQTY
+     C                   EVAL      RDREC.RDAMOUNT = PROUT(I).POAMOUNT
+     C                   EVAL      RDREC.RDSETTL = SETTLEKEY
+     C                   WRITE     RTNDTLR       RDREC
+     C                   EVAL      RETROWS(I) = RDREC
+     C                   EXSR      ARTND
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   FOR       GI = 1 to GROUPN
+     C                   CLEAR     SETHEAD
+     C                   CLEAR     SETROWS
+     C                   EVAL      SETTLEKEY = 'A:' + %trim(CTXDS.CXRETURN) +
+     C                             ':' + %trim(GROUPSHIP(GI))
+     C                   EVAL      GROUPAMT = 0
+     C                   EVAL      N = 0
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   IF        GROUPIDX(I) = GI
+     C                   EVAL      N = N + 1
+     C                   EVAL      SETROWS(N).SLSETTL = SETTLEKEY
+     C                   EVAL      SETROWS(N).SLLINE = N
+     C                   EVAL      SETROWS(N).SLSHIP = RETROWS(I).RDSHIP
+     C                   EVAL      SETROWS(N).SLSHLINE = RETROWS(I).RDSHLINE
+     C                   EVAL      SETROWS(N).SLRETURN = CTXDS.CXRETURN
+     C                   EVAL      SETROWS(N).SLRTLINE = RETROWS(I).RDLINE
+     C                   EVAL      SETROWS(N).SLORDER = CTXDS.CXORDER
+     C                   EVAL      SETROWS(N).SLORDLINE = SHIPBASE(I).SDORDLINE
+     C                   EVAL      SETROWS(N).SLQTY = RETROWS(I).RDQTY
+     C                   EVAL      SETROWS(N).SLAMOUNT = RETROWS(I).RDAMOUNT
+     C                   EVAL      GROUPAMT = GROUPAMT + RETROWS(I).RDAMOUNT
+     C                   ENDIF
+     C                   ENDFOR
+     C                   EVAL      SETHEAD.SEID = SETTLEKEY
+     C                   EVAL      SETHEAD.SEKIND = 'R'
+     C                   EVAL      SETHEAD.SESHIP = GROUPSHIP(GI)
+     C                   EVAL      SETHEAD.SERETURN = CTXDS.CXRETURN
+     C                   EVAL      SETHEAD.SEORIG = 'S:' + %trim(GROUPSHIP(GI))
+     C                   EVAL      SETHEAD.SEORDER = CTXDS.CXORDER
+     C                   EVAL      SETHEAD.SECREATED = CTXDS.CXPROCDAY
+     C                   EVAL      SETHEAD.SESTATE = 'NEW'
+     C                   EVAL      SETHEAD.SEAMOUNT = GROUPAMT
+     C                   EVAL      SETHEAD.SEATTEMPT = 1
+     C                   EVAL      SETHEAD.SENLINE = N
+     C                   EVAL      SETHEAD.SERETRY = 'N'
+     C                   EXSR      MNEXTMSG
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXSETTL = SETTLEKEY
+     C                   EVAL      CTXDS.CXSHIP = GROUPSHIP(GI)
+     C                   EVAL      CTXDS.CXACTION = 'CREATE'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   EVAL      HASCHANGE = *on
+     C                   EVAL      BUSRC = RCWAIT
+     C                   EVAL      BUSREASON = 'RETURN_ADJUSTMENT_PENDING'
+     C                   ENDSR
+
+
+
+     C     MSETGET       BEGSR
+     C                   EVAL      CTXDS.CXACTION = 'FETCH'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBBIZID = SETHEAD.SEID and
+     C                             OUTREC.OBORDER = SETHEAD.SEORDER )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'FEEDBACK_LINK_CONFLICT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBKIND = 'SETTLE' or
+     C                             OUTREC.OBKIND = 'ADJUST' or OUTREC.OBKIND =
+     C                             'VERIFY' )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'FEEDBACK_MESSAGE_KIND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXORDER = SETHEAD.SEORDER
+     C                   EVAL      CTXDS.CXSHIP = SETHEAD.SESHIP
+     C                   EVAL      CTXDS.CXRETURN = SETHEAD.SERETURN
+     C                   EVAL      CTXDS.CXEXPECT = SETHEAD.SESTATE
+     C                   EVAL      CTXDS.CXATTEMPT = SETHEAD.SEATTEMPT
+     C                   EVAL      BEFORESTATE = SETHEAD.SESTATE
+     C                   EVAL      SETKEEP = SETHEAD
+     C                   EVAL      MSGRESULT = OUTREC
+     C                   ENDSR
+
+
+
+     C     MSETSTATE     BEGSR
+     C                   EVAL      SKIPAPPLY = *off
+     C                   EVAL      FEEDBACK = HDRDS.IHRESULT
+     C                   IF        not ( FEEDBACK = 'OK' or FEEDBACK = 'FAIL' or
+     C                             FEEDBACK = 'UNKNOWN' or FEEDBACK = 'RETRYOK'
+     C                             )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_FEEDBACK'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        SETHEAD.SESTATE = 'OK'
+     C                   EVAL      SKIPAPPLY = *on
+     C                   EVAL      BUSRC = RCDUP
+     C                   EVAL      BUSREASON = 'SUCCESS_ALREADY_RECORDED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        FEEDBACK = 'OK'
+     C                   EVAL      SETHEAD.SESTATE = 'OK'
+     C                   EVAL      SETHEAD.SEFIRSTDAY = RUNDAY
+     C                   EVAL      SETHEAD.SERETRY = 'N'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        OUTREC.OBATTEMPT <> SETHEAD.SEATTEMPT or
+     C                             OUTREC.OBID <> SETHEAD.SELASTMSG
+     C                   EVAL      SKIPAPPLY = *on
+     C                   EVAL      BUSRC = RCDUP
+     C                   EVAL      BUSREASON = 'STALE_ATTEMPT_FEEDBACK'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        SETHEAD.SESTATE = 'UNKNOWN'
+     C                   IF        OUTREC.OBKIND = 'VERIFY' and (FEEDBACK =
+     C                             'FAIL' or FEEDBACK = 'RETRYOK' )
+     C                   EVAL      SETHEAD.SESTATE = 'FAIL'
+     C                   EVAL      SETHEAD.SERETRY = 'Y'
+     C                   ELSE
+     C                   EVAL      SKIPAPPLY = *on
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        FEEDBACK = 'UNKNOWN'
+     C                   EVAL      SETHEAD.SESTATE = 'UNKNOWN'
+     C                   EVAL      SETHEAD.SERETRY = 'N'
+     C                   ELSE
+     C                   IF        not ( FEEDBACK = 'FAIL' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETRYOK_REQUIRES_VERIFICATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SETHEAD.SESTATE = 'FAIL'
+     C                   EVAL      SETHEAD.SERETRY = 'Y'
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      BUSRC = RCWAIT
+     C                   EVAL      BUSREASON = SETHEAD.SESTATE
+     C                   ENDSR
+
+
+
+     C     MSETAP        BEGSR
+     C                   IF        not SKIPAPPLY
+     C                   EVAL      SETHEAD.SEREASON = CTXDS.CXREASON
+     C                   EVAL      CTXDS.CXACTION = 'APPLY'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+<<<END_FILE>>>

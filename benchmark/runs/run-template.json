@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.0",
+  "status": "NOT_RUN",
+  "runId": null,
+  "anonymousLabel": null,
+  "replicate": null,
+  "materialVersion": "RPGFLOW-1.0",
+  "materialManifestSha256": null,
+  "archiveSha256": null,
+  "profile": null,
+  "platform": null,
+  "actualModelId": null,
+  "modelVersionOrRevision": null,
+  "reportedReasoningSetting": null,
+  "contextWindowTokens": null,
+  "outputTokenLimit": null,
+  "temperature": null,
+  "seed": null,
+  "settingsUnavailable": [],
+  "deployment": {
+    "engine": null,
+    "engineVersion": null,
+    "quantization": null,
+    "hardware": null
+  },
+  "controlPreflight": {
+    "sameMaterialVerified": null,
+    "sameProfileVerified": null,
+    "contextFitsAllMaterials": null,
+    "freshConversation": null,
+    "workspaceIsolated": null,
+    "memoryAndExtraSkillsDisabled": null,
+    "toolParityVerified": null,
+    "limitsEnforcedAndLogged": null,
+    "hiddenPlatformBehavior": "unknown",
+    "controlledRunReady": false
+  },
+  "timing": {
+    "startedAt": null,
+    "finishedAt": null,
+    "elapsedSeconds": null
+  },
+  "usage": {
+    "inputTokens": null,
+    "outputTokens": null,
+    "toolCalls": null,
+    "toolReturnedUtf8Bytes": null,
+    "deliveredPartIds": [],
+    "continuationCount": 0
+  },
+  "artifacts": {
+    "sentPrompts": null,
+    "toolOrDeliveryLog": null,
+    "rawResponse": null,
+    "finalReport": null,
+    "scoreSheet": null
+  },
+  "deviations": [],
+  "review": {
+    "rubricVersion": "1.0-draft",
+    "reviewer": null,
+    "scores": {
+      "operation": null,
+      "system": null,
+      "data": null,
+      "transaction": null,
+      "total": null
+    },
+    "evidenceChecked": null,
+    "evidenceValid": null,
+    "unsupportedClaims": null,
+    "formatComplete": null
+  }
+}

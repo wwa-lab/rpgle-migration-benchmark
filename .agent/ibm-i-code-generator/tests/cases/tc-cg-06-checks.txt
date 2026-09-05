@@ -1,0 +1,13 @@
+layer=2
+lang=RPGLE
+change_type=new
+type=pipeline
+# Checks apply to REVIEWER output (Stage 2), not generated code
+# Reviewer must reach a readiness decision
+must_contain_regex=(Ready|READY)
+# Reviewer must NOT say "Not ready" as the overall verdict
+must_not_contain_regex=Readiness:.*Not ready
+# Reviewer should see spec alignment
+must_contain=Spec Alignment
+# Reviewer output should reference the controlling spec
+must_contain=CUSTUPD

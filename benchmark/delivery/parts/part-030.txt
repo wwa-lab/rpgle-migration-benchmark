@@ -1,0 +1,291 @@
+PART 030 OF 032
+<<<FILE src/QRPGLESRC/ORDSETTL.rpgle LINES 482-769>>>
+     C                   EVAL      OUTREC.OBRESULT = 'NONE'
+     C                   EVAL      OUTREC.OBRESDAY = *blanks
+     C                   EVAL      OUTREC.OBATTEMPT = 1
+     C                   EVAL      OUTREC.OBDAY = CTXDS.CXPROCDAY
+     C                   EVAL      OUTREC.OBREASON = CTXDS.CXREASON
+     C                   EVAL      OUTREC.OBBIZID = SETHEAD.SEID
+     C                   EVAL      OUTREC.OBATTEMPT = SETHEAD.SEATTEMPT
+     C                   EVAL      OUTREC.OBPAYLOAD = PAYLOAD
+     C                   EVAL      OUTREC.OBLEN = PAYLEN
+     C                   EVAL      KOBID = OUTREC.OBID
+     C     KOUT          CHAIN     OUTBOXPF      OBREC
+     C                   IF        not ( not %found(OUTBOXPF) )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'SETTLEMENT_MESSAGE_COLLISION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OBREC = OUTREC
+     C                   WRITE     OUTBOXR       OBREC
+     C                   ENDSR
+
+
+
+     C     TAPPLY        BEGSR
+     C                   EVAL      TARGET = SETHEAD
+     C                   EVAL      MSGKEEP = OUTREC
+     C                   EVAL      KSEID = CTXDS.CXSETTL
+     C     KSETLH        CHAIN     SETLHDPF      SEREC
+     C                   IF        not ( %found(SETLHDPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SEREC.SESTATE = CTXDS.CXEXPECT and
+     C                             SEREC.SEATTEMPT = CTXDS.CXATTEMPT )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'SETTLEMENT_SNAPSHOT_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SEID = SEREC.SEID )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SEID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SEKIND = SEREC.SEKIND )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SEKIND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SESHIP = SEREC.SESHIP )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SESHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SERETURN = SEREC.SERETURN )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SERETURN'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SEORIG = SEREC.SEORIG )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SEORIG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SEORDER = SEREC.SEORDER )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SEORDER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SECREATED = SEREC.SECREATED )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SECREATED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SEAMOUNT = SEREC.SEAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SEAMOUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SEATTEMPT = SEREC.SEATTEMPT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SEATTEMPT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SELASTMSG = SEREC.SELASTMSG )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SELASTMSG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( TARGET.SENLINE = SEREC.SENLINE )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'IMMUTABLE_SENLINE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        SEREC.SESTATE = 'OK'
+     C                   IF        not ( TARGET.SESTATE = 'OK' and
+     C                             TARGET.SEFIRSTDAY = SEREC.SEFIRSTDAY )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'SUCCESS_CANNOT_BE_REVERSED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        not ( TARGET.SESTATE = 'NEW' or
+     C                             TARGET.SESTATE = 'SENT' or TARGET.SESTATE =
+     C                             'OK' or TARGET.SESTATE = 'FAIL' or
+     C                             TARGET.SESTATE = 'UNKNOWN' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_TARGET_STATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SEREC.SESTATE = TARGET.SESTATE
+     C                   EVAL      SEREC.SEFIRSTDAY = TARGET.SEFIRSTDAY
+     C                   EVAL      SEREC.SERETRY = TARGET.SERETRY
+     C                   EVAL      SEREC.SEREASON = TARGET.SEREASON
+     C                   UPDATE    SETLHDR       SEREC
+     C                   EVAL      SETHEAD = SEREC
+     C                   EVAL      KOBID = CTXDS.CXMSG
+     C     KOUT          CHAIN     OUTBOXPF      OBREC
+     C                   IF        not ( %found(OUTBOXPF) and OBREC.OBBIZID =
+     C                             SETHEAD.SEID )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'FEEDBACK_MESSAGE_LINK'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        OBREC.OBRESULT <> 'OK'
+     C                   EVAL      OBREC.OBRESULT = CTXDS.CXFEED
+     C                   EVAL      OBREC.OBRESDAY = CTXDS.CXPROCDAY
+     C                   EVAL      OBREC.OBREASON = CTXDS.CXREASON
+     C                   UPDATE    OUTBOXR       OBREC
+     C                   ENDIF
+     C                   EVAL      OUTREC = OBREC
+     C                   ENDSR
+
+
+
+     C     TRETRY        BEGSR
+     C                   EXSR      TFETCH
+     C                   IF        RESDS.RSRC <> RCOK
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SESTATE = 'FAIL' and
+     C                             SETHEAD.SERETRY = 'Y' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETRY_REQUIRES_KNOWN_FAILURE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SEATTEMPT < 999999999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'SETTLEMENT_ATTEMPT_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OLDTRY = SETHEAD.SEATTEMPT
+     C                   EVAL      SETHEAD.SEATTEMPT = SETHEAD.SEATTEMPT + 1
+     C                   EVAL      SETHEAD.SESTATE = 'NEW'
+     C                   EVAL      SETHEAD.SERETRY = 'N'
+     C                   EVAL      SETHEAD.SEREASON = CTXDS.CXREASON
+     C                   EXSR      TOUT
+     C                   IF        RESDS.RSRC <> RCOK
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SETHEAD.SELASTMSG = OUTREC.OBID
+     C                   EVAL      KSEID = SETHEAD.SEID
+     C     KSETLH        CHAIN     SETLHDPF      SEREC
+     C                   IF        not ( SEREC.SEATTEMPT = OLDTRY and
+     C                             SEREC.SESTATE = 'FAIL' )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'RETRY_SNAPSHOT_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SEREC = SETHEAD
+     C                   UPDATE    SETLHDR       SEREC
+     C                   ENDSR
+
+
+
+     C     TVERIFY       BEGSR
+     C                   EXSR      TFETCH
+     C                   IF        RESDS.RSRC <> RCOK
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SESTATE = 'UNKNOWN' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'VERIFY_REQUIRES_UNKNOWN'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        OUTREC.OBKIND = 'VERIFY' and (OUTREC.OBRESULT
+     C                             = 'NONE' or OUTREC.OBRESULT = 'UNKNOWN' )
+     C                   EVAL      RESDS.RSRC = RCWAIT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OLDSEND = SETHEAD.SELASTMSG
+     C                   EXSR      TOUT
+     C                   IF        RESDS.RSRC <> RCOK
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KSEID = SETHEAD.SEID
+     C     KSETLH        CHAIN     SETLHDPF      SEREC
+     C                   IF        not ( SEREC.SELASTMSG = OLDSEND and
+     C                             SEREC.SESTATE = 'UNKNOWN' )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'VERIFY_SNAPSHOT_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SEREC.SELASTMSG = OUTREC.OBID
+     C                   UPDATE    SETLHDR       SEREC
+     C                   EVAL      SETHEAD = SEREC
+     C                   EVAL      RESDS.RSRC = RCWAIT
+     C                   ENDSR
+
+
+
+     C     TDELIV        BEGSR
+     C                   EVAL      KOBID = CTXDS.CXMSG
+     C     KOUT          CHAIN     OUTBOXPF      OBREC
+     C                   IF        not ( %found(OUTBOXPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'MESSAGE_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OBREC.OBKIND = 'SETTLE' or OBREC.OBKIND
+     C                             = 'ADJUST' or OBREC.OBKIND = 'VERIFY' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_MESSAGE_OWNER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( CTXDS.CXFEED = 'SENT' or CTXDS.CXFEED =
+     C                             'OK' or CTXDS.CXFEED = 'FAIL' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DELIVERY_RESULT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        OBREC.OBSTATE <> 'OK'
+     C                   EVAL      OBREC.OBSTATE = CTXDS.CXFEED
+     C                   UPDATE    OUTBOXR       OBREC
+     C                   ENDIF
+     C                   EVAL      OUTREC = OBREC
+     C                   EVAL      KSEID = OUTREC.OBBIZID
+     C     KSETLH        CHAIN     SETLHDPF      SEREC
+     C                   IF        not ( %found(SETLHDPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DELIVERY_BUSINESS_MISSING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        SEREC.SELASTMSG = OUTREC.OBID and
+     C                             SEREC.SESTATE = 'NEW' and (OUTREC.OBSTATE =
+     C                             'SENT' or OUTREC.OBSTATE = 'OK' )
+     C                   EVAL      SEREC.SESTATE = 'SENT'
+     C                   UPDATE    SETLHDR       SEREC
+     C                   ENDIF
+     C                   EVAL      SETHEAD = SEREC
+     C                   ENDSR
+
+
+
+     C     TRET          BEGSR
+     C                   IF        RESDS.RSRC < RCREJECT
+     C                   EVAL      RESDS.RSSTATE = SETHEAD.SESTATE
+     C                   EVAL      RESDS.RSAMOUNT = SETHEAD.SEAMOUNT
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     FRAME         BEGSR
+     C                   EVAL      TOKLEN = %len(%trimr(TOKEN))
+     C                   IF        not ( TOKLEN <= 9999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'FRAME_FIELD_TOO_LONG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( PAYLEN + 4 + TOKLEN <= 30000 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PAYLOAD_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      LEN4 = TOKLEN
+     C                   EVAL      POSN = PAYLEN + 1
+     C                   EVAL      %subst(PAYLOAD:POSN:4) = %editc(LEN4:'X')
+     C                   EVAL      PAYLEN = PAYLEN + 4
+     C                   IF        TOKLEN > 0
+     C                   EVAL      POSN = PAYLEN + 1
+     C                   EVAL      %subst(PAYLOAD:POSN:TOKLEN) =
+     C                             %subst(TOKEN:1:TOKLEN)
+     C                   EVAL      PAYLEN = PAYLEN + TOKLEN
+     C                   ENDIF
+     C                   ENDSR
+<<<END_FILE>>>

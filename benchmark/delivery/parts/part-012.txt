@@ -1,0 +1,499 @@
+PART 012 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 4161-4656>>>
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDERKEEP.OHPART = 'Y' or
+     C                             ORDERKEEP.OHPART = 'N' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ORDER_PARTIAL_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDERKEEP.OHSHIPANY = 'Y' or
+     C                             ORDERKEEP.OHSHIPANY = 'N' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ORDER_SHIPMENT_FLAG_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDERKEEP.OHSTATE = 'ACTIVE' or
+     C                             ORDERKEEP.OHSTATE = 'CANCEL' or
+     C                             ORDERKEEP.OHSTATE = 'CLOSED' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ORDER_STATE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDCNT >= 1 and ORDCNT <= 100 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ACTIVE_LINE_COUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ANYCANCEL = *off
+     C                   EVAL      ANYREMAIN = *off
+     C                   FOR       I = 1 to ORDCNT
+     C                   IF        not ( ORDLINES(I).ODORDER = ORDERKEEP.OHORDER
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DETAIL_ORDER_LINK_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDLINES(I).ODLINE > 0 and
+     C                             ORDLINES(I).ODITEM <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DETAIL_IDENTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDLINES(I).ODQTY >= 1 and
+     C                             ORDLINES(I).ODQTY <= 9999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DETAIL_QUANTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDLINES(I).ODCANCEL >= 0 and
+     C                             ORDLINES(I).ODSHIPPED >= 0 and
+     C                             ORDLINES(I).ODCANCEL + ORDLINES(I).ODSHIPPED
+     C                             <= ORDLINES(I).ODQTY )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DETAIL_REMAINING_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDLINES(I).ODUNIT > 0 and
+     C                             ORDLINES(I).ODAMOUNT >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DETAIL_PRICE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ORDLINES(I).ODSHPAMT >= 0 and
+     C                             ORDLINES(I).ODSHPAMT <= ORDLINES(I).ODAMOUNT
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'DETAIL_ALLOCATED_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        ORDERKEEP.OHTIER = 'S'
+     C                   IF        not ( ORDLINES(I).ODRATE = 1.0000 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STANDARD_RATE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( ORDLINES(I).ODRATE = 0.9500 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PREFERRED_RATE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      WIDE = ORDLINES(I).ODQTY * ORDLINES(I).ODUNIT
+     C                             * ORDLINES(I).ODRATE
+     C                   IF        not ( %dech(WIDE:15:2) = ORDLINES(I).ODAMOUNT
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'FROZEN_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      WIDE = ORDLINES(I).ODAMOUNT *
+     C                             ORDLINES(I).ODSHIPPED / ORDLINES(I).ODQTY
+     C                   IF        not ( %dech(WIDE:15:2) = ORDLINES(I).ODSHPAMT
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'CUMULATIVE_SHIP_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        ORDLINES(I).ODCANCEL > 0
+     C                   EVAL      ANYCANCEL = *on
+     C                   ENDIF
+     C                   IF        ORDLINES(I).ODQTY - ORDLINES(I).ODCANCEL -
+     C                             ORDLINES(I).ODSHIPPED > 0
+     C                   EVAL      ANYREMAIN = *on
+     C                   ENDIF
+     C                   IF        ORDLINES(I).ODSHIPPED > 0
+     C                   IF        not ( ORDERKEEP.OHSHIPANY = 'Y' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_FLAG_INCONSISTENT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   IF        ANYREMAIN
+     C                   IF        not ( ORDERKEEP.OHSTATE = 'ACTIVE' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ACTIVE_STATE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        ANYCANCEL
+     C                   IF        not ( ORDERKEEP.OHSTATE = 'CANCEL' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CANCEL_STATE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( ORDERKEEP.OHSTATE = 'CLOSED' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'CLOSED_STATE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDIF
+     C                   EXSR      MRECONCILE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     SORDHDR       BEGSR
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = 'ORDHDRPF'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHORDER'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHORDER
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHVERSION'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(OHREC.OHVERSION)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHCUST'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHCUST
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHTIER'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHTIER
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHPART'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHPART
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHDAY'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHDAY
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHPRCDAY'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHPRCDAY
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHNLINE'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(OHREC.OHNLINE)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHAMOUNT'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(OHREC.OHAMOUNT)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHSTATE'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHSTATE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHSHIPANY'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHSHIPANY
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHSRC'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHSRC
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'OHREQ'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = OHREC.OHREQ
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     AORDHDR       BEGSR
+     C                   EXSR      SORDHDR
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      AUDKEY = 'ORDHDRPF'
+     C                   EXSR      MAPPENDAUD
+     C                   ENDSR
+
+
+     C     PORDHDR       BEGSR
+     C                   EXSR      SORDHDR
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MSENDREC
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     SORDDTL       BEGSR
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = 'ORDDTLPF'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODORDER'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = ODREC.ODORDER
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODLINE'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ODREC.ODLINE)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODITEM'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = ODREC.ODITEM
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODQTY'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ODREC.ODQTY)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODCANCEL'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ODREC.ODCANCEL)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODSHIPPED'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ODREC.ODSHIPPED)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODUNIT'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ODREC.ODUNIT)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODRATE'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ODREC.ODRATE)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODAMOUNT'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ODREC.ODAMOUNT)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODSHPAMT'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ODREC.ODSHPAMT)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODVERSION'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ODREC.ODVERSION)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'ODACTIVE'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = ODREC.ODACTIVE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     AORDDTL       BEGSR
+     C                   EXSR      SORDDTL
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      AUDKEY = 'ORDDTLPF'
+     C                   EXSR      MAPPENDAUD
+     C                   ENDSR
+
+
+     C     PORDDTL       BEGSR
+     C                   EXSR      SORDDTL
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MSENDREC
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     SSHIPH        BEGSR
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = 'SHIPHDPF'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SHSHIP'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = SHREC.SHSHIP
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SHORDER'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = SHREC.SHORDER
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SHVERSION'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(SHREC.SHVERSION)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+<<<END_FILE>>>

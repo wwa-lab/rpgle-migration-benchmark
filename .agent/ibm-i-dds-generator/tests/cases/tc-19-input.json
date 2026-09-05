@@ -1,0 +1,113 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "ORDINVJO-20260404-01",
+    "specLevel": "L2",
+    "fileType": "LF",
+    "fileName": "ORDINVJO",
+    "description": "Order invoice outer join view"
+  },
+  "basedOnPhysicalFiles": ["ORDHDR", "ORDDTL"],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "ORDINVOR",
+      "purpose": "Order header + detail outer join",
+      "fieldCount": 5
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "ORDNO",
+        "type": null,
+        "length": null,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Order number",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": ["JREF(1)"]
+      },
+      {
+        "fieldId": "FLD-02",
+        "fieldName": "CUSTID",
+        "type": null,
+        "length": null,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Customer ID",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": ["JREF(1)"]
+      },
+      {
+        "fieldId": "FLD-03",
+        "fieldName": "LNSEQ",
+        "type": null,
+        "length": null,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Line sequence",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": ["JREF(2)"]
+      },
+      {
+        "fieldId": "FLD-04",
+        "fieldName": "ITEMID",
+        "type": null,
+        "length": null,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Item ID",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": ["JREF(2)"]
+      },
+      {
+        "fieldId": "FLD-05",
+        "fieldName": "LNTOT",
+        "type": null,
+        "length": null,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Line total",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": ["JREF(2)"]
+      }
+    ]
+  },
+  "joinSpecification": [
+    {
+      "joinId": "JOIN-01",
+      "primaryFile": "ORDHDR",
+      "secondaryFile": "ORDDTL",
+      "joinType": "OUTER",
+      "joinFields": [
+        { "fromField": "ORDNO", "toField": "ORDNO" }
+      ]
+    }
+  ],
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "ORDNO", "fieldRef": "FLD-01", "sortDirection": "ASCEND" },
+      { "sequence": 2, "fieldName": "LNSEQ", "fieldRef": "FLD-03", "sortDirection": "ASCEND" }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+     A* Synthetic static benchmark. Object DAYRPTPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R DAYRPTR
+     A            DYDAY          8A         CCSID(37)
+     A                                      TEXT('DYDAY')
+     A            DYSNAP        40A         CCSID(37)
+     A                                      TEXT('DYSNAP')
+     A            DYLINE         9P 0
+     A                                      TEXT('DYLINE')
+     A            DYKIND         8A         CCSID(37)
+     A                                      TEXT('DYKIND')
+     A            DYSTATE        8A         CCSID(37)
+     A                                      TEXT('DYSTATE')
+     A            DYSETTL       48A         CCSID(37)
+     A                                      TEXT('DYSETTL')
+     A            DYSRC         12A         CCSID(37)
+     A                                      TEXT('DYSRC')
+     A            DYREQ         20A         CCSID(37)
+     A                                      TEXT('DYREQ')
+     A            DYAMOUNT      19P 2
+     A                                      TEXT('DYAMOUNT')
+     A            DYPOS         19P 2
+     A                                      TEXT('DYPOS')
+     A            DYNEG         19P 2
+     A                                      TEXT('DYNEG')
+     A            DYCOUNT        9P 0
+     A                                      TEXT('DYCOUNT')
+     A            DYRC           4A         CCSID(37)
+     A                                      TEXT('DYRC')
+     A          K DYDAY
+     A          K DYSNAP
+     A          K DYLINE

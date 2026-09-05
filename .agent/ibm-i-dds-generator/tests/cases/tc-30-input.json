@@ -1,0 +1,32 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "NOPF-20260404-01",
+    "specLevel": "L2",
+    "fileType": "LF",
+    "fileName": "NOPFLF",
+    "description": "LF missing basedOnPhysicalFiles"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "NOPFR",
+      "purpose": "Record with no PFILE",
+      "fieldCount": 0
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": []
+  },
+  "fieldSelectionMapping": {
+    "mode": "allIncluded"
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "CUSTID", "fieldRef": "FLD-01", "sortDirection": "ASCEND" }
+    ]
+  }
+}

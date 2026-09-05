@@ -1,0 +1,7 @@
+
+
+     A                                      UNIQUE
+     A          R OUTBOXR                   PFILE(OUTBOXPF)
+     A          K OBKIND
+     A          K OBSTATE
+     A          K OBID

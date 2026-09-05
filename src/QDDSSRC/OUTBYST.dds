@@ -1,0 +1,7 @@
+     A* Synthetic static benchmark. Object OUTBYST.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R OUTBOXR                   PFILE(OUTBOXPF)
+     A          K OBKIND
+     A          K OBSTATE
+     A          K OBID

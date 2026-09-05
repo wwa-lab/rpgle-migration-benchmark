@@ -1,0 +1,498 @@
+PART 008 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 2358-2852>>>
+     C                   IF        RHREC.RHORDER = CTXDS.CXORDER
+     C                   EVAL      RETURNKEY = RHREC.RHRETURN
+     C                   EXSR      PRTNH
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KRDRETURN = RETURNKEY
+     C     KRTND1        SETLL     RTNDTLPF
+     C                   EVAL      KRDRETURN = RETURNKEY
+     C     KRTND1        READE     RTNDTLPF      RDREC
+     C                   DOW       not %eof(RTNDTLPF)
+     C                   EXSR      PRTND
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KRDRETURN = RETURNKEY
+     C     KRTND1        READE     RTNDTLPF      RDREC
+     C                   ENDDO
+     C                   ENDIF
+     C                   READ      RTNHDRPF      RHREC
+     C                   ENDDO
+     C                   ENDSR
+
+
+
+     C     MQUERYSETTL   BEGSR
+     C     *LOVAL        SETLL     SETLHDPF
+     C                   READ      SETLHDPF      SEREC
+     C                   DOW       not %eof(SETLHDPF)
+     C                   IF        SEREC.SEORDER = CTXDS.CXORDER
+     C                   EVAL      CTXDS.CXSETTL = SEREC.SEID
+     C                   EVAL      CTXDS.CXMSG = *blanks
+     C                   EVAL      CTXDS.CXACTION = 'FETCH'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      MSGRESULT = OUTREC
+     C                   EXSR      PSETHEAD
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   FOR       I = 1 to SETHEAD.SENLINE
+     C                   EVAL      SLREC = SETROWS(I)
+     C                   EXSR      PSETDTL
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   EVAL      OUTREC = MSGRESULT
+     C                   EXSR      POUTREC
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   READ      SETLHDPF      SEREC
+     C                   ENDDO
+     C                   ENDSR
+
+
+     C     MQUERYAUDIT   BEGSR
+     C     *LOVAL        SETLL     AUDITPF
+     C                   READ      AUDITPF       AUREC
+     C                   DOW       not %eof(AUDITPF)
+     C                   IF        (CTXDS.CXORDER <> *blanks and AUREC.AUORDER =
+     C                             CTXDS.CXORDER) or (AUREC.AUSRC = RQKEEP.RQSRC
+     C                             and AUREC.AUREQ = RQKEEP.RQREQ and
+     C                             RQKEEP.RQSRC <> *blanks)
+     C                   EXSR      PAUDIT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   READ      AUDITPF       AUREC
+     C                   ENDDO
+     C                   ENDSR
+
+
+
+     C     MDAY          BEGSR
+     C                   IF        not ( CTXDS.CXDAY = RUNDAY )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'DAYEND_DAY_MISMATCH'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXACTION = 'SNAPSHOT'
+     C                   CALL      'ORDDAILY'
+     C                   PARM                    CTXDS
+     C                   PARM                    DAYHEAD
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MDAILYABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      BUSRC = RCOK
+     C                   EVAL      BUSREASON = 'DAY_SNAPSHOT_READY'
+     C                   EXSR      PDAYHEAD
+     C                   ENDSR
+
+
+     C     MCLOSE        BEGSR
+     C                   EVAL      BUSRES = RESDS
+     C                   IF        BUSRC = RCOK and RESDS.RSRC <> RCOK
+     C                   EVAL      BUSRC = RESDS.RSRC
+     C                   EVAL      BUSREASON = RESDS.RSREASON
+     C                   ENDIF
+     C                   EXSR      MPROJECT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MAUDIT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MLEDGER
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+
+     C     MPROJECT      BEGSR
+     C                   EVAL      BUSRES = RESDS
+     C                   EVAL      WIREKEEP = OUTREC
+     C                   EXSR      MOPDETAIL
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      MSGRESULT.OBSTATE = *blanks
+     C                   EVAL      MSGRESULT.OBID = OLDMSG
+     C                   IF        OLDMSG <> *blanks
+     C                   EVAL      CTXDS.CXMSG = OLDMSG
+     C                   EVAL      CTXDS.CXACTION = 'FETCH'
+     C                   CALL      'ORDREPLY'
+     C                   PARM                    CTXDS
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MREPLYABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      MSGRESULT = OUTREC
+     C                   ENDIF
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = 'RESULT'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = BUSRC
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = BUSREASON
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXEVENT
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXSRC
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXREQ
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = REQSTATE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXORDER
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ORDERKEEP.OHVERSION)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = ORDERKEEP.OHSTATE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXSHIP
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXRETURN
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXSETTL
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = SETHEAD.SESTATE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(SETHEAD.SEAMOUNT)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = SETHEAD.SEFIRSTDAY
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = MSGRESULT.OBID
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = MSGRESULT.OBSTATE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(MSGRESULT.OBATTEMPT)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(DAYHEAD.DYAMOUNT)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MSENDREC
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      FINALMSG = OUTREC.OBID
+     C                   IF        HASCHANGE and (CTXDS.CXEVENT = 'NEW' or
+     C                             CTXDS.CXEVENT = 'MOD' or CTXDS.CXEVENT =
+     C                             'ALLOC' or CTXDS.CXEVENT = 'CANCEL' or
+     C                             CTXDS.CXEVENT = 'SHIP' or CTXDS.CXEVENT =
+     C                             'RETURN' or RECFOUND)
+     C                   EXSR      MWHRESULT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      RESDS.RSRC = RCOK
+     C                   ENDSR
+
+
+     C     MNEXTMSG      BEGSR
+     C                   IF        not ( MSGSEQ < 99999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTPUT_MESSAGE_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      MSGSEQ = MSGSEQ + 1
+     C                   EVAL      CTXDS.CXOUTSEQ = MSGSEQ
+     C                   ENDSR
+
+
+     C     MSENDREC      BEGSR
+     C                   EXSR      MNEXTMSG
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     OUTREC
+     C                   EVAL      OUTREC.OBKIND = 'RECEIPT'
+     C                   EVAL      OUTREC.OBBIZID = CTXDS.CXORDER
+     C                   EVAL      OUTREC.OBLEN = PAYLEN
+     C                   EVAL      OUTREC.OBPAYLOAD = PAYLOAD
+     C                   EVAL      CTXDS.CXACTION = 'CREATE'
+     C                   CALL      'ORDREPLY'
+     C                   PARM                    CTXDS
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MREPLYABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     MWHRESULT     BEGSR
+     C                   FOR       I = 1 to 300
+     C                   IF        STKOLD(I).SPUSE = 'Y' and
+     C                             (STKOLD(I).SPONDELTA <> 0 or
+     C                             STKOLD(I).SPRSDELTA <> 0)
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = 'WAREHOUSE_DELTA'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPLINE)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKOLD(I).SPITEM
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKOLD(I).SPWH
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPONHAND)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPRESVD)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPONDELTA)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPRSDELTA)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKOLD(I).SPOLDITEM
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPOLDRES)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPOLDSHIP)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPOLDREL)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPNEWRES)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPNEWSHIP)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKOLD(I).SPNEWREL)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKOLD(I).SPUSE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MNEXTMSG
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     OUTREC
+     C                   EVAL      OUTREC.OBKIND = 'WHRESULT'
+     C                   EVAL      OUTREC.OBBIZID = CTXDS.CXORDER
+     C                   EVAL      OUTREC.OBLEN = PAYLEN
+     C                   EVAL      OUTREC.OBPAYLOAD = PAYLOAD
+     C                   EVAL      CTXDS.CXACTION = 'CREATE'
+     C                   CALL      'ORDREPLY'
+     C                   PARM                    CTXDS
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MREPLYABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   FOR       I = 1 to 300
+     C                   IF        STKNEW(I).SPUSE = 'Y' and
+     C                             (STKNEW(I).SPONDELTA <> 0 or
+     C                             STKNEW(I).SPRSDELTA <> 0)
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = 'WAREHOUSE_DELTA'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPLINE)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKNEW(I).SPITEM
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKNEW(I).SPWH
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPONHAND)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPRESVD)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPONDELTA)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPRSDELTA)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKNEW(I).SPOLDITEM
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPOLDRES)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPOLDSHIP)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPOLDREL)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPNEWRES)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPNEWSHIP)
+<<<END_FILE>>>

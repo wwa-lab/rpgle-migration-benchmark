@@ -1,0 +1,454 @@
+PART 016 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 6230-6680>>>
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPONDELTA)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SPRSDELTA'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPRSDELTA)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SPOLDITEM'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKNEW(I).SPOLDITEM
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SPOLDRES'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPOLDRES)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SPOLDSHIP'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPOLDSHIP)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SPOLDREL'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPOLDREL)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SPNEWRES'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPNEWRES)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SPNEWSHIP'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPNEWSHIP)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SPNEWREL'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPNEWREL)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'SPUSE'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKNEW(I).SPUSE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MSENDREC
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+     C     MRECONCILE    BEGSR
+     C                   CLEAR     RECSHIPQ
+     C                   CLEAR     RECSHIPA
+     C                   EXSR      MRECSHIPS
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MRECRETURNS
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MRECSETTLES
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   FOR       I = 1 to ORDCNT
+     C                   IF        not ( RECSHIPQ(I) = ORDLINES(I).ODSHIPPED )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_HISTORY_QUANTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RECSHIPA(I) = ORDLINES(I).ODSHPAMT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_HISTORY_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDSR
+
+
+     C     MRECSHIPS     BEGSR
+     C     *LOVAL        SETLL     SHIPHDPF
+     C                   READ      SHIPHDPF      SHREC
+     C                   DOW       not %eof(SHIPHDPF)
+     C                   IF        SHREC.SHORDER = CTXDS.CXORDER
+     C                   EVAL      SHSAVED = SHREC
+     C                   EVAL      SHIPKEY = SHREC.SHSHIP
+     C                   EVAL      CHECKCOUNT = 0
+     C                   EVAL      CHECKAMT = 0
+     C                   EVAL      IDENT = SHREC.SHSHIP
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SHREC.SHSHIP <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_IDENTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SHREC.SHNLINE >= 1 and SHREC.SHNLINE <=
+     C                             100 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_DOCUMENT_COUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SHREC.SHAMOUNT >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_DOCUMENT_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SHREC.SHVERSION > 1 and SHREC.SHVERSION
+     C                             <= ORDERKEEP.OHVERSION )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_VERSION_HISTORY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SHREC.SHSRC <> *blanks and SHREC.SHREQ
+     C                             <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_REQUEST_LINK_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKDAY = SHREC.SHDAY
+     C                   EXSR      MCHECKDATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SHREC.SHDAY >= ORDERKEEP.OHDAY )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_BEFORE_ORDER_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKID = 'S:' + %trim(SHREC.SHSHIP)
+     C                   IF        not ( SHREC.SHSETTL = CHECKID )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_SETTLEMENT_ID_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KSDSHIP = SHIPKEY
+     C     KSHIPD1       SETLL     SHIPDTPF
+     C                   EVAL      KSDSHIP = SHIPKEY
+     C     KSHIPD1       READE     SHIPDTPF      SDREC
+     C                   DOW       not %eof(SHIPDTPF)
+     C                   EVAL      SDSAVED = SDREC
+     C                   EVAL      CHECKCOUNT = CHECKCOUNT + 1
+     C                   IF        not ( CHECKCOUNT <= 100 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_DETAIL_CAPACITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SDREC.SDLINE = CHECKCOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_DETAIL_SEQUENCE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SDREC.SDSHIP = SHIPKEY and
+     C                             SDREC.SDORDER = CTXDS.CXORDER )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_DETAIL_OWNER_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SDREC.SDQTY > 0 and SDREC.SDQTY <= 9999
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_DETAIL_QUANTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SDREC.SDAMOUNT >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_DETAIL_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SDREC.SDWH = 'A' or SDREC.SDWH = 'B' or
+     C                             SDREC.SDWH = 'C' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_DETAIL_WAREHOUSE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      LINEIX = 0
+     C                   FOR       J = 1 to ORDCNT
+     C                   IF        ORDLINES(J).ODLINE = SDREC.SDORDLINE
+     C                   EVAL      LINEIX = J
+     C                   LEAVE
+     C                   ENDIF
+     C                   ENDFOR
+     C                   IF        not ( LINEIX > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_ORDER_LINE_MISSING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SDREC.SDITEM = ORDLINES(LINEIX).ODITEM
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_ITEM_LINK_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      RECSHIPQ(LINEIX) = RECSHIPQ(LINEIX) +
+     C                             SDREC.SDQTY
+     C                   EVAL      RECSHIPA(LINEIX) = RECSHIPA(LINEIX) +
+     C                             SDREC.SDAMOUNT
+     C                   IF        not ( RECSHIPQ(LINEIX) <=
+     C                             ORDLINES(LINEIX).ODQTY )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_HISTORY_EXCEEDS_ORDER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RECSHIPA(LINEIX) <=
+     C                             ORDLINES(LINEIX).ODAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'SHIP_HISTORY_EXCEEDS_AMOUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKAMT = CHECKAMT + SDREC.SDAMOUNT
+     C                   EXSR      MRECRETQ
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SDREC = SDSAVED
+     C                   EVAL      KSDSHIP = SHIPKEY
+     C     KSHIPD1       READE     SHIPDTPF      SDREC
+     C                   ENDDO
+     C                   IF        not ( CHECKCOUNT = SHSAVED.SHNLINE and
+     C                             CHECKAMT = SHSAVED.SHAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_DOCUMENT_TOTAL_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KSEID = SHSAVED.SHSETTL
+     C     KSETLH        CHAIN     SETLHDPF      SEREC
+     C                   IF        not ( %found(SETLHDPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_SETTLEMENT_MISSING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SEREC.SEKIND = 'P' and SEREC.SESHIP =
+     C                             SHSAVED.SHSHIP and SEREC.SERETURN = *blanks
+     C                             and SEREC.SEORIG = *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'POSITIVE_SETTLEMENT_LINK_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SEREC.SEORDER = SHSAVED.SHORDER and
+     C                             SEREC.SEAMOUNT = SHSAVED.SHAMOUNT and
+     C                             SEREC.SENLINE = SHSAVED.SHNLINE )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'POSITIVE_SETTLEMENT_TOTAL_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   READ      SHIPHDPF      SHREC
+     C                   ENDDO
+     C                   ENDSR
+
+
+
+     C     MRECRETQ      BEGSR
+     C                   EVAL      REFQTY = 0
+     C                   EVAL      REFAMT = 0
+     C     *LOVAL        SETLL     RTNDTLPF
+     C                   READ      RTNDTLPF      RDREC
+     C                   DOW       not %eof(RTNDTLPF)
+     C                   IF        RDREC.RDSHIP = SDSAVED.SDSHIP and
+     C                             RDREC.RDSHLINE = SDSAVED.SDLINE
+     C                   IF        not ( RDREC.RDQTY > 0 and RDREC.RDAMOUNT >= 0
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_DETAIL_RANGE_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RDREC.RDITEM = SDSAVED.SDITEM and
+     C                             RDREC.RDWH = SDSAVED.SDWH and RDREC.RDORDER =
+     C                             SDSAVED.SDORDER )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_ORIGINAL_LINK_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      REFQTY = REFQTY + RDREC.RDQTY
+     C                   EVAL      REFAMT = REFAMT + RDREC.RDAMOUNT
+     C                   ENDIF
+     C                   READ      RTNDTLPF      RDREC
+     C                   ENDDO
+     C                   IF        not ( REFQTY <= SDSAVED.SDQTY )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_HISTORY_EXCEEDS_SHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( REFAMT <= SDSAVED.SDAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_HISTORY_EXCEEDS_AMOUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      WIDE = SDSAVED.SDAMOUNT * REFQTY /
+     C                             SDSAVED.SDQTY
+     C                   IF        not ( %dech(WIDE:15:2) = REFAMT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_CUMULATIVE_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MRECRETURNS   BEGSR
+     C     *LOVAL        SETLL     RTNHDRPF
+     C                   READ      RTNHDRPF      RHREC
+     C                   DOW       not %eof(RTNHDRPF)
+     C                   IF        RHREC.RHORDER = CTXDS.CXORDER
+     C                   EVAL      RHSAVED = RHREC
+     C                   EVAL      RETURNKEY = RHREC.RHRETURN
+     C                   EVAL      CHECKCOUNT = 0
+     C                   EVAL      CHECKAMT = 0
+     C                   EVAL      IDENT = RHREC.RHRETURN
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RHREC.RHRETURN <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_IDENTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RHREC.RHNLINE >= 1 and RHREC.RHNLINE <=
+     C                             100 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_DOCUMENT_COUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RHREC.RHAMOUNT >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_DOCUMENT_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RHREC.RHSRC <> *blanks and RHREC.RHREQ
+     C                             <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_REQUEST_LINK_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKDAY = RHREC.RHDAY
+     C                   EXSR      MCHECKDATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KRDRETURN = RETURNKEY
+     C     KRTND1        SETLL     RTNDTLPF
+     C                   EVAL      KRDRETURN = RETURNKEY
+     C     KRTND1        READE     RTNDTLPF      RDREC
+     C                   DOW       not %eof(RTNDTLPF)
+     C                   EVAL      RDSAVED = RDREC
+     C                   EVAL      CHECKCOUNT = CHECKCOUNT + 1
+     C                   IF        not ( CHECKCOUNT <= 100 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_DOCUMENT_CAPACITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RDREC.RDLINE > 0 and RDREC.RDRETURN =
+     C                             RETURNKEY and RDREC.RDORDER = CTXDS.CXORDER )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_DETAIL_IDENTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RDREC.RDQTY > 0 and RDREC.RDQTY <= 9999
+     C                             and RDREC.RDAMOUNT >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_DETAIL_VALUES_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KSDSHIP = RDREC.RDSHIP
+     C                   EVAL      KSDLINE = RDREC.RDSHLINE
+     C     KSHIPD        CHAIN(N)  SHIPDTPF      SDREC
+     C                   IF        not ( %found(SHIPDTPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_ORIGINAL_DETAIL_MISSING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SDREC.SDORDER = RDSAVED.RDORDER and
+     C                             SDREC.SDITEM = RDSAVED.RDITEM and SDREC.SDWH
+     C                             = RDSAVED.RDWH )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_ORIGINAL_DETAIL_CHANGED'
+     C                   LEAVESR
+<<<END_FILE>>>

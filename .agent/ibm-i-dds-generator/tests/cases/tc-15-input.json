@@ -1,0 +1,44 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CUSTACTV-20260404-01",
+    "specLevel": "L2",
+    "fileType": "LF",
+    "fileName": "CUSTACTV",
+    "description": "Active customers by name"
+  },
+  "basedOnPhysicalFiles": ["CUSTMAST"],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CUSTR",
+      "purpose": "Active customer record",
+      "fieldCount": 0
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": []
+  },
+  "fieldSelectionMapping": {
+    "mode": "allIncluded"
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "CUSTNM", "fieldRef": "FLD-02", "sortDirection": "ASCEND" }
+    ]
+  },
+  "selectOmitCriteria": [
+    {
+      "soId": "SO-01",
+      "type": "SELECT",
+      "fieldName": "ACTSTS",
+      "fldRef": "FLD-09",
+      "operator": "EQ",
+      "value": "'A'",
+      "logic": null
+    }
+  ]
+}

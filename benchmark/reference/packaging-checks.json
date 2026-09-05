@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "materialVersion": "RPGFLOW-1.0",
+  "issues": [],
+  "sourceFiles": 35,
+  "businessMaterialFiles": 38,
+  "textParts": 32,
+  "maxPartUtf8Bytes": 23832,
+  "commentsRemoved": 388,
+  "mainPhysicalLines": 10114,
+  "textReconstruction": "byte-identical",
+  "archiveBoundary": "allowlist verified",
+  "compiled": false,
+  "businessCodeExecuted": false,
+  "modelsCalled": false
+}

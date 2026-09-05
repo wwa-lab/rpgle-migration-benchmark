@@ -1,0 +1,5 @@
+source_type=PF
+type=rejection
+# Must reject P field with missing decimals
+must_contain=decimal
+must_not_contain=R BADDR

@@ -1,0 +1,282 @@
+PART 028 OF 032
+<<<FILE src/QRPGLESRC/ORDSTOCK.rpgle LINES 479-757>>>
+     C                   EVAL      TAKE = STKIN(I).SIQTY
+     C                   IF        not ( TAKE > 0 and TAKE <= STKNEW(N).SPNEWRES
+     C                             )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_OWN_RESERVATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      STKNEW(N).SPNEWRES = STKNEW(N).SPNEWRES -
+     C                             TAKE
+     C                   EVAL      STKNEW(N).SPNEWSHIP = STKNEW(N).SPNEWSHIP +
+     C                             TAKE
+     C                   EVAL      STKNEW(N).SPONDELTA = STKNEW(N).SPONDELTA -
+     C                             TAKE
+     C                   EVAL      STKNEW(N).SPRSDELTA = STKNEW(N).SPRSDELTA -
+     C                             TAKE
+     C                   EVAL      POOL(PI).DON = POOL(PI).DON - TAKE
+     C                   EVAL      POOL(PI).DRES = POOL(PI).DRES - TAKE
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+     C     SRETURN       BEGSR
+     C                   FOR       I = 1 to CTXDS.CXCOUNT
+     C                   EVAL      LINEKEY = STKIN(I).SILINE
+     C                   EVAL      ITEMKEY = STKIN(I).SIITEM
+     C                   EVAL      WHKEY = STKIN(I).SIWH
+     C                   IF        not ( STKIN(I).SIQTY > 0 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_QUANTITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      SPLANROW
+     C                   IF        RESDS.RSRC <> RCOK
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      STKNEW(N).SPONDELTA = STKNEW(N).SPONDELTA +
+     C                             STKIN(I).SIQTY
+     C                   EVAL      POOL(PI).DON = POOL(PI).DON + STKIN(I).SIQTY
+     C                   IF        not ( POOL(PI).ONHAND + POOL(PI).DON <=
+     C                             999999999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_STOCK_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+     C     SVIEW         BEGSR
+     C                   EVAL      KALORDER = CTXDS.CXORDER
+     C     KALLOC1       SETLL     ALLOCPF
+     C                   EVAL      KALORDER = CTXDS.CXORDER
+     C     KALLOC1       READE     ALLOCPF       ALREC
+     C                   DOW       not %eof(ALLOCPF)
+     C                   IF        ALREC.ALRESVD <> 0 or ALREC.ALSHIPPED <> 0 or
+     C                             ALREC.ALRELEASE <> 0
+     C                   EVAL      LINEKEY = ALREC.ALLINE
+     C                   EVAL      ITEMKEY = ALREC.ALITEM
+     C                   EVAL      WHKEY = ALREC.ALWH
+     C                   EXSR      SPLANROW
+     C                   IF        RESDS.RSRC <> RCOK
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      KALORDER = CTXDS.CXORDER
+     C     KALLOC1       READE     ALLOCPF       ALREC
+     C                   ENDDO
+     C                   ENDSR
+
+
+
+
+     C     SAPCHECK      BEGSR
+     C                   FOR       I = 1 to 300
+     C                   IF        STKOLD(I).SPUSE = 'Y'
+     C                   EVAL      ITEMKEY = STKOLD(I).SPITEM
+     C                   EVAL      WHKEY = STKOLD(I).SPWH
+     C                   EXSR      SPOOL
+     C                   IF        RESDS.RSRC <> RCOK
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( POOL(PI).ONHAND = STKOLD(I).SPONHAND
+     C                             and POOL(PI).RESVD = STKOLD(I).SPRESVD )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STOCK_SNAPSHOT_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      POOL(PI).DON = POOL(PI).DON +
+     C                             STKOLD(I).SPONDELTA
+     C                   EVAL      POOL(PI).DRES = POOL(PI).DRES +
+     C                             STKOLD(I).SPRSDELTA
+     C                   IF        CTXDS.CXEVENT <> 'RETURN'
+     C                   EVAL      AI = 0
+     C                   FOR       X = 1 to ACOUNT
+     C                   IF        FINALAL(X).SPLINE = STKOLD(I).SPLINE and
+     C                             FINALAL(X).SPWH = STKOLD(I).SPWH
+     C                   EVAL      AI = X
+     C                   LEAVE
+     C                   ENDIF
+     C                   ENDFOR
+     C                   IF        AI = 0
+     C                   IF        not ( ACOUNT < 600 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'FINAL_ALLOCATION_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ACOUNT = ACOUNT + 1
+     C                   EVAL      AI = ACOUNT
+     C                   ENDIF
+     C                   EVAL      FINALAL(AI) = STKOLD(I)
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   FOR       I = 1 to 300
+     C                   IF        STKNEW(I).SPUSE = 'Y'
+     C                   EVAL      ITEMKEY = STKNEW(I).SPITEM
+     C                   EVAL      WHKEY = STKNEW(I).SPWH
+     C                   EXSR      SPOOL
+     C                   IF        RESDS.RSRC <> RCOK
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( POOL(PI).ONHAND = STKNEW(I).SPONHAND
+     C                             and POOL(PI).RESVD = STKNEW(I).SPRESVD )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STOCK_SNAPSHOT_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      POOL(PI).DON = POOL(PI).DON +
+     C                             STKNEW(I).SPONDELTA
+     C                   EVAL      POOL(PI).DRES = POOL(PI).DRES +
+     C                             STKNEW(I).SPRSDELTA
+     C                   IF        CTXDS.CXEVENT <> 'RETURN'
+     C                   EVAL      AI = 0
+     C                   FOR       X = 1 to ACOUNT
+     C                   IF        FINALAL(X).SPLINE = STKNEW(I).SPLINE and
+     C                             FINALAL(X).SPWH = STKNEW(I).SPWH
+     C                   EVAL      AI = X
+     C                   LEAVE
+     C                   ENDIF
+     C                   ENDFOR
+     C                   IF        AI = 0
+     C                   IF        not ( ACOUNT < 600 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'FINAL_ALLOCATION_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ACOUNT = ACOUNT + 1
+     C                   EVAL      AI = ACOUNT
+     C                   ENDIF
+     C                   EVAL      FINALAL(AI) = STKNEW(I)
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   FOR       PI = 1 to PCOUNT
+     C                   EVAL      KSTITEM = POOL(PI).ITEM
+     C                   EVAL      KSTWH = POOL(PI).WH
+     C     KSTOCK        CHAIN     STOCKPF       STREC
+     C                   IF        not ( %found(STOCKPF) and STREC.STONHAND =
+     C                             POOL(PI).ONHAND and STREC.STRESVD =
+     C                             POOL(PI).RESVD )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'STOCK_CHANGED_BEFORE_APPLY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( POOL(PI).ONHAND + POOL(PI).DON >=
+     C                             POOL(PI).RESVD + POOL(PI).DRES and
+     C                             POOL(PI).RESVD + POOL(PI).DRES >= 0 and
+     C                             POOL(PI).ONHAND + POOL(PI).DON <= 999999999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'FINAL_STOCK_RANGE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   FOR       AI = 1 to ACOUNT
+     C                   EVAL      KALORDER = CTXDS.CXORDER
+     C                   EVAL      KALLINE = FINALAL(AI).SPLINE
+     C                   EVAL      KALWH = FINALAL(AI).SPWH
+     C     KALLOC        CHAIN     ALLOCPF       ALREC
+     C                   IF        FINALAL(AI).SPOLDITEM = *blanks
+     C                   IF        not ( not %found(ALLOCPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ALLOCATION_APPEARED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( %found(ALLOCPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ALLOCATION_DISAPPEARED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ALREC.ALITEM = FINALAL(AI).SPOLDITEM )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ALLOCATION_SNAPSHOT_ALITEM'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ALREC.ALRESVD = FINALAL(AI).SPOLDRES )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ALLOCATION_SNAPSHOT_ALRESVD'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ALREC.ALSHIPPED = FINALAL(AI).SPOLDSHIP
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ALLOCATION_SNAPSHOT_ALSHIPPED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( ALREC.ALRELEASE = FINALAL(AI).SPOLDREL
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ALLOCATION_SNAPSHOT_ALRELEASE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        not ( FINALAL(AI).SPNEWRES >= 0 and
+     C                             FINALAL(AI).SPNEWSHIP >= 0 and
+     C                             FINALAL(AI).SPNEWREL >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'FINAL_ALLOCATION_NEGATIVE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+     C     SAPWRITE      BEGSR
+     C                   FOR       PI = 1 to PCOUNT
+     C                   EVAL      KSTITEM = POOL(PI).ITEM
+     C                   EVAL      KSTWH = POOL(PI).WH
+     C     KSTOCK        CHAIN     STOCKPF       STREC
+     C                   IF        not ( %found(STOCKPF) )
+     C                   EVAL      RESDS.RSRC = '3000'
+     C                   EVAL      RESDS.RSREASON = 'STOCK_LOST_DURING_APPLY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      STREC.STONHAND = POOL(PI).ONHAND +
+     C                             POOL(PI).DON
+     C                   EVAL      STREC.STRESVD = POOL(PI).RESVD +
+     C                             POOL(PI).DRES
+     C                   UPDATE    STOCKR        STREC
+     C                   ENDFOR
+     C                   FOR       AI = 1 to ACOUNT
+     C                   EVAL      KALORDER = CTXDS.CXORDER
+     C                   EVAL      KALLINE = FINALAL(AI).SPLINE
+     C                   EVAL      KALWH = FINALAL(AI).SPWH
+     C     KALLOC        CHAIN     ALLOCPF       ALREC
+     C                   EVAL      MISSING = not %found(ALLOCPF)
+     C                   CLEAR     ALREC
+     C                   EVAL      ALREC.ALORDER = CTXDS.CXORDER
+     C                   EVAL      ALREC.ALLINE = FINALAL(AI).SPLINE
+     C                   EVAL      ALREC.ALWH = FINALAL(AI).SPWH
+     C                   EVAL      ALREC.ALITEM = FINALAL(AI).SPITEM
+     C                   EVAL      ALREC.ALRESVD = FINALAL(AI).SPNEWRES
+     C                   EVAL      ALREC.ALSHIPPED = FINALAL(AI).SPNEWSHIP
+     C                   EVAL      ALREC.ALRELEASE = FINALAL(AI).SPNEWREL
+     C                   IF        MISSING
+     C                   WRITE     ALLOCR        ALREC
+     C                   ELSE
+     C                   UPDATE    ALLOCR        ALREC
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+     C     SRET          BEGSR
+     C                   IF        RESDS.RSRC = RCOK
+     C                   EVAL      RESDS.RSCOUNT = NC
+     C                   IF        WAITING
+     C                   EVAL      RESDS.RSRC = RCWAIT
+     C                   EVAL      RESDS.RSREASON = 'STOCK_WAIT'
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDSR
+<<<END_FILE>>>

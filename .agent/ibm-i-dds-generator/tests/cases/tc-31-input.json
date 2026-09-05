@@ -1,0 +1,47 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "NOPOS-20260404-01",
+    "specLevel": "L2",
+    "fileType": "DSPF",
+    "fileName": "NOPOSDSP",
+    "description": "DSPF with missing row/col"
+  },
+  "screenLayout": {
+    "rows": 24,
+    "columns": 80
+  },
+  "functionKeys": [
+    { "key": "CA03", "indicator": 3, "description": "Exit" }
+  ],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "NOPOSR",
+      "purpose": "Missing position screen",
+      "fieldCount": 1
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "CUSTID",
+        "type": "A",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Customer ID",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": null,
+        "col": null,
+        "usage": "B"
+      }
+    ]
+  }
+}

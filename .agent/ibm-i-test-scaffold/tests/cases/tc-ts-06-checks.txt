@@ -1,0 +1,7 @@
+category=edge
+artifact_count=6
+must_contain=TBD
+must_contain=## Open Questions / Prerequisites
+must_contain=-- TBD:
+must_contain=(Inferred)
+must_contain=CASE WHEN

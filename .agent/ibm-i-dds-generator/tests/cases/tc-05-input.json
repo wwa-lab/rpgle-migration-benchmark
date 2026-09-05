@@ -1,0 +1,51 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "KWDSTK-20260404-01",
+    "specLevel": "L2",
+    "fileType": "PF",
+    "fileName": "KWDSTACK",
+    "description": "Keyword stacking test"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "KWDR",
+      "purpose": "Keyword test record",
+      "fieldCount": 2
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "NOTES",
+        "type": "A",
+        "length": 50,
+        "decimals": null,
+        "nullable": true,
+        "defaultValue": "N/A",
+        "ccsid": 37,
+        "text": "General notes",
+        "editCode": null,
+        "columnHeading": "GEN / NOTES",
+        "ddsKeywords": []
+      },
+      {
+        "fieldId": "FLD-02",
+        "fieldName": "AMT",
+        "type": "P",
+        "length": 9,
+        "decimals": 2,
+        "nullable": true,
+        "defaultValue": "0",
+        "ccsid": null,
+        "text": "Amount",
+        "editCode": "1",
+        "columnHeading": "AMT",
+        "ddsKeywords": []
+      }
+    ]
+  }
+}

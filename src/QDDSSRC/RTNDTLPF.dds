@@ -1,0 +1,26 @@
+     A* Synthetic static benchmark. Object RTNDTLPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R RTNDTLR
+     A            RDRETURN      20A         CCSID(37)
+     A                                      TEXT('RDRETURN')
+     A            RDLINE         5P 0
+     A                                      TEXT('RDLINE')
+     A            RDSHIP        20A         CCSID(37)
+     A                                      TEXT('RDSHIP')
+     A            RDSHLINE       5P 0
+     A                                      TEXT('RDSHLINE')
+     A            RDORDER       20A         CCSID(37)
+     A                                      TEXT('RDORDER')
+     A            RDITEM        12A         CCSID(37)
+     A                                      TEXT('RDITEM')
+     A            RDWH           1A         CCSID(37)
+     A                                      TEXT('RDWH')
+     A            RDQTY          9P 0
+     A                                      TEXT('RDQTY')
+     A            RDAMOUNT      15P 2
+     A                                      TEXT('RDAMOUNT')
+     A            RDSETTL       48A         CCSID(37)
+     A                                      TEXT('RDSETTL')
+     A          K RDRETURN
+     A          K RDLINE

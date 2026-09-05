@@ -1,0 +1,63 @@
+/* Synthetic standalone batch driver. No journal or data creation. */
+PGM PARM(&BATCH &DAY &MODE &ACTOR &RESULT)
+DCL VAR(&BATCH) TYPE(*CHAR) LEN(20)
+DCL VAR(&DAY) TYPE(*CHAR) LEN(8)
+DCL VAR(&MODE) TYPE(*CHAR) LEN(8)
+DCL VAR(&ACTOR) TYPE(*CHAR) LEN(20)
+DCL VAR(&RESULT) TYPE(*CHAR) LEN(4)
+DCL VAR(&OWNED) TYPE(*LGL) VALUE('0')
+DCL VAR(&JOBTYPE) TYPE(*CHAR) LEN(1)
+DCL VAR(&POS) TYPE(*DEC) LEN(3 0)
+DCL VAR(&ERRMSG) TYPE(*CHAR) LEN(120) +
+    VALUE('Stopped; commit outcome must be reconciled.')
+MONMSG MSGID(CPF0000 MCH0000) EXEC(GOTO CMDLBL(ESCAPE))
+/* RINIT: positional input validation. */
+CHGVAR VAR(&RESULT) VALUE('9000')
+IF COND(&BATCH *EQ ' ' *OR (&MODE *NE 'PROCESS' *AND +
+    &MODE *NE 'RESUME')) THEN(DO)
+  CHGVAR VAR(&RESULT) VALUE('1000')
+  RETURN
+ENDDO
+DOFOR VAR(&POS) FROM(1) TO(8)
+  IF COND(%SST(&DAY &POS 1) *LT '0' *OR +
+          %SST(&DAY &POS 1) *GT '9') THEN(DO)
+    CHGVAR VAR(&RESULT) VALUE('1000')
+    RETURN
+  ENDDO
+ENDDO
+/* ORDMAIN validates the calendar date before opening a batch unit. */
+/* RCTX: this entry is restricted to a dedicated batch job. */
+RTVJOBA TYPE(&JOBTYPE)
+IF COND(&JOBTYPE *NE '0') THEN(RETURN)
+/* RSTART: a pre-existing job commitment definition makes this fail.
+   Ownership is set only after this call succeeds. */
+STRCMTCTL LCKLVL(*ALL) CMTSCOPE(*JOB) TEXT('Synthetic order batch')
+MONMSG MSGID(CPF0000) EXEC(RETURN)
+CHGVAR VAR(&OWNED) VALUE('1')
+/* RCALL: main alone controls normal per-event transaction boundaries. */
+CALL PGM(ORDMAIN) PARM(&BATCH &DAY &MODE &ACTOR &RESULT)
+MONMSG MSGID(CPF0000 MCH0000) EXEC(GOTO CMDLBL(ESCAPE))
+/* RCLEAN: stop status may mean uncertain commit; never label it undone. */
+IF COND(&RESULT *EQ '9000') THEN(GOTO CMDLBL(ESCAPE))
+ENDCMTCTL
+MONMSG MSGID(CPF0000) EXEC(DO)
+  CHGVAR VAR(&RESULT) VALUE('9000')
+  RETURN
+ENDDO
+CHGVAR VAR(&OWNED) VALUE('0')
+/* RRETURN: processing completion is independent of external settlement. */
+RETURN
+ESCAPE:
+CHGVAR VAR(&RESULT) VALUE('9000')
+IF COND(&OWNED) THEN(DO)
+  ROLLBACK
+  MONMSG MSGID(CPF0000 MCH0000) EXEC(CHGVAR +
+    VAR(&ERRMSG) VALUE('Rollback failed; outcome remains uncertain.'))
+  ENDCMTCTL
+  MONMSG MSGID(CPF0000 MCH0000) EXEC(CHGVAR +
+    VAR(&ERRMSG) VALUE('Commitment cleanup failed; job needs review.'))
+ENDDO
+SNDPGMMSG MSG(&ERRMSG) MSGTYPE(*INFO)
+MONMSG MSGID(CPF0000) EXEC(RETURN)
+RETURN
+ENDPGM

@@ -1,0 +1,10 @@
+source_type=LF
+type=happy
+# LF with multiple select/omit + ALL catch-all
+must_contain=PFILE(CUSTMAST)
+must_contain=S ACTSTS
+must_contain=O STATE
+must_contain=ALL
+must_contain=COMP(EQ 'A')
+must_contain=COMP(EQ 'XX')
+must_contain=K CUSTNM

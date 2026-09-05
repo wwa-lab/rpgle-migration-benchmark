@@ -1,0 +1,13 @@
+source_type=PF
+type=happy
+# PF version file — CUSTMASV version of CUSTMAST
+must_contain=R CUSTR
+must_contain=K LSTUPD
+must_contain=DESCEND
+must_contain=Version of
+must_contain=CUSTID
+must_contain=CUSTNM
+must_contain=ACTSTS
+must_contain=LSTUPD
+must_not_contain=UNIQUE
+field_count=4

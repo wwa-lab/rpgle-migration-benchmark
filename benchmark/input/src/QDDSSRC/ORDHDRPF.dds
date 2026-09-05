@@ -1,0 +1,31 @@
+
+
+     A                                      UNIQUE
+     A          R ORDHDRR
+     A            OHORDER       20A         CCSID(37)
+     A                                      TEXT('OHORDER')
+     A            OHVERSION      9P 0
+     A                                      TEXT('OHVERSION')
+     A            OHCUST        12A         CCSID(37)
+     A                                      TEXT('OHCUST')
+     A            OHTIER         1A         CCSID(37)
+     A                                      TEXT('OHTIER')
+     A            OHPART         1A         CCSID(37)
+     A                                      TEXT('OHPART')
+     A            OHDAY          8A         CCSID(37)
+     A                                      TEXT('OHDAY')
+     A            OHPRCDAY       8A         CCSID(37)
+     A                                      TEXT('OHPRCDAY')
+     A            OHNLINE        5P 0
+     A                                      TEXT('OHNLINE')
+     A            OHAMOUNT      15P 2
+     A                                      TEXT('OHAMOUNT')
+     A            OHSTATE        8A         CCSID(37)
+     A                                      TEXT('OHSTATE')
+     A            OHSHIPANY      1A         CCSID(37)
+     A                                      TEXT('OHSHIPANY')
+     A            OHSRC         12A         CCSID(37)
+     A                                      TEXT('OHSRC')
+     A            OHREQ         20A         CCSID(37)
+     A                                      TEXT('OHREQ')
+     A          K OHORDER

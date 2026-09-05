@@ -1,0 +1,32 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "ALLTYP-20260404-01",
+    "specLevel": "L2",
+    "fileType": "PF",
+    "fileName": "ALLTYPES",
+    "description": "All field types test"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "ALLTYPR",
+      "purpose": "All types record",
+      "fieldCount": 9
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      { "fieldId": "FLD-01", "fieldName": "FALPHA", "type": "A", "length": 20, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Alpha field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-02", "fieldName": "FPACKD", "type": "P", "length": 9, "decimals": 2, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Packed field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-03", "fieldName": "FZONED", "type": "S", "length": 7, "decimals": 0, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Zoned field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-04", "fieldName": "FBIN", "type": "B", "length": 9, "decimals": 0, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Binary field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-05", "fieldName": "FINT", "type": "I", "length": 10, "decimals": 0, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Integer field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-06", "fieldName": "FFLOAT", "type": "F", "length": 8, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Float field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-07", "fieldName": "FDATE", "type": "L", "length": 10, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Date field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-08", "fieldName": "FTIME", "type": "T", "length": 8, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Time field", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-09", "fieldName": "FTSTMP", "type": "Z", "length": 26, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Timestamp field", "editCode": null, "columnHeading": null, "ddsKeywords": [] }
+    ]
+  }
+}

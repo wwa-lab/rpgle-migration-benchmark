@@ -1,0 +1,16 @@
+layer=3
+lang=RPGLE
+change_type=enhancement
+type=happy
+# Must reference the new business rule
+must_contain=BR-04
+# Must reference CUSTMAST (the new file)
+must_contain=CUSTMAST
+# Must reference credit hold check
+must_contain_regex=(CRDSTS|crdsts)
+# Must reference the new return code '4'
+must_contain='4'
+# Must include Step 6 reference
+must_contain=Step 6
+# Enhancement safety: should note this is a change block or delta
+must_contain_regex=(Change Block|change block|Delta|delta|controlled|insertion|replacement|enhancement|Enhancement)

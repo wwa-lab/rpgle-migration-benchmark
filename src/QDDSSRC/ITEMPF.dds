@@ -1,0 +1,9 @@
+     A* Synthetic static benchmark. Object ITEMPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R ITEMR
+     A            ITID          12A         CCSID(37)
+     A                                      TEXT('ITID')
+     A            ITACTIVE       1A         CCSID(37)
+     A                                      TEXT('ITACTIVE')
+     A          K ITID

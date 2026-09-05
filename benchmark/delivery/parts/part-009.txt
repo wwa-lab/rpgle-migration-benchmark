@@ -1,0 +1,473 @@
+PART 009 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 2853-3322>>>
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(STKNEW(I).SPNEWREL)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = STKNEW(I).SPUSE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MNEXTMSG
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     OUTREC
+     C                   EVAL      OUTREC.OBKIND = 'WHRESULT'
+     C                   EVAL      OUTREC.OBBIZID = CTXDS.CXORDER
+     C                   EVAL      OUTREC.OBLEN = PAYLEN
+     C                   EVAL      OUTREC.OBPAYLOAD = PAYLOAD
+     C                   EVAL      CTXDS.CXACTION = 'CREATE'
+     C                   CALL      'ORDREPLY'
+     C                   PARM                    CTXDS
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MREPLYABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+
+     C     MAUDIT        BEGSR
+     C                   EVAL      AUDKIND = 'EVENT_RESULT'
+     C                   EVAL      AUDKEY = FINALMSG
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = BUSRC
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = BUSREASON
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = REQSTATE
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(INPUTNO)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXEVENT
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHACTION
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHREFSRC
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHREFREQ
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXACTOR
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = CTXDS.CXREASON
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = FINALMSG
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MAPPENDAUD
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      AINPUT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MAPPENDAUD    BEGSR
+     C                   EVAL      SNAPTEXT = PAYLOAD
+     C                   EVAL      SNAPLEN = PAYLEN
+     C                   EVAL      SNAPPOS = 1
+     C                   EVAL      SEGNO = 0
+     C                   DOW       SNAPPOS <= SNAPLEN
+     C                   IF        not ( AUDSEQ < 999999999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'AUDIT_SEQUENCE_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      AUDSEQ = AUDSEQ + 1
+     C                   EVAL      SEGNO = SEGNO + 1
+     C                   EVAL      SNAPLEFT = SNAPLEN - SNAPPOS + 1
+     C                   IF        SNAPLEFT > 23000
+     C                   EVAL      SNAPLEFT = 23000
+     C                   ENDIF
+     C                   CLEAR     AUREC
+     C                   EVAL      AUREC.AUID = 'A:' + %trim(RUNBATCH) + ':' +
+     C                             %editc(INPUTNO:'X') + ':' +
+     C                             %editc(AUDSEQ:'X')
+     C                   EVAL      AUREC.AUBATCH = RUNBATCH
+     C                   EVAL      AUREC.AUINPUT = INPUTNO
+     C                   EVAL      AUREC.AUSRC = CTXDS.CXSRC
+     C                   EVAL      AUREC.AUREQ = CTXDS.CXREQ
+     C                   EVAL      AUREC.AUDAY = RUNDAY
+     C                   EVAL      AUREC.AUEVENT = CTXDS.CXEVENT
+     C                   EVAL      AUREC.AUORDER = CTXDS.CXORDER
+     C                   EVAL      AUREC.AUSHIP = CTXDS.CXSHIP
+     C                   EVAL      AUREC.AURETURN = CTXDS.CXRETURN
+     C                   EVAL      AUREC.AUSETTL = CTXDS.CXSETTL
+     C                   EVAL      AUREC.AUMSG = FINALMSG
+     C                   EVAL      AUREC.AUACTOR = CTXDS.CXACTOR
+     C                   EVAL      AUREC.AUREASON = CTXDS.CXREASON
+     C                   EVAL      AUREC.AURC = BUSRC
+     C                   EVAL      AUREC.AUBEFORE = BEFORESTATE
+     C                   EVAL      AUREC.AUAFTER = AFTERSTATE
+     C                   EVAL      AUREC.AUDETAIL = %trim(AUDKIND) + '|' +
+     C                             %trim(AUDKEY) + '|' + %char(SEGNO) + '|' +
+     C                             %char(SNAPLEN) + '|' + %char(SNAPPOS) + '|' +
+     C                             %subst(SNAPTEXT:SNAPPOS:SNAPLEFT)
+     C                   WRITE     AUDITR        AUREC
+     C                   EVAL      SNAPPOS = SNAPPOS + SNAPLEFT
+     C                   ENDDO
+     C                   ENDSR
+
+
+
+
+     C     MLEDGER       BEGSR
+     C                   IF        HASKEY and not CONFLICT
+     C                   EVAL      KRQSRC = CTXDS.CXSRC
+     C                   EVAL      KRQREQ = CTXDS.CXREQ
+     C     KREQ          CHAIN     REQPF         RQREC
+     C                   EVAL      MISSING = not %found(REQPF)
+     C                   IF        NEWLEDGER
+     C                   IF        not ( MISSING )
+     C                   EVAL      RESDS.RSRC = '3000'
+     C                   EVAL      RESDS.RSREASON = 'REQUEST_APPEARED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     RQREC
+     C                   EVAL      RQREC.RQSRC = CTXDS.CXSRC
+     C                   EVAL      RQREC.RQREQ = CTXDS.CXREQ
+     C                   EVAL      RQREC.RQBATCH = RUNBATCH
+     C                   EVAL      RQREC.RQINPUT = INPUTNO
+     C                   EVAL      RQREC.RQEVENT = HDRDS.IHEVENT
+     C                   EVAL      RQREC.RQDAY = HDRDS.IHDAY
+     C                   EVAL      RQREC.RQCANLEN = CHKHEAD.CHLEN
+     C                   EVAL      RQREC.RQCANON = CHKHEAD.CHCANON
+     C                   EVAL      RQREC.RQORDER = CTXDS.CXORDER
+     C                   EVAL      RQREC.RQSHIP = CTXDS.CXSHIP
+     C                   EVAL      RQREC.RQRETURN = CTXDS.CXRETURN
+     C                   EVAL      RQREC.RQSETTL = CTXDS.CXSETTL
+     C                   EVAL      RQREC.RQSTATE = REQSTATE
+     C                   EVAL      RQREC.RQRC = BUSRC
+     C                   EVAL      RQREC.RQREASON = BUSREASON
+     C                   EVAL      RQREC.RQVERSION = ORDERKEEP.OHVERSION
+     C                   EVAL      RQREC.RQMSG = FINALMSG
+     C                   WRITE     REQR          RQREC
+     C                   ELSE
+     C                   IF        not ( not MISSING )
+     C                   EVAL      RESDS.RSRC = '3000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ORIGINAL_REQUEST_DISAPPEARED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RQREC.RQCANLEN = CHKHEAD.CHLEN and
+     C                             RQREC.RQCANON = CHKHEAD.CHCANON )
+     C                   EVAL      RESDS.RSRC = '3000'
+     C                   EVAL      RESDS.RSREASON = 'LEDGER_CONTENT_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      RQREC.RQMSG = FINALMSG
+     C                   UPDATE    REQR          RQREC
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        RECFOUND
+     C                   EVAL      KRQSRC = ORIGRQ.RQSRC
+     C                   EVAL      KRQREQ = ORIGRQ.RQREQ
+     C     KREQ          CHAIN     REQPF         RQREC
+     C                   IF        not ( %found(REQPF) and RQREC.RQSTATE =
+     C                             'RETRY' )
+     C                   EVAL      RESDS.RSRC = '3000'
+     C                   EVAL      RESDS.RSREASON = 'RECOVERY_ORIGINAL_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      RQREC.RQSTATE = REQSTATE
+     C                   EVAL      RQREC.RQRC = BUSRC
+     C                   EVAL      RQREC.RQREASON = BUSREASON
+     C                   EVAL      RQREC.RQVERSION = ORDERKEEP.OHVERSION
+     C                   EVAL      RQREC.RQMSG = FINALMSG
+     C                   EVAL      RQREC.RQSHIP = CTXDS.CXSHIP
+     C                   EVAL      RQREC.RQRETURN = CTXDS.CXRETURN
+     C                   EVAL      RQREC.RQSETTL = CTXDS.CXSETTL
+     C                   UPDATE    REQR          RQREC
+     C                   ENDIF
+     C                   EVAL      KBTID = RUNBATCH
+     C     KBATCH        CHAIN     BATCHPF       BTREC
+     C                   IF        not ( %found(BATCHPF) and BTREC.BTLAST =
+     C                             LASTNO )
+     C                   EVAL      RESDS.RSRC = '9000'
+     C                   EVAL      RESDS.RSREASON = 'CHECKPOINT_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( BTREC.BTCOUNT < 999999999 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'BATCH_COUNTER_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      BTREC.BTLAST = INPUTNO
+     C                   EVAL      BTREC.BTCOUNT = BTREC.BTCOUNT + 1
+     C                   IF        BUSRC >= RCREJECT
+     C                   EVAL      BTREC.BTREJECT = BTREC.BTREJECT + 1
+     C                   ELSE
+     C                   IF        BUSRC = RCWAIT
+     C                   EVAL      BTREC.BTWAIT = BTREC.BTWAIT + 1
+     C                   ELSE
+     C                   EVAL      BTREC.BTACCEPT = BTREC.BTACCEPT + 1
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      BTREC.BTRC = RCOK
+     C                   UPDATE    BATCHR        BTREC
+     C                   ENDSR
+
+
+
+     C     MCOMMIT       BEGSR
+     C                   EVAL      RESULT = RCSTOP
+     C                   MONITOR
+     C                   COMMIT
+     C                   EVAL      RESULT = RCOK
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = RCSTOP
+     C                   EVAL      RESDS.RSREASON = 'COMMIT_OUTCOME_UNCERTAIN'
+     C                   ENDMON
+     C                   ENDSR
+
+
+
+     C     MROLL         BEGSR
+     C                   EVAL      BUSRC = RESDS.RSRC
+     C                   EVAL      BUSREASON = RESDS.RSREASON
+     C                   IF        RETRYABLE
+     C                   EVAL      BUSRC = RCWAIT
+     C                   EVAL      BUSREASON =
+     C                             'ORIGINAL_DETAIL_ADJUSTMENT_PENDING'
+     C                   ENDIF
+     C                   MONITOR
+     C                   ROLBK
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = RCSTOP
+     C                   EVAL      RESDS.RSREASON = 'ROLLBACK_OUTCOME_UNCERTAIN'
+     C                   LEAVESR
+     C                   ENDMON
+     C                   EVAL      ERRORUNIT = *on
+     C                   EVAL      HASCHANGE = *off
+     C                   EVAL      AUDSEQ = 0
+     C                   EVAL      MSGSEQ = 0
+     C                   EVAL      FINALMSG = *blanks
+     C                   EVAL      OLDMSG = *blanks
+     C                   EVAL      RESDS.RSRC = RCOK
+     C                   EVAL      REQSTATE = 'REJECT'
+     C                   IF        BUSRC = RCLOCAL or RETRYABLE
+     C                   EVAL      REQSTATE = 'RETRY'
+     C                   ENDIF
+     C                   CLEAR     PRIN
+     C                   CLEAR     PROUT
+     C                   CLEAR     STKIN
+     C                   CLEAR     STKOLD
+     C                   CLEAR     STKNEW
+     C                   CLEAR     SETHEAD
+     C                   CLEAR     SETROWS
+     C                   CLEAR     SETVIEW
+     C                   CLEAR     OUTREC
+     C                   CLEAR     DAYHEAD
+     C                   CLEAR     ORDERKEEP
+     C                   CLEAR     ORDLINES
+     C                   CLEAR     OLDLINES
+     C                   CLEAR     SHIPBASE
+     C                   CLEAR     SHIPHEADS
+     C                   CLEAR     RETROWS
+     C                   CLEAR     OHREC
+     C                   CLEAR     ODREC
+     C                   CLEAR     SHREC
+     C                   CLEAR     SDREC
+     C                   CLEAR     RHREC
+     C                   CLEAR     RDREC
+     C                   CLEAR     SEREC
+     C                   CLEAR     SLREC
+     C                   MONITOR
+     C                   EXSR      MCLOSE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   EVAL      RESDS.RSRC = RCSTOP
+     C                   ENDIF
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = RCSTOP
+     C                   EVAL      RESDS.RSREASON = 'RESULT_UNIT_FAILED'
+     C                   ENDMON
+     C                   ENDSR
+
+
+
+
+     C     MFINISH       BEGSR
+     C                   EVAL      RESULT = RCSTOP
+     C                   EVAL      KBTID = RUNBATCH
+     C     KBATCH        CHAIN     BATCHPF       BTREC
+     C                   IF        not ( %found(BATCHPF) and BTREC.BTLAST =
+     C                             LASTNO )
+     C                   EVAL      RESDS.RSRC = '9000'
+     C                   EVAL      RESDS.RSREASON = 'FINISH_CHECKPOINT_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      BTREC.BTSTATE = 'DONE'
+     C                   EVAL      BTREC.BTRC = RCOK
+     C                   UPDATE    BATCHR        BTREC
+     C                   EXSR      MCOMMIT
+     C                   ENDSR
+
+
+     C     MEVENTFIELDS  BEGSR
+     C                   EVAL      IDENT = HDRDS.IHSRC
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = HDRDS.IHREQ
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = HDRDS.IHORDER
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = HDRDS.IHCUST
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = HDRDS.IHSHIP
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = HDRDS.IHRETURN
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = HDRDS.IHREFSRC
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = HDRDS.IHREFREQ
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = HDRDS.IHACTOR
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   SELECT
+     C                   WHEN      HDRDS.IHEVENT = 'NEW'
+     C                   IF        not ( HDRDS.IHORDER <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_REQUIRED_IHORDER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHVERSION = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_UNEXPECTED_IHVERSION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHCUST <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_REQUIRED_IHCUST'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHPART <> *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_REQUIRED_IHPART'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSHIP = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_UNEXPECTED_IHSHIP'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHRETURN = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_UNEXPECTED_IHRETURN'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHSETTL = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_UNEXPECTED_IHSETTL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHMSG = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_UNEXPECTED_IHMSG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHRESULT = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_UNEXPECTED_IHRESULT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHACTION = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_UNEXPECTED_IHACTION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFSRC = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_UNEXPECTED_IHREFSRC'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHREFREQ = *blanks )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_UNEXPECTED_IHREFREQ'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( HDRDS.IHPART = 'Y' or HDRDS.IHPART =
+     C                             'N' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_PARTIAL_POLICY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      HDRDS.IHEVENT = 'MOD'
+     C                   IF        not ( HDRDS.IHORDER <> *blanks )
+<<<END_FILE>>>

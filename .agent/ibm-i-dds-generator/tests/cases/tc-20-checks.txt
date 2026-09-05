@@ -1,0 +1,9 @@
+source_type=LF
+type=happy
+# LF with DESCEND key
+must_contain=PFILE(CUSTMAST)
+must_contain=R CUSTR
+must_contain=K LSTUPD
+must_contain=DESCEND
+must_not_contain=UNIQUE
+must_not_contain=ASCEND

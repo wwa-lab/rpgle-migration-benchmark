@@ -1,0 +1,24 @@
+layer=1
+lang=RPGLE
+change_type=new
+type=happy
+# Free-format markers for new RPGLE
+must_contain=ctl-opt
+must_contain=CUSTMAST
+# Parameter interface
+must_contain=P_CUSTID
+must_contain=P_RETCDE
+# 1:1 access pattern => CHAIN
+must_contain_regex=(chain|CHAIN)
+# Business rule traceability
+must_contain=BR-01
+must_contain=BR-02
+must_contain=BR-03
+# Update operation
+must_contain_regex=(update|UPDATE)
+# Return handling
+must_contain_regex=(return|RETURN)
+# Must NOT be fixed format C-specs
+must_not_contain_regex=^     C
+# Readiness note
+must_contain_regex=(Full Implementation|Compile-ready|Production-safe)

@@ -1,0 +1,7 @@
+     A* Synthetic static benchmark. Object SETLBYREF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R SETLHDR                   PFILE(SETLHDPF)
+     A          K SESHIP
+     A          K SEKIND
+     A          K SEID

@@ -1,0 +1,14 @@
+
+
+     A                                      UNIQUE
+     A          R PRICER
+     A            PRITEM        12A         CCSID(37)
+     A                                      TEXT('PRITEM')
+     A            PRFROM         8A         CCSID(37)
+     A                                      TEXT('PRFROM')
+     A            PRTHRU         8A         CCSID(37)
+     A                                      TEXT('PRTHRU')
+     A            PRUNIT        11P 4
+     A                                      TEXT('PRUNIT')
+     A          K PRITEM
+     A          K PRFROM

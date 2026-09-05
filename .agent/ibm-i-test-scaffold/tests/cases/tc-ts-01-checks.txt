@@ -1,0 +1,10 @@
+category=happy
+artifact_count=6
+must_contain=## Artifact 1: Environment Setup (CL)
+must_contain=## Artifact 2: Compile (CL)
+must_contain=CRTBNDRPG
+must_contain=INSERT INTO TSTLIB/ORDHDR
+must_contain=CALL PGM(PGMLIB/ORDCLOSE)
+must_contain=CASE WHEN
+must_contain=THEN 'PASS'
+must_contain=DELETE FROM TSTLIB/ORDHDR

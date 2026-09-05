@@ -1,0 +1,18 @@
+layer=1
+lang=RPGLE
+change_type=new
+type=edge
+# Must be in Skeleton mode due to TBDs
+must_contain_regex=(Skeleton|skeleton|scaffold|Scaffold)
+# Must have TODO markers for the unresolved items
+must_contain=TODO
+# Must reference the TBD blockers
+must_contain_regex=(TBD|tbd)
+# Must still have basic RPGLE shape
+must_contain_regex=(ctl-opt|CTL-OPT)
+# Must NOT claim to be full implementation or production-safe
+must_not_contain=Production-safe
+must_not_contain_regex=Full Implementation
+# Parameter interface should still be present
+must_contain=P_INVNO
+must_contain=P_RETCDE

@@ -1,0 +1,450 @@
+PART 005 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 991-1437>>>
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ODREC.ODACTIVE = 'N'
+     C                   EVAL      ODREC.ODCANCEL = 0
+     C                   EVAL      ODREC.ODSHIPPED = 0
+     C                   EVAL      ODREC.ODSHPAMT = 0
+     C                   UPDATE    ORDDTLR       ODREC
+     C                   ENDFOR
+     C                   ENDIF
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EVAL      KODORDER = CTXDS.CXORDER
+     C                   EVAL      KODLINE = NORMROWS(I).NRLINE
+     C     KORDD         CHAIN     ORDDTLPF      ODREC
+     C                   EVAL      MISSING = not %found(ORDDTLPF)
+     C                   CLEAR     ODREC
+     C                   EVAL      ODREC.ODORDER = CTXDS.CXORDER
+     C                   EVAL      ODREC.ODLINE = NORMROWS(I).NRLINE
+     C                   EVAL      ODREC.ODITEM = NORMROWS(I).NRITEM
+     C                   EVAL      ODREC.ODQTY = NORMROWS(I).NRQTY
+     C                   EVAL      ODREC.ODUNIT = PROUT(I).POUNIT
+     C                   EVAL      ODREC.ODRATE = PROUT(I).PORATE
+     C                   EVAL      ODREC.ODAMOUNT = PROUT(I).POAMOUNT
+     C                   EVAL      ODREC.ODVERSION = VERSION
+     C                   EVAL      ODREC.ODACTIVE = 'Y'
+     C                   IF        MISSING
+     C                   WRITE     ORDDTLR       ODREC
+     C                   ELSE
+     C                   UPDATE    ORDDTLR       ODREC
+     C                   ENDIF
+     C                   EVAL      ORDLINES(I) = ODREC
+     C                   EVAL      AUDKIND = 'VERSION_AFTER'
+     C                   EXSR      AORDDTL
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   EVAL      ORDCNT = CHKHEAD.CHCOUNT
+     C                   EVAL      OHREC = ORDERKEEP
+     C                   EVAL      OHREC.OHVERSION = VERSION
+     C                   EVAL      OHREC.OHCUST = HDRDS.IHCUST
+     C                   EVAL      OHREC.OHTIER = CHKHEAD.CHTIER
+     C                   EVAL      OHREC.OHPART = HDRDS.IHPART
+     C                   EVAL      OHREC.OHPRCDAY = CTXDS.CXDAY
+     C                   EVAL      OHREC.OHNLINE = ORDCNT
+     C                   EVAL      OHREC.OHAMOUNT = ORDERAMT
+     C                   EVAL      OHREC.OHSTATE = 'ACTIVE'
+     C                   EVAL      OHREC.OHSRC = CTXDS.CXSRC
+     C                   EVAL      OHREC.OHREQ = CTXDS.CXREQ
+     C                   EVAL      ORDERKEEP = OHREC
+     C                   IF        CTXDS.CXEVENT = 'NEW'
+     C                   WRITE     ORDHDRR       OHREC
+     C                   ELSE
+     C                   EVAL      KOHORDER = CTXDS.CXORDER
+     C     KORDH         CHAIN     ORDHDRPF      OHREC
+     C                   EVAL      OHREC = ORDERKEEP
+     C                   UPDATE    ORDHDRR       OHREC
+     C                   ENDIF
+     C                   EVAL      HASCHANGE = *on
+     C                   EVAL      RESDS.RSVERSION = VERSION
+     C                   EVAL      AUDKIND = 'VERSION_AFTER'
+     C                   EXSR      AORDHDR
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        STOCKWAIT
+     C                   EVAL      BUSRC = RCWAIT
+     C                   EVAL      BUSREASON = 'STOCK_WAIT'
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     MFINDLINE     BEGSR
+     C                   EVAL      LINEIX = 0
+     C                   FOR       J = 1 to ORDCNT
+     C                   IF        ORDLINES(J).ODLINE = NORMROWS(I).NRLINE
+     C                   EVAL      LINEIX = J
+     C                   LEAVE
+     C                   ENDIF
+     C                   ENDFOR
+     C                   IF        not ( LINEIX > 0 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'ORDER_LINE_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MALLOC        BEGSR
+     C                   IF        not ( ORDERKEEP.OHSTATE = 'ACTIVE' )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'ALLOC_ORDER_CLOSED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     STKIN
+     C                   EVAL      CTXDS.CXCOUNT = ORDCNT
+     C                   FOR       I = 1 to ORDCNT
+     C                   EVAL      STKIN(I).SILINE = ORDLINES(I).ODLINE
+     C                   EVAL      STKIN(I).SIITEM = ORDLINES(I).ODITEM
+     C                   EVAL      STKIN(I).SIQTY = ORDLINES(I).ODQTY -
+     C                             ORDLINES(I).ODCANCEL - ORDLINES(I).ODSHIPPED
+     C                   ENDFOR
+     C                   EVAL      CTXDS.CXACTION = 'ALLOC'
+     C                   CALL      'ORDSTOCK'
+     C                   PARM                    CTXDS
+     C                   PARM                    STKIN
+     C                   PARM                    STKOLD
+     C                   PARM                    STKNEW
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSTOCKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      STOCKWAIT = RESDS.RSRC = RCWAIT
+     C                   EVAL      CTXDS.CXACTION = 'APPLY'
+     C                   CALL      'ORDSTOCK'
+     C                   PARM                    CTXDS
+     C                   PARM                    STKIN
+     C                   PARM                    STKOLD
+     C                   PARM                    STKNEW
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSTOCKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MADVANCE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        STOCKWAIT
+     C                   EVAL      BUSRC = RCWAIT
+     C                   EVAL      BUSREASON = 'STOCK_WAIT'
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MCANCEL       BEGSR
+     C                   CLEAR     STKIN
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EXSR      MFINDLINE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ORDERQ = ORDLINES(LINEIX).ODQTY -
+     C                             ORDLINES(LINEIX).ODCANCEL -
+     C                             ORDLINES(LINEIX).ODSHIPPED
+     C                   IF        not ( NORMROWS(I).NRQTY <= ORDERQ )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'CANCEL_EXCEEDS_REMAINING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      STKIN(I).SILINE = NORMROWS(I).NRLINE
+     C                   EVAL      STKIN(I).SIITEM = ORDLINES(LINEIX).ODITEM
+     C                   EVAL      STKIN(I).SIQTY = NORMROWS(I).NRQTY
+     C                   EVAL      STKIN(I).SIREMAIN = ORDERQ
+     C                   ENDFOR
+     C                   EVAL      CTXDS.CXACTION = 'CANCEL'
+     C                   CALL      'ORDSTOCK'
+     C                   PARM                    CTXDS
+     C                   PARM                    STKIN
+     C                   PARM                    STKOLD
+     C                   PARM                    STKNEW
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSTOCKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXACTION = 'APPLY'
+     C                   CALL      'ORDSTOCK'
+     C                   PARM                    CTXDS
+     C                   PARM                    STKIN
+     C                   PARM                    STKOLD
+     C                   PARM                    STKNEW
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSTOCKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EXSR      MFINDLINE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ORDLINES(LINEIX).ODCANCEL =
+     C                             ORDLINES(LINEIX).ODCANCEL + NORMROWS(I).NRQTY
+     C                   ENDFOR
+     C                   EXSR      MADVANCE
+     C                   ENDSR
+
+
+     C     MADVANCE      BEGSR
+     C                   EVAL      VERSION = ORDERKEEP.OHVERSION + 1
+     C                   EVAL      ANYCANCEL = *off
+     C                   EVAL      ANYREMAIN = *off
+     C                   FOR       I = 1 to ORDCNT
+     C                   EVAL      KODORDER = CTXDS.CXORDER
+     C                   EVAL      KODLINE = ORDLINES(I).ODLINE
+     C     KORDD         CHAIN     ORDDTLPF      ODREC
+     C                   IF        not ( %found(ORDDTLPF) and ODREC.ODVERSION =
+     C                             ORDERKEEP.OHVERSION )
+     C                   EVAL      RESDS.RSRC = '3000'
+     C                   EVAL      RESDS.RSREASON = 'ACTIVE_LINE_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ORDLINES(I).ODVERSION = VERSION
+     C                   EVAL      ODREC = ORDLINES(I)
+     C                   UPDATE    ORDDTLR       ODREC
+     C                   IF        ODREC.ODCANCEL > 0
+     C                   EVAL      ANYCANCEL = *on
+     C                   ENDIF
+     C                   IF        ODREC.ODQTY - ODREC.ODCANCEL -
+     C                             ODREC.ODSHIPPED > 0
+     C                   EVAL      ANYREMAIN = *on
+     C                   ENDIF
+     C                   EVAL      AUDKIND = 'FULFILMENT_AFTER'
+     C                   EXSR      AORDDTL
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   EVAL      KOHORDER = CTXDS.CXORDER
+     C     KORDH         CHAIN     ORDHDRPF      OHREC
+     C                   IF        not ( %found(ORDHDRPF) and OHREC.OHVERSION =
+     C                             ORDERKEEP.OHVERSION )
+     C                   EVAL      RESDS.RSRC = '3000'
+     C                   EVAL      RESDS.RSREASON = 'ORDER_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      OHREC.OHVERSION = VERSION
+     C                   EVAL      OHREC.OHSTATE = 'CLOSED'
+     C                   IF        ANYCANCEL
+     C                   EVAL      OHREC.OHSTATE = 'CANCEL'
+     C                   ENDIF
+     C                   IF        ANYREMAIN
+     C                   EVAL      OHREC.OHSTATE = 'ACTIVE'
+     C                   ENDIF
+     C                   IF        CTXDS.CXEVENT = 'SHIP'
+     C                   EVAL      OHREC.OHSHIPANY = 'Y'
+     C                   ENDIF
+     C                   EVAL      OHREC.OHSRC = CTXDS.CXSRC
+     C                   EVAL      OHREC.OHREQ = CTXDS.CXREQ
+     C                   UPDATE    ORDHDRR       OHREC
+     C                   EVAL      ORDERKEEP = OHREC
+     C                   EVAL      RESDS.RSVERSION = VERSION
+     C                   EVAL      HASCHANGE = *on
+     C                   EVAL      AUDKIND = 'FULFILMENT_AFTER'
+     C                   EXSR      AORDHDR
+     C                   ENDSR
+
+
+
+     C     MSHIPID       BEGSR
+     C                   EVAL      KSHSHIP = CTXDS.CXSHIP
+     C     KSHIPH        CHAIN(N)  SHIPHDPF      SHREC
+     C                   IF        not ( not %found(SHIPHDPF) )
+     C                   EVAL      RESDS.RSRC = '1100'
+     C                   EVAL      RESDS.RSREASON = 'SHIPMENT_ALREADY_EXISTS'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( CHKHEAD.CHCOUNT >= 1 and
+     C                             CHKHEAD.CHCOUNT <= 100 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'SHIPMENT_ROW_COUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MSHIPPLAN     BEGSR
+     C                   CLEAR     PRIN
+     C                   CLEAR     STKIN
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EXSR      MFINDLINE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ORDERQ = NORMROWS(I).NRQTY
+     C                   FOR       J = 1 to I - 1
+     C                   IF        NORMROWS(J).NRLINE = NORMROWS(I).NRLINE
+     C                   EVAL      ORDERQ = ORDERQ + NORMROWS(J).NRQTY
+     C                   ENDIF
+     C                   ENDFOR
+     C                   IF        not ( ORDERQ <= ORDLINES(LINEIX).ODQTY -
+     C                             ORDLINES(LINEIX).ODCANCEL -
+     C                             ORDLINES(LINEIX).ODSHIPPED )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'SHIP_EXCEEDS_DEMAND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      PRIN(I).PIGROUP = %char(NORMROWS(I).NRLINE)
+     C                   EVAL      PRIN(I).PILINE = NORMROWS(I).NRLINE
+     C                   EVAL      PRIN(I).PIITEM = ORDLINES(LINEIX).ODITEM
+     C                   EVAL      PRIN(I).PIQTY = NORMROWS(I).NRQTY
+     C                   EVAL      PRIN(I).PIBASEQTY = ORDLINES(LINEIX).ODQTY
+     C                   EVAL      PRIN(I).PIPRIORQ = ORDLINES(LINEIX).ODSHIPPED
+     C                   EVAL      PRIN(I).PIBASEAMT = ORDLINES(LINEIX).ODAMOUNT
+     C                   EVAL      PRIN(I).PIPRIORA = ORDLINES(LINEIX).ODSHPAMT
+     C                   EVAL      STKIN(I).SILINE = NORMROWS(I).NRLINE
+     C                   EVAL      STKIN(I).SIITEM = ORDLINES(LINEIX).ODITEM
+     C                   EVAL      STKIN(I).SIWH = NORMROWS(I).NRWH
+     C                   EVAL      STKIN(I).SIQTY = NORMROWS(I).NRQTY
+     C                   ENDFOR
+     C                   EVAL      CTXDS.CXACTION = 'SHIP'
+     C                   CALL      'ORDSTOCK'
+     C                   PARM                    CTXDS
+     C                   PARM                    STKIN
+     C                   PARM                    STKOLD
+     C                   PARM                    STKNEW
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSTOCKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+
+     C     MSHIPAMT      BEGSR
+     C                   EVAL      CTXDS.CXACTION = 'SHIP'
+     C                   CALL      'ORDPRICE'
+     C                   PARM                    CTXDS
+     C                   PARM                    PRIN
+     C                   PARM                    PROUT
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MPRICEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SHIPAMT = RESDS.RSAMOUNT
+     C                   ENDSR
+
+
+
+
+     C     MSHIPAP       BEGSR
+     C                   EVAL      CTXDS.CXACTION = 'APPLY'
+     C                   CALL      'ORDSTOCK'
+     C                   PARM                    CTXDS
+     C                   PARM                    STKIN
+     C                   PARM                    STKOLD
+     C                   PARM                    STKNEW
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSTOCKABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     SHREC
+     C                   EVAL      SETTLEKEY = 'S:' + %trim(CTXDS.CXSHIP)
+     C                   EVAL      SHREC.SHSHIP = CTXDS.CXSHIP
+     C                   EVAL      SHREC.SHORDER = CTXDS.CXORDER
+     C                   EVAL      SHREC.SHVERSION = ORDERKEEP.OHVERSION + 1
+     C                   EVAL      SHREC.SHDAY = CTXDS.CXDAY
+     C                   EVAL      SHREC.SHSRC = CTXDS.CXSRC
+     C                   EVAL      SHREC.SHREQ = CTXDS.CXREQ
+     C                   EVAL      SHREC.SHNLINE = CHKHEAD.CHCOUNT
+     C                   EVAL      SHREC.SHSETTL = SETTLEKEY
+     C                   EVAL      SHREC.SHAMOUNT = SHIPAMT
+     C                   WRITE     SHIPHDR       SHREC
+     C                   EVAL      AUDKIND = 'SHIPMENT_CREATED'
+     C                   EXSR      ASHIPH
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     SETHEAD
+     C                   CLEAR     SETROWS
+     C                   FOR       I = 1 to CHKHEAD.CHCOUNT
+     C                   EXSR      MFINDLINE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     SDREC
+     C                   EVAL      SDREC.SDSHIP = CTXDS.CXSHIP
+     C                   EVAL      SDREC.SDLINE = I
+     C                   EVAL      SDREC.SDORDER = CTXDS.CXORDER
+     C                   EVAL      SDREC.SDORDLINE = NORMROWS(I).NRLINE
+     C                   EVAL      SDREC.SDITEM = ORDLINES(LINEIX).ODITEM
+     C                   EVAL      SDREC.SDWH = NORMROWS(I).NRWH
+     C                   EVAL      SDREC.SDQTY = NORMROWS(I).NRQTY
+     C                   EVAL      SDREC.SDAMOUNT = PROUT(I).POAMOUNT
+     C                   WRITE     SHIPDTR       SDREC
+     C                   EVAL      SHIPBASE(I) = SDREC
+     C                   EVAL      ORDLINES(LINEIX).ODSHIPPED =
+     C                             ORDLINES(LINEIX).ODSHIPPED + SDREC.SDQTY
+     C                   EVAL      ORDLINES(LINEIX).ODSHPAMT =
+     C                             ORDLINES(LINEIX).ODSHPAMT + SDREC.SDAMOUNT
+     C                   EXSR      ASHIPD
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SETROWS(I).SLSETTL = SETTLEKEY
+     C                   EVAL      SETROWS(I).SLLINE = I
+     C                   EVAL      SETROWS(I).SLSHIP = SDREC.SDSHIP
+     C                   EVAL      SETROWS(I).SLSHLINE = SDREC.SDLINE
+     C                   EVAL      SETROWS(I).SLORDER = CTXDS.CXORDER
+     C                   EVAL      SETROWS(I).SLORDLINE = SDREC.SDORDLINE
+     C                   EVAL      SETROWS(I).SLQTY = SDREC.SDQTY
+     C                   EVAL      SETROWS(I).SLAMOUNT = SDREC.SDAMOUNT
+     C                   ENDFOR
+     C                   EXSR      MADVANCE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      SETHEAD.SEID = SETTLEKEY
+     C                   EVAL      SETHEAD.SEKIND = 'P'
+     C                   EVAL      SETHEAD.SESHIP = CTXDS.CXSHIP
+     C                   EVAL      SETHEAD.SEORDER = CTXDS.CXORDER
+     C                   EVAL      SETHEAD.SECREATED = CTXDS.CXPROCDAY
+     C                   EVAL      SETHEAD.SESTATE = 'NEW'
+     C                   EVAL      SETHEAD.SEAMOUNT = SHIPAMT
+     C                   EVAL      SETHEAD.SEATTEMPT = 1
+     C                   EVAL      SETHEAD.SENLINE = CHKHEAD.CHCOUNT
+     C                   EVAL      SETHEAD.SERETRY = 'N'
+     C                   EXSR      MNEXTMSG
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CTXDS.CXSETTL = SETTLEKEY
+     C                   EVAL      CTXDS.CXACTION = 'CREATE'
+     C                   CALL      'ORDSETTL'
+     C                   PARM                    CTXDS
+     C                   PARM                    SETHEAD
+     C                   PARM                    SETROWS
+     C                   PARM                    SETVIEW
+     C                   PARM                    OUTREC
+     C                   PARM                    RESDS
+     C                   IF        RESDS.RSRC < '1000'
+     C                   EXSR      MSETTLEABI
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+<<<END_FILE>>>

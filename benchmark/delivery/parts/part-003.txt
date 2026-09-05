@@ -1,0 +1,500 @@
+PART 003 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 1-497>>>
+
+
+     H DFTACTGRP(*NO) ACTGRP('ORDBENCH')
+     H OPTION(*SRCSTMT:*NODEBUGIO) DECEDIT('0.')
+     FAUDITPF   UF A E           K DISK    COMMIT
+     FBATCHPF   UF A E           K DISK    COMMIT
+     FINDTLPF   IF   E           K DISK    COMMIT
+     FINHDRPF   IF   E           K DISK    COMMIT
+     FORDDTLPF  UF A E           K DISK    COMMIT
+     FORDHDRPF  UF A E           K DISK    COMMIT
+     FREQPF     UF A E           K DISK    COMMIT
+     FRTNDTLPF  UF A E           K DISK    COMMIT
+     FRTNHDRPF  UF A E           K DISK    COMMIT
+     FSETLDTPF  IF   E           K DISK    COMMIT
+     FSETLHDPF  IF   E           K DISK    COMMIT
+     FSHIPDTPF  UF A E           K DISK    COMMIT
+     FSHIPHDPF  UF A E           K DISK    COMMIT
+      /DEFINE U_CTXDS
+      /DEFINE U_RESDS
+      /DEFINE U_HDRDS
+      /DEFINE U_RAWROWS
+      /DEFINE U_CHKHEAD
+      /DEFINE U_NORMROWS
+      /DEFINE U_PRIN
+      /DEFINE U_PROUT
+      /DEFINE U_STKIN
+      /DEFINE U_STKOLD
+      /DEFINE U_STKNEW
+      /DEFINE U_SETHEAD
+      /DEFINE U_SETROWS
+      /DEFINE U_SETVIEW
+      /DEFINE U_OUTREC
+      /DEFINE U_DAYHEAD
+      /COPY QRPGLESRC,ORDCTX
+      /COPY QRPGLESRC,ORDRES
+      /COPY QRPGLESRC,ORDSTS
+     DBATCH            S             20A
+     DDAY              S              8A
+     DMODE             S              8A
+     DACTOR            S             20A
+     DRESULT           S              4A
+     DAUREC            DS                  LIKEREC(AUDITR)
+     DKAUID            S             64A
+     DBTREC            DS                  LIKEREC(BATCHR)
+     DKBTID            S             20A
+     DIDREC            DS                  LIKEREC(INDTLR)
+     DKIDBATCH         S             20A
+     DKIDINPUT         S              9P 0
+     DKIDPOS           S              5P 0
+     DIHREC            DS                  LIKEREC(INHDRR)
+     DKIHBATCH         S             20A
+     DKIHSEQ           S              9P 0
+     DODREC            DS                  LIKEREC(ORDDTLR)
+     DKODORDER         S             20A
+     DKODLINE          S              5P 0
+     DOHREC            DS                  LIKEREC(ORDHDRR)
+     DKOHORDER         S             20A
+     DRQREC            DS                  LIKEREC(REQR)
+     DKRQSRC           S             12A
+     DKRQREQ           S             20A
+     DRDREC            DS                  LIKEREC(RTNDTLR)
+     DKRDRETURN        S             20A
+     DKRDLINE          S              5P 0
+     DRHREC            DS                  LIKEREC(RTNHDRR)
+     DKRHRETURN        S             20A
+     DSLREC            DS                  LIKEREC(SETLDTR)
+     DKSLSETTL         S             48A
+     DKSLLINE          S              5P 0
+     DSEREC            DS                  LIKEREC(SETLHDR)
+     DKSEID            S             48A
+     DSDREC            DS                  LIKEREC(SHIPDTR)
+     DKSDSHIP          S             20A
+     DKSDLINE          S              5P 0
+     DSHREC            DS                  LIKEREC(SHIPHDR)
+     DKSHSHIP          S             20A
+     DINPUTNO          S              9P 0
+     DLASTNO           S              9P 0
+     DROWCOUNT         S              9P 0
+     DORDCNT           S              9P 0
+     DOLDCOUNT         S              9P 0
+     DAUDSEQ           S              9P 0
+     DMSGSEQ           S              9P 0
+     DLINEIX           S              9P 0
+     DORDERQ           S              9P 0
+     DRETURNQ          S              9P 0
+     DPREVQ            S              9P 0
+     DGROUPN           S              9P 0
+     DGI               S              9P 0
+     DSTARTPOS         S              9P 0
+     DSEGNO            S              9P 0
+     DSEGMAX           S              9P 0
+     DSNAPLEN          S              9P 0
+     DSNAPPOS          S              9P 0
+     DSNAPLEFT         S              9P 0
+     DVERSION          S              9P 0
+     DRESTCOUNT        S              9P 0
+     DINPUTEND         S               N
+     DHASKEY           S               N
+     DDUPLICATE        S               N
+     DCONFLICT         S               N
+     DNEWLEDGER        S               N
+     DRETRYABLE        S               N
+     DRECOVERING       S               N
+     DRECFOUND         S               N
+     DMISSING          S               N
+     DSTOCKWAIT        S               N
+     DHASCHANGE        S               N
+     DSKIPAPPLY        S               N
+     DANYCANCEL        S               N
+     DANYREMAIN        S               N
+     DERRORUNIT        S               N
+     DBUSRC            S              4A
+     DBUSREASON        S            120A
+     DREQSTATE         S              8A
+     DRUNBATCH         S             20A
+     DRUNDAY           S              8A
+     DINPUTBATCH       S             20A
+     DOLDMSG           S             80A
+     DFINALMSG         S             80A
+     DORIGEVENT        S              8A
+     DAFTERSTATE       S              8A
+     DBEFORESTATE      S              8A
+     DAUDKIND          S             16A
+     DAUDKEY           S             80A
+     DSNAPTEXT         S          30000A
+     DIDENT            S            120A
+     DFEEDBACK         S              8A
+     DSHIPKEY          S             20A
+     DRETURNKEY        S             20A
+     DSETTLEKEY        S             48A
+     DRECOVERYRC       S              4A
+     DRECOVERYREASON   S            120A
+     DORDERAMT         S             19P 2
+     DSHIPAMT          S             19P 2
+     DRETURNAMT        S             19P 2
+     DPREVAMT          S             19P 2
+     DSUCCAMT          S             19P 2
+     DGROUPAMT         S             19P 2
+     DI                S              9P 0
+     DJ                S              9P 0
+     DK                S              9P 0
+     DN                S              9P 0
+     DX                S              9P 0
+     DY                S              9P 0
+     DPOSN             S              9P 0
+     DFLEN             S              9P 0
+     DHLEN             S              9P 0
+     DTOKEN            S          30000A
+     DPAYLOAD          S          30000A
+     DTOKLEN           S              9P 0
+     DPAYLEN           S              9P 0
+     DLEN4             S              4S 0
+     DWIDE             S             31P12
+     DWORKDAY          S               D   DATFMT(*ISO)
+     DORDLINES         DS                  LIKEDS(ODREC)
+     D                                     DIM(100)
+     DOLDLINES         DS                  LIKEDS(ODREC)
+     D                                     DIM(100)
+     DORDERKEEP        DS                  LIKEDS(OHREC)
+     DOLDHEAD          DS                  LIKEDS(OHREC)
+     DSHIPBASE         DS                  LIKEDS(SDREC)
+     D                                     DIM(100)
+     DSHIPHEADS        DS                  LIKEDS(SHREC)
+     D                                     DIM(100)
+     DRETROWS          DS                  LIKEDS(RDREC)
+     D                                     DIM(100)
+     DRQKEEP           DS                  LIKEDS(RQREC)
+     DORIGRQ           DS                  LIKEDS(RQREC)
+     DRECCTX           DS                  LIKEDS(CTXDS)
+     DRECHDR           DS                  LIKEDS(HDRDS)
+     DRECRAW           DS                  LIKEDS(RAWROWS) DIM(100)
+     DRECCHK           DS                  LIKEDS(CHKHEAD)
+     DBUSCTX           DS                  LIKEDS(CTXDS)
+     DBUSRES           DS                  LIKEDS(RESDS)
+     DMSGRESULT        DS                  LIKEDS(OUTREC)
+     DSETKEEP          DS                  LIKEDS(SETHEAD)
+     DRETPRIOR         S              9P 0 DIM(100)
+     DRETSUCC          S             15P 2 DIM(100)
+     DGROUPSHIP        S             20A   DIM(100)
+     DGROUPIDX         S              5P 0 DIM(100)
+     DRECSHIPQ         S              9P 0 DIM(100)
+     DRECSHIPA         S             15P 2 DIM(100)
+     DCHECKCOUNT       S              9P 0
+     DCHECKAMT         S             19P 2
+     DREFAMT           S             19P 2
+     DCHECKID          S             48A
+     DREFID            S             48A
+     DREFQTY           S              9P 0
+     DCHECKDAY         S              8A
+     DSDSAVED          DS                  LIKEDS(SDREC)
+     DRDSAVED          DS                  LIKEDS(RDREC)
+     DSHSAVED          DS                  LIKEDS(SHREC)
+     DRHSAVED          DS                  LIKEDS(RHREC)
+     DSESAVED          DS                  LIKEDS(SEREC)
+     DSLTRACE          DS                  LIKEDS(SLREC)
+     DWIREKEEP         DS                  LIKEDS(OUTREC)
+     DWIRESAVE         S          30000A
+
+     C     *ENTRY        PLIST
+     C                   PARM                    BATCH
+     C                   PARM                    DAY
+     C                   PARM                    MODE
+     C                   PARM                    ACTOR
+     C                   PARM                    RESULT
+     C     KAUDIT        KLIST
+     C                   KFLD                    KAUID
+     C     KBATCH        KLIST
+     C                   KFLD                    KBTID
+     C     KINDTL1       KLIST
+     C                   KFLD                    KIDBATCH
+     C     KINDTL2       KLIST
+     C                   KFLD                    KIDBATCH
+     C                   KFLD                    KIDINPUT
+     C     KINDTL        KLIST
+     C                   KFLD                    KIDBATCH
+     C                   KFLD                    KIDINPUT
+     C                   KFLD                    KIDPOS
+     C     KINHDR1       KLIST
+     C                   KFLD                    KIHBATCH
+     C     KINHDR        KLIST
+     C                   KFLD                    KIHBATCH
+     C                   KFLD                    KIHSEQ
+     C     KORDD1        KLIST
+     C                   KFLD                    KODORDER
+     C     KORDD         KLIST
+     C                   KFLD                    KODORDER
+     C                   KFLD                    KODLINE
+     C     KORDH         KLIST
+     C                   KFLD                    KOHORDER
+     C     KREQ1         KLIST
+     C                   KFLD                    KRQSRC
+     C     KREQ          KLIST
+     C                   KFLD                    KRQSRC
+     C                   KFLD                    KRQREQ
+     C     KRTND1        KLIST
+     C                   KFLD                    KRDRETURN
+     C     KRTND         KLIST
+     C                   KFLD                    KRDRETURN
+     C                   KFLD                    KRDLINE
+     C     KRTNH         KLIST
+     C                   KFLD                    KRHRETURN
+     C     KSETLD1       KLIST
+     C                   KFLD                    KSLSETTL
+     C     KSETLD        KLIST
+     C                   KFLD                    KSLSETTL
+     C                   KFLD                    KSLLINE
+     C     KSETLH        KLIST
+     C                   KFLD                    KSEID
+     C     KSHIPD1       KLIST
+     C                   KFLD                    KSDSHIP
+     C     KSHIPD        KLIST
+     C                   KFLD                    KSDSHIP
+     C                   KFLD                    KSDLINE
+     C     KSHIPH        KLIST
+     C                   KFLD                    KSHSHIP
+     C                   MONITOR
+     C                   EXSR      MINIT
+     C                   ON-ERROR
+     C                   EVAL      RESULT = '9000'
+     C                   ENDMON
+     C                   EVAL      *inlr = *on
+     C                   RETURN
+
+
+
+     C     MINIT         BEGSR
+     C                   CLEAR     CTXDS
+     C                   CLEAR     RESDS
+     C                   EVAL      RESDS.RSRC = RCOK
+     C                   EVAL      RESULT = RCSTOP
+     C                   EVAL      RUNBATCH = BATCH
+     C                   EVAL      RUNDAY = DAY
+     C                   EVAL      CTXDS.CXABI = ABI
+     C                   EVAL      CTXDS.CXPROCDAY = RUNDAY
+     C                   IF        not ( RUNBATCH <> *blanks )
+     C                   EVAL      RESDS.RSRC = '9000'
+     C                   EVAL      RESDS.RSREASON = 'BATCH_REQUIRED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      IDENT = RUNBATCH
+     C                   EXSR      MIDENT
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( MODE = 'PROCESS' or MODE = 'RESUME' )
+     C                   EVAL      RESDS.RSRC = '9000'
+     C                   EVAL      RESDS.RSREASON = 'BATCH_MODE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   MONITOR
+     C                   EVAL      WORKDAY = %date(RUNDAY:*ISO0)
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = '9000'
+     C                   EVAL      RESDS.RSREASON = 'RUN_DAY_INVALID'
+     C                   LEAVESR
+     C                   ENDMON
+     C                   EXSR      MBATCH
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        BTREC.BTSTATE = 'DONE'
+     C                   EVAL      RESULT = BTREC.BTRC
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      LASTNO = BTREC.BTLAST
+     C                   EVAL      INPUTEND = *off
+     C                   DOW       not INPUTEND
+     C                   EXSR      MRESET
+     C                   MONITOR
+     C                   EXSR      MINPUT
+     C                   IF        not INPUTEND and RESDS.RSRC < RCREJECT
+     C                   EXSR      MUNIT
+     C                   ENDIF
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = RCLOCAL
+     C                   EVAL      RESDS.RSREASON = 'EVENT_IO_OR_CONVERSION'
+     C                   ENDMON
+     C                   IF        INPUTEND
+     C                   LEAVE
+     C                   ENDIF
+     C                   IF        RESDS.RSRC = RCSTOP
+     C                   EVAL      RESULT = RCSTOP
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= RCREJECT or RETRYABLE
+     C                   EXSR      MROLL
+     C                   ELSE
+     C                   EXSR      MCLOSE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   EXSR      MROLL
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        RESDS.RSRC >= RCSTOP
+     C                   EVAL      RESULT = RCSTOP
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EXSR      MCOMMIT
+     C                   IF        RESULT = RCSTOP
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      LASTNO = INPUTNO
+     C                   ENDDO
+     C                   EXSR      MFINISH
+     C                   ENDSR
+
+
+
+     C     MBATCH        BEGSR
+     C                   EVAL      KBTID = RUNBATCH
+     C     KBATCH        CHAIN     BATCHPF       BTREC
+     C                   IF        not %found(BATCHPF)
+     C                   IF        not ( MODE = 'PROCESS' )
+     C                   EVAL      RESDS.RSRC = '9000'
+     C                   EVAL      RESDS.RSREASON = 'RESUME_BATCH_NOT_FOUND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   CLEAR     BTREC
+     C                   EVAL      BTREC.BTID = RUNBATCH
+     C                   EVAL      BTREC.BTDAY = RUNDAY
+     C                   EVAL      BTREC.BTSTATE = 'OPEN'
+     C                   EVAL      BTREC.BTACTOR = ACTOR
+     C                   EVAL      BTREC.BTRC = RCOK
+     C                   WRITE     BATCHR        BTREC
+     C                   COMMIT
+     C                   ELSE
+     C                   IF        not ( BTREC.BTDAY = RUNDAY )
+     C                   EVAL      RESDS.RSRC = '9000'
+     C                   EVAL      RESDS.RSREASON = 'BATCH_DAY_CHANGED'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( BTREC.BTSTATE = 'OPEN' or BTREC.BTSTATE
+     C                             = 'DONE' )
+     C                   EVAL      RESDS.RSRC = '9000'
+     C                   EVAL      RESDS.RSREASON = 'BATCH_STATE_UNCERTAIN'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     MRESET        BEGSR
+     C                   CLEAR     CTXDS
+     C                   CLEAR     RESDS
+     C                   CLEAR     HDRDS
+     C                   CLEAR     RAWROWS
+     C                   CLEAR     CHKHEAD
+     C                   CLEAR     NORMROWS
+     C                   CLEAR     PRIN
+     C                   CLEAR     PROUT
+     C                   CLEAR     STKIN
+     C                   CLEAR     STKOLD
+     C                   CLEAR     STKNEW
+     C                   CLEAR     SETHEAD
+     C                   CLEAR     SETROWS
+     C                   CLEAR     SETVIEW
+     C                   CLEAR     OUTREC
+     C                   CLEAR     DAYHEAD
+     C                   CLEAR     ORDLINES
+     C                   CLEAR     OLDLINES
+     C                   CLEAR     ORDERKEEP
+     C                   CLEAR     OLDHEAD
+     C                   CLEAR     SHIPBASE
+     C                   CLEAR     SHIPHEADS
+     C                   CLEAR     RETROWS
+     C                   CLEAR     RQKEEP
+     C                   CLEAR     ORIGRQ
+     C                   CLEAR     RETPRIOR
+     C                   CLEAR     RETSUCC
+     C                   CLEAR     GROUPSHIP
+     C                   CLEAR     GROUPIDX
+     C                   EVAL      ROWCOUNT = 0
+     C                   EVAL      ORDCNT = 0
+     C                   EVAL      OLDCOUNT = 0
+     C                   EVAL      AUDSEQ = 0
+     C                   EVAL      MSGSEQ = 0
+     C                   EVAL      GROUPN = 0
+     C                   EVAL      ORDERAMT = 0
+     C                   EVAL      SHIPAMT = 0
+     C                   EVAL      RETURNAMT = 0
+     C                   EVAL      HASKEY = *off
+     C                   EVAL      DUPLICATE = *off
+     C                   EVAL      CONFLICT = *off
+     C                   EVAL      NEWLEDGER = *off
+     C                   EVAL      RETRYABLE = *off
+     C                   EVAL      RECOVERING = *off
+     C                   EVAL      RECFOUND = *off
+     C                   EVAL      STOCKWAIT = *off
+     C                   EVAL      HASCHANGE = *off
+     C                   EVAL      ERRORUNIT = *off
+     C                   EVAL      OLDMSG = *blanks
+     C                   EVAL      FINALMSG = *blanks
+     C                   EVAL      BEFORESTATE = *blanks
+     C                   EVAL      AFTERSTATE = *blanks
+     C                   EVAL      BUSREASON = *blanks
+     C                   EVAL      BUSRC = RCOK
+     C                   EVAL      RESDS.RSRC = RCOK
+     C                   EVAL      REQSTATE = 'DONE'
+     C                   EVAL      CTXDS.CXABI = ABI
+     C                   EVAL      CTXDS.CXBATCH = RUNBATCH
+     C                   EVAL      CTXDS.CXPROCDAY = RUNDAY
+     C                   EVAL      CTXDS.CXACTOR = ACTOR
+     C                   ENDSR
+
+
+
+     C     MINPUT        BEGSR
+     C                   EVAL      KIHBATCH = RUNBATCH
+     C                   EVAL      KIHSEQ = LASTNO
+     C     KINHDR        SETGT     INHDRPF
+     C                   EVAL      KIHBATCH = RUNBATCH
+     C     KINHDR1       READE     INHDRPF       IHREC
+     C                   IF        %eof(INHDRPF)
+     C                   EVAL      INPUTEND = *on
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      HDRDS = IHREC
+     C                   EVAL      INPUTNO = IHREC.IHSEQ
+     C                   EVAL      INPUTBATCH = RUNBATCH
+     C                   EVAL      CTXDS.CXINPUT = INPUTNO
+     C                   EXSR      MREADROWS
+     C                   EXSR      MCONTEXT
+     C                   ENDSR
+
+
+     C     MREADROWS     BEGSR
+     C                   CLEAR     RAWROWS
+     C                   EVAL      ROWCOUNT = 0
+     C                   EVAL      KIDBATCH = INPUTBATCH
+     C                   EVAL      KIDINPUT = HDRDS.IHSEQ
+     C     KINDTL2       SETLL     INDTLPF
+     C                   EVAL      KIDBATCH = INPUTBATCH
+     C                   EVAL      KIDINPUT = HDRDS.IHSEQ
+     C     KINDTL2       READE     INDTLPF       IDREC
+     C                   DOW       not %eof(INDTLPF)
+     C                   IF        not ( ROWCOUNT < 100 )
+     C                   EVAL      RESDS.RSRC = '1000'
+     C                   EVAL      RESDS.RSREASON = 'INPUT_DETAIL_CAPACITY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      ROWCOUNT = ROWCOUNT + 1
+     C                   EVAL      RAWROWS(ROWCOUNT) = IDREC
+     C                   EVAL      KIDBATCH = INPUTBATCH
+     C                   EVAL      KIDINPUT = HDRDS.IHSEQ
+     C     KINDTL2       READE     INDTLPF       IDREC
+     C                   ENDDO
+     C                   EVAL      CTXDS.CXCOUNT = ROWCOUNT
+     C                   ENDSR
+
+
+
+     C     MCONTEXT      BEGSR
+     C                   EVAL      CTXDS.CXSRC = HDRDS.IHSRC
+     C                   EVAL      CTXDS.CXREQ = HDRDS.IHREQ
+     C                   EVAL      CTXDS.CXEVENT = HDRDS.IHEVENT
+     C                   EVAL      CTXDS.CXDAY = HDRDS.IHDAY
+     C                   EVAL      CTXDS.CXORDER = HDRDS.IHORDER
+     C                   EVAL      CTXDS.CXSHIP = HDRDS.IHSHIP
+<<<END_FILE>>>

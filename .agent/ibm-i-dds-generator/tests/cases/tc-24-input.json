@@ -1,0 +1,73 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "SPCRPTF-20260404-01",
+    "specLevel": "L2",
+    "fileType": "PRTF",
+    "fileName": "SPCRPTF",
+    "description": "Report with spacing control"
+  },
+  "pageLayout": {
+    "lines": 66,
+    "columns": 132,
+    "overflowLine": 60,
+    "overflowIndicator": 99
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "SPCDTL",
+      "purpose": "Detail line single spaced",
+      "fieldCount": 1,
+      "spacingBefore": 1
+    },
+    {
+      "formatId": "FMT-02",
+      "formatName": "SPCTOT",
+      "purpose": "Total line double spaced",
+      "fieldCount": 1,
+      "spacingBefore": 2
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "DTLVAL",
+        "type": "A",
+        "length": 30,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Detail value",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 6,
+        "col": 2,
+        "usage": "O"
+      }
+    ],
+    "FMT-02": [
+      {
+        "fieldId": "FLD-02",
+        "fieldName": "TOTVAL",
+        "type": "P",
+        "length": 11,
+        "decimals": 2,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Total value",
+        "editCode": "1",
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 8,
+        "col": 2,
+        "usage": "O"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "EXACT-20260404-01",
+    "specLevel": "L1",
+    "fileType": "PF",
+    "fileName": "EXACTPF",
+    "description": "Exact count test"
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "EXACTR",
+      "purpose": "Exact count record",
+      "fieldCount": 3
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      { "fieldId": "FLD-01", "fieldName": "AAA", "type": "A", "length": 5, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Field A", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-02", "fieldName": "BBB", "type": "A", "length": 5, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Field B", "editCode": null, "columnHeading": null, "ddsKeywords": [] },
+      { "fieldId": "FLD-03", "fieldName": "CCC", "type": "A", "length": 5, "decimals": null, "nullable": false, "defaultValue": null, "ccsid": null, "text": "Field C", "editCode": null, "columnHeading": null, "ddsKeywords": [] }
+    ]
+  },
+  "keyDefinition": {
+    "unique": true,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "AAA", "fieldRef": "FLD-01", "sortDirection": "ASCEND" }
+    ]
+  }
+}

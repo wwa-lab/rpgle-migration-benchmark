@@ -1,0 +1,399 @@
+{
+  "materialVersion": "RPGFLOW-1.0",
+  "status": "FROZEN_STATIC_CANDIDATE",
+  "runStatus": "NOT_RUN",
+  "materialSetSha256": "62e1a2766af23585954a4f4249da3751c91198485f7550e4b327178c0e1e9317",
+  "taskSha256": "6c453a63c82e547b1f4f70ec63a5cf5f365d9e533a4f55b757304fbbfda9599d",
+  "generatedFiles": [
+    {
+      "path": "delivery/continuation.md",
+      "sha256": "028f449b90b4750c9e62ac6defede93faebb787078ca912651024e9bed992567"
+    },
+    {
+      "path": "delivery/final.md",
+      "sha256": "6c453a63c82e547b1f4f70ec63a5cf5f365d9e533a4f55b757304fbbfda9599d"
+    },
+    {
+      "path": "delivery/index.json",
+      "sha256": "5a111c239b50a1ca12c6a3962b8533f09d9fc42cc48cab4a25698595a6926243"
+    },
+    {
+      "path": "delivery/parts/part-001.txt",
+      "sha256": "38d0d4d620da709ed68607b3d81d4dc6d8a00e03b082cdbe972386036a7171fa"
+    },
+    {
+      "path": "delivery/parts/part-002.txt",
+      "sha256": "961613f19ef1d8f274e1c6434052c49d6f9a17112ee89a316b6f196f4fb1be93"
+    },
+    {
+      "path": "delivery/parts/part-003.txt",
+      "sha256": "a6f22b84c0ab2c490fb85aac5f89506ee61d3a67b10b4c11ca36dd10937ca1af"
+    },
+    {
+      "path": "delivery/parts/part-004.txt",
+      "sha256": "2630541a3df74bfcb7f2e9aed311baaebebb943cdd42f7798e7bf90ec78ad24d"
+    },
+    {
+      "path": "delivery/parts/part-005.txt",
+      "sha256": "f3346b1b2b54208c3738e73feffefe6b098c3cff36b7812682aaacbf31dbfc83"
+    },
+    {
+      "path": "delivery/parts/part-006.txt",
+      "sha256": "aefeb1e2879e99cd3cc48421d5e1a7252b41c754f2c96a792ea6aaf84a5a00f8"
+    },
+    {
+      "path": "delivery/parts/part-007.txt",
+      "sha256": "dbde94741205f8e2974d1bfdb848d6d0fc1775168fd8e5cb94fe60dbe7a34d66"
+    },
+    {
+      "path": "delivery/parts/part-008.txt",
+      "sha256": "5d5943b44e537e4d4616157e40bb158d547fdc71c6c7886cd8350d33f0103aab"
+    },
+    {
+      "path": "delivery/parts/part-009.txt",
+      "sha256": "9b3c53ba6da4c7774e98b5bdca81a80513dd062f102b18266c23470f7b2092cd"
+    },
+    {
+      "path": "delivery/parts/part-010.txt",
+      "sha256": "a806437a133d29e787b71ea95daa2752b1773f301d55333a6b460f08cc7b908e"
+    },
+    {
+      "path": "delivery/parts/part-011.txt",
+      "sha256": "96d29ed78062bee161965552eb782c0b81d2fd96a37d0c67659a754154ab6acb"
+    },
+    {
+      "path": "delivery/parts/part-012.txt",
+      "sha256": "c04c11453d0f4ffc6dbc5d8d25b1b6d7496d6ee2a1f2cd335deb8a2a34315805"
+    },
+    {
+      "path": "delivery/parts/part-013.txt",
+      "sha256": "6167522d75c65a4a4c35404403494df1b4071b653ac6a0bf00ab784f68c53c96"
+    },
+    {
+      "path": "delivery/parts/part-014.txt",
+      "sha256": "eb30bcbaee0c3a14058673a5162efd2c325e990e8878ffbf674d118cdfd2bf9e"
+    },
+    {
+      "path": "delivery/parts/part-015.txt",
+      "sha256": "7fac87d93b2f39f018fa466c6c70892a15ff1a00889add383be85da38978031d"
+    },
+    {
+      "path": "delivery/parts/part-016.txt",
+      "sha256": "a649095afe18dc9055ac4040841862cabe93448ed3adbfc695da909f7a32f3f6"
+    },
+    {
+      "path": "delivery/parts/part-017.txt",
+      "sha256": "709eaa38ca25797554dc8d5c5dd88ab353d8b51d8e61e5b21221bbd5bd3da367"
+    },
+    {
+      "path": "delivery/parts/part-018.txt",
+      "sha256": "83b2637134a91abd7d7cf8f8e5fe364809e5a100815bb3bddde15067b47c0ce0"
+    },
+    {
+      "path": "delivery/parts/part-019.txt",
+      "sha256": "2ff6d65b42f1da7f076b04329ac2b4d3fd6583c317e2ccde397a6a596870710e"
+    },
+    {
+      "path": "delivery/parts/part-020.txt",
+      "sha256": "4e74c043d7bfe2467431a98cf496cc400446bc051f88ceae6b2222d49daa3331"
+    },
+    {
+      "path": "delivery/parts/part-021.txt",
+      "sha256": "45da3665d4730fb02f34068c32c8b97d0496d1115355e5a50e556fd9d0f951c1"
+    },
+    {
+      "path": "delivery/parts/part-022.txt",
+      "sha256": "5933cca695cd426d9dae0fa1877487f1d33d477c0edd36303559d4bd250f83a2"
+    },
+    {
+      "path": "delivery/parts/part-023.txt",
+      "sha256": "85a9d533e1ceefe42fbb955c162f929e640e6876bb10e1d5d12539516b735b96"
+    },
+    {
+      "path": "delivery/parts/part-024.txt",
+      "sha256": "b945621ddf4826bb1c74b4a71fa533a2b16ea13ba0dd52031e992070a39488ae"
+    },
+    {
+      "path": "delivery/parts/part-025.txt",
+      "sha256": "42bfb232ab946d84fce7c69689c259a96ddbbb12f495f270356e25f8bbad913a"
+    },
+    {
+      "path": "delivery/parts/part-026.txt",
+      "sha256": "3e9dd686b5a8e704b03e3250ccfcc7f1b588158c7d5c77954a387b3bece7b729"
+    },
+    {
+      "path": "delivery/parts/part-027.txt",
+      "sha256": "89bcedeb9e089c92a88b5f0575182840dadb143ce06befb2f39af474b8ff8c43"
+    },
+    {
+      "path": "delivery/parts/part-028.txt",
+      "sha256": "bb670c4bd0db8040e835f569c657b25116e7c005da872600db69344c8f686c30"
+    },
+    {
+      "path": "delivery/parts/part-029.txt",
+      "sha256": "01e6cd7a218fe169272dc637414e0833c260caaec08b51b9c0694b195156c8dd"
+    },
+    {
+      "path": "delivery/parts/part-030.txt",
+      "sha256": "735864d9bf3034e47169fda965df7832879fd00825f90562cb650219fbea1a1b"
+    },
+    {
+      "path": "delivery/parts/part-031.txt",
+      "sha256": "d60fcb5f64e4368b7d5ddc7131819962bf85b10f2e232b5eb0d26a6897304604"
+    },
+    {
+      "path": "delivery/parts/part-032.txt",
+      "sha256": "1f5039a1ff8ec6748a8beb89eb9aa5c2aa4fadc6cf55b03d40b8f2f403c6a579"
+    },
+    {
+      "path": "delivery/start.md",
+      "sha256": "50cac2a72d10475423497cabf3aae6a05519c49b99f6cf4f8a8bbfa0260d4b77"
+    },
+    {
+      "path": "dist/RPGFLOW-1.0-files.zip",
+      "sha256": "b000976997e76254806616f408d7dfb59bef83ae17432d3a4c71f0d67063fc7e"
+    },
+    {
+      "path": "dist/RPGFLOW-1.0-text.zip",
+      "sha256": "5a5373c7961d0c9c2140ba6ef3c3e76ea98ca0cd8797021d975c69a84cca4632"
+    },
+    {
+      "path": "dist/SHA256SUMS.txt",
+      "sha256": "91973dc02a843971c2971bc2d8ed4ca7db6b16145a882726a19c097de7c3c44a"
+    },
+    {
+      "path": "input/README.md",
+      "sha256": "b409c3a0eb95686919a47d4fe525316b1c7a6a376384fde029c6c05b40752fa7"
+    },
+    {
+      "path": "input/context/interfaces.md",
+      "sha256": "46de94ee481d423eb20eb1eab466be90a37ec868ac35febc4aab44f462caaa5c"
+    },
+    {
+      "path": "input/context/operations-and-systems.md",
+      "sha256": "6a6a3ee8d48fd9ed90d655001a277e59eedf0e06a1aae98116a7213bd680e053"
+    },
+    {
+      "path": "input/manifest.json",
+      "sha256": "bd72083d01d2ccae5bebd84063f4dacb9df9b3f87fe74141cfa7aeb7eba4527b"
+    },
+    {
+      "path": "input/prompts/continuation.md",
+      "sha256": "028f449b90b4750c9e62ac6defede93faebb787078ca912651024e9bed992567"
+    },
+    {
+      "path": "input/prompts/run.md",
+      "sha256": "5439422991e855fc6dc786add52915bfb38ee3f7b9bc35c01b9a321a4bd89a9e"
+    },
+    {
+      "path": "input/prompts/task.md",
+      "sha256": "6c453a63c82e547b1f4f70ec63a5cf5f365d9e533a4f55b757304fbbfda9599d"
+    },
+    {
+      "path": "input/src/QCLLESRC/ORDRUN.clle",
+      "sha256": "d1f203643176fb9af74e490ac89e75f34da3795d86b546420ea1837858255920"
+    },
+    {
+      "path": "input/src/QDDSSRC/ALLOCPF.dds",
+      "sha256": "5003bcf1ef223284965e5099c6d8a475f01fe3ae27565d3cf13dba75d527b541"
+    },
+    {
+      "path": "input/src/QDDSSRC/AUDITPF.dds",
+      "sha256": "e8edc47ea26b9fe4ede68fb9223f4f5f0bfcf6ea4f6b8f7ca89cbb3ef1029886"
+    },
+    {
+      "path": "input/src/QDDSSRC/BATCHPF.dds",
+      "sha256": "aeff1ecc169104c7726ad447adf3aaa98840128c9c26f8d17b08b23ac86f3ea3"
+    },
+    {
+      "path": "input/src/QDDSSRC/CUSTPF.dds",
+      "sha256": "b57c77ad5ad833a615bba10468fa7c983de66055670f515dfbeb858cb351e361"
+    },
+    {
+      "path": "input/src/QDDSSRC/DAYRPTPF.dds",
+      "sha256": "9b8f3b6c9236d06024247f4836f0d4fc75ad5a6a62f133107b1a46df07909b54"
+    },
+    {
+      "path": "input/src/QDDSSRC/INDTLPF.dds",
+      "sha256": "bd339b27dc1ae50b76ec98108450e0be13abee877e2e51a929ee77147cdd4ad4"
+    },
+    {
+      "path": "input/src/QDDSSRC/INHDRPF.dds",
+      "sha256": "9c089841d167ffdbff9f3fe67bd29f1cc7316f0ae9016fcd1064f8c976028ba9"
+    },
+    {
+      "path": "input/src/QDDSSRC/ITEMPF.dds",
+      "sha256": "65050894534c6530aaa3b4a04ddff8eb08c39a0d7fcd0963eb3a2d874def3ddb"
+    },
+    {
+      "path": "input/src/QDDSSRC/ORDDTLPF.dds",
+      "sha256": "0b70758ce3c8dfe9fa97236c2cb3ef6a9cc972f8c35c675e02ef8b146c8447c3"
+    },
+    {
+      "path": "input/src/QDDSSRC/ORDHDRPF.dds",
+      "sha256": "058f9e7cfebf70346c9b426508cd666ea532145a11c200165ab4519fb9e933c1"
+    },
+    {
+      "path": "input/src/QDDSSRC/OUTBOXPF.dds",
+      "sha256": "704a55acab60055cd2fb5de16e5c54ebfe1ee1436121a31e7fec2f2fa013a8b4"
+    },
+    {
+      "path": "input/src/QDDSSRC/OUTBYST.dds",
+      "sha256": "1ef39017b40f6f8620d2ddfdc3c8df687c48669598bf7cd49e9d19a23ad722ae"
+    },
+    {
+      "path": "input/src/QDDSSRC/PRICEPF.dds",
+      "sha256": "d8a5b7c4e23e662c0a58a296e70e7574951999ea879e9e78785250b0ff1ae786"
+    },
+    {
+      "path": "input/src/QDDSSRC/REQPF.dds",
+      "sha256": "0eb134c3d44fe0b40210be60967e49bedf7834474638d5d295e068d0e3cfcb1d"
+    },
+    {
+      "path": "input/src/QDDSSRC/RTNDTLPF.dds",
+      "sha256": "ea8a6db2c6422925977c7d2f422bfbd50e517908c9d01c8a177379ae948a00d1"
+    },
+    {
+      "path": "input/src/QDDSSRC/RTNHDRPF.dds",
+      "sha256": "79edb9111be0375ebb8da827da5b1112400514cc74bcecc9b3887a1ce7deaa5a"
+    },
+    {
+      "path": "input/src/QDDSSRC/SETLBYDAY.dds",
+      "sha256": "dd23f0c8f33d8ddfd5cd402e7ede563d99a1762fef0847fc07072aa9561f4149"
+    },
+    {
+      "path": "input/src/QDDSSRC/SETLBYREF.dds",
+      "sha256": "80975de7ae0aff9a32dedf17ec75af4ef1e73b1cb9993f2d352cf79a06827b17"
+    },
+    {
+      "path": "input/src/QDDSSRC/SETLDTPF.dds",
+      "sha256": "6d7e3c3c864b244a887432314cc3bf3e1eede25be8b81183843d041be4bb8e71"
+    },
+    {
+      "path": "input/src/QDDSSRC/SETLHDPF.dds",
+      "sha256": "b86dd05d5df2d5f923d7dce49203a1ed339c63022a0fec3979abf1771eb606bc"
+    },
+    {
+      "path": "input/src/QDDSSRC/SHIPDTPF.dds",
+      "sha256": "e822ba64477b9779de0d099808d661720123b02155bc7b9139727cb68628cca1"
+    },
+    {
+      "path": "input/src/QDDSSRC/SHIPHDPF.dds",
+      "sha256": "531d7fec7407d2cbe5c7d8b9b704091e2c2023433cc689f75a581aea4bf61a15"
+    },
+    {
+      "path": "input/src/QDDSSRC/STOCKPF.dds",
+      "sha256": "bc8328741fee543876ecec98a421ca710e738d3f9557211ecf1f0eabc7722c9e"
+    },
+    {
+      "path": "input/src/QDDSSRC/WHSEPF.dds",
+      "sha256": "855c4657d0accb520ee0a6ecfc568df698eaaf2f9561c724d323c55a60ac64a0"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDCHECK.rpgle",
+      "sha256": "895ebb34881bcaf3162738fa6b84c7a3621fab172bb64c67b54178b1e706fc06"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDCTX.rpgleinc",
+      "sha256": "63f0058cac94f3d5b82e542970795086efe5b3d942f5394f92dc57b09ce8e406"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDDAILY.rpgle",
+      "sha256": "59b0d0fae4846885308a208e95a9b6db16ef00482841893aa4844a7e7edc0b65"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDMAIN.rpgle",
+      "sha256": "2e41fbec9efa01e8a0b2c03c283960ee45de6a899d5e75b02374a2f7240ff278"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDPRICE.rpgle",
+      "sha256": "f6084f4171b5efc351258853a079cc2603b669f0b28619ab84be57c5c6e14f35"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDREPLY.rpgle",
+      "sha256": "a3eb83e93efc02902ae2168560eaef140dce175278fcdc6f46142f57507ad7cf"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDRES.rpgleinc",
+      "sha256": "da86cb603d5c2838244f216c3eaac8593d663e31d6b2ffa12faf182be7d29b98"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDSETTL.rpgle",
+      "sha256": "a861d2d5374ec74050cc4ab963c95be9c7d0c39f84b61ca329e27f355bc98450"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDSTOCK.rpgle",
+      "sha256": "4e8f5367dfb605fff704a964a6f939abb1de0c6f926a5306c7f314dc044f9210"
+    },
+    {
+      "path": "input/src/QRPGLESRC/ORDSTS.rpgleinc",
+      "sha256": "38b92c40862f3eab4dab3c14c196c751a9cd91381c90196c5345ed98c33c0db4"
+    },
+    {
+      "path": "reference/baseline-manifest.json",
+      "sha256": "44b7b6347775e3861feca63969a2bb432b3a88db9f00aa7f5e2bfb656be048fc"
+    },
+    {
+      "path": "reference/source-static-checks.json",
+      "sha256": "ea5f4eb4e6fdbf139284c884cba125a29d90cd9589cb7a5f31921244eff92937"
+    },
+    {
+      "path": "reference/transformation.json",
+      "sha256": "d8008ce0211ae417c2dd657549649e55afa877e595a94cc7c276811966699271"
+    }
+  ],
+  "controlFiles": [
+    {
+      "path": "prompts/continuation.md",
+      "sha256": "028f449b90b4750c9e62ac6defede93faebb787078ca912651024e9bed992567"
+    },
+    {
+      "path": "prompts/ro-files.md",
+      "sha256": "503f6363c8ae797546804d9b9027b03aadb45f0b3603da514bb951e9cd5aa74a"
+    },
+    {
+      "path": "prompts/task.md",
+      "sha256": "6c453a63c82e547b1f4f70ec63a5cf5f365d9e533a4f55b757304fbbfda9599d"
+    },
+    {
+      "path": "prompts/text-parts-start.md",
+      "sha256": "50cac2a72d10475423497cabf3aae6a05519c49b99f6cf4f8a8bbfa0260d4b77"
+    },
+    {
+      "path": "reference/README.md",
+      "sha256": "6cd34db8f5ee5af86acbe69debfb2a214f2606a4504ab79984e108d8f2106344"
+    },
+    {
+      "path": "reference/evidence-checklist.json",
+      "sha256": "354aae1d1385d2caf000d7e736ad27e3eaef54b38661dfa9179b2af2b57a9e96"
+    },
+    {
+      "path": "reference/evidence-checklist.md",
+      "sha256": "2e5b3d3f7ec062b5e6bc168c8d2c038b044beecbfb973579802e062522351161"
+    },
+    {
+      "path": "reference/rubric.md",
+      "sha256": "a2f7395d649a52ac170c04852654bce3a728c168431c198aa0945e2a33e6907e"
+    },
+    {
+      "path": "runs/README.md",
+      "sha256": "65e824363dd5305510b455562dccd135790563addc17400ab76e7e809479a2da"
+    },
+    {
+      "path": "runs/comparison-template.csv",
+      "sha256": "1d00a93ea47b08dc5e8e9d900ce4f67880c3637c6857469e7137d85319e67708"
+    },
+    {
+      "path": "runs/configuration-notes.md",
+      "sha256": "73f6877c4941023e40e01f82e6f7cb6d008cfc0d69f3b49909d6ddb784f8da5a"
+    },
+    {
+      "path": "runs/run-template.json",
+      "sha256": "96536622c6d6afef8fd8466ccf9d0e8506ed71a1a70300ca354c2953d4f38618"
+    },
+    {
+      "path": "runs/score-template.csv",
+      "sha256": "003bafff8a2fe4f100f6c9c85229770691d9280e6abaf28d29c88234a4de5cfb"
+    }
+  ]
+}

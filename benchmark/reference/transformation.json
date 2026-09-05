@@ -1,0 +1,1943 @@
+{
+  "materialVersion": "RPGFLOW-1.0",
+  "method": "Blank full-line RPGLE/COPY/DDS comments and lexical CL comment spans; retain line breaks and noncomment columns. No identifier or business literal changes.",
+  "files": [
+    {
+      "developmentPath": "src/QCLLESRC/ORDRUN.clle",
+      "inputPath": "src/QCLLESRC/ORDRUN.clle",
+      "developmentSha256": "2dc375a9beb9f3ce6437e181603a620bad850cd7c4d469f4bfa286f9e327f0f8",
+      "inputSha256": "d1f203643176fb9af74e490ac89e75f34da3795d86b546420ea1837858255920",
+      "physicalLines": 63,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 9,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "/* Synthetic standalone batch driver. No journal or data creation. */"
+        },
+        {
+          "line": 14,
+          "text": "/* RINIT: positional input validation. */"
+        },
+        {
+          "line": 28,
+          "text": "/* ORDMAIN validates the calendar date before opening a batch unit. */"
+        },
+        {
+          "line": 29,
+          "text": "/* RCTX: this entry is restricted to a dedicated batch job. */"
+        },
+        {
+          "line": 32,
+          "text": "/* RSTART: a pre-existing job commitment definition makes this fail."
+        },
+        {
+          "line": 33,
+          "text": "   Ownership is set only after this call succeeds. */"
+        },
+        {
+          "line": 37,
+          "text": "/* RCALL: main alone controls normal per-event transaction boundaries. */"
+        },
+        {
+          "line": 40,
+          "text": "/* RCLEAN: stop status may mean uncertain commit; never label it undone. */"
+        },
+        {
+          "line": 48,
+          "text": "/* RRETURN: processing completion is independent of external settlement. */"
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/ALLOCPF.dds",
+      "inputPath": "src/QDDSSRC/ALLOCPF.dds",
+      "developmentSha256": "be82a261ca4b31c98290fc42750175e15b6e66169aba8599ad3656f618b202c7",
+      "inputSha256": "5003bcf1ef223284965e5099c6d8a475f01fe3ae27565d3cf13dba75d527b541",
+      "physicalLines": 21,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object ALLOCPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/AUDITPF.dds",
+      "inputPath": "src/QDDSSRC/AUDITPF.dds",
+      "developmentSha256": "246dbd1623a98dd340608ffe0fd5e696fc968d93c89d88d00b63c38b881ebdf6",
+      "inputSha256": "e8edc47ea26b9fe4ede68fb9223f4f5f0bfcf6ea4f6b8f7ca89cbb3ef1029886",
+      "physicalLines": 41,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object AUDITPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/BATCHPF.dds",
+      "inputPath": "src/QDDSSRC/BATCHPF.dds",
+      "developmentSha256": "9965cd1ee80ed58885d66ba9409cda5a679d2e87034ee3ecad8238aa9a21f3b8",
+      "inputSha256": "aeff1ecc169104c7726ad447adf3aaa98840128c9c26f8d17b08b23ac86f3ea3",
+      "physicalLines": 25,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object BATCHPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/CUSTPF.dds",
+      "inputPath": "src/QDDSSRC/CUSTPF.dds",
+      "developmentSha256": "30808e1b51cb0e4bbd9af0a2e8c848d85d3fd46a661ef9689548de471561007e",
+      "inputSha256": "b57c77ad5ad833a615bba10468fa7c983de66055670f515dfbeb858cb351e361",
+      "physicalLines": 11,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object CUSTPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/DAYRPTPF.dds",
+      "inputPath": "src/QDDSSRC/DAYRPTPF.dds",
+      "developmentSha256": "0175ec0231353f99a81477e5443c6d7ba62a0cc2c3852a927acbe5516fa0aa7c",
+      "inputSha256": "9b8f3b6c9236d06024247f4836f0d4fc75ad5a6a62f133107b1a46df07909b54",
+      "physicalLines": 33,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object DAYRPTPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/INDTLPF.dds",
+      "inputPath": "src/QDDSSRC/INDTLPF.dds",
+      "developmentSha256": "387bfdb47b48eec5373faced0e91a276b28ed526486bd984600be05dff3348d0",
+      "inputSha256": "bd339b27dc1ae50b76ec98108450e0be13abee877e2e51a929ee77147cdd4ad4",
+      "physicalLines": 25,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object INDTLPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/INHDRPF.dds",
+      "inputPath": "src/QDDSSRC/INHDRPF.dds",
+      "developmentSha256": "a20c053b2281568c0789ed1560b9b4547944165e18f63027824b0b8930c96399",
+      "inputSha256": "9c089841d167ffdbff9f3fe67bd29f1cc7316f0ae9016fcd1064f8c976028ba9",
+      "physicalLines": 52,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object INHDRPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/ITEMPF.dds",
+      "inputPath": "src/QDDSSRC/ITEMPF.dds",
+      "developmentSha256": "2a94a7fa6b6ea813747e6fe9923c44ab20681f52cb80c912fdbc73b708a80294",
+      "inputSha256": "65050894534c6530aaa3b4a04ddff8eb08c39a0d7fcd0963eb3a2d874def3ddb",
+      "physicalLines": 9,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object ITEMPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/ORDDTLPF.dds",
+      "inputPath": "src/QDDSSRC/ORDDTLPF.dds",
+      "developmentSha256": "15e783d889468731cf6bacabcf0f5ef27b4dbf5793eb7d345f3a35b1138248ea",
+      "inputSha256": "0b70758ce3c8dfe9fa97236c2cb3ef6a9cc972f8c35c675e02ef8b146c8447c3",
+      "physicalLines": 30,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object ORDDTLPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/ORDHDRPF.dds",
+      "inputPath": "src/QDDSSRC/ORDHDRPF.dds",
+      "developmentSha256": "1fc5bf285b7508c7f277ce83e4f1eabebce26754ae228c508891e17e9ef2abc5",
+      "inputSha256": "058f9e7cfebf70346c9b426508cd666ea532145a11c200165ab4519fb9e933c1",
+      "physicalLines": 31,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object ORDHDRPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/OUTBOXPF.dds",
+      "inputPath": "src/QDDSSRC/OUTBOXPF.dds",
+      "developmentSha256": "44e50f182ac13f44b25431d9aac1569dc87b1e62faab0df2f410d7839ce99888",
+      "inputSha256": "704a55acab60055cd2fb5de16e5c54ebfe1ee1436121a31e7fec2f2fa013a8b4",
+      "physicalLines": 37,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object OUTBOXPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/OUTBYST.dds",
+      "inputPath": "src/QDDSSRC/OUTBYST.dds",
+      "developmentSha256": "830a5a452a0992f4b99a7aa7d5fd86a2b582c36b74b8932cfda6ebf42e6159fd",
+      "inputSha256": "1ef39017b40f6f8620d2ddfdc3c8df687c48669598bf7cd49e9d19a23ad722ae",
+      "physicalLines": 7,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object OUTBYST."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/PRICEPF.dds",
+      "inputPath": "src/QDDSSRC/PRICEPF.dds",
+      "developmentSha256": "1292a194876c86df8dfdd6c0be2a22c298cbe5be1dbff4be0e3753e7839838a7",
+      "inputSha256": "d8a5b7c4e23e662c0a58a296e70e7574951999ea879e9e78785250b0ff1ae786",
+      "physicalLines": 14,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object PRICEPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/REQPF.dds",
+      "inputPath": "src/QDDSSRC/REQPF.dds",
+      "developmentSha256": "bd4dbaaf778255e23b2e317703239d21d58ff8475131ceff20ee0014b07afae0",
+      "inputSha256": "0eb134c3d44fe0b40210be60967e49bedf7834474638d5d295e068d0e3cfcb1d",
+      "physicalLines": 40,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object REQPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/RTNDTLPF.dds",
+      "inputPath": "src/QDDSSRC/RTNDTLPF.dds",
+      "developmentSha256": "5543eccc1fca25541db2757110281bba78c5b2d4809ecff697f816e70144f0e3",
+      "inputSha256": "ea8a6db2c6422925977c7d2f422bfbd50e517908c9d01c8a177379ae948a00d1",
+      "physicalLines": 26,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object RTNDTLPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/RTNHDRPF.dds",
+      "inputPath": "src/QDDSSRC/RTNHDRPF.dds",
+      "developmentSha256": "d4f7cd89da3886d1a004332e6f8401af9c75b904b5973f96c527b741ab4bd411",
+      "inputSha256": "79edb9111be0375ebb8da827da5b1112400514cc74bcecc9b3887a1ce7deaa5a",
+      "physicalLines": 19,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object RTNHDRPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/SETLBYDAY.dds",
+      "inputPath": "src/QDDSSRC/SETLBYDAY.dds",
+      "developmentSha256": "fc21f8697be4883a83a7569823a2d8cc739cb7bdd02a44d3630cf3a16e75d60e",
+      "inputSha256": "dd23f0c8f33d8ddfd5cd402e7ede563d99a1762fef0847fc07072aa9561f4149",
+      "physicalLines": 7,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object SETLBYDAY."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/SETLBYREF.dds",
+      "inputPath": "src/QDDSSRC/SETLBYREF.dds",
+      "developmentSha256": "fc4a8da9269eb641d6ae9ede1dc55856a8774345b29192bf566637d27da1f909",
+      "inputSha256": "80975de7ae0aff9a32dedf17ec75af4ef1e73b1cb9993f2d352cf79a06827b17",
+      "physicalLines": 7,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object SETLBYREF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/SETLDTPF.dds",
+      "inputPath": "src/QDDSSRC/SETLDTPF.dds",
+      "developmentSha256": "094b1674c8cf31410d4c44aa1185671c5d4f92dd3117335aa6bba0bf0d316d16",
+      "inputSha256": "6d7e3c3c864b244a887432314cc3bf3e1eede25be8b81183843d041be4bb8e71",
+      "physicalLines": 26,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object SETLDTPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/SETLHDPF.dds",
+      "inputPath": "src/QDDSSRC/SETLHDPF.dds",
+      "developmentSha256": "3e3827069a9474b88448d0f46b1ee5fa9028ff825834155d85faf2b90de17c2b",
+      "inputSha256": "b86dd05d5df2d5f923d7dce49203a1ed339c63022a0fec3979abf1771eb606bc",
+      "physicalLines": 35,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object SETLHDPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/SHIPDTPF.dds",
+      "inputPath": "src/QDDSSRC/SHIPDTPF.dds",
+      "developmentSha256": "5c218e97d8b6df09219b4b8ef6e7fa9428c42685c1a5d2abc2e07c62eb49ac91",
+      "inputSha256": "e822ba64477b9779de0d099808d661720123b02155bc7b9139727cb68628cca1",
+      "physicalLines": 22,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object SHIPDTPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/SHIPHDPF.dds",
+      "inputPath": "src/QDDSSRC/SHIPHDPF.dds",
+      "developmentSha256": "8fecfbafbb31f568cd0849a71f96956fafbc1385f657245a4b94ab571f35acef",
+      "inputSha256": "531d7fec7407d2cbe5c7d8b9b704091e2c2023433cc689f75a581aea4bf61a15",
+      "physicalLines": 23,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object SHIPHDPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/STOCKPF.dds",
+      "inputPath": "src/QDDSSRC/STOCKPF.dds",
+      "developmentSha256": "60d190e2008df06e45a835f4506b26bf5ffe62748b4e89efa99456a118ffe96d",
+      "inputSha256": "bc8328741fee543876ecec98a421ca710e738d3f9557211ecf1f0eabc7722c9e",
+      "physicalLines": 14,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object STOCKPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QDDSSRC/WHSEPF.dds",
+      "inputPath": "src/QDDSSRC/WHSEPF.dds",
+      "developmentSha256": "41a0e134be692475d169c9175216acd5a667b20acc69aca83f1e1695eb34fd44",
+      "inputSha256": "855c4657d0accb520ee0a6ecfc568df698eaaf2f9561c724d323c55a60ac64a0",
+      "physicalLines": 11,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 2,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     A* Synthetic static benchmark. Object WHSEPF."
+        },
+        {
+          "line": 2,
+          "text": "     A* Field identity and order follow its file specification."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDCHECK.rpgle",
+      "inputPath": "src/QRPGLESRC/ORDCHECK.rpgle",
+      "developmentSha256": "1a7a2676774916a70fc9d6d008b15d4c8a5cf1882a62c86e66cb83229422db22",
+      "inputSha256": "895ebb34881bcaf3162738fa6b84c7a3621fab172bb64c67b54178b1e706fc06",
+      "physicalLines": 493,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 19,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * ORDCHECK - synthetic order processing. Static candidate."
+        },
+        {
+          "line": 2,
+          "text": "     * ABI 0001; all transaction boundaries belong to ORDMAIN."
+        },
+        {
+          "line": 37,
+          "text": "     * ENTRY - positional ABI; exceptions return to transaction owner."
+        },
+        {
+          "line": 58,
+          "text": "     * CINIT - Initialize canonical and validation outputs"
+        },
+        {
+          "line": 59,
+          "text": "     * Step 1; BR-01, BR-04, BR-05, BR-32"
+        },
+        {
+          "line": 89,
+          "text": "     * CCANON - Stable row order and numeric content independent of masters"
+        },
+        {
+          "line": 90,
+          "text": "     * Step 2; BR-06, BR-07"
+        },
+        {
+          "line": 269,
+          "text": "     * CNUMBER - Normalize parseable numbers; retain invalid original text"
+        },
+        {
+          "line": 286,
+          "text": "     * CMODE - Canonical mode stops before all qualification reads"
+        },
+        {
+          "line": 287,
+          "text": "     * Step 3; BR-01, BR-06, BR-07, BR-29"
+        },
+        {
+          "line": 307,
+          "text": "     * CROWS - Parse all numeric fields and reject duplicate business keys"
+        },
+        {
+          "line": 308,
+          "text": "     * Step 4; BR-04, BR-05, BR-17, BR-18, BR-20"
+        },
+        {
+          "line": 419,
+          "text": "     * CCUST - Validate synthetic customer eligibility"
+        },
+        {
+          "line": 420,
+          "text": "     * Step 5; BR-02"
+        },
+        {
+          "line": 443,
+          "text": "     * CITEM - Validate every candidate item"
+        },
+        {
+          "line": 444,
+          "text": "     * Step 6; BR-03"
+        },
+        {
+          "line": 462,
+          "text": "     * CRET - Return complete candidate only"
+        },
+        {
+          "line": 463,
+          "text": "     * Step 7; BR-01, BR-02, BR-03, BR-04, BR-05, BR-32"
+        },
+        {
+          "line": 470,
+          "text": "     * FRAME - Length-prefix one token; refuse overflow, never truncate"
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDCTX.rpgleinc",
+      "inputPath": "src/QRPGLESRC/ORDCTX.rpgleinc",
+      "developmentSha256": "9771100e20e640adb701a33f612235f78c042db85d7d7bfc7e026208e743028e",
+      "inputSha256": "63f0058cac94f3d5b82e542970795086efe5b3d942f5394f92dc57b09ce8e406",
+      "physicalLines": 127,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 1,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * Shared ABI 0001. Ordered packed layouts; no pointers."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDDAILY.rpgle",
+      "inputPath": "src/QRPGLESRC/ORDDAILY.rpgle",
+      "developmentSha256": "8d96cc00698b79015a964095dde95217f96440ef646749c7c90474a164ceafc2",
+      "inputSha256": "59b0d0fae4846885308a208e95a9b6db16ef00482841893aa4844a7e7edc0b65",
+      "physicalLines": 348,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 19,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * ORDDAILY - synthetic order processing. Static candidate."
+        },
+        {
+          "line": 2,
+          "text": "     * ABI 0001; all transaction boundaries belong to ORDMAIN."
+        },
+        {
+          "line": 45,
+          "text": "     * ENTRY - positional ABI; exceptions return to transaction owner."
+        },
+        {
+          "line": 87,
+          "text": "     * DINIT - Fetch a published snapshot or begin a new one"
+        },
+        {
+          "line": 88,
+          "text": "     * Step 1; BR-30, BR-32"
+        },
+        {
+          "line": 158,
+          "text": "     * DSTART - Unpublished header and every detail share the callers"
+        },
+        {
+          "line": 159,
+          "text": "     * transaction"
+        },
+        {
+          "line": 160,
+          "text": "     * Step 2; BR-30, BR-32"
+        },
+        {
+          "line": 177,
+          "text": "     * DSUCCESS - Only first business success on the requested day enters net"
+        },
+        {
+          "line": 178,
+          "text": "     * Step 3; BR-30"
+        },
+        {
+          "line": 247,
+          "text": "     * DPENDING - Separate all unfinished business states from money totals"
+        },
+        {
+          "line": 248,
+          "text": "     * Step 4; BR-24, BR-30"
+        },
+        {
+          "line": 281,
+          "text": "     * DLOCAL - List known rolled-back or locally blocked requests separately"
+        },
+        {
+          "line": 282,
+          "text": "     * Step 5; BR-27, BR-30, BR-32"
+        },
+        {
+          "line": 303,
+          "text": "     * DROW - Write one identified snapshot component with bounded sequence"
+        },
+        {
+          "line": 317,
+          "text": "     * DPUBLISH - Publish the internally reconciled snapshot header"
+        },
+        {
+          "line": 318,
+          "text": "     * Step 6; BR-30, BR-32"
+        },
+        {
+          "line": 341,
+          "text": "     * DFAIL - Preserve failure for the caller; no independent publish or commit"
+        },
+        {
+          "line": 342,
+          "text": "     * Step 7; BR-28, BR-30, BR-32"
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDMAIN.rpgle",
+      "inputPath": "src/QRPGLESRC/ORDMAIN.rpgle",
+      "developmentSha256": "66f15cb3101eb7213bd9aac060564e4617ae6d3e1565805dc52970f003095703",
+      "inputSha256": "2e41fbec9efa01e8a0b2c03c283960ee45de6a899d5e75b02374a2f7240ff278",
+      "physicalLines": 10114,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 204,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * ORDMAIN - synthetic order processing. Static candidate."
+        },
+        {
+          "line": 2,
+          "text": "     * ABI 0001; all transaction boundaries belong to ORDMAIN."
+        },
+        {
+          "line": 198,
+          "text": "     * ENTRY - positional ABI; exceptions return to transaction owner."
+        },
+        {
+          "line": 264,
+          "text": "     * MINIT - Initialize one explicit batch invocation"
+        },
+        {
+          "line": 265,
+          "text": "     * Step 1; BR-28, BR-29, BR-32"
+        },
+        {
+          "line": 346,
+          "text": "     * MBATCH - A checkpoint represents a committed input envelope"
+        },
+        {
+          "line": 347,
+          "text": "     * Step 2; BR-27, BR-28, BR-29"
+        },
+        {
+          "line": 380,
+          "text": "     * MRESET - Discard every prior event candidate before reading the next"
+        },
+        {
+          "line": 444,
+          "text": "     * MINPUT - Read one complete immutable input envelope after the checkpoint"
+        },
+        {
+          "line": 445,
+          "text": "     * Step 3; BR-01, BR-05, BR-27, BR-28"
+        },
+        {
+          "line": 464,
+          "text": "     * MREADROWS - Reject the 101st detail instead of silently trimming it"
+        },
+        {
+          "line": 489,
+          "text": "     * MCONTEXT - Keep business identity separate from transport processing"
+        },
+        {
+          "line": 490,
+          "text": "     * identity"
+        },
+        {
+          "line": 509,
+          "text": "     * MUNIT - Deduplicate content before current-state eligibility validation"
+        },
+        {
+          "line": 530,
+          "text": "     * MCANON - Full canonical bytes are the idempotency comparison value"
+        },
+        {
+          "line": 531,
+          "text": "     * Step 4; BR-01, BR-06, BR-07"
+        },
+        {
+          "line": 557,
+          "text": "     * MDEDUP - Same key plus changed content preserves the original ledger"
+        },
+        {
+          "line": 558,
+          "text": "     * Step 5; BR-06, BR-07, BR-28"
+        },
+        {
+          "line": 587,
+          "text": "     * MENVELOPE - Validate new semantic payload and explicit processing day"
+        },
+        {
+          "line": 588,
+          "text": "     * Step 6; BR-01, BR-04, BR-05, BR-17, BR-18, BR-20, BR-29, BR-32"
+        },
+        {
+          "line": 624,
+          "text": "     * MDISPATCH - Transaction decisions and helper calls remain visible here"
+        },
+        {
+          "line": 780,
+          "text": "     * MORDER - Read the complete current order and enforce optimistic version"
+        },
+        {
+          "line": 781,
+          "text": "     * Step 7; BR-09, BR-10, BR-19, BR-32"
+        },
+        {
+          "line": 845,
+          "text": "     * MNEW - A new request cannot reuse an existing business order identity"
+        },
+        {
+          "line": 846,
+          "text": "     * Step 8; BR-08"
+        },
+        {
+          "line": 863,
+          "text": "     * MVALID - All order candidates were validated before the first write"
+        },
+        {
+          "line": 864,
+          "text": "     * Step 9; BR-02, BR-03, BR-04, BR-05, BR-10"
+        },
+        {
+          "line": 883,
+          "text": "     * MMOD - Archive current facts before replacing an unshipped order"
+        },
+        {
+          "line": 884,
+          "text": "     * Step 10; BR-10, BR-19, BR-32"
+        },
+        {
+          "line": 914,
+          "text": "     * MQUOTE - Build the full new-version price basis"
+        },
+        {
+          "line": 915,
+          "text": "     * Step 11; BR-03, BR-11, BR-12"
+        },
+        {
+          "line": 938,
+          "text": "     * MPLAN - Plan all release and allocation deltas without writing stock"
+        },
+        {
+          "line": 939,
+          "text": "     * Step 12; BR-10, BR-13, BR-14, BR-15"
+        },
+        {
+          "line": 966,
+          "text": "     * MVERSION - Replace the active version and its reservations atomically"
+        },
+        {
+          "line": 967,
+          "text": "     * Step 13; BR-10, BR-11, BR-12, BR-14, BR-15, BR-32"
+        },
+        {
+          "line": 1061,
+          "text": "     * MFINDLINE - Resolve the requested business line in the active snapshot"
+        },
+        {
+          "line": 1077,
+          "text": "     * MALLOC - Fill only remaining unreserved demand without repricing"
+        },
+        {
+          "line": 1078,
+          "text": "     * Step 14; BR-09, BR-13, BR-14, BR-15, BR-16, BR-19"
+        },
+        {
+          "line": 1130,
+          "text": "     * MCANCEL - Cancel unshipped quantity after validating every requested line"
+        },
+        {
+          "line": 1131,
+          "text": "     * Step 15; BR-09, BR-18, BR-19"
+        },
+        {
+          "line": 1189,
+          "text": "     * MADVANCE - Advance the order once and write all active line versions"
+        },
+        {
+          "line": 1249,
+          "text": "     * MSHIPID - Enforce a unique shipment identity before stock application"
+        },
+        {
+          "line": 1250,
+          "text": "     * Step 16; BR-06, BR-09, BR-17, BR-23"
+        },
+        {
+          "line": 1267,
+          "text": "     * MSHIPPLAN - Build frozen monetary and warehouse candidates for every row"
+        },
+        {
+          "line": 1268,
+          "text": "     * Step 17; BR-14, BR-17, BR-23"
+        },
+        {
+          "line": 1318,
+          "text": "     * MSHIPAMT - Allocate against the original denominator including unsettled"
+        },
+        {
+          "line": 1319,
+          "text": "     * shipments"
+        },
+        {
+          "line": 1320,
+          "text": "     * Step 18; BR-12, BR-23"
+        },
+        {
+          "line": 1337,
+          "text": "     * MSHIPAP - Stock, immutable shipment, settlement and order form one local"
+        },
+        {
+          "line": 1338,
+          "text": "     * unit"
+        },
+        {
+          "line": 1339,
+          "text": "     * Step 19; BR-14, BR-17, BR-23, BR-24"
+        },
+        {
+          "line": 1444,
+          "text": "     * MRETURN - Resolve each immutable original shipment before restoring stock"
+        },
+        {
+          "line": 1445,
+          "text": "     * Step 20; BR-20, BR-22, BR-32"
+        },
+        {
+          "line": 1502,
+          "text": "     * MRETBASE - Reconcile accepted returns with successful and pending"
+        },
+        {
+          "line": 1503,
+          "text": "     * adjustments"
+        },
+        {
+          "line": 1504,
+          "text": "     * Step 21; BR-20, BR-22, BR-24"
+        },
+        {
+          "line": 1590,
+          "text": "     * MRETAMT - Compute cumulative refund using original detail amount"
+        },
+        {
+          "line": 1591,
+          "text": "     * Step 22; BR-20, BR-22"
+        },
+        {
+          "line": 1620,
+          "text": "     * MRETAP - Restore original stock and create one adjustment per original"
+        },
+        {
+          "line": 1621,
+          "text": "     * shipment"
+        },
+        {
+          "line": 1622,
+          "text": "     * Step 23; BR-21, BR-22, BR-24"
+        },
+        {
+          "line": 1774,
+          "text": "     * MSETGET - Tie feedback to the immutable business and message identity"
+        },
+        {
+          "line": 1775,
+          "text": "     * Step 24; BR-24, BR-25, BR-32"
+        },
+        {
+          "line": 1814,
+          "text": "     * MSETSTATE - Decide allowed financial transition independently of delivery"
+        },
+        {
+          "line": 1815,
+          "text": "     * Step 25; BR-24, BR-25, BR-30"
+        },
+        {
+          "line": 1872,
+          "text": "     * MSETAP - Persist only an authorized state change; preserve physical facts"
+        },
+        {
+          "line": 1873,
+          "text": "     * Step 26; BR-24, BR-25, BR-32"
+        },
+        {
+          "line": 1896,
+          "text": "     * MDELIV - Dispatch transport acknowledgement by persisted outbox ownership"
+        },
+        {
+          "line": 1897,
+          "text": "     * Step 27; BR-24, BR-26, BR-32"
+        },
+        {
+          "line": 1950,
+          "text": "     * MRECCHK - Require an explicit recovery action, actor and reason"
+        },
+        {
+          "line": 1951,
+          "text": "     * Step 28; BR-06, BR-24, BR-25, BR-26, BR-31, BR-32"
+        },
+        {
+          "line": 1966,
+          "text": "     * MRECROUTE - Recovery never routes to shipment or return a second time"
+        },
+        {
+          "line": 1967,
+          "text": "     * implicitly"
+        },
+        {
+          "line": 1985,
+          "text": "     * MLOCAL - Reload a known uncommitted original request under current"
+        },
+        {
+          "line": 1986,
+          "text": "     * eligibility"
+        },
+        {
+          "line": 1987,
+          "text": "     * Step 29; BR-06, BR-09, BR-22, BR-28, BR-31"
+        },
+        {
+          "line": 2059,
+          "text": "     * MRECANON - Recovery requires unchanged original canonical content"
+        },
+        {
+          "line": 2084,
+          "text": "     * MRETRY - Known no-effect failure can resend the same settlement identity"
+        },
+        {
+          "line": 2085,
+          "text": "     * Step 30; BR-24, BR-25, BR-31"
+        },
+        {
+          "line": 2133,
+          "text": "     * MVERIFY - Unknown outcomes require inquiry before another send"
+        },
+        {
+          "line": 2134,
+          "text": "     * Step 31; BR-24, BR-25, BR-28, BR-31"
+        },
+        {
+          "line": 2181,
+          "text": "     * MREPLY - Resend one receipt without any financial or stock operation"
+        },
+        {
+          "line": 2182,
+          "text": "     * Step 32; BR-26, BR-31"
+        },
+        {
+          "line": 2200,
+          "text": "     * MQUERY - Reconstruct latest evidence without re-executing the original"
+        },
+        {
+          "line": 2201,
+          "text": "     * event"
+        },
+        {
+          "line": 2202,
+          "text": "     * Step 33; BR-06, BR-26, BR-32"
+        },
+        {
+          "line": 2323,
+          "text": "     * MQUERYSHIP - Read all shipment headers and their detail ranges for this"
+        },
+        {
+          "line": 2324,
+          "text": "     * order"
+        },
+        {
+          "line": 2352,
+          "text": "     * MQUERYRETURN - Read accepted returns without treating them as reopened"
+        },
+        {
+          "line": 2353,
+          "text": "     * demand"
+        },
+        {
+          "line": 2381,
+          "text": "     * MQUERYSETTL - Read financial facts and delivery state through the"
+        },
+        {
+          "line": 2382,
+          "text": "     * settlement owner"
+        },
+        {
+          "line": 2426,
+          "text": "     * MQUERYAUDIT - Stream matching history one framed audit record at a time"
+        },
+        {
+          "line": 2444,
+          "text": "     * MDAY - Day-end reads success facts without changing settlement lifecycle"
+        },
+        {
+          "line": 2445,
+          "text": "     * Step 34; BR-29, BR-30, BR-32"
+        },
+        {
+          "line": 2468,
+          "text": "     * MCLOSE - Register projection, evidence and ledger before the sole commit"
+        },
+        {
+          "line": 2489,
+          "text": "     * MPROJECT - A receipt states business outcome and previous delivery"
+        },
+        {
+          "line": 2490,
+          "text": "     * separately"
+        },
+        {
+          "line": 2491,
+          "text": "     * Step 35; BR-06, BR-26, BR-32"
+        },
+        {
+          "line": 2636,
+          "text": "     * MNEXTMSG - Bound the deterministic per-input message ordinal"
+        },
+        {
+          "line": 2647,
+          "text": "     * MSENDREC - Persist one receipt page with complete framed payload"
+        },
+        {
+          "line": 2671,
+          "text": "     * MWHRESULT - Emit actual stock deltas, separated from customer receipts"
+        },
+        {
+          "line": 2891,
+          "text": "     * MAUDIT - Every accepted, rejected, duplicate and recovery envelope is"
+        },
+        {
+          "line": 2892,
+          "text": "     * evidence"
+        },
+        {
+          "line": 2893,
+          "text": "     * Step 36; BR-01, BR-27, BR-31, BR-32"
+        },
+        {
+          "line": 2964,
+          "text": "     * MAPPENDAUD - Append one audit object; split oversized detail without"
+        },
+        {
+          "line": 2965,
+          "text": "     * truncation"
+        },
+        {
+          "line": 3012,
+          "text": "     * MLEDGER - Close identities and batch checkpoint in the business"
+        },
+        {
+          "line": 3013,
+          "text": "     * transaction"
+        },
+        {
+          "line": 3014,
+          "text": "     * Step 37; BR-06, BR-07, BR-27, BR-28, BR-32"
+        },
+        {
+          "line": 3111,
+          "text": "     * MCOMMIT - Stop on uncertain commit; never invent a compensating rejection"
+        },
+        {
+          "line": 3112,
+          "text": "     * Step 38; BR-24, BR-27, BR-28, BR-32"
+        },
+        {
+          "line": 3124,
+          "text": "     * MROLL - Known rollback starts a separate result-only transaction"
+        },
+        {
+          "line": 3125,
+          "text": "     * Step 39; BR-07, BR-10, BR-17, BR-22, BR-27, BR-28, BR-32"
+        },
+        {
+          "line": 3187,
+          "text": "     * MFINISH - Mark input completion without pretending pending settlements"
+        },
+        {
+          "line": 3188,
+          "text": "     * succeeded"
+        },
+        {
+          "line": 3189,
+          "text": "     * Step 40; BR-27, BR-28"
+        },
+        {
+          "line": 3206,
+          "text": "     * MEVENTFIELDS - Event-specific required and forbidden semantic fields"
+        },
+        {
+          "line": 4130,
+          "text": "     * MIDENT - External identities cannot collide with internal delimiters"
+        },
+        {
+          "line": 4144,
+          "text": "     * MORDERFACTS - Validate the complete current snapshot before business"
+        },
+        {
+          "line": 4145,
+          "text": "     * decisions"
+        },
+        {
+          "line": 4302,
+          "text": "     * SORDHDR - Frame named ORDHDRPF fields as a complete evidence record"
+        },
+        {
+          "line": 4443,
+          "text": "     * AORDHDR - Append a complete record snapshot under the active event"
+        },
+        {
+          "line": 4453,
+          "text": "     * PORDHDR - Publish complete record metadata with explicit long-field pages"
+        },
+        {
+          "line": 4465,
+          "text": "     * SORDDTL - Frame named ORDDTLPF fields as a complete evidence record"
+        },
+        {
+          "line": 4596,
+          "text": "     * AORDDTL - Append a complete record snapshot under the active event"
+        },
+        {
+          "line": 4606,
+          "text": "     * PORDDTL - Publish complete record metadata with explicit long-field pages"
+        },
+        {
+          "line": 4618,
+          "text": "     * SSHIPH - Frame named SHIPHDPF fields as a complete evidence record"
+        },
+        {
+          "line": 4719,
+          "text": "     * ASHIPH - Append a complete record snapshot under the active event"
+        },
+        {
+          "line": 4729,
+          "text": "     * PSHIPH - Publish complete record metadata with explicit long-field pages"
+        },
+        {
+          "line": 4741,
+          "text": "     * SSHIPD - Frame named SHIPDTPF fields as a complete evidence record"
+        },
+        {
+          "line": 4832,
+          "text": "     * ASHIPD - Append a complete record snapshot under the active event"
+        },
+        {
+          "line": 4842,
+          "text": "     * PSHIPD - Publish complete record metadata with explicit long-field pages"
+        },
+        {
+          "line": 4854,
+          "text": "     * SRTNH - Frame named RTNHDRPF fields as a complete evidence record"
+        },
+        {
+          "line": 4935,
+          "text": "     * ARTNH - Append a complete record snapshot under the active event"
+        },
+        {
+          "line": 4945,
+          "text": "     * PRTNH - Publish complete record metadata with explicit long-field pages"
+        },
+        {
+          "line": 4957,
+          "text": "     * SRTND - Frame named RTNDTLPF fields as a complete evidence record"
+        },
+        {
+          "line": 5068,
+          "text": "     * ARTND - Append a complete record snapshot under the active event"
+        },
+        {
+          "line": 5078,
+          "text": "     * PRTND - Publish complete record metadata with explicit long-field pages"
+        },
+        {
+          "line": 5090,
+          "text": "     * SSETHEAD - Frame named SETLHDPF fields as a complete evidence record"
+        },
+        {
+          "line": 5251,
+          "text": "     * PSETHEAD - Publish complete record metadata with explicit long-field"
+        },
+        {
+          "line": 5252,
+          "text": "     * pages"
+        },
+        {
+          "line": 5264,
+          "text": "     * SSETDTL - Frame named SETLDTPF fields as a complete evidence record"
+        },
+        {
+          "line": 5375,
+          "text": "     * PSETDTL - Publish complete record metadata with explicit long-field pages"
+        },
+        {
+          "line": 5387,
+          "text": "     * SOUTREC - Frame named OUTBOXPF fields as a complete evidence record"
+        },
+        {
+          "line": 5548,
+          "text": "     * POUTREC - Publish complete record metadata with explicit long-field pages"
+        },
+        {
+          "line": 5607,
+          "text": "     * SDAYHEAD - Frame named DAYRPTPF fields as a complete evidence record"
+        },
+        {
+          "line": 5748,
+          "text": "     * PDAYHEAD - Publish complete record metadata with explicit long-field"
+        },
+        {
+          "line": 5749,
+          "text": "     * pages"
+        },
+        {
+          "line": 5761,
+          "text": "     * SAUDIT - Frame named AUDITPF fields as a complete evidence record"
+        },
+        {
+          "line": 5942,
+          "text": "     * PAUDIT - Publish complete record metadata with explicit long-field pages"
+        },
+        {
+          "line": 5999,
+          "text": "     * AOLDALLOC - Capture every released allocation snapshot before a"
+        },
+        {
+          "line": 6000,
+          "text": "     * replacement"
+        },
+        {
+          "line": 6167,
+          "text": "     * PSTOCKVIEW - Publish inventory and allocation facts without applying any"
+        },
+        {
+          "line": 6168,
+          "text": "     * delta"
+        },
+        {
+          "line": 6337,
+          "text": "     * MRECONCILE - Reconcile immutable physical history to current order"
+        },
+        {
+          "line": 6338,
+          "text": "     * counters"
+        },
+        {
+          "line": 6368,
+          "text": "     * MRECSHIPS - Check each shipment document and its original settlement link"
+        },
+        {
+          "line": 6545,
+          "text": "     * MRECRETQ - Accepted returns cannot exceed an immutable original shipment"
+        },
+        {
+          "line": 6546,
+          "text": "     * detail"
+        },
+        {
+          "line": 6595,
+          "text": "     * MRECRETURNS - Check accepted return documents without rewriting shipment"
+        },
+        {
+          "line": 6596,
+          "text": "     * history"
+        },
+        {
+          "line": 6740,
+          "text": "     * MRECSETTLES - Reconcile every settlement detail to its immutable physical"
+        },
+        {
+          "line": 6741,
+          "text": "     * source"
+        },
+        {
+          "line": 6859,
+          "text": "     * MRECSESTATE - Financial state, first success day and retryability must"
+        },
+        {
+          "line": 6860,
+          "text": "     * agree"
+        },
+        {
+          "line": 6994,
+          "text": "     * MCHECKDATE - Malformed persisted dates are data errors, never invented"
+        },
+        {
+          "line": 6995,
+          "text": "     * defaults"
+        },
+        {
+          "line": 7006,
+          "text": "     * AINPUT - Archive original header and each captured raw detail without"
+        },
+        {
+          "line": 7007,
+          "text": "     * normalization"
+        },
+        {
+          "line": 7349,
+          "text": "     * MCHECKABI - Validate canonical and normalized output before trusting the"
+        },
+        {
+          "line": 7350,
+          "text": "     * helper"
+        },
+        {
+          "line": 7466,
+          "text": "     * MPRICEABI - Reconcile returned money candidates to the exact input basis"
+        },
+        {
+          "line": 7580,
+          "text": "     * MSTOCKABI - Check all returned stock snapshots and action-specific deltas"
+        },
+        {
+          "line": 7942,
+          "text": "     * MSETTLEABI - Validate the returned business document independently of"
+        },
+        {
+          "line": 7943,
+          "text": "     * delivery"
+        },
+        {
+          "line": 8131,
+          "text": "     * MSETVIEWABI - Validate adjustment aggregation rows before permitting"
+        },
+        {
+          "line": 8132,
+          "text": "     * another return"
+        },
+        {
+          "line": 8172,
+          "text": "     * MREPLYABI - Validate a persisted message envelope without inferring"
+        },
+        {
+          "line": 8173,
+          "text": "     * business success"
+        },
+        {
+          "line": 8281,
+          "text": "     * MDAILYABI - Check the published snapshot identity and exact net equation"
+        },
+        {
+          "line": 8340,
+          "text": "     * MOPDETAIL - Emit transaction-specific evidence before the final summary"
+        },
+        {
+          "line": 8341,
+          "text": "     * receipt"
+        },
+        {
+          "line": 8377,
+          "text": "     * MOPORDER - Explain the accepted version, pricing snapshot and partial"
+        },
+        {
+          "line": 8378,
+          "text": "     * policy"
+        },
+        {
+          "line": 8533,
+          "text": "     * MOPFULFIL - Explain reservation or cancellation without implying a"
+        },
+        {
+          "line": 8534,
+          "text": "     * shipment"
+        },
+        {
+          "line": 8669,
+          "text": "     * MOPSHIP - Identify the physical shipment and its pending financial effect"
+        },
+        {
+          "line": 8814,
+          "text": "     * MOPRETURN - Identify restored stock and the independently pending"
+        },
+        {
+          "line": 8815,
+          "text": "     * adjustments"
+        },
+        {
+          "line": 8960,
+          "text": "     * MOPSETRES - Expose before and after financial state plus the feedback"
+        },
+        {
+          "line": 8961,
+          "text": "     * evidence"
+        },
+        {
+          "line": 9156,
+          "text": "     * MOPDELIVER - Report transport delivery separately from business"
+        },
+        {
+          "line": 9157,
+          "text": "     * settlement"
+        },
+        {
+          "line": 9292,
+          "text": "     * MOPRECOVER - Expose the explicitly authorized recovery and retained"
+        },
+        {
+          "line": 9293,
+          "text": "     * identities"
+        },
+        {
+          "line": 9488,
+          "text": "     * MOPQUERY - Identify the read-only projection target and its original"
+        },
+        {
+          "line": 9489,
+          "text": "     * request state"
+        },
+        {
+          "line": 9644,
+          "text": "     * MOPDAY - Show first-success-day totals and preserve the snapshot identity"
+        },
+        {
+          "line": 9769,
+          "text": "     * MOPREJECT - A result-only transaction does not certify a physical side"
+        },
+        {
+          "line": 9770,
+          "text": "     * effect"
+        },
+        {
+          "line": 9935,
+          "text": "     * MOPDUP - A repeated request returns its original outcome and current"
+        },
+        {
+          "line": 9936,
+          "text": "     * projection"
+        },
+        {
+          "line": 10091,
+          "text": "     * FRAME - Length-prefix one token; refuse overflow, never truncate"
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDPRICE.rpgle",
+      "inputPath": "src/QRPGLESRC/ORDPRICE.rpgle",
+      "developmentSha256": "b8c554be47eae2e3d2312ae5f9e71a89ae34acc8f7f3d7b92d37047f0b149eb6",
+      "inputSha256": "f6084f4171b5efc351258853a079cc2603b669f0b28619ab84be57c5c6e14f35",
+      "physicalLines": 251,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 15,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * ORDPRICE - synthetic order processing. Static candidate."
+        },
+        {
+          "line": 2,
+          "text": "     * ABI 0001; all transaction boundaries belong to ORDMAIN."
+        },
+        {
+          "line": 29,
+          "text": "     * ENTRY - positional ABI; exceptions return to transaction owner."
+        },
+        {
+          "line": 49,
+          "text": "     * PINIT - Validate action and clear all amount candidates"
+        },
+        {
+          "line": 50,
+          "text": "     * Step 1; BR-03, BR-11, BR-12, BR-22, BR-23, BR-32"
+        },
+        {
+          "line": 107,
+          "text": "     * PLOOK - Read every effective-price candidate; overlaps are errors"
+        },
+        {
+          "line": 108,
+          "text": "     * Step 2; BR-03, BR-11"
+        },
+        {
+          "line": 155,
+          "text": "     * PQUOTE - Round each discounted line before summing"
+        },
+        {
+          "line": 156,
+          "text": "     * Step 3; BR-11, BR-12"
+        },
+        {
+          "line": 182,
+          "text": "     * PGROUP - Find the last prior row of the same immutable amount basis"
+        },
+        {
+          "line": 183,
+          "text": "     * Step 4; BR-20, BR-22, BR-23"
+        },
+        {
+          "line": 220,
+          "text": "     * PSPLIT - Cumulative allocation conserves the original rounded amount"
+        },
+        {
+          "line": 221,
+          "text": "     * Step 5; BR-12, BR-22, BR-23"
+        },
+        {
+          "line": 240,
+          "text": "     * PSUM - Bound total and return corresponding line identity"
+        },
+        {
+          "line": 241,
+          "text": "     * Step 6; BR-12, BR-22, BR-23, BR-32"
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDREPLY.rpgle",
+      "inputPath": "src/QRPGLESRC/ORDREPLY.rpgle",
+      "developmentSha256": "3685ea52d6567611bea45bca327913a793f9fab9b8e5d37c9fbaeed8bac64e77",
+      "inputSha256": "a3eb83e93efc02902ae2168560eaef140dce175278fcdc6f46142f57507ad7cf",
+      "physicalLines": 291,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 17,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * ORDREPLY - synthetic order processing. Static candidate."
+        },
+        {
+          "line": 2,
+          "text": "     * ABI 0001; all transaction boundaries belong to ORDMAIN."
+        },
+        {
+          "line": 25,
+          "text": "     * ENTRY - positional ABI; exceptions return to transaction owner."
+        },
+        {
+          "line": 50,
+          "text": "     * YINIT - Dispatch only receipt-owned mutations"
+        },
+        {
+          "line": 51,
+          "text": "     * Step 1; BR-26, BR-32"
+        },
+        {
+          "line": 79,
+          "text": "     * YFETCH - Fetch any outbox kind for owner routing"
+        },
+        {
+          "line": 80,
+          "text": "     * Step 2; BR-26, BR-32"
+        },
+        {
+          "line": 92,
+          "text": "     * YCREATE - Register immutable receipt or warehouse result"
+        },
+        {
+          "line": 93,
+          "text": "     * Step 3; BR-06, BR-26, BR-32"
+        },
+        {
+          "line": 194,
+          "text": "     * YDELIV - Delivery acknowledgement cannot change a business result"
+        },
+        {
+          "line": 195,
+          "text": "     * Step 4; BR-26, BR-32"
+        },
+        {
+          "line": 233,
+          "text": "     * YRESEND - Retry the original receipt only; retain identity and payload"
+        },
+        {
+          "line": 234,
+          "text": "     * Step 5; BR-26, BR-31"
+        },
+        {
+          "line": 265,
+          "text": "     * YLIST - Read one item after the explicit kind/state/id cursor"
+        },
+        {
+          "line": 266,
+          "text": "     * Step 6; BR-26, BR-32"
+        },
+        {
+          "line": 285,
+          "text": "     * YRET - Expose message delivery state independently"
+        },
+        {
+          "line": 286,
+          "text": "     * Step 7; BR-26, BR-32"
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDRES.rpgleinc",
+      "inputPath": "src/QRPGLESRC/ORDRES.rpgleinc",
+      "developmentSha256": "d8bda433a014676f49f7b5b5bfd7cef66bbd17736eb13c55d2df941320ebdd7f",
+      "inputSha256": "da86cb603d5c2838244f216c3eaac8593d663e31d6b2ffa12faf182be7d29b98",
+      "physicalLines": 129,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 1,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * Shared ABI 0001. Ordered packed layouts; no pointers."
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDSETTL.rpgle",
+      "inputPath": "src/QRPGLESRC/ORDSETTL.rpgle",
+      "developmentSha256": "18d14ce8b5a96a7ea3822bc90ceaacabec2a0c507b14fdb7a4cd37fa1d0c6521",
+      "inputSha256": "a861d2d5374ec74050cc4ab963c95be9c7d0c39f84b61ca329e27f355bc98450",
+      "physicalLines": 769,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 26,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * ORDSETTL - synthetic order processing. Static candidate."
+        },
+        {
+          "line": 2,
+          "text": "     * ABI 0001; all transaction boundaries belong to ORDMAIN."
+        },
+        {
+          "line": 51,
+          "text": "     * ENTRY - positional ABI; exceptions return to transaction owner."
+        },
+        {
+          "line": 86,
+          "text": "     * TINIT - Keep input candidates for mutating actions"
+        },
+        {
+          "line": 87,
+          "text": "     * Step 1; BR-23, BR-24, BR-25, BR-32"
+        },
+        {
+          "line": 120,
+          "text": "     * TFETCH - Fetch and reconcile a complete settlement document"
+        },
+        {
+          "line": 121,
+          "text": "     * Step 2; BR-20, BR-23, BR-24, BR-25"
+        },
+        {
+          "line": 177,
+          "text": "     * TLOOK - Aggregate successful and unfinished adjustments by original"
+        },
+        {
+          "line": 178,
+          "text": "     * detail"
+        },
+        {
+          "line": 179,
+          "text": "     * Step 3; BR-20, BR-22"
+        },
+        {
+          "line": 229,
+          "text": "     * TCREATE - Create one immutable settlement identity and all details"
+        },
+        {
+          "line": 230,
+          "text": "     * Step 4; BR-22, BR-23, BR-25"
+        },
+        {
+          "line": 300,
+          "text": "     * TWRITE - Write the immutable head and all settlement details"
+        },
+        {
+          "line": 301,
+          "text": "     * Step 5; BR-22, BR-23, BR-24"
+        },
+        {
+          "line": 312,
+          "text": "     * TOUT - Frame an immutable settlement or inquiry message"
+        },
+        {
+          "line": 503,
+          "text": "     * TAPPLY - Apply only the main program authorized business transition"
+        },
+        {
+          "line": 504,
+          "text": "     * Step 6; BR-24, BR-25, BR-30"
+        },
+        {
+          "line": 616,
+          "text": "     * TRETRY - Reuse failed business identity; increase send attempt only"
+        },
+        {
+          "line": 617,
+          "text": "     * Step 7; BR-24, BR-25, BR-31"
+        },
+        {
+          "line": 658,
+          "text": "     * TVERIFY - An unresolved verification message is never a new charge"
+        },
+        {
+          "line": 659,
+          "text": "     * Step 8; BR-24, BR-25, BR-31"
+        },
+        {
+          "line": 694,
+          "text": "     * TDELIV - Transport delivery updates do not establish financial success"
+        },
+        {
+          "line": 695,
+          "text": "     * Step 9; BR-24, BR-25, BR-32"
+        },
+        {
+          "line": 737,
+          "text": "     * TRET - Return observed business state and original amounts"
+        },
+        {
+          "line": 738,
+          "text": "     * Step 10; BR-24, BR-25, BR-32"
+        },
+        {
+          "line": 746,
+          "text": "     * FRAME - Length-prefix one token; refuse overflow, never truncate"
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDSTOCK.rpgle",
+      "inputPath": "src/QRPGLESRC/ORDSTOCK.rpgle",
+      "developmentSha256": "80d12ea4908427eec38c46b19b8b24bb1340ac4929a65003dca1b2fdb06edd60",
+      "inputSha256": "4e8f5367dfb605fff704a964a6f939abb1de0c6f926a5306c7f314dc044f9210",
+      "physicalLines": 757,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 28,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * ORDSTOCK - synthetic order processing. Static candidate."
+        },
+        {
+          "line": 2,
+          "text": "     * ABI 0001; all transaction boundaries belong to ORDMAIN."
+        },
+        {
+          "line": 71,
+          "text": "     * ENTRY - positional ABI; exceptions return to transaction owner."
+        },
+        {
+          "line": 103,
+          "text": "     * SINIT - Select read, planning or application path"
+        },
+        {
+          "line": 104,
+          "text": "     * Step 1; BR-14, BR-17, BR-32"
+        },
+        {
+          "line": 170,
+          "text": "     * SLOAD - Validate request keys before planning any inventory movement"
+        },
+        {
+          "line": 171,
+          "text": "     * Step 2; BR-13, BR-14, BR-16"
+        },
+        {
+          "line": 183,
+          "text": "     * SPOOL - One virtual inventory pool per item and warehouse"
+        },
+        {
+          "line": 224,
+          "text": "     * SPLANROW - Snapshot one allocation without changing its database row"
+        },
+        {
+          "line": 290,
+          "text": "     * SMOD - Release old reservations into the shared virtual pool"
+        },
+        {
+          "line": 291,
+          "text": "     * Step 3; BR-10, BR-14"
+        },
+        {
+          "line": 334,
+          "text": "     * SALLOC - Allocate increasing business line then A B C from a shared pool"
+        },
+        {
+          "line": 335,
+          "text": "     * Step 4; BR-13, BR-14, BR-15, BR-16"
+        },
+        {
+          "line": 410,
+          "text": "     * SCANCEL - Unallocated demand first; release reserved stock C B A"
+        },
+        {
+          "line": 411,
+          "text": "     * Step 5; BR-18, BR-19"
+        },
+        {
+          "line": 468,
+          "text": "     * SSHIP - Validate and plan all shipment rows before any write"
+        },
+        {
+          "line": 469,
+          "text": "     * Step 6; BR-14, BR-17"
+        },
+        {
+          "line": 499,
+          "text": "     * SRETURN - Restore original warehouse stock without allocating demand"
+        },
+        {
+          "line": 500,
+          "text": "     * Step 7; BR-21"
+        },
+        {
+          "line": 527,
+          "text": "     * SVIEW - Read active or historic nonzero allocation facts without deltas"
+        },
+        {
+          "line": 528,
+          "text": "     * Step 8; BR-32"
+        },
+        {
+          "line": 550,
+          "text": "     * SAPCHECK - Reconstruct pooled deltas and final allocations, then lock-"
+        },
+        {
+          "line": 551,
+          "text": "     * check"
+        },
+        {
+          "line": 552,
+          "text": "     * Step 9; BR-10, BR-14, BR-17"
+        },
+        {
+          "line": 707,
+          "text": "     * SAPWRITE - Apply each locked key once; caller owns the atomic unit"
+        },
+        {
+          "line": 708,
+          "text": "     * Step 10; BR-10, BR-14, BR-17, BR-21"
+        },
+        {
+          "line": 747,
+          "text": "     * SRET - Return waiting status only when the plan is otherwise valid"
+        },
+        {
+          "line": 748,
+          "text": "     * Step 11; BR-15, BR-16, BR-32"
+        }
+      ]
+    },
+    {
+      "developmentPath": "src/QRPGLESRC/ORDSTS.rpgleinc",
+      "inputPath": "src/QRPGLESRC/ORDSTS.rpgleinc",
+      "developmentSha256": "bd3848c2c1f9c61e6fe288bc28a496dd72c04de205936f5a85d086910e6a69ac",
+      "inputSha256": "38b92c40862f3eab4dab3c14c196c751a9cd91381c90196c5345ed98c33c0db4",
+      "physicalLines": 10,
+      "mapping": "identity: input line N = development line N",
+      "commentLinesBlanked": 1,
+      "removedComments": [
+        {
+          "line": 1,
+          "text": "     * Shared result constants."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CUSTFLT-20260404-01",
+    "specLevel": "L2",
+    "fileType": "LF",
+    "fileName": "CUSTFLT",
+    "description": "Filtered customers with multiple criteria"
+  },
+  "basedOnPhysicalFiles": ["CUSTMAST"],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CUSTR",
+      "purpose": "Filtered customer record",
+      "fieldCount": 0
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": []
+  },
+  "fieldSelectionMapping": {
+    "mode": "allIncluded"
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "CUSTNM", "fieldRef": "FLD-02", "sortDirection": "ASCEND" }
+    ]
+  },
+  "selectOmitCriteria": [
+    {
+      "soId": "SO-01",
+      "type": "SELECT",
+      "fieldName": "ACTSTS",
+      "fldRef": "FLD-09",
+      "operator": "EQ",
+      "value": "'A'",
+      "logic": null
+    },
+    {
+      "soId": "SO-02",
+      "type": "OMIT",
+      "fieldName": "STATE",
+      "fldRef": "FLD-06",
+      "operator": "EQ",
+      "value": "'XX'",
+      "logic": null
+    },
+    {
+      "soId": "SO-03",
+      "type": "SELECT",
+      "fieldName": null,
+      "fldRef": null,
+      "operator": "ALL",
+      "value": null,
+      "logic": null
+    }
+  ]
+}

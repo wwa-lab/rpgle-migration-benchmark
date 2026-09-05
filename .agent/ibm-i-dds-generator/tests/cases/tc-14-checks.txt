@@ -1,0 +1,11 @@
+source_type=LF
+type=happy
+# Simple LF rekey — all fields inherited from CUSTMAST
+must_contain=PFILE(CUSTMAST)
+must_contain=R CUSTR
+must_contain=K CUSTNM
+must_contain=Customer by name
+must_not_contain=UNIQUE
+# allIncluded mode: no field definition lines should appear
+must_not_contain=10A
+must_not_contain=40A

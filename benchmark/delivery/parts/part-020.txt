@@ -1,0 +1,450 @@
+PART 020 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 8021-8467>>>
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_PENDING_DATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETHEAD.SESTATE = 'NEW' or
+     C                             SETHEAD.SESTATE = 'SENT' or SETHEAD.SESTATE =
+     C                             'FAIL' or SETHEAD.SESTATE = 'UNKNOWN' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_PENDING_STATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        SETHEAD.SEKIND = 'P'
+     C                   EVAL      REFID = 'S:' + %trim(SETHEAD.SESHIP)
+     C                   IF        not ( SETHEAD.SEID = REFID and
+     C                             SETHEAD.SERETURN = *blanks and SETHEAD.SEORIG
+     C                             = *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_POSITIVE_ID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   EVAL      REFID = 'A:' + %trim(SETHEAD.SERETURN) + ':'
+     C                             + %trim(SETHEAD.SESHIP)
+     C                   IF        not ( SETHEAD.SEID = REFID and
+     C                             SETHEAD.SERETURN <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_ADJUSTMENT_ID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      REFID = 'S:' + %trim(SETHEAD.SESHIP)
+     C                   IF        not ( SETHEAD.SEORIG = REFID )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_ORIGINAL_ID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBBIZID = SETHEAD.SEID and
+     C                             OUTREC.OBORDER = SETHEAD.SEORDER )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_MESSAGE_OWNER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBKIND = 'SETTLE' or
+     C                             OUTREC.OBKIND = 'ADJUST' or OUTREC.OBKIND =
+     C                             'VERIFY' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_MESSAGE_KIND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBATTEMPT <= SETHEAD.SEATTEMPT
+     C                             and OUTREC.OBATTEMPT > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_MESSAGE_ATTEMPT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        CTXDS.CXACTION = 'FETCH' or CTXDS.CXACTION =
+     C                             'CREATE' or CTXDS.CXACTION = 'RETRY' or
+     C                             CTXDS.CXACTION = 'VERIFY'
+     C                   EVAL      REFAMT = 0
+     C                   FOR       X = 1 to SETHEAD.SENLINE
+     C                   IF        not ( SETROWS(X).SLSETTL = SETHEAD.SEID and
+     C                             SETROWS(X).SLLINE = X )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_DETAIL_KEY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETROWS(X).SLSHIP = SETHEAD.SESHIP and
+     C                             SETROWS(X).SLORDER = SETHEAD.SEORDER )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_DETAIL_OWNER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETROWS(X).SLSHLINE > 0 and
+     C                             SETROWS(X).SLORDLINE > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_ORIGINAL_LINES'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETROWS(X).SLQTY > 0 and
+     C                             SETROWS(X).SLAMOUNT >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_DETAIL_AMOUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        SETHEAD.SEKIND = 'P'
+     C                   IF        not ( SETROWS(X).SLRETURN = *blanks and
+     C                             SETROWS(X).SLRTLINE = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_POSITIVE_DETAIL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( SETROWS(X).SLRETURN = SETHEAD.SERETURN
+     C                             and SETROWS(X).SLRTLINE > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_RETURN_DETAIL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      REFAMT = REFAMT + SETROWS(X).SLAMOUNT
+     C                   ENDFOR
+     C                   IF        not ( REFAMT = SETHEAD.SEAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLE_ABI_DETAIL_TOTAL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MSETVIEWABI   BEGSR
+     C                   FOR       X = 1 to 100
+     C                   IF        SETVIEW(X).SVSHLINE > 0
+     C                   IF        not ( SETVIEW(X).SVSUCCQTY >= 0 and
+     C                             SETVIEW(X).SVSUCCAMT >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ADJUSTMENT_VIEW_SUCCEEDED_RANGE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SETVIEW(X).SVPENDING = *blanks or
+     C                             SETVIEW(X).SVPENDING = 'Y' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ADJUSTMENT_VIEW_PENDING_FLAG'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   FOR       Y = 1 to X - 1
+     C                   IF        not ( SETVIEW(Y).SVSHLINE <>
+     C                             SETVIEW(X).SVSHLINE )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ADJUSTMENT_VIEW_DUPLICATE_LINE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ELSE
+     C                   IF        not ( SETVIEW(X).SVSHLINE = 0 and
+     C                             SETVIEW(X).SVSUCCQTY = 0 and
+     C                             SETVIEW(X).SVSUCCAMT = 0 and
+     C                             SETVIEW(X).SVPENDING = *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ADJUSTMENT_VIEW_UNUSED_ROW'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDFOR
+     C                   ENDSR
+
+
+
+     C     MREPLYABI     BEGSR
+     C                   IF        CTXDS.CXACTION = 'LIST' and RESDS.RSCOUNT = 0
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBID <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTBOX_ABI_ID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBBATCH <> *blanks and
+     C                             OUTREC.OBINPUT > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTBOX_ABI_INPUT_LINK'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBATTEMPT > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTBOX_ABI_ATTEMPT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBLEN >= 4 and OUTREC.OBLEN <=
+     C                             30000 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTBOX_ABI_LENGTH'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( %subst(OUTREC.OBPAYLOAD:1:4) = '0001' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTBOX_ABI_VERSION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBKIND = 'RECEIPT' or
+     C                             OUTREC.OBKIND = 'WHRESULT' or OUTREC.OBKIND =
+     C                             'SETTLE' or OUTREC.OBKIND = 'ADJUST' or
+     C                             OUTREC.OBKIND = 'VERIFY' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTBOX_ABI_KIND'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBSTATE = 'NEW' or
+     C                             OUTREC.OBSTATE = 'SENT' or OUTREC.OBSTATE =
+     C                             'OK' or OUTREC.OBSTATE = 'FAIL' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTBOX_ABI_DELIVERY_STATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBRESULT = 'NONE' or
+     C                             OUTREC.OBRESULT = 'OK' or OUTREC.OBRESULT =
+     C                             'FAIL' or OUTREC.OBRESULT = 'UNKNOWN' or
+     C                             OUTREC.OBRESULT = 'RETRYOK' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTBOX_ABI_BUSINESS_RESULT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKDAY = OUTREC.OBDAY
+     C                   EXSR      MCHECKDATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        OUTREC.OBRESULT = 'NONE'
+     C                   IF        not ( OUTREC.OBRESDAY = *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OUTBOX_ABI_UNREPORTED_DAY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   EVAL      CHECKDAY = OUTREC.OBRESDAY
+     C                   EXSR      MCHECKDATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        OUTREC.OBKIND = 'RECEIPT' or OUTREC.OBKIND =
+     C                             'WHRESULT'
+     C                   IF        not ( OUTREC.OBRESULT = 'NONE' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'REPLY_ABI_NO_BUSINESS_FEEDBACK'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( OUTREC.OBBIZID <> *blanks and
+     C                             OUTREC.OBORDER <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'FINANCIAL_MESSAGE_BUSINESS_LINK'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        CTXDS.CXACTION = 'CREATE'
+     C                   IF        not ( OUTREC.OBBATCH = RUNBATCH and
+     C                             OUTREC.OBINPUT = INPUTNO )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'CREATED_MESSAGE_INPUT_OWNER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( OUTREC.OBSRC = CTXDS.CXSRC and
+     C                             OUTREC.OBREQ = CTXDS.CXREQ )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'CREATED_MESSAGE_REQUEST_OWNER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   ENDSR
+
+
+     C     MDAILYABI     BEGSR
+     C                   IF        not ( DAYHEAD.DYKIND = 'HEADER' and
+     C                             DAYHEAD.DYSTATE = 'READY' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DAILY_ABI_PUBLICATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( DAYHEAD.DYLINE = 0 and DAYHEAD.DYCOUNT
+     C                             >= 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DAILY_ABI_LINE_COUNT'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( DAYHEAD.DYPOS >= 0 and DAYHEAD.DYNEG >=
+     C                             0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DAILY_ABI_TOTAL_SIGNS'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( DAYHEAD.DYAMOUNT = DAYHEAD.DYPOS -
+     C                             DAYHEAD.DYNEG )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DAILY_ABI_NET_EQUATION'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( DAYHEAD.DYSRC = CTXDS.CXSRC and
+     C                             DAYHEAD.DYREQ = CTXDS.CXREQ )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DAILY_ABI_REQUEST_OWNER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      REFID = %trim(CTXDS.CXSRC) + ':' +
+     C                             %trim(CTXDS.CXREQ)
+     C                   IF        not ( DAYHEAD.DYSNAP = REFID )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DAILY_ABI_SNAPSHOT_ID'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        CTXDS.CXACTION = 'FETCH'
+     C                   IF        not ( DAYHEAD.DYDAY = CTXDS.CXDAY )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DAILY_ABI_ORIGINAL_DAY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( DAYHEAD.DYDAY = CTXDS.CXPROCDAY )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DAILY_ABI_PROCESS_DAY'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   IF        not ( RESDS.RSAMOUNT = DAYHEAD.DYAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'DAILY_ABI_RETURN_TOTAL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDSR
+
+
+
+     C     MOPDETAIL     BEGSR
+     C                   IF        ERRORUNIT
+     C                   EXSR      MOPREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        DUPLICATE
+     C                   EXSR      MOPDUP
+     C                   LEAVESR
+     C                   ENDIF
+     C                   SELECT
+     C                   WHEN      HDRDS.IHEVENT = 'NEW'
+     C                   EXSR      MOPORDER
+     C                   WHEN      HDRDS.IHEVENT = 'MOD'
+     C                   EXSR      MOPORDER
+     C                   WHEN      HDRDS.IHEVENT = 'ALLOC'
+     C                   EXSR      MOPFULFIL
+     C                   WHEN      HDRDS.IHEVENT = 'CANCEL'
+     C                   EXSR      MOPFULFIL
+     C                   WHEN      HDRDS.IHEVENT = 'SHIP'
+     C                   EXSR      MOPSHIP
+     C                   WHEN      HDRDS.IHEVENT = 'RETURN'
+     C                   EXSR      MOPRETURN
+     C                   WHEN      HDRDS.IHEVENT = 'SETRES'
+     C                   EXSR      MOPSETRES
+     C                   WHEN      HDRDS.IHEVENT = 'DELIVER'
+     C                   EXSR      MOPDELIVER
+     C                   WHEN      HDRDS.IHEVENT = 'RECOVER'
+     C                   EXSR      MOPRECOVER
+     C                   WHEN      HDRDS.IHEVENT = 'QUERY'
+     C                   EXSR      MOPQUERY
+     C                   WHEN      HDRDS.IHEVENT = 'DAYEND'
+     C                   EXSR      MOPDAY
+     C                   ENDSL
+     C                   ENDSR
+
+
+
+     C     MOPORDER      BEGSR
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = 'MOPORDER'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'event'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHEVENT
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'order'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = ORDERKEEP.OHORDER
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'priorVersion'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(OLDHEAD.OHVERSION)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'acceptedVersion'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(ORDERKEEP.OHVERSION)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'customer'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = ORDERKEEP.OHCUST
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'pricingTier'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = ORDERKEEP.OHTIER
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'partialAllowed'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = ORDERKEEP.OHPART
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'originalDay'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = ORDERKEEP.OHDAY
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'pricingDay'
+<<<END_FILE>>>

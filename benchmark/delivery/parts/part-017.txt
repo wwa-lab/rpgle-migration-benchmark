@@ -1,0 +1,458 @@
+PART 017 OF 032
+<<<FILE src/QRPGLESRC/ORDMAIN.rpgle LINES 6681-7135>>>
+     C                   ENDIF
+     C                   EVAL      KSHSHIP = RDSAVED.RDSHIP
+     C     KSHIPH        CHAIN(N)  SHIPHDPF      SHREC
+     C                   IF        not ( %found(SHIPHDPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_ORIGINAL_HEADER_MISSING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKDAY = SHREC.SHDAY
+     C                   EXSR      MCHECKDATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      N =
+     C                             %diff(%date(RHSAVED.RHDAY:*ISO0):WORKDAY:*D)
+     C                   IF        not ( N >= 0 and N <= 30 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_HISTORY_WINDOW_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKID = 'A:' + %trim(RETURNKEY) + ':' +
+     C                             %trim(RDSAVED.RDSHIP)
+     C                   IF        not ( RDSAVED.RDSETTL = CHECKID )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_ADJUSTMENT_ID_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KSEID = CHECKID
+     C     KSETLH        CHAIN     SETLHDPF      SEREC
+     C                   IF        not ( %found(SETLHDPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_ADJUSTMENT_MISSING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SEREC.SEKIND = 'R' and SEREC.SERETURN =
+     C                             RETURNKEY and SEREC.SESHIP = RDSAVED.RDSHIP
+     C                             and SEREC.SEORDER = CTXDS.CXORDER )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'RETURN_ADJUSTMENT_LINK_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKAMT = CHECKAMT + RDSAVED.RDAMOUNT
+     C                   EVAL      RDREC = RDSAVED
+     C                   EVAL      KRDRETURN = RETURNKEY
+     C     KRTND1        READE     RTNDTLPF      RDREC
+     C                   ENDDO
+     C                   IF        not ( CHECKCOUNT = RHSAVED.RHNLINE and
+     C                             CHECKAMT = RHSAVED.RHAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'RETURN_DOCUMENT_TOTAL_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   READ      RTNHDRPF      RHREC
+     C                   ENDDO
+     C                   ENDSR
+
+
+
+     C     MRECSETTLES   BEGSR
+     C     *LOVAL        SETLL     SETLHDPF
+     C                   READ      SETLHDPF      SEREC
+     C                   DOW       not %eof(SETLHDPF)
+     C                   IF        SEREC.SEORDER = CTXDS.CXORDER
+     C                   EVAL      SESAVED = SEREC
+     C                   EVAL      CHECKID = SEREC.SEID
+     C                   EXSR      MRECSESTATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKCOUNT = 0
+     C                   EVAL      CHECKAMT = 0
+     C                   EVAL      KSLSETTL = CHECKID
+     C     KSETLD1       SETLL     SETLDTPF
+     C                   EVAL      KSLSETTL = CHECKID
+     C     KSETLD1       READE     SETLDTPF      SLREC
+     C                   DOW       not %eof(SETLDTPF)
+     C                   EVAL      SLTRACE = SLREC
+     C                   EVAL      CHECKCOUNT = CHECKCOUNT + 1
+     C                   IF        not ( CHECKCOUNT <= 100 and SLREC.SLLINE =
+     C                             CHECKCOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_DETAIL_SEQUENCE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SLREC.SLORDER = CTXDS.CXORDER and
+     C                             SLREC.SLSHIP = SESAVED.SESHIP )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_DETAIL_OWNER'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SLREC.SLQTY > 0 and SLREC.SLAMOUNT >= 0
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_DETAIL_VALUES'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KSDSHIP = SLREC.SLSHIP
+     C                   EVAL      KSDLINE = SLREC.SLSHLINE
+     C     KSHIPD        CHAIN(N)  SHIPDTPF      SDREC
+     C                   IF        not ( %found(SHIPDTPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'SETTLEMENT_SHIP_DETAIL_MISSING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SDREC.SDORDER = SLTRACE.SLORDER and
+     C                             SDREC.SDORDLINE = SLTRACE.SLORDLINE )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_ORDER_LINE_LINK'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        SESAVED.SEKIND = 'P'
+     C                   IF        not ( SLTRACE.SLRETURN = *blanks and
+     C                             SLTRACE.SLRTLINE = 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'POSITIVE_RETURN_FIELDS_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SLTRACE.SLQTY = SDREC.SDQTY and
+     C                             SLTRACE.SLAMOUNT = SDREC.SDAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'POSITIVE_SOURCE_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   IF        not ( SLTRACE.SLRETURN = SESAVED.SERETURN and
+     C                             SLTRACE.SLRTLINE > 0 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ADJUSTMENT_RETURN_REFERENCE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      KRDRETURN = SLTRACE.SLRETURN
+     C                   EVAL      KRDLINE = SLTRACE.SLRTLINE
+     C     KRTND         CHAIN(N)  RTNDTLPF      RDREC
+     C                   IF        not ( %found(RTNDTLPF) )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ADJUSTMENT_RETURN_DETAIL_MISSING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RDREC.RDSETTL = SESAVED.SEID and
+     C                             RDREC.RDSHIP = SLTRACE.SLSHIP and
+     C                             RDREC.RDSHLINE = SLTRACE.SLSHLINE )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ADJUSTMENT_PHYSICAL_LINK_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( RDREC.RDQTY = SLTRACE.SLQTY and
+     C                             RDREC.RDAMOUNT = SLTRACE.SLAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ADJUSTMENT_SOURCE_AMOUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   EVAL      CHECKAMT = CHECKAMT + SLTRACE.SLAMOUNT
+     C                   EVAL      SLREC = SLTRACE
+     C                   EVAL      KSLSETTL = CHECKID
+     C     KSETLD1       READE     SETLDTPF      SLREC
+     C                   ENDDO
+     C                   IF        not ( CHECKCOUNT = SESAVED.SENLINE and
+     C                             CHECKAMT = SESAVED.SEAMOUNT )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_DOCUMENT_TOTAL'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   READ      SETLHDPF      SEREC
+     C                   ENDDO
+     C                   ENDSR
+
+
+
+     C     MRECSESTATE   BEGSR
+     C                   IF        not ( SESAVED.SEID <> *blanks and
+     C                             SESAVED.SESHIP <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_IDENTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SESAVED.SEKIND = 'P' or SESAVED.SEKIND
+     C                             = 'R' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_KIND_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SESAVED.SENLINE >= 1 and
+     C                             SESAVED.SENLINE <= 100 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_COUNT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SESAVED.SEAMOUNT >= 0 and
+     C                             SESAVED.SEATTEMPT >= 1 )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'SETTLEMENT_AMOUNT_ATTEMPT_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SESAVED.SELASTMSG <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'SETTLEMENT_OUTBOX_LINK_MISSING'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SESAVED.SERETRY = 'Y' or
+     C                             SESAVED.SERETRY = 'N' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_RETRY_FLAG_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKDAY = SESAVED.SECREATED
+     C                   EXSR      MCHECKDATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        SESAVED.SEKIND = 'P'
+     C                   EVAL      REFID = 'S:' + %trim(SESAVED.SESHIP)
+     C                   IF        not ( SESAVED.SEID = REFID and
+     C                             SESAVED.SERETURN = *blanks and SESAVED.SEORIG
+     C                             = *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'POSITIVE_IDENTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ELSE
+     C                   EVAL      REFID = 'A:' + %trim(SESAVED.SERETURN) + ':'
+     C                             + %trim(SESAVED.SESHIP)
+     C                   IF        not ( SESAVED.SEID = REFID and
+     C                             SESAVED.SERETURN <> *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'ADJUSTMENT_IDENTITY_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      REFID = 'S:' + %trim(SESAVED.SESHIP)
+     C                   IF        not ( SESAVED.SEORIG = REFID )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON =
+     C                             'ADJUSTMENT_ORIGINAL_ID_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   ENDIF
+     C                   SELECT
+     C                   WHEN      SESAVED.SESTATE = 'NEW'
+     C                   IF        not ( SESAVED.SEFIRSTDAY = *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_HAS_SUCCESS_DATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SESAVED.SERETRY = 'N' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'NEW_RETRY_FLAG_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      SESAVED.SESTATE = 'SENT'
+     C                   IF        not ( SESAVED.SEFIRSTDAY = *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SENT_HAS_SUCCESS_DATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SESAVED.SERETRY = 'N' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SENT_RETRY_FLAG_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      SESAVED.SESTATE = 'OK'
+     C                   IF        not ( SESAVED.SEFIRSTDAY >= SESAVED.SECREATED
+     C                             )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SUCCESS_DATE_ORDER_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      CHECKDAY = SESAVED.SEFIRSTDAY
+     C                   EXSR      MCHECKDATE
+     C                   IF        RESDS.RSRC >= RCREJECT
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SESAVED.SERETRY = 'N' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'OK_RETRY_FLAG_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      SESAVED.SESTATE = 'FAIL'
+     C                   IF        not ( SESAVED.SEFIRSTDAY = *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'FAIL_HAS_SUCCESS_DATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   WHEN      SESAVED.SESTATE = 'UNKNOWN'
+     C                   IF        not ( SESAVED.SEFIRSTDAY = *blanks )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'UNKNOWN_HAS_SUCCESS_DATE'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   IF        not ( SESAVED.SERETRY = 'N' )
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'UNKNOWN_RETRY_FLAG_DATA'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   OTHER
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'SETTLEMENT_STATE_DATA'
+     C                   LEAVESR
+     C                   ENDSL
+     C                   ENDSR
+
+
+
+     C     MCHECKDATE    BEGSR
+     C                   MONITOR
+     C                   EVAL      WORKDAY = %date(CHECKDAY:*ISO0)
+     C                   ON-ERROR
+     C                   EVAL      RESDS.RSRC = '2000'
+     C                   EVAL      RESDS.RSREASON = 'PERSISTED_DAY_INVALID'
+     C                   LEAVESR
+     C                   ENDMON
+     C                   ENDSR
+
+
+
+     C     AINPUT        BEGSR
+     C                   EVAL      AUDKIND = 'INPUT_HEADER'
+     C                   EVAL      PAYLOAD = '0001'
+     C                   EVAL      PAYLEN = 4
+     C                   EVAL      TOKEN = 'IHBATCH'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHBATCH
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHSEQ'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = %char(HDRDS.IHSEQ)
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHSRC'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHSRC
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHREQ'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHREQ
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHEVENT'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHEVENT
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHDAY'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHDAY
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHARRDAY'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHARRDAY
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHARRTIME'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHARRTIME
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHORDER'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHORDER
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHVERSION'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHVERSION
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHCUST'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHCUST
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHPART'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = HDRDS.IHPART
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+     C                   ENDIF
+     C                   EVAL      TOKEN = 'IHSHIP'
+     C                   EXSR      FRAME
+     C                   IF        RESDS.RSRC >= '1000'
+     C                   LEAVESR
+<<<END_FILE>>>

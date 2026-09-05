@@ -1,0 +1,9 @@
+source_type=DSPF
+type=happy
+# DSPF with conditioning indicator 99 on error field
+must_contain=99
+must_contain=ERRTXT
+must_contain=DSPATR(RI)
+must_contain=R INDSCR
+must_contain=CUSTID
+must_contain=DSPSIZ(24 80)

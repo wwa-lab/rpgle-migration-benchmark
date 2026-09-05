@@ -1,0 +1,15 @@
+source_type=PRTF
+type=happy
+# Simple PRTF — header + detail with page layout
+must_contain=PAGESIZE(66 132)
+must_contain=OFLIND
+must_contain=R PRTHDR
+must_contain=R PRTDTL
+must_contain=CUSTOMER LISTING
+must_contain=RPTDTE
+must_contain=PCUSTID
+must_contain=PCUSTNM
+must_contain=PCITY
+must_contain=EDTCDE(Y)
+must_contain=SPACEB(1)
+must_not_contain=DSPSIZ

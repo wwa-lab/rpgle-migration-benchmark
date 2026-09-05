@@ -1,0 +1,18 @@
+source_type=PF
+type=happy
+must_contain=TEXT('Exact count test')
+must_contain=R EXACTR
+must_contain=AAA
+must_contain=BBB
+must_contain=CCC
+must_contain=K AAA
+must_contain=UNIQUE
+# Anti-hallucination: must NOT contain invented audit/system fields
+must_not_contain=CRTDAT
+must_not_contain=CRTUSR
+must_not_contain=CRTPGM
+must_not_contain=CHGDAT
+must_not_contain=CHGUSR
+must_not_contain=SEQNBR
+must_not_contain=LSTCHG
+field_count=3

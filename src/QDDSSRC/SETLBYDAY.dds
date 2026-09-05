@@ -1,0 +1,7 @@
+     A* Synthetic static benchmark. Object SETLBYDAY.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R SETLHDR                   PFILE(SETLHDPF)
+     A          K SESTATE
+     A          K SEFIRSTDAY
+     A          K SEID

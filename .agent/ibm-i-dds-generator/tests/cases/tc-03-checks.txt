@@ -1,0 +1,24 @@
+source_type=PF
+type=happy
+must_contain=TEXT('All field types test')
+must_contain=R ALLTYPR
+must_contain=FALPHA
+must_contain=20A
+must_contain=FPACKD
+# Whitespace-tolerant: DDS allows variable spacing before decimals
+must_contain=9P
+must_contain=FZONED
+must_contain=7S
+must_contain=FBIN
+must_contain=9B
+must_contain=FINT
+must_contain=10I
+must_contain=FFLOAT
+must_contain=8F
+must_contain=FDATE
+must_contain= L
+must_contain=FTIME
+must_contain= T
+must_contain=FTSTMP
+must_contain= Z
+field_count=9

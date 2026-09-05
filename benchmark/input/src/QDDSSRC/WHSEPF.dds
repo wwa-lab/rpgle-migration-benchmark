@@ -1,0 +1,11 @@
+
+
+     A                                      UNIQUE
+     A          R WHSER
+     A            WHID           1A         CCSID(37)
+     A                                      TEXT('WHID')
+     A            WHACTIVE       1A         CCSID(37)
+     A                                      TEXT('WHACTIVE')
+     A            WHRANK         5P 0
+     A                                      TEXT('WHRANK')
+     A          K WHID

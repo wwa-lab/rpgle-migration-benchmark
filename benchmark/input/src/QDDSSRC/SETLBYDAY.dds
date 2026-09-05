@@ -1,0 +1,7 @@
+
+
+     A                                      UNIQUE
+     A          R SETLHDR                   PFILE(SETLHDPF)
+     A          K SESTATE
+     A          K SEFIRSTDAY
+     A          K SEID

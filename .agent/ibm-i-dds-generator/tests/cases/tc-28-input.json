@@ -1,0 +1,65 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "INDDSPF-20260404-01",
+    "specLevel": "L2",
+    "fileType": "DSPF",
+    "fileName": "INDDSPF",
+    "description": "Display file with conditioning indicators"
+  },
+  "screenLayout": {
+    "rows": 24,
+    "columns": 80
+  },
+  "functionKeys": [
+    { "key": "CA03", "indicator": 3, "description": "Exit" }
+  ],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "INDSCR",
+      "purpose": "Indicator-conditioned screen",
+      "fieldCount": 2
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "CUSTID",
+        "type": "A",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Customer ID",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 5,
+        "col": 18,
+        "usage": "B"
+      },
+      {
+        "fieldId": "FLD-02",
+        "fieldName": "ERRTXT",
+        "type": "A",
+        "length": 50,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Error message text",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": ["DSPATR(RI)"],
+        "row": 22,
+        "col": 2,
+        "usage": "O",
+        "conditioning": "99"
+      }
+    ]
+  }
+}

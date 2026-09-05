@@ -1,0 +1,7 @@
+category=cl
+artifact_count=6
+must_contain=CRTBNDCL
+must_contain=SBMJOB CMD(CALL PGM(
+must_contain=DSPDTAARA
+must_contain=INSERT INTO TSTLIB/RPTWORK
+must_contain=CASE WHEN COUNT(*) > 0 THEN 'PASS'

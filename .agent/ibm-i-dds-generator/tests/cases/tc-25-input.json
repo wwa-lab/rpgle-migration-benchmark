@@ -1,0 +1,100 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CUSTDSPF-20260404-01",
+    "specLevel": "L2",
+    "fileType": "DSPF",
+    "fileName": "CUSTDSPF",
+    "description": "Customer maintenance display"
+  },
+  "screenLayout": {
+    "rows": 24,
+    "columns": 80
+  },
+  "functionKeys": [
+    { "key": "CA03", "indicator": 3, "description": "Exit" },
+    { "key": "CF05", "indicator": 5, "description": "Refresh" }
+  ],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CUSTSCR",
+      "purpose": "Customer maintenance screen",
+      "fieldCount": 4
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": null,
+        "type": null,
+        "length": null,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Screen title",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 1,
+        "col": 25,
+        "usage": "O",
+        "constant": "CUSTOMER MAINTENANCE"
+      },
+      {
+        "fieldId": "FLD-02",
+        "fieldName": "CUSTID",
+        "type": "A",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Customer ID",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 3,
+        "col": 18,
+        "usage": "B"
+      },
+      {
+        "fieldId": "FLD-03",
+        "fieldName": "CUSTNM",
+        "type": "A",
+        "length": 40,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Customer name",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 5,
+        "col": 18,
+        "usage": "O"
+      },
+      {
+        "fieldId": "FLD-04",
+        "fieldName": "ACTSTS",
+        "type": "A",
+        "length": 1,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Active status",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 7,
+        "col": 18,
+        "usage": "O"
+      }
+    ]
+  }
+}

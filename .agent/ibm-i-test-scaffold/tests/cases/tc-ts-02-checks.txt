@@ -1,0 +1,8 @@
+category=interactive
+artifact_count=6
+must_contain=### Interactive Cases
+must_contain=Sign on to the test environment
+must_contain=CALL PGM(PGMLIB/ORD200)
+must_contain=ADDLIBLE LIB(TSTLIB) POSITION(*FIRST)
+must_contain=CASE WHEN
+must_not_contain=SBMJOB CMD(

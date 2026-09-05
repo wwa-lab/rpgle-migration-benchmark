@@ -1,0 +1,2284 @@
+{
+  "schema_version": 2,
+  "repository": "https://github.com/wwa-lab/build-agent-skill",
+  "ref": "main",
+  "commit": "0c331e86fad2b13d5f9d1313bdd928b29d355b43",
+  "source_skill_tree_sha": "0c5fadf59d8c23d3f6b065784619f5492233ded6",
+  "source_path_convention": "source_relative_path is relative to source_skill_tree_sha for skill_tree entries, or to the commit root for repository_root entries.",
+  "copied_on": "2026-09-05",
+  "local_skill_root": ".agent",
+  "policy": "Preserve upstream content and executable modes except documented local path adaptations. Keep original and current SHA-256 values. Exclude OS metadata; upstream LICENSE is stored as .agent/UPSTREAM-LICENSE.",
+  "excluded_skill_relative_paths": [
+    ".DS_Store"
+  ],
+  "files": [
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/SKILL.md",
+      "destination_path": ".agent/ibm-i-code-generator/SKILL.md",
+      "upstream_sha256": "f8562a385b1bb3691531f221c4fbda3970a5dad76a9ea8dfbe7aca36791ad2f2",
+      "sha256": "f8562a385b1bb3691531f221c4fbda3970a5dad76a9ea8dfbe7aca36791ad2f2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/examples/sample-clle-enhancement-change-block.md",
+      "destination_path": ".agent/ibm-i-code-generator/examples/sample-clle-enhancement-change-block.md",
+      "upstream_sha256": "450ffa9e8528bcaed8235b34ea3693ceddc2822aee6b4b9e1c2f4293194bc24d",
+      "sha256": "450ffa9e8528bcaed8235b34ea3693ceddc2822aee6b4b9e1c2f4293194bc24d",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/examples/sample-rpgle-embedded-sql.md",
+      "destination_path": ".agent/ibm-i-code-generator/examples/sample-rpgle-embedded-sql.md",
+      "upstream_sha256": "48baad15af61d7d030c6e54b381e833fc0e60ead1dc4e1876c6b8ed6247517fc",
+      "sha256": "48baad15af61d7d030c6e54b381e833fc0e60ead1dc4e1876c6b8ed6247517fc",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/examples/sample-rpgle-existing-fixed-change-block.md",
+      "destination_path": ".agent/ibm-i-code-generator/examples/sample-rpgle-existing-fixed-change-block.md",
+      "upstream_sha256": "ecd8146654ab240b847864844196e8241367dfb1a695962928850f363f3d7846",
+      "sha256": "ecd8146654ab240b847864844196e8241367dfb1a695962928850f363f3d7846",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/examples/sample-rpgle-fixed-full-member.md",
+      "destination_path": ".agent/ibm-i-code-generator/examples/sample-rpgle-fixed-full-member.md",
+      "upstream_sha256": "7f3b7870d2834d716d4a79d40f0cd48d514989a5f8756b6adfc286928cdcbcbe",
+      "sha256": "7f3b7870d2834d716d4a79d40f0cd48d514989a5f8756b6adfc286928cdcbcbe",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/examples/sample-rpgle-mixed-touched-region.md",
+      "destination_path": ".agent/ibm-i-code-generator/examples/sample-rpgle-mixed-touched-region.md",
+      "upstream_sha256": "78dd054549aebbaf2d9c01cb89a8ae00fe57002301f2bcbcb79df0534c997fa3",
+      "sha256": "78dd054549aebbaf2d9c01cb89a8ae00fe57002301f2bcbcb79df0534c997fa3",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/examples/sample-rpgle-new-free.md",
+      "destination_path": ".agent/ibm-i-code-generator/examples/sample-rpgle-new-free.md",
+      "upstream_sha256": "28b0ba702e166c2462f16c6f4f43e25ce04ae9f9cba824c358bcfef27976ec65",
+      "sha256": "28b0ba702e166c2462f16c6f4f43e25ce04ae9f9cba824c358bcfef27976ec65",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/examples/sample-rpgle-setll-reade-loop.md",
+      "destination_path": ".agent/ibm-i-code-generator/examples/sample-rpgle-setll-reade-loop.md",
+      "upstream_sha256": "d51219058f2522985459fe9738e89f0e8c660af516e2492c947cac6c3a1a43e6",
+      "sha256": "d51219058f2522985459fe9738e89f0e8c660af516e2492c947cac6c3a1a43e6",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/references/AS400 Program Development Guideline.md",
+      "destination_path": ".agent/ibm-i-code-generator/references/AS400 Program Development Guideline.md",
+      "upstream_sha256": "582137aa24b104489fb9501049a8c727df4b0e80eb27af7a6d59fcc856558458",
+      "sha256": "582137aa24b104489fb9501049a8c727df4b0e80eb27af7a6d59fcc856558458",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/references/change-output-modes.md",
+      "destination_path": ".agent/ibm-i-code-generator/references/change-output-modes.md",
+      "upstream_sha256": "88988c2db3853a08433f9259be9089a460e73471a0add5f3908be5f5757e100c",
+      "sha256": "88988c2db3853a08433f9259be9089a460e73471a0add5f3908be5f5757e100c",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/references/clle-enhancement-patterns.md",
+      "destination_path": ".agent/ibm-i-code-generator/references/clle-enhancement-patterns.md",
+      "upstream_sha256": "bcfb33b9aa3bef15dea1b004e8bc3d55c2f8560d3ca4e71797954bb2832ca343",
+      "sha256": "bcfb33b9aa3bef15dea1b004e8bc3d55c2f8560d3ca4e71797954bb2832ca343",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/references/rpgle-format-policy.md",
+      "destination_path": ".agent/ibm-i-code-generator/references/rpgle-format-policy.md",
+      "upstream_sha256": "d7914c158f8581da5a0aba76ce15cd6f00744c093a956ff05e867426823a5ef2",
+      "sha256": "d7914c158f8581da5a0aba76ce15cd6f00744c093a956ff05e867426823a5ef2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/references/source-style-profile.md",
+      "destination_path": ".agent/ibm-i-code-generator/references/source-style-profile.md",
+      "upstream_sha256": "796b22ccc0b1f58a8008f7e8ab508f03b55c49e7a49412120a8d2fdf244c32da",
+      "sha256": "796b22ccc0b1f58a8008f7e8ab508f03b55c49e7a49412120a8d2fdf244c32da",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-01-checks.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-01-checks.txt",
+      "upstream_sha256": "4f91d39eb8f64c2023289b957bab3720d13be35b320826df8d65c7c26ae5bd3d",
+      "sha256": "4f91d39eb8f64c2023289b957bab3720d13be35b320826df8d65c7c26ae5bd3d",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-01-input.md",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-01-input.md",
+      "upstream_sha256": "c2d44a94d843d2f88fa82b75254bad3890ba16bb5d3e60481eb173ed3bc2a5f0",
+      "sha256": "c2d44a94d843d2f88fa82b75254bad3890ba16bb5d3e60481eb173ed3bc2a5f0",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-02-checks.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-02-checks.txt",
+      "upstream_sha256": "3f2a1c650e59520962732029823957b0556eed3996c7675e9bcb56d0eb8f0ada",
+      "sha256": "3f2a1c650e59520962732029823957b0556eed3996c7675e9bcb56d0eb8f0ada",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-02-input.md",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-02-input.md",
+      "upstream_sha256": "fd8877f0ffdc6d9cea7461cd0785d31b10e168409868173de3603272dcf3e884",
+      "sha256": "fd8877f0ffdc6d9cea7461cd0785d31b10e168409868173de3603272dcf3e884",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-03-checks.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-03-checks.txt",
+      "upstream_sha256": "0f06e3746f22a4f4b13c34a1a0ab682bfd0305334739de8951c1e036624a06b3",
+      "sha256": "0f06e3746f22a4f4b13c34a1a0ab682bfd0305334739de8951c1e036624a06b3",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-03-input.md",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-03-input.md",
+      "upstream_sha256": "eb1578246eb06d3d7cc38a9c214a27ee1eb22b16228a0c67c495f4d23d0ba92a",
+      "sha256": "eb1578246eb06d3d7cc38a9c214a27ee1eb22b16228a0c67c495f4d23d0ba92a",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-04-checks.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-04-checks.txt",
+      "upstream_sha256": "959dcbfc658c8da9c1655d3cb3f296c879636f1c3515d324505ad60204fd521d",
+      "sha256": "959dcbfc658c8da9c1655d3cb3f296c879636f1c3515d324505ad60204fd521d",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-04-input.md",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-04-input.md",
+      "upstream_sha256": "22ea51b80c19969927173c39109cb788627cc7a096296e1673fd9e130972a160",
+      "sha256": "22ea51b80c19969927173c39109cb788627cc7a096296e1673fd9e130972a160",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-05-checks.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-05-checks.txt",
+      "upstream_sha256": "52159dce21beeb81e7b66beed7a63a39bdc6209b62f7498c8ed92423a973e0f3",
+      "sha256": "52159dce21beeb81e7b66beed7a63a39bdc6209b62f7498c8ed92423a973e0f3",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-05-input.md",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-05-input.md",
+      "upstream_sha256": "c692269610d3714cdc91c51f6d055e1cc0a98978d5794f17b2b316dd14d429f0",
+      "sha256": "c692269610d3714cdc91c51f6d055e1cc0a98978d5794f17b2b316dd14d429f0",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-06-checks.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-06-checks.txt",
+      "upstream_sha256": "c762eec4acf2129b8a292c2ebc86937bf315e4b9257ba5755bf6bdee063218c5",
+      "sha256": "c762eec4acf2129b8a292c2ebc86937bf315e4b9257ba5755bf6bdee063218c5",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-06-input.md",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-06-input.md",
+      "upstream_sha256": "c2d44a94d843d2f88fa82b75254bad3890ba16bb5d3e60481eb173ed3bc2a5f0",
+      "sha256": "c2d44a94d843d2f88fa82b75254bad3890ba16bb5d3e60481eb173ed3bc2a5f0",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-07-checks.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-07-checks.txt",
+      "upstream_sha256": "88c98ad007cf20238e6472fbddbecd2c21f70ce309e97ea351bfcd1e655c8fd2",
+      "sha256": "88c98ad007cf20238e6472fbddbecd2c21f70ce309e97ea351bfcd1e655c8fd2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-07-existing.rpgle",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-07-existing.rpgle",
+      "upstream_sha256": "7186beabea68a42b86df379f39ee676e1c77cd4c5ddda737b2c800dcec7cab0f",
+      "sha256": "7186beabea68a42b86df379f39ee676e1c77cd4c5ddda737b2c800dcec7cab0f",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-07-input.md",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-07-input.md",
+      "upstream_sha256": "aa2b621fbae7f8f6ef14638834926e1a5d6f7c103f78632e060a2042c0732074",
+      "sha256": "aa2b621fbae7f8f6ef14638834926e1a5d6f7c103f78632e060a2042c0732074",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-08-checks.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-08-checks.txt",
+      "upstream_sha256": "4a15160d998f33189a0275e3d3917600dcc57a4c8c50be926b9589017cd7ca41",
+      "sha256": "4a15160d998f33189a0275e3d3917600dcc57a4c8c50be926b9589017cd7ca41",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/cases/tc-cg-08-input.md",
+      "destination_path": ".agent/ibm-i-code-generator/tests/cases/tc-cg-08-input.md",
+      "upstream_sha256": "7284305805ef8b720f237759cc98855e2ce61c7e87e668195a12536d882f36ea",
+      "sha256": "7284305805ef8b720f237759cc98855e2ce61c7e87e668195a12536d882f36ea",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/results/report.md",
+      "destination_path": ".agent/ibm-i-code-generator/tests/results/report.md",
+      "upstream_sha256": "f0d5e1ecc0407a31db5c5030d3d1846037930f6f9c5b63c0a42e501a2e4a1be0",
+      "sha256": "f0d5e1ecc0407a31db5c5030d3d1846037930f6f9c5b63c0a42e501a2e4a1be0",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/results/tc-cg-01-actual.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/results/tc-cg-01-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/results/tc-cg-02-actual.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/results/tc-cg-02-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/results/tc-cg-03-actual.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/results/tc-cg-03-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/results/tc-cg-04-actual.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/results/tc-cg-04-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/results/tc-cg-05-actual.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/results/tc-cg-05-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/results/tc-cg-06-actual.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/results/tc-cg-06-actual.txt",
+      "upstream_sha256": "4fff36b9e8a9fd7651b8e0617aceef318b2e812c814074920702f2fcc6d63c02",
+      "sha256": "4fff36b9e8a9fd7651b8e0617aceef318b2e812c814074920702f2fcc6d63c02",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/results/tc-cg-07-actual.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/results/tc-cg-07-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/results/tc-cg-08-actual.txt",
+      "destination_path": ".agent/ibm-i-code-generator/tests/results/tc-cg-08-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-generator/tests/runner.sh",
+      "destination_path": ".agent/ibm-i-code-generator/tests/runner.sh",
+      "upstream_sha256": "a209fea2d2077255108b641ffe591ebd845ab1ac6b1599958a2b8e5711055950",
+      "sha256": "d49bb2a46da2b3f35c897fe3e4378a20d8322517cff96af637d01b11ed9a095e",
+      "mode": "0o775",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/SKILL.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/SKILL.md",
+      "upstream_sha256": "5a1b1c03c589ffc1a3e99d2852636a3d4542316570e64737c7edef8ea8978295",
+      "sha256": "cc37167e0827ec22dd0f02e1e51574d0392b6df143fa2a4c2eff4f4172f602bb",
+      "mode": "0o664",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/examples/sample-review-br-coverage-gap.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/examples/sample-review-br-coverage-gap.md",
+      "upstream_sha256": "ecb9eb6bddbda5450d336b6f073272c872a964579864cda4e21caf1a4564d1e9",
+      "sha256": "ecb9eb6bddbda5450d336b6f073272c872a964579864cda4e21caf1a4564d1e9",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/examples/sample-review-change-block-scope.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/examples/sample-review-change-block-scope.md",
+      "upstream_sha256": "032e83dd837e8c7a9764525a0e419ab14a4589a582a6dd9c77c53f9e4edc1c19",
+      "sha256": "032e83dd837e8c7a9764525a0e419ab14a4589a582a6dd9c77c53f9e4edc1c19",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/examples/sample-review-format-policy-drift.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/examples/sample-review-format-policy-drift.md",
+      "upstream_sha256": "bca7b26677bf630fe49445cae7b83959caf446d71e6516410d90147161a5c760",
+      "sha256": "bca7b26677bf630fe49445cae7b83959caf446d71e6516410d90147161a5c760",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/examples/sample-review-return-code-mismatch.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/examples/sample-review-return-code-mismatch.md",
+      "upstream_sha256": "9c7b85a93e1ec3decbe8548b959651eae5cd50ee4ed346b23135f43739e39cd3",
+      "sha256": "9c7b85a93e1ec3decbe8548b959651eae5cd50ee4ed346b23135f43739e39cd3",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/examples/sample-review-sql-drift.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/examples/sample-review-sql-drift.md",
+      "upstream_sha256": "af341c0cd308a2d48203c78ea9d27a90f3664cffd4b993dc9ca98533d3bb7b65",
+      "sha256": "af341c0cd308a2d48203c78ea9d27a90f3664cffd4b993dc9ca98533d3bb7b65",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/references/enhancement-review-patterns.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/references/enhancement-review-patterns.md",
+      "upstream_sha256": "c5f70313fdfb1f3a7b06d47593be5046439ea569022bcd3ae0454c1069d746e4",
+      "sha256": "c5f70313fdfb1f3a7b06d47593be5046439ea569022bcd3ae0454c1069d746e4",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/references/review-checkpoints.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/references/review-checkpoints.md",
+      "upstream_sha256": "507ccbf5d34ba7782dd8d704e95a431aaf770d15a0096aee243e7f26b322df07",
+      "sha256": "507ccbf5d34ba7782dd8d704e95a431aaf770d15a0096aee243e7f26b322df07",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/references/rpgle-review-policy.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/references/rpgle-review-policy.md",
+      "upstream_sha256": "91ddc1601810169ac14eb1becc837b0730fab5002733d0e23489fe3fa1a6ab32",
+      "sha256": "91ddc1601810169ac14eb1becc837b0730fab5002733d0e23489fe3fa1a6ab32",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-code-reviewer/references/source-validator-rules.md",
+      "destination_path": ".agent/ibm-i-code-reviewer/references/source-validator-rules.md",
+      "upstream_sha256": "38d6e31dc25c243937c1dd3effdffa447a6b5d70dec7d26e679967a844c63af3",
+      "sha256": "50b76f038f41b886b97d0a5a27a065069fbfde8b1b575c46c5d4535b8013817e",
+      "mode": "0o664",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-compile-precheck/SKILL.md",
+      "destination_path": ".agent/ibm-i-compile-precheck/SKILL.md",
+      "upstream_sha256": "26919489cb3e140285a1aa682b1bd69084c3b5b908ad4960c1b06bf245280e4f",
+      "sha256": "e1c569d225439b70f6c65ce80ab566e34f41bbbd8023c12dc7c9c9f9ddb816d3",
+      "mode": "0o664",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-compile-precheck/references/fixed-format-checklists.md",
+      "destination_path": ".agent/ibm-i-compile-precheck/references/fixed-format-checklists.md",
+      "upstream_sha256": "3a51b73017c6e8c156d4a3dd9c8bf6c131502acd5454ecd61d2c9c835dd2a7b1",
+      "sha256": "3a51b73017c6e8c156d4a3dd9c8bf6c131502acd5454ecd61d2c9c835dd2a7b1",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/SKILL.md",
+      "destination_path": ".agent/ibm-i-dds-generator/SKILL.md",
+      "upstream_sha256": "96c0e9fda146bd74f6a8072c17389016c3426aacc203f14fa9f6ce3ac150a073",
+      "sha256": "96c0e9fda146bd74f6a8072c17389016c3426aacc203f14fa9f6ce3ac150a073",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/examples/sample-dspf-dds-output.md",
+      "destination_path": ".agent/ibm-i-dds-generator/examples/sample-dspf-dds-output.md",
+      "upstream_sha256": "deeaf181be69ca1ea9edb78a9b8c35eb59f922f43496375a738ce806338d8294",
+      "sha256": "deeaf181be69ca1ea9edb78a9b8c35eb59f922f43496375a738ce806338d8294",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/examples/sample-lf-join-dds-output.md",
+      "destination_path": ".agent/ibm-i-dds-generator/examples/sample-lf-join-dds-output.md",
+      "upstream_sha256": "7d900ba1e5d237bbc79e2984bea63759ee2f9822fb723edcf535bdb14e72f2da",
+      "sha256": "7d900ba1e5d237bbc79e2984bea63759ee2f9822fb723edcf535bdb14e72f2da",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/examples/sample-lf-simple-dds-output.md",
+      "destination_path": ".agent/ibm-i-dds-generator/examples/sample-lf-simple-dds-output.md",
+      "upstream_sha256": "746124c24fcc43e3c9a9d8d908f3e7313fa4ff0a96c5b18ed88b729318bf40c8",
+      "sha256": "746124c24fcc43e3c9a9d8d908f3e7313fa4ff0a96c5b18ed88b729318bf40c8",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/examples/sample-pf-dds-output.md",
+      "destination_path": ".agent/ibm-i-dds-generator/examples/sample-pf-dds-output.md",
+      "upstream_sha256": "9c60d6dd6ad93b1e31d55624ee1a128deefca75fd487754fb424f3a18e1846aa",
+      "sha256": "9c60d6dd6ad93b1e31d55624ee1a128deefca75fd487754fb424f3a18e1846aa",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/examples/sample-pf-version-dds-output.md",
+      "destination_path": ".agent/ibm-i-dds-generator/examples/sample-pf-version-dds-output.md",
+      "upstream_sha256": "da62d8e70beeceb5f066b2b7277c6f0be0dfd59baa8bef65975917ebd9bba935",
+      "sha256": "da62d8e70beeceb5f066b2b7277c6f0be0dfd59baa8bef65975917ebd9bba935",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/examples/sample-prtf-dds-output.md",
+      "destination_path": ".agent/ibm-i-dds-generator/examples/sample-prtf-dds-output.md",
+      "upstream_sha256": "6ac8e13a4c021906f4f637094d506f22b1ff667fdaa7ccb788e959fee673158c",
+      "sha256": "6ac8e13a4c021906f4f637094d506f22b1ff667fdaa7ccb788e959fee673158c",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-01-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-01-checks.txt",
+      "upstream_sha256": "df0492e1c118bd384d03c8aa5c9b85aca66a6fca71b0e725a61c6ba86098a5be",
+      "sha256": "df0492e1c118bd384d03c8aa5c9b85aca66a6fca71b0e725a61c6ba86098a5be",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-01-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-01-input.json",
+      "upstream_sha256": "ed753de565804d1db46d2f2ae0976228206d22855d53ed2d71db028e2c70163a",
+      "sha256": "ed753de565804d1db46d2f2ae0976228206d22855d53ed2d71db028e2c70163a",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-02-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-02-checks.txt",
+      "upstream_sha256": "cef0e07e1723acc6803da982a5a14d566db9a9ec7a64a549bde6e1d41fe17534",
+      "sha256": "cef0e07e1723acc6803da982a5a14d566db9a9ec7a64a549bde6e1d41fe17534",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-02-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-02-input.json",
+      "upstream_sha256": "78d1dc644a13fa32165a012e49ed2e08950a460992628de63c45ac8f4b076632",
+      "sha256": "78d1dc644a13fa32165a012e49ed2e08950a460992628de63c45ac8f4b076632",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-03-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-03-checks.txt",
+      "upstream_sha256": "a4643b3cdf978d84f162db48e31154ea0a91f02afb5e5795750081cf7c0eebd8",
+      "sha256": "a4643b3cdf978d84f162db48e31154ea0a91f02afb5e5795750081cf7c0eebd8",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-03-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-03-input.json",
+      "upstream_sha256": "7b1e60c4abea2c5ae8b6d7ca6af41195076602d861db77c2d0a6f3d7404174c8",
+      "sha256": "7b1e60c4abea2c5ae8b6d7ca6af41195076602d861db77c2d0a6f3d7404174c8",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-04-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-04-checks.txt",
+      "upstream_sha256": "6310d60916061680d5cd9fda7433577fc51e6b97abb9da62a5475daf4b4a9a96",
+      "sha256": "6310d60916061680d5cd9fda7433577fc51e6b97abb9da62a5475daf4b4a9a96",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-04-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-04-input.json",
+      "upstream_sha256": "970ed110dd9604150de3f7e0e65e12ecf73d8b533029ed94aaaf989023dd5855",
+      "sha256": "970ed110dd9604150de3f7e0e65e12ecf73d8b533029ed94aaaf989023dd5855",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-05-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-05-checks.txt",
+      "upstream_sha256": "907cf9e11e1734e0f89cb296163da3ec2512e1288ef742953dd1def989439e6d",
+      "sha256": "907cf9e11e1734e0f89cb296163da3ec2512e1288ef742953dd1def989439e6d",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-05-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-05-input.json",
+      "upstream_sha256": "16fd674901aef12f55e33e89d91c6fdf05f8be3a72b1ccea71616020540567c0",
+      "sha256": "16fd674901aef12f55e33e89d91c6fdf05f8be3a72b1ccea71616020540567c0",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-06-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-06-checks.txt",
+      "upstream_sha256": "d54dc91f9822888bf1771f0f01098fe3c1ccb0034ddc895b892e6e72ab32dc1e",
+      "sha256": "d54dc91f9822888bf1771f0f01098fe3c1ccb0034ddc895b892e6e72ab32dc1e",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-06-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-06-input.json",
+      "upstream_sha256": "33b0a88115eec976deb5f4a341ec50b9e200fed1af5fd538e07c9e89843a585b",
+      "sha256": "33b0a88115eec976deb5f4a341ec50b9e200fed1af5fd538e07c9e89843a585b",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-07-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-07-checks.txt",
+      "upstream_sha256": "aa0a2414d180a9ccbfe44f4145715fe58a69a04cf0a5f2daa8f54934cb20f234",
+      "sha256": "aa0a2414d180a9ccbfe44f4145715fe58a69a04cf0a5f2daa8f54934cb20f234",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-07-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-07-input.json",
+      "upstream_sha256": "d5df9350670347af48e0c1d87c0efe7a90bfd272423e4348df5f6250d0b37b12",
+      "sha256": "d5df9350670347af48e0c1d87c0efe7a90bfd272423e4348df5f6250d0b37b12",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-08-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-08-checks.txt",
+      "upstream_sha256": "e6a290eed0227d0d1bab39f25aa8d978009b6be095ab1da47d37f932b2fbde2e",
+      "sha256": "e6a290eed0227d0d1bab39f25aa8d978009b6be095ab1da47d37f932b2fbde2e",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-08-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-08-input.json",
+      "upstream_sha256": "356e3f0297cbcad6cd2b047bf8596b00ced409c89353b4b90b1909962ff24513",
+      "sha256": "356e3f0297cbcad6cd2b047bf8596b00ced409c89353b4b90b1909962ff24513",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-09-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-09-checks.txt",
+      "upstream_sha256": "21352268f34610ea827fd0f594337c7e9ed65644f37413fc30db937d5dc2b7f3",
+      "sha256": "21352268f34610ea827fd0f594337c7e9ed65644f37413fc30db937d5dc2b7f3",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-09-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-09-input.json",
+      "upstream_sha256": "3327c3b4a1e98ab09d887a47deb32513d15baad101d8bf4c883e9892677ccee6",
+      "sha256": "3327c3b4a1e98ab09d887a47deb32513d15baad101d8bf4c883e9892677ccee6",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-10-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-10-checks.txt",
+      "upstream_sha256": "d545e4c2aaddd774c5a599be082d7fcda1b6c8d61f2409c86ad185644f66f9d5",
+      "sha256": "d545e4c2aaddd774c5a599be082d7fcda1b6c8d61f2409c86ad185644f66f9d5",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-10-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-10-input.json",
+      "upstream_sha256": "53f7649a95386d51799220fb24722f82f610363abcfb825404497904c603a542",
+      "sha256": "53f7649a95386d51799220fb24722f82f610363abcfb825404497904c603a542",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-11-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-11-checks.txt",
+      "upstream_sha256": "aca1a88dbbf0e94595f36af7cdcba489b210d409944c4408a7dcb09c3eed6285",
+      "sha256": "aca1a88dbbf0e94595f36af7cdcba489b210d409944c4408a7dcb09c3eed6285",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-11-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-11-input.json",
+      "upstream_sha256": "985e486ec83b146ecf09e3fc1dd15589ea966a581b316583a571bc2f75ff4530",
+      "sha256": "985e486ec83b146ecf09e3fc1dd15589ea966a581b316583a571bc2f75ff4530",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-12-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-12-checks.txt",
+      "upstream_sha256": "b94a1a82ddecf5c96686705fc775d97207ab082d2ef64ef4e1bb3b243a2af5fa",
+      "sha256": "b94a1a82ddecf5c96686705fc775d97207ab082d2ef64ef4e1bb3b243a2af5fa",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-12-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-12-input.json",
+      "upstream_sha256": "6d9130cbb1c11fe443e1b4dbb1253683f9ca85c94bbb44108ee6d1c92c8dbf74",
+      "sha256": "6d9130cbb1c11fe443e1b4dbb1253683f9ca85c94bbb44108ee6d1c92c8dbf74",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-13-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-13-checks.txt",
+      "upstream_sha256": "0f74609f859f01721f048fb3b45d6893982d536e05b02b107c622658bcfd4348",
+      "sha256": "0f74609f859f01721f048fb3b45d6893982d536e05b02b107c622658bcfd4348",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-13-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-13-input.json",
+      "upstream_sha256": "e0f74c63e8ddf4011d1a6a33fc5e182506c9847b81593bf4c11b1e3bd17b9bff",
+      "sha256": "e0f74c63e8ddf4011d1a6a33fc5e182506c9847b81593bf4c11b1e3bd17b9bff",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-14-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-14-checks.txt",
+      "upstream_sha256": "bb69f0354d04fe0a53fc7628ae3818e3cf8b1696796471fa4d7495007a3057d8",
+      "sha256": "bb69f0354d04fe0a53fc7628ae3818e3cf8b1696796471fa4d7495007a3057d8",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-14-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-14-input.json",
+      "upstream_sha256": "21031b2988364704db42c7a0d3efc5383c17915d5eec303eac8cb115cc8b5dc2",
+      "sha256": "21031b2988364704db42c7a0d3efc5383c17915d5eec303eac8cb115cc8b5dc2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-15-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-15-checks.txt",
+      "upstream_sha256": "7c6f335e0a674566ee4c8640f4c3ee5cf8e934f30fc1b763185e7d5bf77bce40",
+      "sha256": "7c6f335e0a674566ee4c8640f4c3ee5cf8e934f30fc1b763185e7d5bf77bce40",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-15-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-15-input.json",
+      "upstream_sha256": "0b9cfc57186d289e2cdfde5511c7795a8844a407f40084f31be89d4f2aebe0f8",
+      "sha256": "0b9cfc57186d289e2cdfde5511c7795a8844a407f40084f31be89d4f2aebe0f8",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-16-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-16-checks.txt",
+      "upstream_sha256": "9fb91c8dc0bcb0f866130912946b359e6f4ad0f789df44291368350915154422",
+      "sha256": "9fb91c8dc0bcb0f866130912946b359e6f4ad0f789df44291368350915154422",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-16-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-16-input.json",
+      "upstream_sha256": "0604ec687d8c6d95f01845b07f5b4e45f91b3bb2d29bbfc2b861360332052659",
+      "sha256": "0604ec687d8c6d95f01845b07f5b4e45f91b3bb2d29bbfc2b861360332052659",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-17-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-17-checks.txt",
+      "upstream_sha256": "c7e90e933eae6ad879ed1c910a19b8bc58162ed85a9700805a679f5997c57d36",
+      "sha256": "c7e90e933eae6ad879ed1c910a19b8bc58162ed85a9700805a679f5997c57d36",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-17-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-17-input.json",
+      "upstream_sha256": "7c85dd07f569eb697c97138831d403453638b528e6830649a47260bbee300467",
+      "sha256": "7c85dd07f569eb697c97138831d403453638b528e6830649a47260bbee300467",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-18-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-18-checks.txt",
+      "upstream_sha256": "c6d8b1a3f6399af3344ce69f3ac084d4092720badbc36228275eb8739fdff313",
+      "sha256": "c6d8b1a3f6399af3344ce69f3ac084d4092720badbc36228275eb8739fdff313",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-18-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-18-input.json",
+      "upstream_sha256": "1a9b1aa000655226f2bcf7ddc69983c7966e83e5c007b690fb5c27aa11db9dca",
+      "sha256": "1a9b1aa000655226f2bcf7ddc69983c7966e83e5c007b690fb5c27aa11db9dca",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-19-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-19-checks.txt",
+      "upstream_sha256": "cfd043c56ba81009610c45b6a370610558fbdb00cd7c41f7d136af8debb097cd",
+      "sha256": "cfd043c56ba81009610c45b6a370610558fbdb00cd7c41f7d136af8debb097cd",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-19-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-19-input.json",
+      "upstream_sha256": "8d2ec09441ea8a8d0c9ea7a305ea5795a7e6807f1a22d75184cb3bbddfd6bc14",
+      "sha256": "8d2ec09441ea8a8d0c9ea7a305ea5795a7e6807f1a22d75184cb3bbddfd6bc14",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-20-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-20-checks.txt",
+      "upstream_sha256": "bd5529e0c97e5f71b5cd99a69a383d5d9e09200d88596671214d9e11d4efd0d2",
+      "sha256": "bd5529e0c97e5f71b5cd99a69a383d5d9e09200d88596671214d9e11d4efd0d2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-20-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-20-input.json",
+      "upstream_sha256": "40159419f23513804793cc025cdec52940a3cf335e34b7904451abe6ce7c628c",
+      "sha256": "40159419f23513804793cc025cdec52940a3cf335e34b7904451abe6ce7c628c",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-21-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-21-checks.txt",
+      "upstream_sha256": "06c1fac95549861a3e88309afe7767eb48d69b6c33ad31739689d79770e60e0f",
+      "sha256": "06c1fac95549861a3e88309afe7767eb48d69b6c33ad31739689d79770e60e0f",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-21-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-21-input.json",
+      "upstream_sha256": "469c0bacd14532818b8e7bba5683b68d162efcf495c2f9a6e8a9692e0d82ed20",
+      "sha256": "469c0bacd14532818b8e7bba5683b68d162efcf495c2f9a6e8a9692e0d82ed20",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-22-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-22-checks.txt",
+      "upstream_sha256": "7d7e971a187469abdc3365647a56eadf0660ed5e989aa879704f25a7d39facb6",
+      "sha256": "7d7e971a187469abdc3365647a56eadf0660ed5e989aa879704f25a7d39facb6",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-22-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-22-input.json",
+      "upstream_sha256": "881e4af44f0e8379356daba3dd6eb9a0d45418bcb16bde0177f34161f2240fb9",
+      "sha256": "881e4af44f0e8379356daba3dd6eb9a0d45418bcb16bde0177f34161f2240fb9",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-23-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-23-checks.txt",
+      "upstream_sha256": "8cf40f5fd75f21a792cdf8afda4f2e94e25b4fcff2cfb32663afe029fac0d269",
+      "sha256": "8cf40f5fd75f21a792cdf8afda4f2e94e25b4fcff2cfb32663afe029fac0d269",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-23-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-23-input.json",
+      "upstream_sha256": "60b5bf1bc2c0cb1518b062437aeac43f6e72465303521330d8ef62eb66c0e3c3",
+      "sha256": "60b5bf1bc2c0cb1518b062437aeac43f6e72465303521330d8ef62eb66c0e3c3",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-24-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-24-checks.txt",
+      "upstream_sha256": "20d3e8ed88d982da16ea08cc454e8b69de67b11b552d64c13f1ce112da5a40df",
+      "sha256": "20d3e8ed88d982da16ea08cc454e8b69de67b11b552d64c13f1ce112da5a40df",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-24-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-24-input.json",
+      "upstream_sha256": "a7ee0fcacc372ee72f0830fb83fb32d21f48ea598eaaaa5abc4a12cab4864f31",
+      "sha256": "a7ee0fcacc372ee72f0830fb83fb32d21f48ea598eaaaa5abc4a12cab4864f31",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-25-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-25-checks.txt",
+      "upstream_sha256": "000547dc8278ae53c740f94ea66ada6f48504dbc3b19046d2f5ec8c9c91bf5e4",
+      "sha256": "000547dc8278ae53c740f94ea66ada6f48504dbc3b19046d2f5ec8c9c91bf5e4",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-25-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-25-input.json",
+      "upstream_sha256": "72b66b69f4e2c467a3f82c9c36c9d0e6f09cab9b588d9f6ea7021f740ffe2aa5",
+      "sha256": "72b66b69f4e2c467a3f82c9c36c9d0e6f09cab9b588d9f6ea7021f740ffe2aa5",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-26-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-26-checks.txt",
+      "upstream_sha256": "ff37b3ae679752fe73071e3f2327efc62333abfc08d25c324747aa94d2aaab1d",
+      "sha256": "ff37b3ae679752fe73071e3f2327efc62333abfc08d25c324747aa94d2aaab1d",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-26-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-26-input.json",
+      "upstream_sha256": "4916d6332f433207bf7920bbe17ba0e5e872952c303bff845998a4601b7efa03",
+      "sha256": "4916d6332f433207bf7920bbe17ba0e5e872952c303bff845998a4601b7efa03",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-27-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-27-checks.txt",
+      "upstream_sha256": "31d5046f1f61600b353bde434955fad824e3f71d64db67d6fbf898803e91f008",
+      "sha256": "31d5046f1f61600b353bde434955fad824e3f71d64db67d6fbf898803e91f008",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-27-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-27-input.json",
+      "upstream_sha256": "b43b086bd6f06502725d285c2ee2991361e3c44b578b59dadde72d4e60bdda01",
+      "sha256": "b43b086bd6f06502725d285c2ee2991361e3c44b578b59dadde72d4e60bdda01",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-28-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-28-checks.txt",
+      "upstream_sha256": "8bd7e16502e4b7be87c007313e7e93cf543d39f6fa74f311c1d303ada6e2a88c",
+      "sha256": "8bd7e16502e4b7be87c007313e7e93cf543d39f6fa74f311c1d303ada6e2a88c",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-28-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-28-input.json",
+      "upstream_sha256": "64d587a10e988211fbe4e7f78206870cb7ae3c74d4a4e52978708a3949a38575",
+      "sha256": "64d587a10e988211fbe4e7f78206870cb7ae3c74d4a4e52978708a3949a38575",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-29-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-29-checks.txt",
+      "upstream_sha256": "fde7a8f531d6c61992404eb34939300db9242718a53482217365a6cf8fb2db72",
+      "sha256": "fde7a8f531d6c61992404eb34939300db9242718a53482217365a6cf8fb2db72",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-29-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-29-input.json",
+      "upstream_sha256": "d45e675326c9b127877da7ae94c7fb7c2cb553dbe999f33ab681190dc78b54c3",
+      "sha256": "d45e675326c9b127877da7ae94c7fb7c2cb553dbe999f33ab681190dc78b54c3",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-30-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-30-checks.txt",
+      "upstream_sha256": "1d3c0593243789e1fab3785ab75b31e2fbb9edd0cb97628f5148d36ec7147531",
+      "sha256": "1d3c0593243789e1fab3785ab75b31e2fbb9edd0cb97628f5148d36ec7147531",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-30-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-30-input.json",
+      "upstream_sha256": "bfe905bb096354708a1f5530c8433cc49a117a5ec39f964e41f71bafb018389c",
+      "sha256": "bfe905bb096354708a1f5530c8433cc49a117a5ec39f964e41f71bafb018389c",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-31-checks.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-31-checks.txt",
+      "upstream_sha256": "bbfe5fc586db139eaf01cb83d65c3d8639cd0a35bd9acb2c9307b49dd53f7e53",
+      "sha256": "bbfe5fc586db139eaf01cb83d65c3d8639cd0a35bd9acb2c9307b49dd53f7e53",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/cases/tc-31-input.json",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/cases/tc-31-input.json",
+      "upstream_sha256": "a037c22884b6febc86f60b00566dca7f25e57f5a64086ff7fa6abbbf018882cd",
+      "sha256": "a037c22884b6febc86f60b00566dca7f25e57f5a64086ff7fa6abbbf018882cd",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/report.md",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/report.md",
+      "upstream_sha256": "7de5a7b79bc7b53cc58ff470fe0d014c0710c87a1b7260aec0eae26053eedc1a",
+      "sha256": "7de5a7b79bc7b53cc58ff470fe0d014c0710c87a1b7260aec0eae26053eedc1a",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-01-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-01-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-01-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-01-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-02-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-02-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-02-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-02-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-03-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-03-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-03-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-03-verdict.txt",
+      "upstream_sha256": "bbb014f54a1c9595d309a4c0611170634510ab1f431319897508c4bb25346f1e",
+      "sha256": "bbb014f54a1c9595d309a4c0611170634510ab1f431319897508c4bb25346f1e",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-04-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-04-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-04-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-04-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-05-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-05-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-05-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-05-verdict.txt",
+      "upstream_sha256": "ef75cbe07f3516ed2678afdab57f081f8fae952030eb9e05db89b82d1f762d71",
+      "sha256": "ef75cbe07f3516ed2678afdab57f081f8fae952030eb9e05db89b82d1f762d71",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-06-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-06-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-06-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-06-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-07-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-07-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-07-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-07-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-08-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-08-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-08-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-08-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-09-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-09-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-09-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-09-verdict.txt",
+      "upstream_sha256": "391153186141862a1671d6e94cd12b7d6fa7987150eef51a4e31f1d0d69f7196",
+      "sha256": "391153186141862a1671d6e94cd12b7d6fa7987150eef51a4e31f1d0d69f7196",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-10-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-10-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-10-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-10-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-11-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-11-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-11-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-11-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-12-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-12-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-12-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-12-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-13-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-13-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-13-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-13-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-14-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-14-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-14-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-14-verdict.txt",
+      "upstream_sha256": "c07f9212c4d8aec33e283a6c185e27313bb41f57fb5597f3451ee6adb590ecd4",
+      "sha256": "c07f9212c4d8aec33e283a6c185e27313bb41f57fb5597f3451ee6adb590ecd4",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-15-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-15-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-15-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-15-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-16-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-16-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-16-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-16-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-17-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-17-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-17-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-17-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-18-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-18-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-18-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-18-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-19-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-19-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-19-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-19-verdict.txt",
+      "upstream_sha256": "4f4cfb37255ca4c9716f3d653170fd828dcc0076407d5b385f3a0ffb06dd19e7",
+      "sha256": "4f4cfb37255ca4c9716f3d653170fd828dcc0076407d5b385f3a0ffb06dd19e7",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-20-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-20-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-20-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-20-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-21-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-21-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-21-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-21-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-22-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-22-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-22-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-22-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-23-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-23-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-24-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-24-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-25-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-25-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-25-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-25-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-26-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-26-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-26-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-26-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-27-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-27-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-27-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-27-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-28-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-28-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-29-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-29-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-29-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-29-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-30-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-30-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-30-verdict.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-30-verdict.txt",
+      "upstream_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/results/tc-31-actual.txt",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/results/tc-31-actual.txt",
+      "upstream_sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "sha256": "8d5e39f850cc485e77f1d62fb3dd5744a5f53290b97a7ff5bfc9245612034fb2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/runner.sh",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/runner.sh",
+      "upstream_sha256": "cd11459c756a56e4db3ae1728df168d50815022f64519aee83c4acfa13d29a52",
+      "sha256": "2b2251a052a401e4b6fdce6e88438bcd0c3b593b8bfd127c612960796c5bc40a",
+      "mode": "0o775",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-generator/tests/test-harness.md",
+      "destination_path": ".agent/ibm-i-dds-generator/tests/test-harness.md",
+      "upstream_sha256": "3f6725c92913d5cd1ea1874047b0d2343dfee3fa885820e5d9240baeb7863d85",
+      "sha256": "3f6725c92913d5cd1ea1874047b0d2343dfee3fa885820e5d9240baeb7863d85",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-dds-reviewer/SKILL.md",
+      "destination_path": ".agent/ibm-i-dds-reviewer/SKILL.md",
+      "upstream_sha256": "fd0bcaa7ebfa5e53b547077746a0f02795061675ccdb83a3e48f7ee5db730948",
+      "sha256": "fd0bcaa7ebfa5e53b547077746a0f02795061675ccdb83a3e48f7ee5db730948",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/SKILL.md",
+      "destination_path": ".agent/ibm-i-file-spec/SKILL.md",
+      "upstream_sha256": "ff57ab62a7f9c155fbdd4f271af581a1b7d7f7cc2b95890beb80f1c16246a70f",
+      "sha256": "ff57ab62a7f9c155fbdd4f271af581a1b7d7f7cc2b95890beb80f1c16246a70f",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/examples/sample-dspf-spec.md",
+      "destination_path": ".agent/ibm-i-file-spec/examples/sample-dspf-spec.md",
+      "upstream_sha256": "23af71f4c5b39b42f3044d275adf1eab84fc91a584f877e663ac208cc05e5ea3",
+      "sha256": "23af71f4c5b39b42f3044d275adf1eab84fc91a584f877e663ac208cc05e5ea3",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/examples/sample-lf-spec.md",
+      "destination_path": ".agent/ibm-i-file-spec/examples/sample-lf-spec.md",
+      "upstream_sha256": "82a301e86ef03b28fbcd1c5b225b25edb7e6ff5ff4a2fd1f7ecf0e6e380e3b06",
+      "sha256": "82a301e86ef03b28fbcd1c5b225b25edb7e6ff5ff4a2fd1f7ecf0e6e380e3b06",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/examples/sample-pf-enhancement-spec.md",
+      "destination_path": ".agent/ibm-i-file-spec/examples/sample-pf-enhancement-spec.md",
+      "upstream_sha256": "76eb61fa3b9f8eb19a803fb5fafcbc9d635b9fd463c0e2353225a97fe0cc789c",
+      "sha256": "76eb61fa3b9f8eb19a803fb5fafcbc9d635b9fd463c0e2353225a97fe0cc789c",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/examples/sample-pf-spec.md",
+      "destination_path": ".agent/ibm-i-file-spec/examples/sample-pf-spec.md",
+      "upstream_sha256": "d06dc05270fb695868f0cd4126052a1ebdf441c0050bdd320e1e307b80c9981e",
+      "sha256": "d06dc05270fb695868f0cd4126052a1ebdf441c0050bdd320e1e307b80c9981e",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/examples/sample-prtf-spec.md",
+      "destination_path": ".agent/ibm-i-file-spec/examples/sample-prtf-spec.md",
+      "upstream_sha256": "3dde1e9c5f2ef9f4f25611922b6dba3438cb263c40713d86438857c3b195ffcc",
+      "sha256": "3dde1e9c5f2ef9f4f25611922b6dba3438cb263c40713d86438857c3b195ffcc",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/references/interop-model.md",
+      "destination_path": ".agent/ibm-i-file-spec/references/interop-model.md",
+      "upstream_sha256": "60122a1fd6a2ac78efcb717b56cb44f240c1141309432974539c4c3b9180d4ee",
+      "sha256": "60122a1fd6a2ac78efcb717b56cb44f240c1141309432974539c4c3b9180d4ee",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/references/json-schema.md",
+      "destination_path": ".agent/ibm-i-file-spec/references/json-schema.md",
+      "upstream_sha256": "f658323c64af15b6eebf2235d074b78addf447924e84e8b5061f6fcfb0524cd7",
+      "sha256": "f658323c64af15b6eebf2235d074b78addf447924e84e8b5061f6fcfb0524cd7",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/references/section-guide.md",
+      "destination_path": ".agent/ibm-i-file-spec/references/section-guide.md",
+      "upstream_sha256": "7d71397f21d8490c1e5e52669a4e33983585e5fdf4f0601b1449a52e216792cb",
+      "sha256": "7d71397f21d8490c1e5e52669a4e33983585e5fdf4f0601b1449a52e216792cb",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/references/tier-guide.md",
+      "destination_path": ".agent/ibm-i-file-spec/references/tier-guide.md",
+      "upstream_sha256": "f9bdcfb9f6e00955a96df8c9446eed049850faaf1edf28c40296e0f1a7c3f0fe",
+      "sha256": "f9bdcfb9f6e00955a96df8c9446eed049850faaf1edf28c40296e0f1a7c3f0fe",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-file-spec/references/validation-rules.md",
+      "destination_path": ".agent/ibm-i-file-spec/references/validation-rules.md",
+      "upstream_sha256": "66dad9e813e6658a02fa5bf63d2f64a4cd4bd4146fbba8cf24191de4189b910f",
+      "sha256": "66dad9e813e6658a02fa5bf63d2f64a4cd4bd4146fbba8cf24191de4189b910f",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-functional-spec/SKILL.md",
+      "destination_path": ".agent/ibm-i-functional-spec/SKILL.md",
+      "upstream_sha256": "89ad4f8ddfdcd8d89861ece1949d130b5f211ece2ce0e929e1df70d5ae703ce1",
+      "sha256": "89ad4f8ddfdcd8d89861ece1949d130b5f211ece2ce0e929e1df70d5ae703ce1",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-functional-spec/examples/sample-enhancement.md",
+      "destination_path": ".agent/ibm-i-functional-spec/examples/sample-enhancement.md",
+      "upstream_sha256": "94e306ecc7b101280225d3e0a8f03d5b7858ef69e7c902ffd7144bfb981c6936",
+      "sha256": "94e306ecc7b101280225d3e0a8f03d5b7858ef69e7c902ffd7144bfb981c6936",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-functional-spec/examples/sample-lite.md",
+      "destination_path": ".agent/ibm-i-functional-spec/examples/sample-lite.md",
+      "upstream_sha256": "4c4a0cb3dd20bbf8c5f5503a9802f4431f84661fa0c824518e7f2dcdb0ead4ad",
+      "sha256": "4c4a0cb3dd20bbf8c5f5503a9802f4431f84661fa0c824518e7f2dcdb0ead4ad",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-functional-spec/examples/sample-new-function.md",
+      "destination_path": ".agent/ibm-i-functional-spec/examples/sample-new-function.md",
+      "upstream_sha256": "a21dc6db5e893fcb2788be215ba2c0dce5f12243ca75a10fac88b7efbc007fdf",
+      "sha256": "a21dc6db5e893fcb2788be215ba2c0dce5f12243ca75a10fac88b7efbc007fdf",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-functional-spec/references/section-guide.md",
+      "destination_path": ".agent/ibm-i-functional-spec/references/section-guide.md",
+      "upstream_sha256": "34613d74b7240884bcb3f95c4ff4ff546a55d08a8e962187afd764036a0cd7a7",
+      "sha256": "34613d74b7240884bcb3f95c4ff4ff546a55d08a8e962187afd764036a0cd7a7",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-functional-spec/references/tier-guide.md",
+      "destination_path": ".agent/ibm-i-functional-spec/references/tier-guide.md",
+      "upstream_sha256": "8afd459b9955a782fd0917b9102fb30c77abb1ec0a61af5d4bb31232a0b8cd47",
+      "sha256": "8afd459b9955a782fd0917b9102fb30c77abb1ec0a61af5d4bb31232a0b8cd47",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-impact-analyzer/SKILL.md",
+      "destination_path": ".agent/ibm-i-impact-analyzer/SKILL.md",
+      "upstream_sha256": "7e3f5df6d4082795fd6a7ba925f6c004e13ed5b4b64af9b307f96bdce726f588",
+      "sha256": "7e3f5df6d4082795fd6a7ba925f6c004e13ed5b4b64af9b307f96bdce726f588",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-program-analyzer/SKILL.md",
+      "destination_path": ".agent/ibm-i-program-analyzer/SKILL.md",
+      "upstream_sha256": "a9158140e770867245c0638897b75d488e713341da6b397475c3924910cb4455",
+      "sha256": "a9158140e770867245c0638897b75d488e713341da6b397475c3924910cb4455",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-program-spec/SKILL.md",
+      "destination_path": ".agent/ibm-i-program-spec/SKILL.md",
+      "upstream_sha256": "3547378530447aa3e701ec8cfb4397fc262468fa4baa3526efd159a6ee5f3106",
+      "sha256": "3547378530447aa3e701ec8cfb4397fc262468fa4baa3526efd159a6ee5f3106",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-program-spec/ibm-i-program-spec.skill",
+      "destination_path": ".agent/ibm-i-program-spec/ibm-i-program-spec.skill",
+      "upstream_sha256": "57bef0ee2f99b69b5e796339ebd75e5eeaffd46f7b3fc4e4ecc17dc9f9758570",
+      "sha256": "57bef0ee2f99b69b5e796339ebd75e5eeaffd46f7b3fc4e4ecc17dc9f9758570",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-program-spec/sample-clle-spec.md",
+      "destination_path": ".agent/ibm-i-program-spec/sample-clle-spec.md",
+      "upstream_sha256": "40b83e33b772ae091ce547d40766d5a36a9a9613be65868f437f2ad72b2a0db7",
+      "sha256": "40b83e33b772ae091ce547d40766d5a36a9a9613be65868f437f2ad72b2a0db7",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-program-spec/sample-lite-spec.md",
+      "destination_path": ".agent/ibm-i-program-spec/sample-lite-spec.md",
+      "upstream_sha256": "2c7c3c8f58b942d9a7cbb76dda66ef5ae7ee39a8fc54f9a4e8e618636d836149",
+      "sha256": "2c7c3c8f58b942d9a7cbb76dda66ef5ae7ee39a8fc54f9a4e8e618636d836149",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-program-spec/sample-rpgle-spec.md",
+      "destination_path": ".agent/ibm-i-program-spec/sample-rpgle-spec.md",
+      "upstream_sha256": "ead03c01bed205f63526d23ceddf3088ec3fb5160db7ac45e5c05f101c3c5bf0",
+      "sha256": "ead03c01bed205f63526d23ceddf3088ec3fb5160db7ac45e5c05f101c3c5bf0",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-program-spec/section-guide.md",
+      "destination_path": ".agent/ibm-i-program-spec/section-guide.md",
+      "upstream_sha256": "3942dc3da5e9011ac486d83785b3f9a4809cc8a13f6bf2de2733be3d2cb1e940",
+      "sha256": "3942dc3da5e9011ac486d83785b3f9a4809cc8a13f6bf2de2733be3d2cb1e940",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-program-spec/tier-guide.md",
+      "destination_path": ".agent/ibm-i-program-spec/tier-guide.md",
+      "upstream_sha256": "77ec3ea16e72e43eda34ad099f3e808da0f78401d9398f684ca0c1ef07a87d7b",
+      "sha256": "77ec3ea16e72e43eda34ad099f3e808da0f78401d9398f684ca0c1ef07a87d7b",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-program-spec/v25-upgrade-analysis.md",
+      "destination_path": ".agent/ibm-i-program-spec/v25-upgrade-analysis.md",
+      "upstream_sha256": "3f469efc75bb333871fe6854bd45644ce6d56c1a32dbd400db8b718bc563dfa5",
+      "sha256": "3f469efc75bb333871fe6854bd45644ce6d56c1a32dbd400db8b718bc563dfa5",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-requirement-normalizer/SKILL.md",
+      "destination_path": ".agent/ibm-i-requirement-normalizer/SKILL.md",
+      "upstream_sha256": "86978fab3d09d0fe3ac2a2d6c8ecbc29c5c220f526a9ad77a1baff585e9357b3",
+      "sha256": "86978fab3d09d0fe3ac2a2d6c8ecbc29c5c220f526a9ad77a1baff585e9357b3",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-requirement-normalizer/examples/sample-normalization.md",
+      "destination_path": ".agent/ibm-i-requirement-normalizer/examples/sample-normalization.md",
+      "upstream_sha256": "04f7f97760fa6ae45f7363316777aa2ff468782856369ff0ab5fbb7b37c656cd",
+      "sha256": "04f7f97760fa6ae45f7363316777aa2ff468782856369ff0ab5fbb7b37c656cd",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-spec-reviewer/SKILL.md",
+      "destination_path": ".agent/ibm-i-spec-reviewer/SKILL.md",
+      "upstream_sha256": "775b49f3db7d37f1ba8d3c4381aa98436aa541bf0073f951351cbaa6f479b5b2",
+      "sha256": "775b49f3db7d37f1ba8d3c4381aa98436aa541bf0073f951351cbaa6f479b5b2",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-spec-reviewer/examples/sample-spec-review.md",
+      "destination_path": ".agent/ibm-i-spec-reviewer/examples/sample-spec-review.md",
+      "upstream_sha256": "de15dc3926d362fe2a868eb1028682ab3192b8297a30a9d094000286c775f5b7",
+      "sha256": "de15dc3926d362fe2a868eb1028682ab3192b8297a30a9d094000286c775f5b7",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-technical-design/SKILL.md",
+      "destination_path": ".agent/ibm-i-technical-design/SKILL.md",
+      "upstream_sha256": "3aa29fecb5c3d07ae90779d98dc38cf7232066f299bf030f7c934fe173218124",
+      "sha256": "3aa29fecb5c3d07ae90779d98dc38cf7232066f299bf030f7c934fe173218124",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-technical-design/examples/sample-enhancement-design.md",
+      "destination_path": ".agent/ibm-i-technical-design/examples/sample-enhancement-design.md",
+      "upstream_sha256": "ea013495ea134ddaddb2a973cc8c6fd97eb5a0adc3db01d0b6a5210641954a5a",
+      "sha256": "ea013495ea134ddaddb2a973cc8c6fd97eb5a0adc3db01d0b6a5210641954a5a",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-technical-design/examples/sample-lite-design.md",
+      "destination_path": ".agent/ibm-i-technical-design/examples/sample-lite-design.md",
+      "upstream_sha256": "7e391932c3ec1d9fbebda6aa49638ee3ef4a26c418c4a96ee5a1e797f1604a0a",
+      "sha256": "7e391932c3ec1d9fbebda6aa49638ee3ef4a26c418c4a96ee5a1e797f1604a0a",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-technical-design/examples/sample-rpgle-design.md",
+      "destination_path": ".agent/ibm-i-technical-design/examples/sample-rpgle-design.md",
+      "upstream_sha256": "b1ad4d05655e2cf3b875d65c83c4cb5c804d9e92a6c8ffd23478907d2857a957",
+      "sha256": "b1ad4d05655e2cf3b875d65c83c4cb5c804d9e92a6c8ffd23478907d2857a957",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-technical-design/references/section-guide.md",
+      "destination_path": ".agent/ibm-i-technical-design/references/section-guide.md",
+      "upstream_sha256": "a03de5f5b0648278f1cdd9d111ff96ff98e829c0e6361b4ca3ff15efe20d35c9",
+      "sha256": "a03de5f5b0648278f1cdd9d111ff96ff98e829c0e6361b4ca3ff15efe20d35c9",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-technical-design/references/tier-guide.md",
+      "destination_path": ".agent/ibm-i-technical-design/references/tier-guide.md",
+      "upstream_sha256": "b4715f39578f7d2bbbf4b92377d33b3989bdc050557764b6bc69f1a378f4e6ef",
+      "sha256": "b4715f39578f7d2bbbf4b92377d33b3989bdc050557764b6bc69f1a378f4e6ef",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/SKILL.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/SKILL.md",
+      "upstream_sha256": "c8ea75201bd1e50e092c2daea400d82509af087acc5beac169497242dc2f9df7",
+      "sha256": "c8ea75201bd1e50e092c2daea400d82509af087acc5beac169497242dc2f9df7",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/examples/sample-batch-rpgle-test-scaffold.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/examples/sample-batch-rpgle-test-scaffold.md",
+      "upstream_sha256": "615e47ccb5b8e3526c2452066923b3091758cc690aa4156776b03c11033cdf45",
+      "sha256": "615e47ccb5b8e3526c2452066923b3091758cc690aa4156776b03c11033cdf45",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/examples/sample-cl-wrapper-test-scaffold.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/examples/sample-cl-wrapper-test-scaffold.md",
+      "upstream_sha256": "c87f8ed2b7be2558489bc621f837a094584543c43af441276e14fec89bce596a",
+      "sha256": "c87f8ed2b7be2558489bc621f837a094584543c43af441276e14fec89bce596a",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/examples/sample-interactive-rpgle-test-scaffold.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/examples/sample-interactive-rpgle-test-scaffold.md",
+      "upstream_sha256": "98e6b46c8e70d084a1fcb627a95265006780e6e68523403c32e80464979155f9",
+      "sha256": "98e6b46c8e70d084a1fcb627a95265006780e6e68523403c32e80464979155f9",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/examples/sample-service-program-test-scaffold.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/examples/sample-service-program-test-scaffold.md",
+      "upstream_sha256": "9323688edb49ac9fdd22e1e812f952a04b58d64fa325d66c58fe01323d5dce65",
+      "sha256": "9323688edb49ac9fdd22e1e812f952a04b58d64fa325d66c58fe01323d5dce65",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-01-checks.txt",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-01-checks.txt",
+      "upstream_sha256": "531568af74aa4df19ebb83c72d8a9b495528601116b4e58dbf54ddfdb268bf93",
+      "sha256": "531568af74aa4df19ebb83c72d8a9b495528601116b4e58dbf54ddfdb268bf93",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-01-input.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-01-input.md",
+      "upstream_sha256": "6946db81d0472224a6b214e514a8508501cf8fe1efcfc387ec5b084f1216fa42",
+      "sha256": "6946db81d0472224a6b214e514a8508501cf8fe1efcfc387ec5b084f1216fa42",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-02-checks.txt",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-02-checks.txt",
+      "upstream_sha256": "ba079abeb5c207b63159c9cfe2292ebf0d792f2f7e2637e5aed44dec3e9acf0d",
+      "sha256": "ba079abeb5c207b63159c9cfe2292ebf0d792f2f7e2637e5aed44dec3e9acf0d",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-02-input.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-02-input.md",
+      "upstream_sha256": "6e26ce086686ffdb1859260a8d8820ffedc774bfb9357e9b68e0370c43bc9a67",
+      "sha256": "6e26ce086686ffdb1859260a8d8820ffedc774bfb9357e9b68e0370c43bc9a67",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-03-checks.txt",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-03-checks.txt",
+      "upstream_sha256": "0e87eddcc633f94c6dd4fd16a62f45d73176807ea8d0f26d67481709c8e600ba",
+      "sha256": "0e87eddcc633f94c6dd4fd16a62f45d73176807ea8d0f26d67481709c8e600ba",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-03-input.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-03-input.md",
+      "upstream_sha256": "350113c4850b92a7dbaeb14549c075c902e19c630028d9b7266548eb48b7b10b",
+      "sha256": "350113c4850b92a7dbaeb14549c075c902e19c630028d9b7266548eb48b7b10b",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-04-checks.txt",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-04-checks.txt",
+      "upstream_sha256": "ad2a38299a9d1052041899337a663e845e218e40d26401965e823231dd556485",
+      "sha256": "ad2a38299a9d1052041899337a663e845e218e40d26401965e823231dd556485",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-04-input.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-04-input.md",
+      "upstream_sha256": "b6b90bdbc6e36fd4299d1113a0463110fddc36359bf33cbcb2a248af1a82c4af",
+      "sha256": "b6b90bdbc6e36fd4299d1113a0463110fddc36359bf33cbcb2a248af1a82c4af",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-05-checks.txt",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-05-checks.txt",
+      "upstream_sha256": "335788cfb69b87476ee65ab7e4ce956328052f419d300228a39c41d547c0ae10",
+      "sha256": "335788cfb69b87476ee65ab7e4ce956328052f419d300228a39c41d547c0ae10",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-05-input.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-05-input.md",
+      "upstream_sha256": "b5d4409e0c650b9e8efabad37ff8e39451742111209d9773dcad7b87cbfae87a",
+      "sha256": "b5d4409e0c650b9e8efabad37ff8e39451742111209d9773dcad7b87cbfae87a",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-06-checks.txt",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-06-checks.txt",
+      "upstream_sha256": "f689691cda6cfa478c7b9e4e41d37f4b6f243331465430bee5c71977d07d532f",
+      "sha256": "f689691cda6cfa478c7b9e4e41d37f4b6f243331465430bee5c71977d07d532f",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/cases/tc-ts-06-input.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/cases/tc-ts-06-input.md",
+      "upstream_sha256": "c958ea9bb3ce83c127f1ae9f4df2322548f969334a350fa654498cdf5b854b7f",
+      "sha256": "c958ea9bb3ce83c127f1ae9f4df2322548f969334a350fa654498cdf5b854b7f",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/results/.gitkeep",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/results/.gitkeep",
+      "upstream_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/runner.sh",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/runner.sh",
+      "upstream_sha256": "f6d228c80b732b24c8f72ad1c26c05dd553a2038c7872de119e15cd9836ae24b",
+      "sha256": "81eb08044f53c40caf24036833e793de263b9871ac941370911c0f02cdab75f3",
+      "mode": "0o775",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-test-scaffold/tests/test-harness.md",
+      "destination_path": ".agent/ibm-i-test-scaffold/tests/test-harness.md",
+      "upstream_sha256": "35232ee987362153bd3202cfabfe61beee6a156b85273d6adb058946e85e2605",
+      "sha256": "35232ee987362153bd3202cfabfe61beee6a156b85273d6adb058946e85e2605",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-ut-plan-generator/SKILL.md",
+      "destination_path": ".agent/ibm-i-ut-plan-generator/SKILL.md",
+      "upstream_sha256": "c804a0e0d63e53bdeb4f2b4912a1a9aee61087e1942ea5e1a5421fbcbaa70afe",
+      "sha256": "c804a0e0d63e53bdeb4f2b4912a1a9aee61087e1942ea5e1a5421fbcbaa70afe",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/SKILL.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/SKILL.md",
+      "upstream_sha256": "a4bece67bc8ff7a23d51151c9d316fe6225dda0c67c1b65535749d89df293514",
+      "sha256": "a4bece67bc8ff7a23d51151c9d316fe6225dda0c67c1b65535749d89df293514",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/examples/fixtures/fixture-td-customer-contact.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/examples/fixtures/fixture-td-customer-contact.md",
+      "upstream_sha256": "86923f5ce3813d22951ef8c6aae08b900836fd793685e170476a454031be6233",
+      "sha256": "86923f5ce3813d22951ef8c6aae08b900836fd793685e170476a454031be6233",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/examples/sample-task-md-file-enhancement.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/examples/sample-task-md-file-enhancement.md",
+      "upstream_sha256": "0cf0d581cac0b62a0764274dd5c358498bdddeedd74baf92141748a535026e14",
+      "sha256": "0be6db9cf272f2d8bbbb6a2c85ec0680ca7d263dd99d4028057743a9e4c5a061",
+      "mode": "0o664",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/examples/sample-task-md-new-program.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/examples/sample-task-md-new-program.md",
+      "upstream_sha256": "2f379e8fff1296dbfe42391afcdb9be7ffb13f979e611dc3013ce65e67611311",
+      "sha256": "e2312b01a12067683d8768e109e283783055a19f1a2fc0e086733f64042285d2",
+      "mode": "0o664",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/examples/sample-task-md-program-enhancement.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/examples/sample-task-md-program-enhancement.md",
+      "upstream_sha256": "41fdc8b214ae4237a7c5ea8f341295e4419bc3fb0f7f00b1a71f405b84b43f5d",
+      "sha256": "4f5f4ea527baa1a69b27bb45dba80122e1fcb0119c54e16660c780c5a8984ea9",
+      "mode": "0o664",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/examples/sample-task-md-td-driven-with-file.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/examples/sample-task-md-td-driven-with-file.md",
+      "upstream_sha256": "1119df5b8ffc4f5e6e71625666ba125e0dc83cc238d4d3b8cd3ff676d8fae13a",
+      "sha256": "905e0b2aaf42416171532123fa35122266ae762cd12515076031823761c4b4a3",
+      "mode": "0o664",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/examples/sample-task-md-td-driven.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/examples/sample-task-md-td-driven.md",
+      "upstream_sha256": "36b11fad2cd34634dff16dcefe453e7a27e35a1c42ea3dd65b34517de6113052",
+      "sha256": "405efa1bc28b407983de2bdf2abaae9a1b4cc3f039d4d2ed4035c7985446a7ed",
+      "mode": "0o664",
+      "local_adaptation": "project path references or legacy CLI fallback updated"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/references/mini-requirement-template.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/references/mini-requirement-template.md",
+      "upstream_sha256": "e718d788989486474129988ee707c6429f37fc9e19895fcb98128657ed2c46b4",
+      "sha256": "e718d788989486474129988ee707c6429f37fc9e19895fcb98128657ed2c46b4",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/references/task-md-execution-protocol.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/references/task-md-execution-protocol.md",
+      "upstream_sha256": "95340fc843bd0eee8615d5bbd1ad82e6cf48c7b2987f0c73201764677f0d301a",
+      "sha256": "95340fc843bd0eee8615d5bbd1ad82e6cf48c7b2987f0c73201764677f0d301a",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "skill_tree",
+      "source_relative_path": "ibm-i-workflow-orchestrator/references/task-md-template.md",
+      "destination_path": ".agent/ibm-i-workflow-orchestrator/references/task-md-template.md",
+      "upstream_sha256": "e3c9f01cc3f11efaaa1f700e5881cb3ba9f2ca587b855a597e3fd8e6fd394296",
+      "sha256": "e3c9f01cc3f11efaaa1f700e5881cb3ba9f2ca587b855a597e3fd8e6fd394296",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    },
+    {
+      "source_scope": "repository_root",
+      "source_relative_path": "LICENSE",
+      "destination_path": ".agent/UPSTREAM-LICENSE",
+      "upstream_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "mode": "0o664",
+      "local_adaptation": "none"
+    }
+  ]
+}

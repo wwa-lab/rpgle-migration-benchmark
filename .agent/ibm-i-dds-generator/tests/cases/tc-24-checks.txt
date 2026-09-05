@@ -1,0 +1,10 @@
+source_type=PRTF
+type=happy
+# PRTF with spacing — SPACEB(1) on detail, SPACEB(2) on total
+must_contain=SPACEB(1)
+must_contain=SPACEB(2)
+must_contain=R SPCDTL
+must_contain=R SPCTOT
+must_contain=DTLVAL
+must_contain=TOTVAL
+must_contain=PAGESIZE(66 132)

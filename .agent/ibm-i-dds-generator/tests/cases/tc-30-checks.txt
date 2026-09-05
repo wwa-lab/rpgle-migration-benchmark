@@ -1,0 +1,6 @@
+source_type=LF
+type=rejection
+# Must reject LF with missing basedOnPhysicalFiles — no PFILE available
+must_contain=basedOn
+must_not_contain=K CUSTID
+must_not_contain=R NOPFR

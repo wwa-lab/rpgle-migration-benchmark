@@ -1,0 +1,35 @@
+     A* Synthetic static benchmark. Object SETLHDPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R SETLHDR
+     A            SEID          48A         CCSID(37)
+     A                                      TEXT('SEID')
+     A            SEKIND         1A         CCSID(37)
+     A                                      TEXT('SEKIND')
+     A            SESHIP        20A         CCSID(37)
+     A                                      TEXT('SESHIP')
+     A            SERETURN      20A         CCSID(37)
+     A                                      TEXT('SERETURN')
+     A            SEORIG        48A         CCSID(37)
+     A                                      TEXT('SEORIG')
+     A            SEORDER       20A         CCSID(37)
+     A                                      TEXT('SEORDER')
+     A            SECREATED      8A         CCSID(37)
+     A                                      TEXT('SECREATED')
+     A            SESTATE        8A         CCSID(37)
+     A                                      TEXT('SESTATE')
+     A            SEAMOUNT      15P 2
+     A                                      TEXT('SEAMOUNT')
+     A            SEFIRSTDAY     8A         CCSID(37)
+     A                                      TEXT('SEFIRSTDAY')
+     A            SEATTEMPT      9P 0
+     A                                      TEXT('SEATTEMPT')
+     A            SELASTMSG     80A         CCSID(37)
+     A                                      TEXT('SELASTMSG')
+     A            SENLINE        5P 0
+     A                                      TEXT('SENLINE')
+     A            SERETRY        1A         CCSID(37)
+     A                                      TEXT('SERETRY')
+     A            SEREASON     120A         CCSID(37)
+     A                                      TEXT('SEREASON')
+     A          K SEID

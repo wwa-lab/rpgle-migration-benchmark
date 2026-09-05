@@ -1,0 +1,26 @@
+     A* Synthetic static benchmark. Object SETLDTPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R SETLDTR
+     A            SLSETTL       48A         CCSID(37)
+     A                                      TEXT('SLSETTL')
+     A            SLLINE         5P 0
+     A                                      TEXT('SLLINE')
+     A            SLSHIP        20A         CCSID(37)
+     A                                      TEXT('SLSHIP')
+     A            SLSHLINE       5P 0
+     A                                      TEXT('SLSHLINE')
+     A            SLRETURN      20A         CCSID(37)
+     A                                      TEXT('SLRETURN')
+     A            SLRTLINE       5P 0
+     A                                      TEXT('SLRTLINE')
+     A            SLORDER       20A         CCSID(37)
+     A                                      TEXT('SLORDER')
+     A            SLORDLINE      5P 0
+     A                                      TEXT('SLORDLINE')
+     A            SLQTY          9P 0
+     A                                      TEXT('SLQTY')
+     A            SLAMOUNT      15P 2
+     A                                      TEXT('SLAMOUNT')
+     A          K SLSETTL
+     A          K SLLINE

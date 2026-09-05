@@ -1,0 +1,10 @@
+     * Shared result constants.
+     DRCOK             C                   CONST('0000')
+     DRCWAIT           C                   CONST('0010')
+     DRCDUP            C                   CONST('0020')
+     DRCREJECT         C                   CONST('1000')
+     DRCCONFLICT       C                   CONST('1100')
+     DRCDATA           C                   CONST('2000')
+     DRCLOCAL          C                   CONST('3000')
+     DRCSTOP           C                   CONST('9000')
+     DABI              C                   CONST('0001')

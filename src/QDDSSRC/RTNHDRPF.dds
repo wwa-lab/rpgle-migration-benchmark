@@ -1,0 +1,19 @@
+     A* Synthetic static benchmark. Object RTNHDRPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R RTNHDRR
+     A            RHRETURN      20A         CCSID(37)
+     A                                      TEXT('RHRETURN')
+     A            RHORDER       20A         CCSID(37)
+     A                                      TEXT('RHORDER')
+     A            RHDAY          8A         CCSID(37)
+     A                                      TEXT('RHDAY')
+     A            RHSRC         12A         CCSID(37)
+     A                                      TEXT('RHSRC')
+     A            RHREQ         20A         CCSID(37)
+     A                                      TEXT('RHREQ')
+     A            RHNLINE        5P 0
+     A                                      TEXT('RHNLINE')
+     A            RHAMOUNT      15P 2
+     A                                      TEXT('RHAMOUNT')
+     A          K RHRETURN

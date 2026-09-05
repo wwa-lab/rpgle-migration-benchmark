@@ -1,0 +1,33 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CUSTREKY-20260404-01",
+    "specLevel": "L2",
+    "fileType": "LF",
+    "fileName": "CUSTNML",
+    "description": "Customer by name lookup"
+  },
+  "basedOnPhysicalFiles": ["CUSTMAST"],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CUSTR",
+      "purpose": "Customer record rekeyed by name",
+      "fieldCount": 0
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": []
+  },
+  "fieldSelectionMapping": {
+    "mode": "allIncluded"
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "CUSTNM", "fieldRef": "FLD-02", "sortDirection": "ASCEND" }
+    ]
+  }
+}

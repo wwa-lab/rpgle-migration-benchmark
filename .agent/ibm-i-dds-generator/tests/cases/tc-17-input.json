@@ -1,0 +1,66 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CUSTRNM-20260404-01",
+    "specLevel": "L2",
+    "fileType": "LF",
+    "fileName": "CUSTRNM",
+    "description": "Customer with renamed key field"
+  },
+  "basedOnPhysicalFiles": ["CUSTMAST"],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CUSTRNMR",
+      "purpose": "Customer record with renamed field",
+      "fieldCount": 2
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "CUSKEY",
+        "type": null,
+        "length": null,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Customer key (renamed from CUSTID)",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": ["RENAME(CUSTID)"]
+      },
+      {
+        "fieldId": "FLD-02",
+        "fieldName": "CUSTNM",
+        "type": null,
+        "length": null,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Customer name",
+        "editCode": null,
+        "columnHeading": null,
+        "ddsKeywords": []
+      }
+    ]
+  },
+  "fieldSelectionMapping": {
+    "mode": "explicit",
+    "fields": [
+      { "fieldRef": "FLD-01", "action": "Rename", "originalName": "CUSTID", "newName": "CUSKEY" },
+      { "fieldRef": "FLD-02", "action": "Include" }
+    ]
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "CUSKEY", "fieldRef": "FLD-01", "sortDirection": "ASCEND" }
+    ]
+  }
+}

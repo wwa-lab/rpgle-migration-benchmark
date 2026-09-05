@@ -1,0 +1,492 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "SETLHDPF-20260905-01",
+    "specLevel": "L3",
+    "specLevelName": "Full",
+    "version": "1.0",
+    "status": "Draft",
+    "changeType": "New File",
+    "fileType": "PF",
+    "fileName": "SETLHDPF",
+    "library": null,
+    "sourceFile": "QDDSSRC",
+    "versionOf": null,
+    "description": "正反向结算处理状态与首次成功事实",
+    "outputMode": "Full Spec",
+    "sourceTD": "TD-20260905-01 Objects Affected SETLHDPF",
+    "provenance": "合成设定；依据用户授权补齐。库与部署不属于本轮。"
+  },
+  "amendmentHistory": [
+    {
+      "version": "1.0",
+      "date": "2026-09-05",
+      "author": "Codex",
+      "description": "首次合成文件规格"
+    }
+  ],
+  "fileOverview": {
+    "purpose": "正反向结算处理状态与首次成功事实",
+    "notes": "",
+    "synthetic": true
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "SETLHDR",
+      "purpose": "正反向结算处理状态与首次成功事实",
+      "fieldCount": 15,
+      "changeTag": "NEW"
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldName": "SEID",
+        "type": "A",
+        "length": 48,
+        "decimals": null,
+        "text": "正向 S:发货 或反向 A:退货:原发货",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SEID",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-01"
+      },
+      {
+        "fieldName": "SEKIND",
+        "type": "A",
+        "length": 1,
+        "decimals": null,
+        "text": "P 正向 / R 反向",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SEKIND",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-02"
+      },
+      {
+        "fieldName": "SESHIP",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "原发货，正反向均必填",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SESHIP",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-03"
+      },
+      {
+        "fieldName": "SERETURN",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "反向来源退货，正向为空",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SERETURN",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-04"
+      },
+      {
+        "fieldName": "SEORIG",
+        "type": "A",
+        "length": 48,
+        "decimals": null,
+        "text": "反向的原正向结算，正向为空",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SEORIG",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-05"
+      },
+      {
+        "fieldName": "SEORDER",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "原订单",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SEORDER",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-06"
+      },
+      {
+        "fieldName": "SECREATED",
+        "type": "A",
+        "length": 8,
+        "decimals": null,
+        "text": "创建业务日",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SECREATED",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-07"
+      },
+      {
+        "fieldName": "SESTATE",
+        "type": "A",
+        "length": 8,
+        "decimals": null,
+        "text": "NEW / SENT / OK / FAIL / UNKNOWN",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SESTATE",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-08"
+      },
+      {
+        "fieldName": "SEAMOUNT",
+        "type": "P",
+        "length": 15,
+        "decimals": 2,
+        "text": "结算金额，正反向都存非负数",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SEAMOUNT",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。不得溢出或截断；正数及业务范围由程序校验。",
+        "fieldId": "FLD-09"
+      },
+      {
+        "fieldName": "SEFIRSTDAY",
+        "type": "A",
+        "length": 8,
+        "decimals": null,
+        "text": "首次认定成功日；未成功为空格",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SEFIRSTDAY",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-10"
+      },
+      {
+        "fieldName": "SEATTEMPT",
+        "type": "P",
+        "length": 9,
+        "decimals": 0,
+        "text": "本业务发送尝试号，初值 1",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SEATTEMPT",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。不得溢出或截断；正数及业务范围由程序校验。",
+        "fieldId": "FLD-11"
+      },
+      {
+        "fieldName": "SELASTMSG",
+        "type": "A",
+        "length": 80,
+        "decimals": null,
+        "text": "当前发送或核实消息",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SELASTMSG",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-12"
+      },
+      {
+        "fieldName": "SENLINE",
+        "type": "P",
+        "length": 5,
+        "decimals": 0,
+        "text": "结算明细数",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SENLINE",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。不得溢出或截断；正数及业务范围由程序校验。",
+        "fieldId": "FLD-13"
+      },
+      {
+        "fieldName": "SERETRY",
+        "type": "A",
+        "length": 1,
+        "decimals": null,
+        "text": "是否已有明确可重试证据 Y/N",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SERETRY",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-14"
+      },
+      {
+        "fieldName": "SEREASON",
+        "type": "A",
+        "length": 120,
+        "decimals": null,
+        "text": "最近有效结果说明",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "SEREASON",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-15"
+      }
+    ]
+  },
+  "keyDefinition": {
+    "unique": true,
+    "accessPath": "Keyed",
+    "keys": [
+      {
+        "sequence": 1,
+        "fieldName": "SEID",
+        "fieldRef": "FLD-01",
+        "sortDirection": "ASCEND",
+        "changeTag": "NEW",
+        "notes": null
+      }
+    ]
+  },
+  "businessRules": [
+    {
+      "ruleId": "BR-01",
+      "description": "本文件完整键唯一；前缀可以返回多条记录。",
+      "changeTag": "NEW",
+      "previousDescription": null,
+      "relatedFieldRefs": [
+        "FLD-01"
+      ],
+      "relatedConstraintRefs": [
+        "CST-01"
+      ],
+      "notes": "文件局部编号，引用时须带 specId；不替代 FS 的 BR-01。"
+    }
+  ],
+  "relatedObjects": [
+    {
+      "objectName": "ORDMAIN",
+      "objectType": "PGM",
+      "relationship": "Read",
+      "programType": "RPGLE",
+      "specRef": "ORDMAIN-20260905-01",
+      "notes": "具体字段动作见程序规格"
+    },
+    {
+      "objectName": "ORDSETTL",
+      "objectType": "PGM",
+      "relationship": "Read / Write",
+      "programType": "RPGLE",
+      "specRef": "ORDSETTL-20260905-01",
+      "notes": "具体字段动作见程序规格"
+    }
+  ],
+  "openQuestions": [],
+  "processingConsiderations": {
+    "journaling": "后续参与承诺控制的 PF 需配置；本轮不创建日志或运行",
+    "authority": "N/A — 不配置权限",
+    "ccsid": "A 字段显式 37；演示文本限可表达字符",
+    "recordLength": 398,
+    "memberPolicy": "Single-member",
+    "additionalNotes": "未指定 DFT；程序写入前显式初始化全部字段。外键、取值范围、日期有效性及跨记录约束由程序保证，不能把未定义的 DDS 校验当作已存在。"
+  },
+  "validationRules": {
+    "structural": [
+      {
+        "ruleCode": "STRUCT-001",
+        "description": "每个字段类型及长度齐全",
+        "check": "每个字段类型及长度齐全",
+        "severity": "ERROR"
+      },
+      {
+        "ruleCode": "STRUCT-002",
+        "description": "P 字段精度明确",
+        "check": "P 字段精度明确",
+        "severity": "ERROR"
+      },
+      {
+        "ruleCode": "STRUCT-003",
+        "description": "字段名长度不超过 10",
+        "check": "字段名长度不超过 10",
+        "severity": "ERROR"
+      },
+      {
+        "ruleCode": "STRUCT-009",
+        "description": "字段 ID 唯一",
+        "check": "字段 ID 唯一",
+        "severity": "ERROR"
+      }
+    ],
+    "crossField": [
+      {
+        "ruleCode": "XREF-001",
+        "description": "键引用存在",
+        "check": "keys.fieldName in fieldDefinitions",
+        "severity": "ERROR"
+      }
+    ],
+    "specSummaryAccuracy": [
+      {
+        "ruleCode": "SUM-001",
+        "description": "字段数正确",
+        "check": "totalFields = field count",
+        "severity": "ERROR"
+      }
+    ],
+    "sectionInclusion": [
+      {
+        "ruleCode": "SEC-001",
+        "description": "适用的必需章节完整",
+        "check": "L3 PF/LF sections",
+        "severity": "ERROR"
+      }
+    ],
+    "tierSpecific": [
+      {
+        "ruleCode": "TIER-001",
+        "description": "字段说明完整",
+        "check": "nonempty text",
+        "severity": "ERROR"
+      }
+    ]
+  },
+  "confidenceLevels": {
+    "methodology": "合成选择不等同真实系统验证。",
+    "sections": {
+      "fieldDefinitions": {
+        "level": "MEDIUM",
+        "notes": "授权合成定义"
+      },
+      "keyDefinition": {
+        "level": "HIGH",
+        "notes": "技术设计命名基线细化"
+      }
+    },
+    "overallConfidence": "MEDIUM"
+  },
+  "changeImpact": {
+    "classification": "additive",
+    "rationale": "全部为待生成新对象，无既有物理对象变更",
+    "impacts": [],
+    "recompilationRequired": false,
+    "recompilationNote": "N/A — 尚无程序对象"
+  },
+  "versionMetadata": {
+    "sourceDocuments": [
+      {
+        "documentType": "Technical Design",
+        "specId": "TD-20260905-01",
+        "version": "1.1"
+      }
+    ]
+  },
+  "specSummary": {
+    "totalFields": 15,
+    "totalRecordFormats": 1,
+    "totalKeyFields": 1,
+    "totalBusinessRules": 1,
+    "totalOpenQuestions": 0,
+    "newFields": 15,
+    "modifiedFields": 0,
+    "outputMode": "Full Spec",
+    "machineReadable": true,
+    "overallConfidence": "MEDIUM"
+  },
+  "constraints": [
+    {
+      "constraintId": "CST-01",
+      "constraintType": "UNIQUE",
+      "fields": [
+        "SEID"
+      ],
+      "fieldRefs": [
+        "FLD-01"
+      ],
+      "rule": "完整键唯一",
+      "referencedFile": null,
+      "referencedFileSpecRef": null,
+      "changeTag": "NEW",
+      "notes": "不声明 DDS 外键或 CHECK 约束"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+source_type=LF
+type=rejection
+# V2.0: LF is now supported, but this input is missing basedOnPhysicalFiles
+# Must reject due to missing PFILE
+# Accept either "basedOn" or "PFILE" in the rejection message
+must_contain_regex=(basedOn|PFILE|pfile|physical)
+must_not_contain=K CUSTNM

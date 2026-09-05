@@ -1,0 +1,639 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "INHDRPF-20260905-01",
+    "specLevel": "L3",
+    "specLevelName": "Full",
+    "version": "1.0",
+    "status": "Draft",
+    "changeType": "New File",
+    "fileType": "PF",
+    "fileName": "INHDRPF",
+    "library": null,
+    "sourceFile": "QDDSSRC",
+    "versionOf": null,
+    "description": "不可变的输入信封及原始业务头",
+    "outputMode": "Full Spec",
+    "sourceTD": "TD-20260905-01 Objects Affected INHDRPF",
+    "provenance": "合成设定；依据用户授权补齐。库与部署不属于本轮。"
+  },
+  "amendmentHistory": [
+    {
+      "version": "1.0",
+      "date": "2026-09-05",
+      "author": "Codex",
+      "description": "首次合成文件规格"
+    }
+  ],
+  "fileOverview": {
+    "purpose": "不可变的输入信封及原始业务头",
+    "notes": "数字和日期业务字段先以字符接收；物理批次与序号是载体约束，业务必填在程序内判断。",
+    "synthetic": true
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "INHDRR",
+      "purpose": "不可变的输入信封及原始业务头",
+      "fieldCount": 23,
+      "changeTag": "NEW"
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldName": "IHBATCH",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "原始批次",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHBATCH",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-01"
+      },
+      {
+        "fieldName": "IHSEQ",
+        "type": "P",
+        "length": 9,
+        "decimals": 0,
+        "text": "原始输入序号，1 起且批次内唯一",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHSEQ",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。不得溢出或截断；正数及业务范围由程序校验。",
+        "fieldId": "FLD-02"
+      },
+      {
+        "fieldName": "IHSRC",
+        "type": "A",
+        "length": 12,
+        "decimals": null,
+        "text": "业务来源，允许原始空值进入拒绝路径",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHSRC",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-03"
+      },
+      {
+        "fieldName": "IHREQ",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "请求标识",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHREQ",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-04"
+      },
+      {
+        "fieldName": "IHEVENT",
+        "type": "A",
+        "length": 8,
+        "decimals": null,
+        "text": "事件编码",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHEVENT",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-05"
+      },
+      {
+        "fieldName": "IHDAY",
+        "type": "A",
+        "length": 8,
+        "decimals": null,
+        "text": "原请求业务日",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHDAY",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-06"
+      },
+      {
+        "fieldName": "IHARRDAY",
+        "type": "A",
+        "length": 8,
+        "decimals": null,
+        "text": "到达日期，传输包装",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHARRDAY",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-07"
+      },
+      {
+        "fieldName": "IHARRTIME",
+        "type": "A",
+        "length": 6,
+        "decimals": null,
+        "text": "到达时刻，传输包装",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHARRTIME",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-08"
+      },
+      {
+        "fieldName": "IHORDER",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "订单身份",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHORDER",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-09"
+      },
+      {
+        "fieldName": "IHVERSION",
+        "type": "A",
+        "length": 9,
+        "decimals": null,
+        "text": "期望订单版本原文",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHVERSION",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-10"
+      },
+      {
+        "fieldName": "IHCUST",
+        "type": "A",
+        "length": 12,
+        "decimals": null,
+        "text": "客户",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHCUST",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-11"
+      },
+      {
+        "fieldName": "IHPART",
+        "type": "A",
+        "length": 1,
+        "decimals": null,
+        "text": "部分履约 Y/N",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHPART",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-12"
+      },
+      {
+        "fieldName": "IHSHIP",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "本次发货身份",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHSHIP",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-13"
+      },
+      {
+        "fieldName": "IHRETURN",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "本次退货身份",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHRETURN",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-14"
+      },
+      {
+        "fieldName": "IHSETTL",
+        "type": "A",
+        "length": 48,
+        "decimals": null,
+        "text": "被反馈或恢复的结算身份",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHSETTL",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-15"
+      },
+      {
+        "fieldName": "IHMSG",
+        "type": "A",
+        "length": 80,
+        "decimals": null,
+        "text": "关联出站消息身份",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHMSG",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-16"
+      },
+      {
+        "fieldName": "IHRESULT",
+        "type": "A",
+        "length": 8,
+        "decimals": null,
+        "text": "反馈结果",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHRESULT",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-17"
+      },
+      {
+        "fieldName": "IHACTION",
+        "type": "A",
+        "length": 8,
+        "decimals": null,
+        "text": "恢复类别",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHACTION",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-18"
+      },
+      {
+        "fieldName": "IHREFSRC",
+        "type": "A",
+        "length": 12,
+        "decimals": null,
+        "text": "被恢复请求来源",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHREFSRC",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-19"
+      },
+      {
+        "fieldName": "IHREFREQ",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "被恢复请求标识",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHREFREQ",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-20"
+      },
+      {
+        "fieldName": "IHACTOR",
+        "type": "A",
+        "length": 20,
+        "decimals": null,
+        "text": "操作者",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHACTOR",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-21"
+      },
+      {
+        "fieldName": "IHREASON",
+        "type": "A",
+        "length": 120,
+        "decimals": null,
+        "text": "处置原因或反馈说明",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHREASON",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-22"
+      },
+      {
+        "fieldName": "IHNLINE",
+        "type": "A",
+        "length": 5,
+        "decimals": null,
+        "text": "业务明细条数原文",
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": 37,
+        "editCode": null,
+        "editWord": null,
+        "columnHeading": "IHNLINE",
+        "ddsKeywords": [],
+        "changeTag": "NEW",
+        "changeNote": "合成定义",
+        "notes": "显式初始化；未指定 DFT。单字节演示字符集；仅 ASCII 可表达字符，日期为 YYYYMMDD，空格仅在可选关联中有效。",
+        "fieldId": "FLD-23"
+      }
+    ]
+  },
+  "keyDefinition": {
+    "unique": true,
+    "accessPath": "Keyed",
+    "keys": [
+      {
+        "sequence": 1,
+        "fieldName": "IHBATCH",
+        "fieldRef": "FLD-01",
+        "sortDirection": "ASCEND",
+        "changeTag": "NEW",
+        "notes": null
+      },
+      {
+        "sequence": 2,
+        "fieldName": "IHSEQ",
+        "fieldRef": "FLD-02",
+        "sortDirection": "ASCEND",
+        "changeTag": "NEW",
+        "notes": null
+      }
+    ]
+  },
+  "businessRules": [
+    {
+      "ruleId": "BR-01",
+      "description": "本文件完整键唯一；前缀可以返回多条记录。",
+      "changeTag": "NEW",
+      "previousDescription": null,
+      "relatedFieldRefs": [
+        "FLD-01",
+        "FLD-02"
+      ],
+      "relatedConstraintRefs": [
+        "CST-01"
+      ],
+      "notes": "文件局部编号，引用时须带 specId；不替代 FS 的 BR-01。"
+    }
+  ],
+  "relatedObjects": [
+    {
+      "objectName": "ORDMAIN",
+      "objectType": "PGM",
+      "relationship": "Read",
+      "programType": "RPGLE",
+      "specRef": "ORDMAIN-20260905-01",
+      "notes": "具体字段动作见程序规格"
+    }
+  ],
+  "openQuestions": [],
+  "processingConsiderations": {
+    "journaling": "后续参与承诺控制的 PF 需配置；本轮不创建日志或运行",
+    "authority": "N/A — 不配置权限",
+    "ccsid": "A 字段显式 37；演示文本限可表达字符",
+    "recordLength": 490,
+    "memberPolicy": "Single-member",
+    "additionalNotes": "未指定 DFT；程序写入前显式初始化全部字段。外键、取值范围、日期有效性及跨记录约束由程序保证，不能把未定义的 DDS 校验当作已存在。"
+  },
+  "validationRules": {
+    "structural": [
+      {
+        "ruleCode": "STRUCT-001",
+        "description": "每个字段类型及长度齐全",
+        "check": "每个字段类型及长度齐全",
+        "severity": "ERROR"
+      },
+      {
+        "ruleCode": "STRUCT-002",
+        "description": "P 字段精度明确",
+        "check": "P 字段精度明确",
+        "severity": "ERROR"
+      },
+      {
+        "ruleCode": "STRUCT-003",
+        "description": "字段名长度不超过 10",
+        "check": "字段名长度不超过 10",
+        "severity": "ERROR"
+      },
+      {
+        "ruleCode": "STRUCT-009",
+        "description": "字段 ID 唯一",
+        "check": "字段 ID 唯一",
+        "severity": "ERROR"
+      }
+    ],
+    "crossField": [
+      {
+        "ruleCode": "XREF-001",
+        "description": "键引用存在",
+        "check": "keys.fieldName in fieldDefinitions",
+        "severity": "ERROR"
+      }
+    ],
+    "specSummaryAccuracy": [
+      {
+        "ruleCode": "SUM-001",
+        "description": "字段数正确",
+        "check": "totalFields = field count",
+        "severity": "ERROR"
+      }
+    ],
+    "sectionInclusion": [
+      {
+        "ruleCode": "SEC-001",
+        "description": "适用的必需章节完整",
+        "check": "L3 PF/LF sections",
+        "severity": "ERROR"
+      }
+    ],
+    "tierSpecific": [
+      {
+        "ruleCode": "TIER-001",
+        "description": "字段说明完整",
+        "check": "nonempty text",
+        "severity": "ERROR"
+      }
+    ]
+  },
+  "confidenceLevels": {
+    "methodology": "合成选择不等同真实系统验证。",
+    "sections": {
+      "fieldDefinitions": {
+        "level": "MEDIUM",
+        "notes": "授权合成定义"
+      },
+      "keyDefinition": {
+        "level": "HIGH",
+        "notes": "技术设计命名基线细化"
+      }
+    },
+    "overallConfidence": "MEDIUM"
+  },
+  "changeImpact": {
+    "classification": "additive",
+    "rationale": "全部为待生成新对象，无既有物理对象变更",
+    "impacts": [],
+    "recompilationRequired": false,
+    "recompilationNote": "N/A — 尚无程序对象"
+  },
+  "versionMetadata": {
+    "sourceDocuments": [
+      {
+        "documentType": "Technical Design",
+        "specId": "TD-20260905-01",
+        "version": "1.1"
+      }
+    ]
+  },
+  "specSummary": {
+    "totalFields": 23,
+    "totalRecordFormats": 1,
+    "totalKeyFields": 2,
+    "totalBusinessRules": 1,
+    "totalOpenQuestions": 0,
+    "newFields": 23,
+    "modifiedFields": 0,
+    "outputMode": "Full Spec",
+    "machineReadable": true,
+    "overallConfidence": "MEDIUM"
+  },
+  "constraints": [
+    {
+      "constraintId": "CST-01",
+      "constraintType": "UNIQUE",
+      "fields": [
+        "IHBATCH",
+        "IHSEQ"
+      ],
+      "fieldRefs": [
+        "FLD-01",
+        "FLD-02"
+      ],
+      "rule": "完整键唯一",
+      "referencedFile": null,
+      "referencedFileSpecRef": null,
+      "changeTag": "NEW",
+      "notes": "不声明 DDS 外键或 CHECK 约束"
+    }
+  ]
+}

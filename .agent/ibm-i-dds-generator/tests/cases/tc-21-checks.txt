@@ -1,0 +1,8 @@
+source_type=LF
+type=happy
+# LF version file — version of CUSTACTV based on CUSTMASV
+must_contain=PFILE(CUSTMASV)
+must_contain=R CUSTVR
+must_contain=K CUSTNM
+must_contain=Version of LF
+must_not_contain=UNIQUE

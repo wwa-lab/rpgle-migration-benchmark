@@ -1,0 +1,11 @@
+source_type=LF
+type=happy
+# Join LF outer — JDFTVAL must appear for outer join
+must_contain=JDFTVAL
+must_contain=JFILE(ORDHDR ORDDTL)
+must_contain=JOIN(1 2)
+must_contain=JFLD(ORDNO ORDNO)
+must_contain=JREF(1)
+must_contain=JREF(2)
+must_contain=R ORDINVOR
+must_not_contain=PFILE

@@ -1,0 +1,37 @@
+
+
+     A                                      UNIQUE
+     A          R OUTBOXR
+     A            OBID          80A         CCSID(37)
+     A                                      TEXT('OBID')
+     A            OBKIND         8A         CCSID(37)
+     A                                      TEXT('OBKIND')
+     A            OBBIZID       48A         CCSID(37)
+     A                                      TEXT('OBBIZID')
+     A            OBSRC         12A         CCSID(37)
+     A                                      TEXT('OBSRC')
+     A            OBREQ         20A         CCSID(37)
+     A                                      TEXT('OBREQ')
+     A            OBBATCH       20A         CCSID(37)
+     A                                      TEXT('OBBATCH')
+     A            OBINPUT        9P 0
+     A                                      TEXT('OBINPUT')
+     A            OBORDER       20A         CCSID(37)
+     A                                      TEXT('OBORDER')
+     A            OBSTATE        8A         CCSID(37)
+     A                                      TEXT('OBSTATE')
+     A            OBRESULT       8A         CCSID(37)
+     A                                      TEXT('OBRESULT')
+     A            OBRESDAY       8A         CCSID(37)
+     A                                      TEXT('OBRESDAY')
+     A            OBATTEMPT      9P 0
+     A                                      TEXT('OBATTEMPT')
+     A            OBDAY          8A         CCSID(37)
+     A                                      TEXT('OBDAY')
+     A            OBLEN          9P 0
+     A                                      TEXT('OBLEN')
+     A            OBPAYLOAD  30000A         CCSID(37)
+     A                                      TEXT('OBPAYLOAD')
+     A            OBREASON     120A         CCSID(37)
+     A                                      TEXT('OBREASON')
+     A          K OBID

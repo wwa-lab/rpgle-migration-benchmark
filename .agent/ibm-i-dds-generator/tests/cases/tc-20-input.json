@@ -1,0 +1,33 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "CUSTDSC-20260404-01",
+    "specLevel": "L2",
+    "fileType": "LF",
+    "fileName": "CUSTDSC",
+    "description": "Customer by last update descending"
+  },
+  "basedOnPhysicalFiles": ["CUSTMAST"],
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "CUSTR",
+      "purpose": "Customer record by update date desc",
+      "fieldCount": 0
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": []
+  },
+  "fieldSelectionMapping": {
+    "mode": "allIncluded"
+  },
+  "keyDefinition": {
+    "unique": false,
+    "accessPath": "Keyed",
+    "keys": [
+      { "sequence": 1, "fieldName": "LSTUPD", "fieldRef": "FLD-10", "sortDirection": "DESCEND" }
+    ]
+  }
+}

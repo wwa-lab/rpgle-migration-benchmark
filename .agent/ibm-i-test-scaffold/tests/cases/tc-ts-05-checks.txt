@@ -1,0 +1,7 @@
+category=secondary
+artifact_count=6
+must_contain=(Inferred)
+must_contain=## Open Questions / Prerequisites
+must_contain=QRPGLESRC
+must_contain=CASE WHEN
+must_contain=DELETE FROM

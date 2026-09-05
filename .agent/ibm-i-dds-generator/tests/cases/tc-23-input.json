@@ -1,0 +1,64 @@
+{
+  "$schema": "ibm-i-file-spec/v2.0",
+  "schemaVersion": "2.0.0",
+  "specHeader": {
+    "specId": "EDTRPTF-20260404-01",
+    "specLevel": "L2",
+    "fileType": "PRTF",
+    "fileName": "EDTRPTF",
+    "description": "Report with edit codes"
+  },
+  "pageLayout": {
+    "lines": 66,
+    "columns": 132,
+    "overflowLine": 60,
+    "overflowIndicator": 99
+  },
+  "recordFormats": [
+    {
+      "formatId": "FMT-01",
+      "formatName": "EDTDTL",
+      "purpose": "Detail line with edit codes",
+      "fieldCount": 2,
+      "spacingBefore": 1
+    }
+  ],
+  "fieldDefinitions": {
+    "FMT-01": [
+      {
+        "fieldId": "FLD-01",
+        "fieldName": "AMOUNT",
+        "type": "P",
+        "length": 11,
+        "decimals": 2,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Dollar amount",
+        "editCode": "1",
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 6,
+        "col": 2,
+        "usage": "O"
+      },
+      {
+        "fieldId": "FLD-02",
+        "fieldName": "RPTDTE",
+        "type": "L",
+        "length": 10,
+        "decimals": null,
+        "nullable": false,
+        "defaultValue": null,
+        "ccsid": null,
+        "text": "Report date",
+        "editCode": "Y",
+        "columnHeading": null,
+        "ddsKeywords": [],
+        "row": 6,
+        "col": 20,
+        "usage": "O"
+      }
+    ]
+  }
+}

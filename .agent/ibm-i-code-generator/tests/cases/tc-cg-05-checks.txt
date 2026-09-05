@@ -1,0 +1,26 @@
+layer=1
+lang=RPGLE
+change_type=new
+type=happy
+# Must contain EXEC SQL blocks
+must_contain_regex=(exec sql|EXEC SQL|Exec Sql)
+# Must have SELECT for customer lookup
+must_contain_regex=(SELECT|select)
+must_contain=CUSTMAST
+# Must have INSERT for audit
+must_contain_regex=(INSERT|insert)
+must_contain=CUSTAUDT
+# Must have SQL error checking
+must_contain_regex=(SQLCODE|SQLSTATE|sqlcode|sqlstate)
+# Host variables from Data Contract
+must_contain=P_CUSTID
+must_contain=P_CUSTNM
+# Free format for new program
+must_contain=ctl-opt
+# Must NOT use native I/O ops for SQL-declared files
+must_not_contain_regex=(chain.*CUSTMAST|CHAIN.*CUSTMAST)
+must_not_contain_regex=(write.*CUSTAUDT|WRITE.*CUSTAUDT)
+# BR traceability
+must_contain=BR-01
+must_contain=BR-02
+must_contain=BR-03

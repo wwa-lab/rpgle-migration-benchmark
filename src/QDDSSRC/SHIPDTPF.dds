@@ -1,0 +1,22 @@
+     A* Synthetic static benchmark. Object SHIPDTPF.
+     A* Field identity and order follow its file specification.
+     A                                      UNIQUE
+     A          R SHIPDTR
+     A            SDSHIP        20A         CCSID(37)
+     A                                      TEXT('SDSHIP')
+     A            SDLINE         5P 0
+     A                                      TEXT('SDLINE')
+     A            SDORDER       20A         CCSID(37)
+     A                                      TEXT('SDORDER')
+     A            SDORDLINE      5P 0
+     A                                      TEXT('SDORDLINE')
+     A            SDITEM        12A         CCSID(37)
+     A                                      TEXT('SDITEM')
+     A            SDWH           1A         CCSID(37)
+     A                                      TEXT('SDWH')
+     A            SDQTY          9P 0
+     A                                      TEXT('SDQTY')
+     A            SDAMOUNT      15P 2
+     A                                      TEXT('SDAMOUNT')
+     A          K SDSHIP
+     A          K SDLINE

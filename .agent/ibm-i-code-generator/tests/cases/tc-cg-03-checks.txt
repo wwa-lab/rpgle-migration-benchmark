@@ -1,0 +1,24 @@
+layer=1
+lang=CLLE
+change_type=new
+type=happy
+# CLLE structural elements
+must_contain=PGM
+must_contain=ENDPGM
+must_contain=DCL
+must_contain=MONMSG
+# Data area operations
+must_contain=RTVDTAARA
+must_contain=CHGDTAARA
+must_contain=RPTSTDA
+# External call
+must_contain_regex=(CALL.*RPTGEN|CALLPRC.*RPTGEN)
+# Parameter handling
+must_contain=RTNCDE
+# BR traceability
+must_contain_regex=(BR-01|Step 4)
+must_contain_regex=(BR-03|Step 7)
+# Must NOT contain RPGLE-specific constructs
+must_not_contain=ctl-opt
+must_not_contain=dcl-f
+must_not_contain=dcl-pi
