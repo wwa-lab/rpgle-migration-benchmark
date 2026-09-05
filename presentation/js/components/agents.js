@@ -5,7 +5,7 @@ export function renderAgents(slide) {
   const cards = agents
     .map(
       (agent, index) => html`
-        <article class="agent-card fragment fade-up" data-fragment-index="${index}" data-agent="${text(agent.id)}">
+        <article class="agent-card fragment custom" data-fragment-index="${index}" data-agent="${text(agent.id)}">
           <span class="agent-role">${text(agent.role)}</span>
           <strong>${text(agent.name)}</strong>
           <em>${text(agent.output)}</em>

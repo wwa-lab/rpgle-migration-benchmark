@@ -31,6 +31,7 @@ function bindHud(deck, meta) {
   deck.on("ready", sync);
   deck.on("fragmentshown", sync);
   deck.on("fragmenthidden", sync);
+  sync();
 }
 
 function bindHelp() {
@@ -87,6 +88,7 @@ function bindSlideEffects(deck) {
 
   deck.on("ready", () => apply(deck.getCurrentSlide()));
   deck.on("slidechanged", (event) => apply(event.currentSlide));
+  apply(deck.getCurrentSlide());
 }
 
 async function main() {

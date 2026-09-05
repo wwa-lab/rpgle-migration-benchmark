@@ -4,7 +4,7 @@ export function renderRoadmap(slide) {
   const phases = (slide.data?.phases ?? [])
     .map(
       (phase, index) => html`
-        <article class="road-card fragment fade-up" data-fragment-index="${index}">
+        <article class="road-card">
           <span class="road-when">${text(phase.when)}</span>
           <h3>${text(phase.title)}</h3>
           <ul>

@@ -3,7 +3,7 @@ import { html, text } from "../lib/dom.js";
 export function renderClosing(slide) {
   const lines = (slide.data?.lines ?? [])
     .map(
-      (line, index) => html`<li class="closing-line fragment fade-in" data-fragment-index="${index}">${text(line)}</li>`
+      (line) => html`<li class="closing-line">${text(line)}</li>`
     )
     .join("");
   const refs = (slide.data?.refs ?? [])

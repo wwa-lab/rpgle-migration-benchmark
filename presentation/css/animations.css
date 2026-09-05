@@ -23,6 +23,22 @@
   transform: none;
 }
 
+.reveal .slides section .fragment.pipe-step,
+.reveal .slides section .fragment.agent-card,
+.reveal .slides section .fragment.flow-step,
+.reveal .slides section .fragment.problem-card {
+  opacity: 0.38;
+  visibility: visible;
+  transform: none;
+}
+
+.reveal .slides section .fragment.pipe-step.visible,
+.reveal .slides section .fragment.agent-card.visible,
+.reveal .slides section .fragment.flow-step.visible,
+.reveal .slides section .fragment.problem-card.visible {
+  opacity: 1;
+}
+
 .arch-node {
   transition: opacity 360ms ease;
 }

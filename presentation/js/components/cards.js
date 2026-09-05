@@ -5,7 +5,7 @@ export function renderCards(slide) {
   const items = (slide.data?.items ?? [])
     .map(
       (item, index) => html`
-        <article class="stat-card fragment fade-up" data-fragment-index="${index}">
+        <article class="stat-card">
           <span class="stat-label">${text(item.label)}</span>
           <strong class="stat-value">${text(item.value)}</strong>
           <span class="stat-hint">${text(item.hint ?? "")}</span>
@@ -13,9 +13,7 @@ export function renderCards(slide) {
     )
     .join("");
 
-  const code = slide.data?.code
-    ? renderCodePanel(slide.data.code, slide.data.items?.length ?? 0)
-    : "";
+  const code = slide.data?.code ? renderCodePanel(slide.data.code, 0) : "";
 
   return html`
     <div class="slide-frame current-slide">

@@ -43,7 +43,7 @@ export function renderArchitecture(slide) {
   const flows = (slide.data?.flows ?? [])
     .map(
       (flow, index) => html`
-        <li class="flow-step fragment fade-in" data-fragment-index="${index}" data-flow="${text(flow.id)}" data-edges="${text((flow.edges ?? []).join(","))}">
+        <li class="flow-step fragment custom" data-fragment-index="${index}" data-flow="${text(flow.id)}" data-edges="${text((flow.edges ?? []).join(","))}">
           ${text(flow.label)}
         </li>`
     )

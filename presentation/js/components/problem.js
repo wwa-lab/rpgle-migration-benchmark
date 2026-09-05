@@ -4,7 +4,7 @@ export function renderProblem(slide) {
   const points = (slide.data?.points ?? [])
     .map(
       (point, index) => html`
-        <article class="problem-card fragment fade-in" data-fragment-index="${index}">
+        <article class="problem-card fragment custom" data-fragment-index="${index}">
           <span class="problem-index">${text(point.index)}</span>
           <h3>${text(point.title)}</h3>
           <p>${text(point.body)}</p>
