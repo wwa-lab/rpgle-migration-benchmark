@@ -13,6 +13,10 @@
 
 ## 开始一次评测
 
+整体安排见 [评测计划](evaluation-plan.md)：内网 GPT 5.6 high 对比外网 Codex + `qwen3.5:35b-a3b`；两端各一次试跑，随后每组三次正式独立运行。Qwen3-Coder-Next 与 DeepSeek 列为后续扩展候选，按统一规则匿名评分。
+
+需要单独复制提示词时，使用 [prompt.md](prompt.md)，内容与文件版包内的 `input/prompts/run.md` 完全一致。两端发送同一份全文；该副本放在操作侧，不需加入冻结的 `input/` 目录。
+
 1. 按[运行说明](runs/README.md)核实两端实际模型、推理设置、输入／输出限制和工具条件，复制填写[运行记录模板](runs/run-template.json)。每轮使用新会话和隔离目录。
 2. 只交付上表选中的压缩包。文件版解压后将 `input/` 作为唯一可见工作目录，发送其中的 [prompts/run.md](input/prompts/run.md)。文本版先发送 [start.md](delivery/start.md)，依照 [index.json](delivery/index.json) 顺序发送全部分段，最后发送 [final.md](delivery/final.md)。
 3. 保存原始输出及使用记录，再由评审者使用[评分说明](reference/rubric.md)和[证据清单](reference/evidence-checklist.md)评分。Operation、System、Data、Transaction Flow 各 25 分，总计 100 分。
@@ -28,4 +32,4 @@
 
 评审侧保留[转换记录](reference/transformation.json)和原始源码校验快照。任何输入、提示词或评分基准变更都需要更新版本并重新核验，不能混用结果。
 
-两端实际配置仍待核实，见[配置备注](runs/configuration-notes.md)。目前没有模型得分、运行时间或编译／业务执行结果。
+当前模型选择及用户确认的执行前提见[评测计划](evaluation-plan.md)第 2 节；冻结的[配置备注](runs/configuration-notes.md)保留打包时的历史候选，不代表当前选型。每次运行记录实际配置，目前没有模型得分、运行时间或编译／业务执行结果。
