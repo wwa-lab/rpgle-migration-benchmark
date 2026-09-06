@@ -1,0 +1,182 @@
+:root {
+  --ink: #0c1014;
+  --ink-2: #141b22;
+  --panel: #1a222b;
+  --line: rgba(236, 230, 218, 0.12);
+  --paper: #efe7d8;
+  --paper-soft: #d8d0c2;
+  --mute: #8b8578;
+  --brass: #c4a36a;
+  --brass-dim: rgba(196, 163, 106, 0.16);
+  --teal: #7f9a90;
+  --rose: #b56d5c;
+  --ok: #86a07a;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  --sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --mono: "SFMono-Regular", "Consolas", "Liberation Mono", Menlo, monospace;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+}
+
+.reveal {
+  font-family: var(--sans);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--paper);
+  background: radial-gradient(1200px 700px at 12% -10%, #1c2730 0%, var(--ink) 58%);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0;
+}
+
+.reveal .progress {
+  height: 3px;
+  color: var(--brass);
+}
+
+.reveal .controls {
+  color: var(--brass);
+}
+
+.reveal .controls button {
+  opacity: 0.45;
+}
+
+.slide-background-content {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 30%),
+    radial-gradient(900px 520px at 88% 110%, rgba(196, 163, 106, 0.07), transparent 55%),
+    var(--ink);
+}
+
+.hud {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.hud strong {
+  color: var(--paper-soft);
+  font-weight: 600;
+}
+
+.notes-rail {
+  position: fixed;
+  right: 24px;
+  bottom: 28px;
+  width: 360px;
+  max-height: 28vh;
+  overflow: auto;
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  background: rgba(12, 16, 20, 0.92);
+  border: 1px solid var(--line);
+  padding: 16px 18px;
+  color: var(--paper-soft);
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.55;
+}
+
+.notes-rail.is-open {
+  opacity: 1;
+  transform: none;
+}
+
+.notes-rail span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--brass);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.help-layer {
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  background: rgba(8, 10, 12, 0.72);
+  z-index: 20;
+}
+
+.help-layer.is-open {
+  display: grid;
+}
+
+.help-card {
+  width: min(640px, 80vw);
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  padding: 32px 36px;
+  pointer-events: auto;
+}
+
+.help-card h2 {
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.help-card dl {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px 16px;
+  margin: 0;
+  color: var(--paper-soft);
+  font-size: 15px;
+}
+
+.help-card dt {
+  color: var(--brass);
+  font-family: var(--mono);
+}
+
+.kbd-hint {
+  position: fixed;
+  left: 28px;
+  bottom: 22px;
+  z-index: 9;
+  color: var(--mute);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.error-slide {
+  padding: 80px;
+}
+
+.reveal .slides section .notes,
+.reveal aside.notes {
+  display: none;
+}

@@ -1,0 +1,82 @@
+.reveal .slides section .fragment.fade-in {
+  opacity: 0;
+  transition: opacity 420ms ease;
+}
+
+.reveal .slides section .fragment.fade-in.visible {
+  opacity: 1;
+}
+
+.reveal .slides section .fragment.fade-up {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.reveal .slides section .fragment.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal .slides section .fragment.highlight-line {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal .slides section .fragment.pipe-step,
+.reveal .slides section .fragment.agent-card,
+.reveal .slides section .fragment.flow-step,
+.reveal .slides section .fragment.problem-card {
+  opacity: 0.38;
+  visibility: visible;
+  transform: none;
+}
+
+.reveal .slides section .fragment.pipe-step.visible,
+.reveal .slides section .fragment.agent-card.visible,
+.reveal .slides section .fragment.flow-step.visible,
+.reveal .slides section .fragment.problem-card.visible {
+  opacity: 1;
+}
+
+.arch-node {
+  transition: opacity 360ms ease;
+}
+
+.arch-edge path {
+  transition: stroke 360ms ease, opacity 360ms ease;
+}
+
+.arch-packet {
+  filter: drop-shadow(0 0 6px rgba(239, 231, 216, 0.55));
+}
+
+.pipe-step,
+.agent-card {
+  transition: opacity 360ms ease, border-color 360ms ease, background-color 360ms ease;
+}
+
+.agent-token,
+.agent-token-label {
+  transition: transform 520ms ease;
+}
+
+.compare-before,
+.compare-after {
+  transition: opacity 480ms ease, border-color 480ms ease;
+}
+
+.comparison-slide .compare-after:has(.fragment.visible) {
+  box-shadow: inset 0 0 0 1px rgba(196, 163, 106, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .slides section .fragment,
+  .pipe-step,
+  .agent-card,
+  .kpi-track i,
+  .agent-token,
+  .agent-token-label {
+    transition: none !important;
+  }
+}
